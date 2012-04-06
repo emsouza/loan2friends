@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="br.com.eduardo.loan" xmlns:android="http://schemas.android.com/apk/res/android"
+	android:versionName="2.4.1" android:versionCode="18">
+
+	<uses-sdk android:minSdkVersion="4" />
+	<uses-permission android:name="android.permission.READ_CONTACTS" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-feature android:name="android.permission.SEND_SMS" android:required="false" />
+	<uses-feature android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:required="false" />
+
+
+	<supports-screens android:largeScreens="true"
+		android:anyDensity="true" android:resizeable="true"
+		android:normalScreens="true" android:smallScreens="true"
+		android:xlargeScreens="true" />
+
+	<application android:icon="@drawable/ic_icon" android:label="@string/app_name"
+		android:persistent="true" android:theme="@android:style/Theme.NoTitleBar">
+
+		<activity android:name="MainActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+
+		<activity android:name=".ac.friend.FriendActivity" />
+		<activity android:name=".ac.friend.FriendAddActivity" />
+		<activity android:name=".ac.friend.FriendEditActivity" />
+		<activity android:name=".ac.item.ItemActivity" />
+		<activity android:name=".ac.item.ItemAddActivity" />
+		<activity android:name=".ac.item.ItemEditActivity" />
+		<activity android:name=".ac.item.ItemDetailActivity" />
+		<activity android:name=".ac.loan.LoanAddActivity" />
+		<activity android:name=".ac.loan.LoanEditActivity" />
+		<activity android:name=".ac.config.ConfigActivity" />
+
+		<activity android:configChanges="keyboard|keyboardHidden|orientation"
+			android:name="com.google.ads.AdActivity" />
+
+	</application>
+</manifest>

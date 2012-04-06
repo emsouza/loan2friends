@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="6dip" >
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="6dip"
+        android:contentDescription="@string/cd_contact_photo"
+        android:scaleType="centerInside" />
+
+    <LinearLayout
+        android:layout_width="0dip"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/ac_friend_list_name"
+            android:layout_width="fill_parent"
+            android:layout_height="23dip" />
+
+        <TextView
+            android:id="@+id/ac_friend_list_number"
+            android:layout_width="fill_parent"
+            android:layout_height="23dip"
+            android:ellipsize="marquee"
+            android:paddingTop="5dip"
+            android:singleLine="true" />
+    </LinearLayout>
+
+</LinearLayout>

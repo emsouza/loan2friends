@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <style type='text/css'>
+      a            { color:#a0a0e0 }
+      div.title    { color:#C0F0C0; font-size:1.2em; font-weight:bold; margin-top:1em; margin-bottom:0.5em; text-align:center }
+      div.subtitle { color:#C0F0C0; font-size:0.8em; margin-bottom:1em; text-align:center }
+      div.freetext { color:#F0F0F0 }
+      div.list     { color:#C0C0F0 }
+    </style>
+  </head>
+  <body>
+$ 2.4.1
+  % Version 2.4.1
+  _ 2012-12-24
+	* Corre&#231;&#227;o de Bugs.
+$ 2.4
+  % Version 2.4
+  _ 2012-12-24
+	* Corre&#231;&#227;o de Bugs.
+	* Foto dos Contatos (Somente novos Contatos).
+	* Melhoria nos &#237;cones.
+$ 2.3
+  % Version 2.3
+  _ 2011-10-29
+	* Corre&#231;&#227;o de Bugs.
+$ 2.2
+  % Version 2.2
+  _ 2011-10-18
+  	* Corre&#231;&#227;o de Bugs para Tablets.
+$ 2.1
+  % Version 2.1
+  _ 2011-10-15
+	* Corre&#231;&#227;o de Bugs para Tablets.
+$ 2.0
+  % Version 2.0
+  _ 2011-10-14
+	* Suporte a vers&#227;o 3.2 do Android.
+$ 1.9
+  % Version 1.9
+  _ 2011-10-14
+	* Corre&#231;&#227;o de Bugs para Tablets.
+$ 1.8
+  % Version 1.8
+  _ 2011-10-12
+	* Corre&#231;&#227;o de Bugs.
+	* Fun&#231;&#227;o para importar e exportar dados.
+$ 1.7
+  % Version 1.7
+  _ 2011-09-24
+	* Corre&#231;&#227;o de Bugs.
+	* Fun&#231;&#227;o para excluir um Amigo.
+	* Permiss&#227;o para alterar a data de um Empr&#233;stimo.
+	* Fun&#231;&#227;o para importar todos os Contatos.
+$ 1.6
+  % Version 1.6
+  _ 2011-09-11
+	* Corre&#231;&#227;o de Bugs.
+$ 1.5
+  % Version 1.5
+  _ 2011-09-07
+	* Melhoria nas Telas para Tablets.
+	* Barra de Pesquisa.
+$ 1.4
+  % Version 1.4
+  _ 2011-08-13
+	* Fun&#231;&#227;o para Solicita&#231;&#227;o de Funcionalidades.
+	* Nova barra de T&#237;tulo (Op&#231;&#227;o de pesquisa na pr&#243;xima release).
+$ 1.3
+  % Vers&#227;o 1.3
+  _ 30/07/2011
+	* Melhoria nos &#237;cones.
+	* Melhoria nos logs de erros.
+	* Envio de SMS.
+$ 1.2
+  % Vers&#227;o 1.2
+  _ 24/06/2011
+  	* Corre&#231;&#227;o de Bugs.
+  	* Permiss&#227;o para deletar um item.
+  	* Suporte a tipos de objetos (CD, CD de M&#250;sica, DVD, Bluray, Livro, Jogo, Dinheiro).
+$ 1.1
+  % Vers&#227;o 1.1
+  _ 11/06/2011
+  	* Melhoria na usabilidade das janelas de sele&#231;&#227;o.
+  	* M&#243;dulo de Configura&#231;&#245;es.
+  	* Suporte a API 1.6.
+$ 1.0
+  % Vers&#227;o 1.0
+  _ 07/06/2011
+    * Primeira Vers&#227;o.
+$ END_OF_CHANGE_LOG
+  </body>
+</html>
