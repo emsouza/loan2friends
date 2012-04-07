@@ -87,7 +87,7 @@ public class LoanEditActivity extends Activity {
 		status.setSelection(loan.getStatus());
 
 		Calendar cal = Calendar.getInstance();
-		cal.setTime(DateFormatUtil.formatToDate(loan.getDate()));
+		cal.setTime(DateFormatUtil.formatToDate(loan.getLentDate()));
 
 		date.updateDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
 

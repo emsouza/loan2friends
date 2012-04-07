@@ -67,9 +67,22 @@ public class LoanAddActivity extends Activity {
 				showDialog(DIALOG_FRIEND_ID);
 			}
 		});
+		
+		
+		friendName.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				showDialog(DIALOG_FRIEND_ID);
+			}
+		});
 
 		ImageButton searchItem = (ImageButton) findViewById(R.id.ac_loan_item_search);
 		searchItem.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				showDialog(DIALOG_ITEM_ID);
+			}
+		});
+		
+		itemName.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				showDialog(DIALOG_ITEM_ID);
 			}
@@ -135,7 +148,7 @@ public class LoanAddActivity extends Activity {
 		cal.set(Calendar.HOUR_OF_DAY, time.getCurrentHour());
 		cal.set(Calendar.MINUTE, time.getCurrentMinute());
 
-		loan.setDate(DateFormatUtil.formatToDB(cal.getTime()));
+		loan.setLentDate(DateFormatUtil.formatToDB(cal.getTime()));
 
 		if (LoanValidator.validaLoan(this, loan)) {
 			LoanDBManager db = new LoanDBManager(this);

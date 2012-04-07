@@ -8,10 +8,9 @@ package br.com.eduardo.loan.util.type;
 public enum Status {
 
 	AVAILABLE(0),
-
 	LENDED(1),
-
-	ARCHIVED(2);
+	RETURNED(2),
+	ARCHIVED(3);
 
 	private Integer id;
 

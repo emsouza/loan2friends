@@ -97,7 +97,7 @@ public class SMSDialog extends Dialog {
 
 		String text = getContext().getString(R.string.sms_return) + "\n\n";
 		text = text + getContext().getString(R.string.item_title) + " " + view.getTitle() + "\n";
-		text = text + getContext().getString(R.string.date_loan) + " " + GUI_FORMAT.format(DateFormatUtil.formatToDate(view.getDate())) + "\n";
+		text = text + getContext().getString(R.string.date_loan) + " " + GUI_FORMAT.format(DateFormatUtil.formatToDate(view.getLentDate())) + "\n";
 
 		message.setText(text);
 	}

@@ -13,7 +13,7 @@
 	<string name="button_save">Salvar</string> <!-- Botão Salvar -->
 	<string name="button_cancel">Cancelar</string> <!-- Botão Cancelar -->
 	<string name="button_send">Enviar</string>
-	<string name="button_ok">Ok</string>
+	<string name="button_update">Atualizar</string>
 
 	<!-- Funcionalidades -->
 	<string name="feature_request">Solicitação de Funcionalidade</string> <!-- Título de Requisição de Funcionalidade -->
@@ -22,6 +22,8 @@
 	<!-- Dados da Grid -->
 	<string name="date_loan">Data de Empréstimo</string> <!-- Data de Empréstimo -->
 	<string name="date_return">Data de Retorno</string> <!-- Data de Retorno -->
+	<string name="loan_days">Emprestado há</string> <!-- Dias Emprestado -->
+	<string name="days">dia(s)</string> <!-- Dia / Dias -->
 	<string name="item_title">Título:</string> <!-- Título do Item -->
 	<string name="friend_name">Nome:</string> <!-- Nome do Amigo -->
 	<string name="status">Status:</string> <!-- Status -->
@@ -42,6 +44,7 @@
 	<!-- Menus do Sistema -->
 	<string name="menu_main_friends">Amigos</string> <!-- Opção para ir a Tela de Amigos -->
 	<string name="menu_main_items">Meus Itens</string> <!-- Opção para ir a Tela de Itens -->
+	<string name="menu_main_filter">Filtro</string> <!-- Filtro da Tela Inicial -->
 	<string name="menu_main_settings">Configurações</string> <!-- Opção para ir a Tela de Preferências -->
 	<string name="menu_main_add">Adicionar Empréstimo</string> <!-- Opção para adicionar um Empréstimo -->
 	<string name="menu_items_add">Adicionar Item</string> <!-- Opção para adicionar um Item -->
@@ -55,16 +58,20 @@
 	<string name="option_sms">Enviar SMS</string> <!-- Opção de Menu SMS -->
 	<string name="option_cancel">Cancelar</string> <!-- Opção de Menu Cancelar -->
 	<string name="option_mark_returned">Marcar Retorno</string> <!-- Marcar como Devolvido -->
+	<string name="option_mark_archive">Arquivar</string> <!-- Arquivar -->
 
 	<!-- Status -->
 	<string name="status_available">Disponível</string> <!-- Status Disponível -->
 	<string name="status_lent">Emprestado</string> <!-- Status Emprestado -->
+	<string name="status_returned">Devolvido</string> <!-- Status Devolvido -->
+	<string name="status_achived">Arquivado</string> <!-- Status Arquivado -->
 
 	<!-- Titulo de Dialogo -->
 	<string name="title_dialog_contact">Lista de Contatos</string> <!-- Título da Janela de Contatos -->
 	<string name="title_dialog_friend">Lista de Amigos</string> <!-- Título da Janela de Amigos -->
 	<string name="title_dialog_item">Lista de Itens</string> <!-- Título da Janela de Itens -->
 	<string name="title_sms">SMS</string> <!-- Título da Janela de SMS -->
+	<string name="title_filter">Filtro</string>
 
 	<!-- Mensagens de Validação -->
 	<string name="idfriend_error">Amigo não selecionado</string> <!-- Amigo não selecionado -->

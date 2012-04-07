@@ -49,7 +49,7 @@ public class ChangeLog {
 			PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
 			this.thisVersion = packageInfo.versionName;
 		} catch (NameNotFoundException e) {
-			Log.e(ChangeLog.class.getName(), "Erro ao buscar número de versão", e);
+			Log.e(ChangeLog.class.getName(), "Erro ao buscar nï¿½mero de versï¿½o", e);
 		}
 
 		SharedPreferences.Editor editor = sp.edit();
@@ -94,7 +94,7 @@ public class ChangeLog {
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
 		builder.setTitle(R.string.title_changelog).setView(wv).setCancelable(false)
-				.setPositiveButton(context.getResources().getString(R.string.button_ok), new DialogInterface.OnClickListener() {
+				.setPositiveButton(context.getResources().getString(android.R.string.ok), new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
 					}

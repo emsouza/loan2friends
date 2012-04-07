@@ -7,14 +7,16 @@ import br.com.eduardo.loan.R;
  *         07/05/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
  */
-public class LoanStatusImage {
+public class StatusImage {
 
 	public static int statusImage(Integer status) {
 		switch (status) {
-			case 0:
-				return R.drawable.ic_status_return;
 			case 1:
 				return R.drawable.ic_status_lent;
+			case 2:
+				return R.drawable.ic_status_return;
+			case 3:
+				return R.drawable.ic_status_archive;			
 			default:
 				return R.drawable.ic_icon;
 		}

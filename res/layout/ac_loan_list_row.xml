@@ -47,7 +47,13 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/ac_loan_list_date"
+            android:id="@+id/ac_loan_list_lent_date"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1" />
+        
+        <TextView
+            android:id="@+id/ac_loan_list_return_date"
             android:layout_width="fill_parent"
             android:layout_height="0dip"
             android:layout_weight="1" />

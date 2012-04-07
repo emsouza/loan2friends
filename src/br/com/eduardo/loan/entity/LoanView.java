@@ -15,9 +15,11 @@ public class LoanView {
 
 	private Integer status;
 
-	private String date;
+	private String lentDate;
 
 	private Integer type;
+	
+	private String returnDate;
 
 	public Integer getId() {
 		return id;
@@ -51,12 +53,20 @@ public class LoanView {
 		this.status = status;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public String getLentDate() {
+		return lentDate;
 	}
 
-	public String getDate() {
-		return date;
+	public void setLentDate(String lentDate) {
+		this.lentDate = lentDate;
+	}
+
+	public String getReturnDate() {
+		return returnDate;
+	}
+
+	public void setReturnDate(String returnDate) {
+		this.returnDate = returnDate;
 	}
 
 	public Integer getType() {

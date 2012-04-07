@@ -1,6 +1,7 @@
 package br.com.eduardo.loan.db.manager;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -27,7 +28,9 @@ public class LoanDBManager extends DBManager {
 
 	private static final String ID_ITEM = "ID_ITEM";
 
-	private static final String DATE_COLUMN = "DT_DATE";
+	private static final String DATE_LENT_COLUMN = "DT_LENT";
+
+	private static final String DATE_RETURN_COLUMN = "DT_RETURN";
 
 	private static final String STATUS_COLUMN = "FG_STATUS";
 
@@ -40,7 +43,8 @@ public class LoanDBManager extends DBManager {
 		value.put(ID_FRIEND, Integer.valueOf(item.getIdFriend()));
 		value.put(ID_ITEM, Integer.valueOf(item.getIdItem()));
 		value.put(STATUS_COLUMN, item.getStatus());
-		value.put(DATE_COLUMN, item.getDate());
+		value.put(DATE_LENT_COLUMN, item.getLentDate());
+		value.put(DATE_RETURN_COLUMN, item.getReturnDate());
 
 		try {
 			getWritableDatabase().insert(TABLE_NAME, null, value);
@@ -56,7 +60,8 @@ public class LoanDBManager extends DBManager {
 		value.put(ID_FRIEND, Integer.valueOf(item.getIdFriend()));
 		value.put(ID_ITEM, Integer.valueOf(item.getIdItem()));
 		value.put(STATUS_COLUMN, item.getStatus());
-		value.put(DATE_COLUMN, item.getDate());
+		value.put(DATE_LENT_COLUMN, item.getLentDate());
+		value.put(DATE_RETURN_COLUMN, item.getReturnDate());
 
 		try {
 			getWritableDatabase().update(TABLE_NAME, value, where, null);
@@ -126,8 +131,9 @@ public class LoanDBManager extends DBManager {
 			item.setId(cursor.getInt(0));
 			item.setIdFriend(cursor.getInt(1));
 			item.setIdItem(cursor.getInt(2));
-			item.setDate(cursor.getString(3));
+			item.setLentDate(cursor.getString(3));
 			item.setStatus(cursor.getInt(4));
+			item.setReturnDate(cursor.getString(5));
 			cursor.close();
 			return item;
 		}
@@ -135,7 +141,7 @@ public class LoanDBManager extends DBManager {
 	}
 
 	public LoanView findView(Integer id) {
-		String orderBY = "DT_DATE DESC";
+		String orderBY = "DT_LENT DESC";
 		String where = ID_COLUMN + " = " + id;
 		Cursor cursor = getReadableDatabase().query(TABLE_VIEW, null, where, null, null, null, orderBY);
 		if (cursor != null) {
@@ -145,8 +151,9 @@ public class LoanDBManager extends DBManager {
 				item.setName(cursor.getString(1));
 				item.setTitle(cursor.getString(2));
 				item.setStatus(cursor.getInt(3));
-				item.setDate(cursor.getString(4));
+				item.setLentDate(cursor.getString(4));
 				item.setType(cursor.getInt(5));
+				item.setReturnDate(cursor.getString(6));
 				cursor.close();
 				return item;
 			}
@@ -155,10 +162,21 @@ public class LoanDBManager extends DBManager {
 		return null;
 	}
 
-	public ArrayList<LoanView> findAll() {
-		String orderBY = "DT_DATE DESC";
+	public ArrayList<LoanView> findAll(List<String> status) {
+		String orderBY = "DT_LENT DESC";
+		String where = STATUS_COLUMN + " IN (:ID)";
+
+		String ids = "";
+		for (String id : status) {
+			if (ids.length() >= 1) {
+				ids = ids + ",";
+			}
+			ids = ids + id;
+		}
+		where = where.replace(":ID", ids);
+
 		ArrayList<LoanView> list = new ArrayList<LoanView>();
-		Cursor cursor = getReadableDatabase().query(TABLE_VIEW, null, null, null, null, null, orderBY);
+		Cursor cursor = getReadableDatabase().query(TABLE_VIEW, null, where, null, null, null, orderBY);
 		if (cursor != null) {
 			while (cursor.moveToNext()) {
 				LoanView item = new LoanView();
@@ -166,33 +184,13 @@ public class LoanDBManager extends DBManager {
 				item.setName(cursor.getString(1));
 				item.setTitle(cursor.getString(2));
 				item.setStatus(cursor.getInt(3));
-				item.setDate(cursor.getString(4));
+				item.setLentDate(cursor.getString(4));
 				item.setType(cursor.getInt(5));
+				item.setReturnDate(cursor.getString(6));
 				list.add(item);
 			}
 			cursor.close();
 		}
 		return list;
-	}
-
-	public LoanView findRandomView() {
-		String orderBY = "RANDOM()";
-		String where = "FG_STATUS = 1";
-		Cursor cursor = getReadableDatabase().query(TABLE_VIEW, null, where, null, null, null, orderBY, "1");
-		if (cursor != null) {
-			while (cursor.moveToNext()) {
-				LoanView item = new LoanView();
-				item.setId(cursor.getInt(0));
-				item.setName(cursor.getString(1));
-				item.setTitle(cursor.getString(2));
-				item.setStatus(cursor.getInt(3));
-				item.setDate(cursor.getString(4));
-				item.setType(cursor.getInt(5));
-				cursor.close();
-				return item;
-			}
-			cursor.close();
-		}
-		return null;
 	}
 }

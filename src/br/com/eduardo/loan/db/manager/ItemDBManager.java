@@ -105,9 +105,13 @@ public class ItemDBManager extends DBManager {
 		ArrayList<Item> list = findAllItens();
 		for (Item i : list) {
 			Cursor cursor = getReadableDatabase().query("LOAN_HISTORY", new String[] { "FG_STATUS" }, "ID_ITEM = " + i.getId(), null, null, null,
-					"DT_DATE DESC", "1");
+					"DT_LENT DESC", "1");
 			if (cursor != null && cursor.moveToFirst()) {
-				i.setStatus(cursor.getInt(0));
+				if (cursor.getInt(0) != Status.LENDED.id()) {
+					i.setStatus(Status.AVAILABLE.id());
+				} else {
+					i.setStatus(cursor.getInt(0));
+				}
 			} else {
 				i.setStatus(Status.AVAILABLE.id());
 			}
@@ -122,10 +126,10 @@ public class ItemDBManager extends DBManager {
 		ArrayList<Item> list = new ArrayList<Item>();
 		for (Item i : findAllItens()) {
 			Cursor cursor = getReadableDatabase().query("LOAN_HISTORY", new String[] { "FG_STATUS" }, "ID_ITEM = " + i.getId(), null, null, null,
-					"DT_DATE DESC", "1");
+					"DT_LENT DESC", "1");
 			if (cursor != null && cursor.moveToFirst()) {
 				Integer status = cursor.getInt(0);
-				if (status == 0) {
+				if (status == Status.RETURNED.id() || status == Status.ARCHIVED.id()) {
 					list.add(i);
 				}
 			} else {

@@ -19,7 +19,8 @@ import br.com.eduardo.loan.entity.LoanView;
 import br.com.eduardo.loan.util.ConfigPreferences;
 import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.type.ItemTypeImage;
-import br.com.eduardo.loan.util.type.LoanStatusImage;
+import br.com.eduardo.loan.util.type.StatusImage;
+import br.com.eduardo.loan.util.type.Status;
 
 /**
  * @author Eduardo Matos de Souza<br>
@@ -60,20 +61,28 @@ public class LoanViewAdapter extends ArrayAdapter<LoanView> {
 		if (o != null) {
 			TextView title = (TextView) v.findViewById(R.id.ac_loan_list_title);
 			TextView name = (TextView) v.findViewById(R.id.ac_loan_list_name);
-			TextView date = (TextView) v.findViewById(R.id.ac_loan_list_date);
+			TextView lentDate = (TextView) v.findViewById(R.id.ac_loan_list_lent_date);
+			TextView returnDate = (TextView) v.findViewById(R.id.ac_loan_list_return_date);
 			ImageView type = (ImageView) v.findViewById(R.id.ac_loan_list_icon);
 			ImageView status = (ImageView) v.findViewById(R.id.ic_loan_status_icon);
 
 			title.setText(getContext().getString(R.string.item_title) + " " + o.getTitle());
 			name.setText(getContext().getString(R.string.friend_name) + " " + o.getName());
-			Date loanDate = DateFormatUtil.formatToDate(o.getDate());
-			if (o.getStatus() == 0) {
-				date.setText(getContext().getString(R.string.date_return) + ": " + GUI_FORMAT.format(loanDate));
-			} else {
-				date.setText(getContext().getString(R.string.date_loan) + ": " + GUI_FORMAT.format(loanDate));
+			
+			Date loanDate = DateFormatUtil.formatToDate(o.getLentDate());
+			lentDate.setText(getContext().getString(R.string.date_loan) + ": " + GUI_FORMAT.format(loanDate));
+						
+			if (o.getStatus() == Status.LENDED.id()) {
+				long milis1 = loanDate.getTime();
+				long milis2 = new Date().getTime();
+				long diff = milis2 - milis1;
+				long diffDays = diff / (24 * 60 * 60 * 1000);
+				returnDate.setText(getContext().getString(R.string.loan_days) + ": " + diffDays + " " + getContext().getString(R.string.days));
+			}else{
+				Date rDate = DateFormatUtil.formatToDate(o.getReturnDate());
+				returnDate.setText(getContext().getString(R.string.date_return) + ": " + GUI_FORMAT.format(rDate));				
 			}
-			status.setImageResource(LoanStatusImage.statusImage(o.getStatus()));
-
+			status.setImageResource(StatusImage.statusImage(o.getStatus()));
 			type.setImageResource(ItemTypeImage.typeGridImage(o.getType()));
 		}
 		return v;

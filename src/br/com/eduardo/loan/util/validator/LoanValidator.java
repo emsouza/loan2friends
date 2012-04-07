@@ -26,7 +26,7 @@ public class LoanValidator {
 			toast.show();
 			return false;
 		} else {
-			Date data = DateFormatUtil.formatToDate(loan.getDate());
+			Date data = DateFormatUtil.formatToDate(loan.getLentDate());
 			if (!CompareDate.compareDate(data)) {
 				Toast toast = Toast.makeText(context, R.string.date_time_error, Toast.LENGTH_SHORT);
 				toast.show();
