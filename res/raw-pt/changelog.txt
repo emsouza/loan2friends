@@ -11,7 +11,7 @@
   <body>
 $ 2.5.0
   % Version 2.5.0
-  _ 2012-04-06
+  _ 2012-04-07
 	* Op&#231;&#227;o de Filtro de Empr&#233;stimos.
 	* Corre&#231;&#227;o de Bugs.
 $ 2.4.1
