@@ -116,7 +116,7 @@ public class FriendActivity extends Activity implements OnItemLongClickListener,
 
 	protected void populate() {
 		FriendDBManager db = new FriendDBManager(FriendActivity.this);
-		FriendAdapter adapter = new FriendAdapter(FriendActivity.this, db.findAll());
+		adapter = new FriendAdapter(FriendActivity.this, db.findAll());
 		listView.setAdapter(adapter);
 		db.close();
 	}
