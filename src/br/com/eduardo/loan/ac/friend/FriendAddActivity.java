@@ -45,6 +45,7 @@ public class FriendAddActivity extends Activity {
 
 		ImageButton search = (ImageButton) findViewById(R.id.ac_friend_add_search);
 		search.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				showDialog(DIALOG_CONTACTS_ID);
 			}
@@ -52,6 +53,7 @@ public class FriendAddActivity extends Activity {
 
 		Button save = (Button) findViewById(R.id.ac_friend_add_save);
 		save.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				saveFriend();
 			}
@@ -59,6 +61,7 @@ public class FriendAddActivity extends Activity {
 
 		Button cancel = (Button) findViewById(R.id.ac_friend_add_cancel);
 		cancel.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				finish();
 			}
@@ -72,6 +75,7 @@ public class FriendAddActivity extends Activity {
 				final ContactDialog dialog = new ContactDialog(this);
 				dialog.populate();
 				dialog.setOnDismissListener(new OnDismissListener() {
+					@Override
 					public void onDismiss(DialogInterface arg0) {
 						setData(dialog.getItemSelected());
 					}

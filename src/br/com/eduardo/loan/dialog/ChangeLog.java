@@ -95,6 +95,7 @@ public class ChangeLog {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
 		builder.setTitle(R.string.title_changelog).setView(wv).setCancelable(false)
 				.setPositiveButton(context.getResources().getString(android.R.string.ok), new DialogInterface.OnClickListener() {
+					@Override
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
 					}

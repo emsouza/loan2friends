@@ -34,6 +34,7 @@ public class ConfigActivity extends PreferenceActivity {
 
 		changelog.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 
+			@Override
 			public boolean onPreferenceClick(Preference preference) {
 				ChangeLog cl = new ChangeLog(ConfigActivity.this);
 				cl.getFullLogDialog().show();
@@ -44,6 +45,7 @@ public class ConfigActivity extends PreferenceActivity {
 		Preference feature = findPreference("feature_pref");
 
 		feature.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			@Override
 			public boolean onPreferenceClick(Preference preference) {
 				EmailDialog emailDialog = new EmailDialog(ConfigActivity.this);
 				emailDialog.show();
@@ -54,6 +56,7 @@ public class ConfigActivity extends PreferenceActivity {
 		Preference import_data = findPreference("import_data");
 
 		import_data.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			@Override
 			public boolean onPreferenceClick(Preference preference) {
 				if (isExternalStorageAvail()) {
 					new ImportDatabaseTask().execute();
@@ -69,6 +72,7 @@ public class ConfigActivity extends PreferenceActivity {
 		Preference export_data = findPreference("export_data");
 
 		export_data.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			@Override
 			public boolean onPreferenceClick(Preference preference) {
 				if (isExternalStorageAvail()) {
 					new ExportDatabaseTask().execute();

@@ -96,6 +96,7 @@ public class LoanEditActivity extends Activity {
 
 		Button save = (Button) findViewById(R.id.ac_loan_edit_save);
 		save.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				update();
 				finish();
@@ -104,6 +105,7 @@ public class LoanEditActivity extends Activity {
 
 		Button cancel = (Button) findViewById(R.id.ac_loan_edit_cancel);
 		cancel.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				finish();
 			}

@@ -9,6 +9,10 @@
     </style>
   </head>
   <body>
+$ 2.5.2
+  % Version 2.5.2
+  _ 2012-05-05
+	* Corre&#231;&#227;o de Bugs.
 $ 2.5.1
   % Version 2.5.1
   _ 2012-04-26

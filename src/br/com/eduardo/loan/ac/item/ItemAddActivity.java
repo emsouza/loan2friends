@@ -46,15 +46,18 @@ public class ItemAddActivity extends Activity {
 		type = (Spinner) this.findViewById(R.id.ac_item_add_type);
 
 		type.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				imageType.setImageResource(ItemTypeImage.typeACImage(arg2));
 			}
 
+			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {}
 		});
 
 		Button save = (Button) findViewById(R.id.ac_item_add_save);
 		save.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				saveItem();
 			}
@@ -62,6 +65,7 @@ public class ItemAddActivity extends Activity {
 
 		Button cancel = (Button) findViewById(R.id.ac_item_add_cancel);
 		cancel.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				finish();
 			}

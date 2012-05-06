@@ -20,9 +20,9 @@
 	<string name="send_request">Enviar Solicitação</string> <!-- Título de Enviar Requisição -->
 
 	<!-- Dados da Grid -->
-	<string name="date_loan">Data de Empréstimo</string> <!-- Data de Empréstimo -->
-	<string name="date_return">Data de Retorno</string> <!-- Data de Retorno -->
-	<string name="loan_days">Emprestado há</string> <!-- Dias Emprestado -->
+	<string name="date_loan">Data de Empréstimo:</string> <!-- Data de Empréstimo -->
+	<string name="date_return">Data de Retorno:</string> <!-- Data de Retorno -->
+	<string name="loan_days">Emprestado há:</string> <!-- Dias Emprestado -->
 	<string name="days">dia(s)</string> <!-- Dia / Dias -->
 	<string name="item_title">Título:</string> <!-- Título do Item -->
 	<string name="friend_name">Nome:</string> <!-- Nome do Amigo -->

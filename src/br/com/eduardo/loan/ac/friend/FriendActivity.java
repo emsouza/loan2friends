@@ -59,6 +59,7 @@ public class FriendActivity extends Activity implements OnItemLongClickListener,
 		sText = (EditText) this.findViewById(R.id.search_text);
 
 		iButton.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				if (sText.getVisibility() == View.GONE) {
 					sText.setVisibility(View.VISIBLE);
@@ -121,12 +122,14 @@ public class FriendActivity extends Activity implements OnItemLongClickListener,
 		db.close();
 	}
 
+	@Override
 	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, final int arg2, long arg3) {
 		final CharSequence[] items = { getString(R.string.option_edit), getString(R.string.option_delete), getString(R.string.option_cancel) };
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
 		builder.setItems(items, new DialogInterface.OnClickListener() {
+			@Override
 			public void onClick(DialogInterface dialog, int item) {
 				Friend f = (Friend) listView.getAdapter().getItem(arg2);
 				processMenu(item, f);
@@ -165,10 +168,12 @@ public class FriendActivity extends Activity implements OnItemLongClickListener,
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(getString(R.string.delete)).setCancelable(false)
 				.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+					@Override
 					public void onClick(DialogInterface dialog, int id) {
 						delete(item);
 					}
 				}).setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+					@Override
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
 					}
@@ -194,10 +199,13 @@ public class FriendActivity extends Activity implements OnItemLongClickListener,
 		populate();
 	}
 
+	@Override
 	public void afterTextChanged(Editable s) {}
 
+	@Override
 	public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
+	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
 		int textlength = sText.getText().length();
 		if (textlength >= 3) {

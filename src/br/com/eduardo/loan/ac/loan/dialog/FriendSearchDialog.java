@@ -37,6 +37,7 @@ public class FriendSearchDialog extends Dialog implements OnItemClickListener {
 
 	}
 
+	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		friend = ((Friend) arg0.getItemAtPosition(arg2));
 		dismiss();

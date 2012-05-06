@@ -34,6 +34,7 @@ public class EmailDialog extends Dialog {
 
 		Button send = (Button) findViewById(R.id.dg_mail_send);
 		send.setOnClickListener(new android.view.View.OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				sendMail();
 			}
@@ -41,6 +42,7 @@ public class EmailDialog extends Dialog {
 
 		Button cancel = (Button) findViewById(R.id.dg_mail_cancel);
 		cancel.setOnClickListener(new android.view.View.OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				dismiss();
 			}

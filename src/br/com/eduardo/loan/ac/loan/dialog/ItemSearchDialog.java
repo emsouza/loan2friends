@@ -37,6 +37,7 @@ public class ItemSearchDialog extends Dialog implements OnItemClickListener {
 		setContentView(listView);
 	}
 
+	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		item = ((Item) arg0.getItemAtPosition(arg2));
 		dismiss();

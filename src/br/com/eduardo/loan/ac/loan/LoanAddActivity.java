@@ -63,6 +63,7 @@ public class LoanAddActivity extends Activity {
 
 		ImageButton searchFriend = (ImageButton) findViewById(R.id.ac_loan_friend_search);
 		searchFriend.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				showDialog(DIALOG_FRIEND_ID);
 			}
@@ -70,6 +71,7 @@ public class LoanAddActivity extends Activity {
 		
 		
 		friendName.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				showDialog(DIALOG_FRIEND_ID);
 			}
@@ -77,12 +79,14 @@ public class LoanAddActivity extends Activity {
 
 		ImageButton searchItem = (ImageButton) findViewById(R.id.ac_loan_item_search);
 		searchItem.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				showDialog(DIALOG_ITEM_ID);
 			}
 		});
 		
 		itemName.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				showDialog(DIALOG_ITEM_ID);
 			}
@@ -90,6 +94,7 @@ public class LoanAddActivity extends Activity {
 
 		Button save = (Button) findViewById(R.id.ac_loan_add_save);
 		save.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				saveLoan();
 			}
@@ -97,6 +102,7 @@ public class LoanAddActivity extends Activity {
 
 		Button cancel = (Button) findViewById(R.id.ac_loan_add_cancel);
 		cancel.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				finish();
 			}
@@ -110,6 +116,7 @@ public class LoanAddActivity extends Activity {
 				final FriendSearchDialog dialogFriend = new FriendSearchDialog(this);
 				dialogFriend.populate();
 				dialogFriend.setOnDismissListener(new OnDismissListener() {
+					@Override
 					public void onDismiss(DialogInterface arg0) {
 						friend = dialogFriend.getItemSelected();
 						if (friend != null) {
@@ -122,6 +129,7 @@ public class LoanAddActivity extends Activity {
 				final ItemSearchDialog dialogItem = new ItemSearchDialog(this);
 				dialogItem.populate();
 				dialogItem.setOnDismissListener(new OnDismissListener() {
+					@Override
 					public void onDismiss(DialogInterface arg0) {
 						item = dialogItem.getItemSelected();
 						if (item != null) {

@@ -1,5 +1,6 @@
 package br.com.eduardo.loan;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -9,10 +10,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,12 +33,15 @@ import br.com.eduardo.loan.ac.item.ItemActivity;
 import br.com.eduardo.loan.ac.loan.LoanAddActivity;
 import br.com.eduardo.loan.ac.loan.dialog.FilterDialog;
 import br.com.eduardo.loan.adapter.LoanViewAdapter;
+import br.com.eduardo.loan.db.manager.FriendDBManager;
 import br.com.eduardo.loan.db.manager.LoanDBManager;
 import br.com.eduardo.loan.dialog.ChangeLog;
+import br.com.eduardo.loan.entity.Friend;
 import br.com.eduardo.loan.entity.Loan;
 import br.com.eduardo.loan.entity.LoanView;
-import br.com.eduardo.loan.sms.SMSDialog;
+import br.com.eduardo.loan.sms.SMSUtil;
 import br.com.eduardo.loan.text.MenuStrings;
+import br.com.eduardo.loan.util.ConfigPreferences;
 import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.type.Status;
 
@@ -72,6 +79,7 @@ public class MainActivity extends Activity implements TextWatcher {
 		sText = (EditText) this.findViewById(R.id.search_text);
 
 		iButton.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				if (sText.getVisibility() == View.GONE) {
 					sText.setVisibility(View.VISIBLE);
@@ -91,6 +99,7 @@ public class MainActivity extends Activity implements TextWatcher {
 		}
 
 		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
+			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				final LoanView loanView = (LoanView) listView.getAdapter().getItem(arg2);
 				CharSequence[] items = null;
@@ -99,6 +108,7 @@ public class MainActivity extends Activity implements TextWatcher {
 				if (loanView.getStatus() == Status.LENDED.id()) {
 					items = MenuStrings.getLentMenuStrings(MainActivity.this);
 					builder.setItems(items, new DialogInterface.OnClickListener() {
+						@Override
 						public void onClick(DialogInterface dialog, int item) {
 							processLentMenu(item, loanView);
 						}
@@ -106,6 +116,7 @@ public class MainActivity extends Activity implements TextWatcher {
 				} else if (loanView.getStatus() == Status.RETURNED.id()) {
 					items = MenuStrings.getReturnedMenuStrings(MainActivity.this);
 					builder.setItems(items, new DialogInterface.OnClickListener() {
+						@Override
 						public void onClick(DialogInterface dialog, int item) {
 							processReturnedMenu(item, loanView);
 						}
@@ -113,6 +124,7 @@ public class MainActivity extends Activity implements TextWatcher {
 				} else if (loanView.getStatus() == Status.ARCHIVED.id()) {
 					items = MenuStrings.getArchivedMenuStrings(MainActivity.this);
 					builder.setItems(items, new DialogInterface.OnClickListener() {
+						@Override
 						public void onClick(DialogInterface dialog, int item) {
 							processArchivedMenu(item, loanView);
 						}
@@ -173,6 +185,7 @@ public class MainActivity extends Activity implements TextWatcher {
 	protected void openFilter() {
 		final FilterDialog filterDialog = new FilterDialog(this, status);
 		filterDialog.setOnDismissListener(new OnDismissListener() {
+			@Override
 			public void onDismiss(DialogInterface dialog) {
 				if (filterDialog.isOperationComplete()) {
 					status = filterDialog.updateStatus();
@@ -259,18 +272,43 @@ public class MainActivity extends Activity implements TextWatcher {
 	}
 
 	protected void smsSend(LoanView item) {
-		SMSDialog dialog = new SMSDialog(this, item);
-		dialog.show();
+		LoanDBManager dbLoan = new LoanDBManager(this);
+		FriendDBManager dbFriend = new FriendDBManager(this);
+		Loan loan = dbLoan.find(item.getId());
+		Friend friend = dbFriend.find(loan.getIdFriend());
+		dbLoan.close();
+		dbFriend.close();
+
+		try {
+			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+			String format = prefs.getString(ConfigPreferences.DATE_FORMAT, "MM/dd/yyyy");
+			format += " ";
+			format += prefs.getString(ConfigPreferences.TIME_FORMAT, "HH:mm");
+
+			SimpleDateFormat GUI_FORMAT = new SimpleDateFormat(format);
+
+			String text = this.getString(R.string.sms_return) + "\n\n";
+			text = text + this.getString(R.string.item_title) + " " + item.getTitle() + "\n";
+			text = text + this.getString(R.string.date_loan) + " " + GUI_FORMAT.format(DateFormatUtil.formatToDate(item.getLentDate())) + "\n";
+
+			SMSUtil.sendSMS(this, friend.getPhone(), text);
+
+		} catch (Exception e) {
+			Log.e(MainActivity.class.getName(), "Erro ao enviar SMS");
+		}
+
 	}
 
 	protected void askForDelete(final LoanView item) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(getString(R.string.delete)).setCancelable(false)
 				.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+					@Override
 					public void onClick(DialogInterface dialog, int id) {
 						delete(item);
 					}
 				}).setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+					@Override
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
 					}
@@ -292,10 +330,13 @@ public class MainActivity extends Activity implements TextWatcher {
 		listView.setAdapter(adapter);
 	}
 
+	@Override
 	public void afterTextChanged(Editable s) {}
 
+	@Override
 	public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
+	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
 		int textlength = sText.getText().length();
 		if (textlength >= 3) {

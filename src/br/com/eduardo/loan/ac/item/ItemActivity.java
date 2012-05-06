@@ -54,6 +54,7 @@ public class ItemActivity extends Activity implements OnItemLongClickListener, T
 		sText = (EditText) this.findViewById(R.id.search_text);
 
 		iButton.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				if (sText.getVisibility() == View.GONE) {
 					sText.setVisibility(View.VISIBLE);
@@ -99,6 +100,7 @@ public class ItemActivity extends Activity implements OnItemLongClickListener, T
 		listView.setAdapter(adapter);
 	}
 
+	@Override
 	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, final int arg2, long arg3) {
 		final CharSequence[] items = { getString(R.string.option_detail), getString(R.string.option_edit), getString(R.string.option_delete),
 
@@ -107,6 +109,7 @@ public class ItemActivity extends Activity implements OnItemLongClickListener, T
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
 		builder.setItems(items, new DialogInterface.OnClickListener() {
+			@Override
 			public void onClick(DialogInterface dialog, int item) {
 				Item f = (Item) listView.getAdapter().getItem(arg2);
 				processMenu(item, f);
@@ -156,10 +159,12 @@ public class ItemActivity extends Activity implements OnItemLongClickListener, T
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(getString(R.string.delete)).setCancelable(false)
 				.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+					@Override
 					public void onClick(DialogInterface dialog, int id) {
 						delete(item);
 					}
 				}).setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+					@Override
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
 					}
@@ -186,10 +191,13 @@ public class ItemActivity extends Activity implements OnItemLongClickListener, T
 		populate();
 	}
 
+	@Override
 	public void afterTextChanged(Editable s) {}
 
+	@Override
 	public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
+	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
 		int textlength = sText.getText().length();
 		if (textlength >= 3) {

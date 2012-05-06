@@ -48,6 +48,7 @@ public class FilterDialog extends Dialog {
 		}
 
 		updateButton.setOnClickListener(new android.view.View.OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				operationComplete = true;
 				dismiss();
@@ -55,6 +56,7 @@ public class FilterDialog extends Dialog {
 		});
 		
 		cancelButton.setOnClickListener(new android.view.View.OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				dismiss();
 			}

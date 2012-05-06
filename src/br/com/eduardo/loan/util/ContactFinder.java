@@ -39,6 +39,7 @@ public class ContactFinder {
 				item.setNumber(cursor.getString(2));
 				list.add(item);
 			}
+			cursor.close();
 		}
 		return list;
 	}

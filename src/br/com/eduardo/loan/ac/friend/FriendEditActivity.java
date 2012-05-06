@@ -53,6 +53,7 @@ public class FriendEditActivity extends Activity {
 
 		Button save = (Button) findViewById(R.id.ac_friend_edit_save);
 		save.setOnClickListener(new OnClickListener() {
+			@Override
 			@SuppressWarnings("synthetic-access")
 			public void onClick(View v) {
 				saveFriend();
@@ -61,6 +62,7 @@ public class FriendEditActivity extends Activity {
 
 		Button cancel = (Button) findViewById(R.id.ac_friend_edit_cancel);
 		cancel.setOnClickListener(new OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				finish();
 			}

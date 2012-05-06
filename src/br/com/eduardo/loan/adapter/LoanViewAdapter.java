@@ -70,17 +70,17 @@ public class LoanViewAdapter extends ArrayAdapter<LoanView> {
 			name.setText(getContext().getString(R.string.friend_name) + " " + o.getName());
 			
 			Date loanDate = DateFormatUtil.formatToDate(o.getLentDate());
-			lentDate.setText(getContext().getString(R.string.date_loan) + ": " + GUI_FORMAT.format(loanDate));
+			lentDate.setText(getContext().getString(R.string.date_loan) + " " + GUI_FORMAT.format(loanDate));
 						
 			if (o.getStatus() == Status.LENDED.id()) {
 				long milis1 = loanDate.getTime();
 				long milis2 = new Date().getTime();
 				long diff = milis2 - milis1;
 				long diffDays = diff / (24 * 60 * 60 * 1000);
-				returnDate.setText(getContext().getString(R.string.loan_days) + ": " + diffDays + " " + getContext().getString(R.string.days));
+				returnDate.setText(getContext().getString(R.string.loan_days) + " " + diffDays + " " + getContext().getString(R.string.days));
 			}else{
 				Date rDate = DateFormatUtil.formatToDate(o.getReturnDate());
-				returnDate.setText(getContext().getString(R.string.date_return) + ": " + GUI_FORMAT.format(rDate));				
+				returnDate.setText(getContext().getString(R.string.date_return) + " " + GUI_FORMAT.format(rDate));				
 			}
 			status.setImageResource(StatusImage.statusImage(o.getStatus()));
 			type.setImageResource(ItemTypeImage.typeGridImage(o.getType()));
