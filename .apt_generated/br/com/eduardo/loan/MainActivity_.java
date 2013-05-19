@@ -12,9 +12,10 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.ListView;
 import br.com.eduardo.loan.R.id;
 import br.com.eduardo.loan.R.layout;
-import br.com.emsouza.widget.ActionBar;
+import br.com.emsouza.widget.bar.ActionBar;
 import com.googlecode.androidannotations.api.SdkVersionHelper;
 
 public final class MainActivity_
@@ -26,7 +27,7 @@ public final class MainActivity_
     public void onCreate(Bundle savedInstanceState) {
         init_(savedInstanceState);
         super.onCreate(savedInstanceState);
-        setContentView(layout.ac_loan_list);
+        setContentView(layout.ac_main);
     }
 
     private void init_(Bundle savedInstanceState) {
@@ -34,6 +35,8 @@ public final class MainActivity_
 
     private void afterSetContentView_() {
         actionBar = ((ActionBar) findViewById(id.actionBar));
+        listView = ((ListView) findViewById(id.ac_main_list));
+        afterView();
     }
 
     @Override

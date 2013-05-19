@@ -27,7 +27,7 @@ public class MainActivity extends FragmentActivity {
 	static final int DIALOG_CHANGELOG_ID = 0;
 
 	@ViewById(R.id.actionBar)
-	protected ActionBar actionBar;
+	ActionBar actionBar;
 
 	@ViewById(R.id.ac_main_list)
 	protected ListView listView;
@@ -104,6 +104,64 @@ public class MainActivity extends FragmentActivity {
 		actionBar.setHomeAction(new HomeAction(this));
 		// populate();
 	}
+
+	// @Override
+	// public void onCreate(Bundle savedInstanceState) {
+	// super.onCreate(savedInstanceState);
+	// setContentView(R.layout.ac_loan_list);
+	//
+	// actionBar.setHomeAction(new HomeOptionsAction(this));
+	//
+	// status.add(String.valueOf(Status.LENDED.id()));
+	// status.add(String.valueOf(Status.RETURNED.id()));
+	//
+	// listView = (ListView) this.findViewById(R.id.ac_loan_list_view);
+	// listView.setEmptyView(this.findViewById(R.id.loan_list_empty));
+	//
+	// ChangeLog cl = new ChangeLog(this);
+	// if (cl.firstRun()) {
+	// cl.getLogDialog().show();
+	// }
+	//
+	// listView.setOnItemLongClickListener(new OnItemLongClickListener() {
+	// @Override
+	// public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+	// final LoanView loanView = (LoanView) listView.getAdapter().getItem(arg2);
+	// CharSequence[] items = null;
+	// AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+	//
+	// if (loanView.getStatus() == Status.LENDED.id()) {
+	// items = MenuStrings.getLentMenuStrings(MainActivity.this);
+	// builder.setItems(items, new DialogInterface.OnClickListener() {
+	// @Override
+	// public void onClick(DialogInterface dialog, int item) {
+	// processLentMenu(item, loanView);
+	// }
+	// });
+	// } else if (loanView.getStatus() == Status.RETURNED.id()) {
+	// items = MenuStrings.getReturnedMenuStrings(MainActivity.this);
+	// builder.setItems(items, new DialogInterface.OnClickListener() {
+	// @Override
+	// public void onClick(DialogInterface dialog, int item) {
+	// processReturnedMenu(item, loanView);
+	// }
+	// });
+	// } else if (loanView.getStatus() == Status.ARCHIVED.id()) {
+	// items = MenuStrings.getArchivedMenuStrings(MainActivity.this);
+	// builder.setItems(items, new DialogInterface.OnClickListener() {
+	// @Override
+	// public void onClick(DialogInterface dialog, int item) {
+	// processArchivedMenu(item, loanView);
+	// }
+	// });
+	// }
+	// AlertDialog alert = builder.create();
+	// alert.show();
+	//
+	// return true;
+	// }
+	// });
+	// }
 
 	// @Override
 	// public boolean onCreateOptionsMenu(Menu menu) {
