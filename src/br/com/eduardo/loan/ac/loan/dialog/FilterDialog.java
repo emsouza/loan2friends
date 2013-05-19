@@ -21,9 +21,9 @@ public class FilterDialog extends Dialog {
 	protected CheckBox lentBox, returnBox, archiveBox;
 
 	protected Button updateButton, cancelButton;
-	
+
 	protected boolean operationComplete;
-	
+
 	public FilterDialog(Context context, List<String> status) {
 		super(context);
 		setContentView(R.layout.dg_filter);
@@ -54,7 +54,7 @@ public class FilterDialog extends Dialog {
 				dismiss();
 			}
 		});
-		
+
 		cancelButton.setOnClickListener(new android.view.View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -65,7 +65,7 @@ public class FilterDialog extends Dialog {
 
 	public List<String> updateStatus() {
 		List<String> status = new ArrayList<String>();
-		
+
 		if (lentBox.isChecked()) {
 			status.add(String.valueOf(Status.LENDED.id()));
 		}
@@ -77,7 +77,7 @@ public class FilterDialog extends Dialog {
 		}
 		return status;
 	}
-	
+
 	public boolean isOperationComplete() {
 		return operationComplete;
 	}

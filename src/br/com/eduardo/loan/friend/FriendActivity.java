@@ -22,8 +22,7 @@ import br.com.eduardo.loan.db.manager.FriendDBManager;
 import br.com.eduardo.loan.db.manager.LoanDBManager;
 import br.com.eduardo.loan.entity.Friend;
 import br.com.eduardo.loan.util.contact.ContactImporter;
-
-import com.markupartist.android.widget.ActionBar;
+import br.com.emsouza.widget.ActionBar;
 
 /**
  * @author Eduardo Matos de Souza<br>
@@ -47,7 +46,7 @@ public class FriendActivity extends FragmentActivity implements OnItemLongClickL
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ac_friend_list);
 
-		actionBar = (ActionBar) findViewById(R.id.actionbar);
+		actionBar = (ActionBar) findViewById(R.id.actionBar);
 		actionBar.setHomeAction(new HomeAction(this));
 		actionBar.setDisplayHomeAsUpEnabled(true);
 

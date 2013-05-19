@@ -18,7 +18,7 @@ public class LoanView {
 	private String lentDate;
 
 	private Integer type;
-	
+
 	private String returnDate;
 
 	public Integer getId() {

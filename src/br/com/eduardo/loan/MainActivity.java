@@ -11,25 +11,19 @@ import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import br.com.eduardo.loan.ac.loan.dialog.FilterDialog;
-import br.com.eduardo.loan.action.HomeOptionsAction;
 import br.com.eduardo.loan.adapter.LoanViewAdapter;
 import br.com.eduardo.loan.db.manager.FriendDBManager;
 import br.com.eduardo.loan.db.manager.LoanDBManager;
-import br.com.eduardo.loan.dialog.ChangeLog;
 import br.com.eduardo.loan.entity.Friend;
 import br.com.eduardo.loan.entity.Loan;
 import br.com.eduardo.loan.entity.LoanView;
@@ -38,21 +32,26 @@ import br.com.eduardo.loan.item.ItemActivity;
 import br.com.eduardo.loan.loan.LoanAddActivity;
 import br.com.eduardo.loan.settings.ConfigActivity;
 import br.com.eduardo.loan.sms.SMSUtil;
-import br.com.eduardo.loan.text.MenuStrings;
 import br.com.eduardo.loan.util.ConfigPreferences;
 import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.type.Status;
+import br.com.emsouza.widget.ActionBar;
 
-import com.markupartist.android.widget.ActionBar;
+import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.ViewById;
 
 /**
  * @author Eduardo Matos de Souza <br>
  *         EMS - 10/08/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com </a>
  */
+@EActivity(R.layout.ac_loan_list)
 public class MainActivity extends FragmentActivity {
 
 	static final int DIALOG_CHANGELOG_ID = 0;
+
+	@ViewById(R.id.actionBar)
+	ActionBar actionBar;
 
 	protected ListView listView;
 
@@ -64,64 +63,63 @@ public class MainActivity extends FragmentActivity {
 
 	protected List<String> status = new ArrayList<String>();
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.ac_loan_list);
-
-		ActionBar actionBar = (ActionBar) findViewById(R.id.actionbar);
-		actionBar.setHomeAction(new HomeOptionsAction(this));
-
-		status.add(String.valueOf(Status.LENDED.id()));
-		status.add(String.valueOf(Status.RETURNED.id()));
-
-		listView = (ListView) this.findViewById(R.id.ac_loan_list_view);
-		listView.setEmptyView(this.findViewById(R.id.loan_list_empty));
-
-		ChangeLog cl = new ChangeLog(this);
-		if (cl.firstRun()) {
-			cl.getLogDialog().show();
-		}
-
-		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
-			@Override
-			public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				final LoanView loanView = (LoanView) listView.getAdapter().getItem(arg2);
-				CharSequence[] items = null;
-				AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-
-				if (loanView.getStatus() == Status.LENDED.id()) {
-					items = MenuStrings.getLentMenuStrings(MainActivity.this);
-					builder.setItems(items, new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int item) {
-							processLentMenu(item, loanView);
-						}
-					});
-				} else if (loanView.getStatus() == Status.RETURNED.id()) {
-					items = MenuStrings.getReturnedMenuStrings(MainActivity.this);
-					builder.setItems(items, new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int item) {
-							processReturnedMenu(item, loanView);
-						}
-					});
-				} else if (loanView.getStatus() == Status.ARCHIVED.id()) {
-					items = MenuStrings.getArchivedMenuStrings(MainActivity.this);
-					builder.setItems(items, new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int item) {
-							processArchivedMenu(item, loanView);
-						}
-					});
-				}
-				AlertDialog alert = builder.create();
-				alert.show();
-
-				return true;
-			}
-		});
-	}
+	// @Override
+	// public void onCreate(Bundle savedInstanceState) {
+	// super.onCreate(savedInstanceState);
+	// setContentView(R.layout.ac_loan_list);
+	//
+	// actionBar.setHomeAction(new HomeOptionsAction(this));
+	//
+	// status.add(String.valueOf(Status.LENDED.id()));
+	// status.add(String.valueOf(Status.RETURNED.id()));
+	//
+	// listView = (ListView) this.findViewById(R.id.ac_loan_list_view);
+	// listView.setEmptyView(this.findViewById(R.id.loan_list_empty));
+	//
+	// ChangeLog cl = new ChangeLog(this);
+	// if (cl.firstRun()) {
+	// cl.getLogDialog().show();
+	// }
+	//
+	// listView.setOnItemLongClickListener(new OnItemLongClickListener() {
+	// @Override
+	// public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+	// final LoanView loanView = (LoanView) listView.getAdapter().getItem(arg2);
+	// CharSequence[] items = null;
+	// AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+	//
+	// if (loanView.getStatus() == Status.LENDED.id()) {
+	// items = MenuStrings.getLentMenuStrings(MainActivity.this);
+	// builder.setItems(items, new DialogInterface.OnClickListener() {
+	// @Override
+	// public void onClick(DialogInterface dialog, int item) {
+	// processLentMenu(item, loanView);
+	// }
+	// });
+	// } else if (loanView.getStatus() == Status.RETURNED.id()) {
+	// items = MenuStrings.getReturnedMenuStrings(MainActivity.this);
+	// builder.setItems(items, new DialogInterface.OnClickListener() {
+	// @Override
+	// public void onClick(DialogInterface dialog, int item) {
+	// processReturnedMenu(item, loanView);
+	// }
+	// });
+	// } else if (loanView.getStatus() == Status.ARCHIVED.id()) {
+	// items = MenuStrings.getArchivedMenuStrings(MainActivity.this);
+	// builder.setItems(items, new DialogInterface.OnClickListener() {
+	// @Override
+	// public void onClick(DialogInterface dialog, int item) {
+	// processArchivedMenu(item, loanView);
+	// }
+	// });
+	// }
+	// AlertDialog alert = builder.create();
+	// alert.show();
+	//
+	// return true;
+	// }
+	// });
+	// }
 
 	@Override
 	protected void onResume() {

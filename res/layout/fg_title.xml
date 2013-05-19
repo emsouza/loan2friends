@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.markupartist.android.widget.ActionBar xmlns:android="http://schemas.android.com/apk/res/android"
+<br.com.emsouza.widget.ActionBar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/br.com.eduardo.loan"
-    android:id="@+id/actionbar"
-    app:title="@string/app_name"
-    style="@style/ActionBar" />
+    android:id="@+id/actionBar"
+    style="@style/ActionBar"
+    app:title="@string/app_name" />

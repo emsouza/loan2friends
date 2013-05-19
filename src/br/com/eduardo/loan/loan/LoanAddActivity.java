@@ -26,8 +26,7 @@ import br.com.eduardo.loan.entity.Loan;
 import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.type.Status;
 import br.com.eduardo.loan.util.validator.LoanValidator;
-
-import com.markupartist.android.widget.ActionBar;
+import br.com.emsouza.widget.ActionBar;
 
 /**
  * @author Eduardo Matos de Souza<br>
@@ -59,7 +58,7 @@ public class LoanAddActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ac_loan_add);
 
-		actionBar = (ActionBar) findViewById(R.id.actionbar);
+		actionBar = (ActionBar) findViewById(R.id.actionBar);
 		actionBar.setHomeAction(new HomeAction(this));
 		actionBar.setDisplayHomeAsUpEnabled(true);
 

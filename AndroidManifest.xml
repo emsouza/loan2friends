@@ -31,7 +31,7 @@
         android:persistent="true"
         android:theme="@android:style/Theme.NoTitleBar" >
         <activity
-            android:name="MainActivity" >
+            android:name="MainActivity_" >
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN" />
@@ -41,25 +41,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".friend.FriendActivity" />
+            android:name=".friend.FriendActivity_" />
         <activity
-            android:name=".friend.FriendAddActivity" />
+            android:name=".friend.FriendAddActivity_" />
         <activity
-            android:name=".friend.FriendEditActivity" />
+            android:name=".friend.FriendEditActivity_" />
         <activity
-            android:name=".item.ItemActivity" />
+            android:name=".item.ItemActivity_" />
         <activity
-            android:name=".item.ItemAddActivity" />
+            android:name=".item.ItemAddActivity_" />
         <activity
-            android:name=".item.ItemEditActivity" />
+            android:name=".item.ItemEditActivity_" />
         <activity
-            android:name=".item.ItemDetailActivity" />
+            android:name=".item.ItemDetailActivity_" />
         <activity
-            android:name=".loan.LoanAddActivity" />
+            android:name=".loan.LoanAddActivity_" />
         <activity
-            android:name=".loan.LoanEditActivity" />
+            android:name=".loan.LoanEditActivity_" />
         <activity
-            android:name=".settings.ConfigActivity" />
+            android:name=".settings.ConfigActivity_" />
         <activity
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:name="com.google.ads.AdActivity" />

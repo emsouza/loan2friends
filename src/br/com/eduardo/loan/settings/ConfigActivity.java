@@ -61,8 +61,7 @@ public class ConfigActivity extends PreferenceActivity {
 				if (isExternalStorageAvail()) {
 					new ImportDatabaseTask().execute();
 				} else {
-					Toast.makeText(getApplicationContext(), getApplicationContext().getText(R.string.import_export_error), Toast.LENGTH_SHORT)
-							.show();
+					Toast.makeText(getApplicationContext(), getApplicationContext().getText(R.string.import_export_error), Toast.LENGTH_SHORT).show();
 				}
 				SystemClock.sleep(500);
 				return true;
@@ -77,8 +76,7 @@ public class ConfigActivity extends PreferenceActivity {
 				if (isExternalStorageAvail()) {
 					new ExportDatabaseTask().execute();
 				} else {
-					Toast.makeText(getApplicationContext(), getApplicationContext().getText(R.string.import_export_error), Toast.LENGTH_SHORT)
-							.show();
+					Toast.makeText(getApplicationContext(), getApplicationContext().getText(R.string.import_export_error), Toast.LENGTH_SHORT).show();
 				}
 				SystemClock.sleep(500);
 				return true;

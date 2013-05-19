@@ -3,9 +3,9 @@ package br.com.eduardo.loan.text;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.eduardo.loan.R;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import br.com.eduardo.loan.R;
 
 /**
  * @author Eduardo Matos de Souza <br>
@@ -27,7 +27,7 @@ public class MenuStrings {
 
 		return list.toArray(new CharSequence[list.size()]);
 	}
-	
+
 	public static CharSequence[] getReturnedMenuStrings(Context context) {
 		List<CharSequence> list = new ArrayList<CharSequence>();
 		list.add(context.getString(R.string.option_mark_archive));
@@ -35,7 +35,7 @@ public class MenuStrings {
 		list.add(context.getString(R.string.option_cancel));
 		return list.toArray(new CharSequence[list.size()]);
 	}
-	
+
 	public static CharSequence[] getArchivedMenuStrings(Context context) {
 		List<CharSequence> list = new ArrayList<CharSequence>();
 		list.add(context.getString(R.string.option_delete));

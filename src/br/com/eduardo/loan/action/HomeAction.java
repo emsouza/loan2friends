@@ -4,9 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import br.com.eduardo.loan.MainActivity;
 import br.com.eduardo.loan.R;
+import br.com.emsouza.widget.ActionBar.IntentAction;
 
-import com.markupartist.android.widget.ActionBar.IntentAction;
-
+/**
+ * @author Eduardo Matos de Souza <br>
+ *         19/05/2013 <br>
+ *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
+ */
 public class HomeAction extends IntentAction {
 
 	public HomeAction(Context ctx) {

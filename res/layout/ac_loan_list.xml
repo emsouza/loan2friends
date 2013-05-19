@@ -9,7 +9,7 @@
         android:id="@+id/head"
         android:layout_height="@dimen/actionbar_height"
         android:layout_width="fill_parent"
-        android:name="br.com.eduardo.loan.fragment.TitleFragment" />
+        android:name="br.com.eduardo.loan.fragment.TitleFragment_" />
 
     <LinearLayout
         android:layout_height="0dip"
@@ -39,6 +39,6 @@
         android:id="@+id/ads"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:name="br.com.eduardo.loan.fragment.AdsFragment" />
+        android:name="br.com.eduardo.loan.fragment.AdsFragment_" />
 
 </LinearLayout>

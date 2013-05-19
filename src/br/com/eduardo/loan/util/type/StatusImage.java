@@ -16,7 +16,7 @@ public class StatusImage {
 			case 2:
 				return R.drawable.ic_status_return;
 			case 3:
-				return R.drawable.ic_status_archive;			
+				return R.drawable.ic_status_archive;
 			default:
 				return R.drawable.ic_icon;
 		}
