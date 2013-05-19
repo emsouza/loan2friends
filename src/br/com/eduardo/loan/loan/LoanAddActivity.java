@@ -18,7 +18,6 @@ import android.widget.TimePicker;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.ac.loan.dialog.FriendSearchDialog;
 import br.com.eduardo.loan.ac.loan.dialog.ItemSearchDialog;
-import br.com.eduardo.loan.action.HomeAction;
 import br.com.eduardo.loan.db.manager.LoanDBManager;
 import br.com.eduardo.loan.entity.Friend;
 import br.com.eduardo.loan.entity.Item;
@@ -26,8 +25,7 @@ import br.com.eduardo.loan.entity.Loan;
 import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.type.Status;
 import br.com.eduardo.loan.util.validator.LoanValidator;
-
-import com.markupartist.android.widget.ActionBar;
+import br.com.emsouza.widget.bar.ActionBar;
 
 /**
  * @author Eduardo Matos de Souza<br>
@@ -59,8 +57,8 @@ public class LoanAddActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ac_loan_add);
 
-		actionBar = (ActionBar) findViewById(R.id.actionbar);
-		actionBar.setHomeAction(new HomeAction(this));
+		actionBar = (ActionBar) findViewById(R.id.actionBar);
+		// actionBar.setHomeAction(new HomeAction(this));
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
 		itemName = (EditText) this.findViewById(R.id.ac_loan_item_name);

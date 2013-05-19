@@ -13,13 +13,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.action.HomeAction;
 import br.com.eduardo.loan.adapter.ItemAdapter;
 import br.com.eduardo.loan.db.manager.ItemDBManager;
 import br.com.eduardo.loan.db.manager.LoanDBManager;
 import br.com.eduardo.loan.entity.Item;
-
-import com.markupartist.android.widget.ActionBar;
+import br.com.emsouza.widget.bar.ActionBar;
 
 /**
  * @author Eduardo Matos de Souza<br>
@@ -39,8 +37,8 @@ public class ItemActivity extends FragmentActivity implements OnItemLongClickLis
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ac_item_list);
 
-		actionBar = (ActionBar) findViewById(R.id.actionbar);
-		actionBar.setHomeAction(new HomeAction(this));
+		actionBar = (ActionBar) findViewById(R.id.actionBar);
+		// actionBar.setHomeAction(new HomeAction(this));
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
 		listView = (ListView) this.findViewById(R.id.ac_item_list_view);

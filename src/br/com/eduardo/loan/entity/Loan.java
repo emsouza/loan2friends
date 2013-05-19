@@ -16,7 +16,7 @@ public class Loan {
 	private Integer status;
 
 	private String lentDate;
-	
+
 	private String returnDate;
 
 	public Integer getId() {
