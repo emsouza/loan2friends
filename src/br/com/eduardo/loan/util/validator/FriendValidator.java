@@ -16,7 +16,7 @@ public class FriendValidator {
 		if (friend.getName() != null && friend.getName().length() > 0) {
 			return true;
 		} else {
-			Toast toast = Toast.makeText(context, R.string.friend_name_error, 3);
+			Toast toast = Toast.makeText(context, R.string.friend_name_error, Toast.LENGTH_SHORT);
 			toast.show();
 			return false;
 		}

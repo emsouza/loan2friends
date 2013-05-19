@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
@@ -14,24 +13,19 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import br.com.eduardo.loan.ac.config.ConfigActivity;
-import br.com.eduardo.loan.ac.friend.FriendActivity;
-import br.com.eduardo.loan.ac.item.ItemActivity;
-import br.com.eduardo.loan.ac.loan.LoanAddActivity;
 import br.com.eduardo.loan.ac.loan.dialog.FilterDialog;
+import br.com.eduardo.loan.action.HomeOptionsAction;
 import br.com.eduardo.loan.adapter.LoanViewAdapter;
 import br.com.eduardo.loan.db.manager.FriendDBManager;
 import br.com.eduardo.loan.db.manager.LoanDBManager;
@@ -39,18 +33,24 @@ import br.com.eduardo.loan.dialog.ChangeLog;
 import br.com.eduardo.loan.entity.Friend;
 import br.com.eduardo.loan.entity.Loan;
 import br.com.eduardo.loan.entity.LoanView;
+import br.com.eduardo.loan.friend.FriendActivity;
+import br.com.eduardo.loan.item.ItemActivity;
+import br.com.eduardo.loan.loan.LoanAddActivity;
+import br.com.eduardo.loan.settings.ConfigActivity;
 import br.com.eduardo.loan.sms.SMSUtil;
 import br.com.eduardo.loan.text.MenuStrings;
 import br.com.eduardo.loan.util.ConfigPreferences;
 import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.type.Status;
 
+import com.markupartist.android.widget.ActionBar;
+
 /**
  * @author Eduardo Matos de Souza <br>
  *         EMS - 10/08/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com </a>
  */
-public class MainActivity extends Activity implements TextWatcher {
+public class MainActivity extends FragmentActivity {
 
 	static final int DIALOG_CHANGELOG_ID = 0;
 
@@ -69,29 +69,14 @@ public class MainActivity extends Activity implements TextWatcher {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ac_loan_list);
 
+		ActionBar actionBar = (ActionBar) findViewById(R.id.actionbar);
+		actionBar.setHomeAction(new HomeOptionsAction(this));
+
 		status.add(String.valueOf(Status.LENDED.id()));
 		status.add(String.valueOf(Status.RETURNED.id()));
 
 		listView = (ListView) this.findViewById(R.id.ac_loan_list_view);
 		listView.setEmptyView(this.findViewById(R.id.loan_list_empty));
-
-		iButton = (ImageButton) this.findViewById(R.id.title_search);
-		sText = (EditText) this.findViewById(R.id.search_text);
-
-		iButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (sText.getVisibility() == View.GONE) {
-					sText.setVisibility(View.VISIBLE);
-					sText.requestFocus();
-				} else {
-					sText.setVisibility(View.GONE);
-					sText.setText("");
-				}
-			}
-		});
-
-		sText.addTextChangedListener(this);
 
 		ChangeLog cl = new ChangeLog(this);
 		if (cl.firstRun()) {
@@ -141,8 +126,6 @@ public class MainActivity extends Activity implements TextWatcher {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		sText.setVisibility(View.GONE);
-		sText.setText("");
 		populate();
 	}
 
@@ -328,30 +311,5 @@ public class MainActivity extends Activity implements TextWatcher {
 		adapter = new LoanViewAdapter(MainActivity.this, db.findAll(status));
 		db.close();
 		listView.setAdapter(adapter);
-	}
-
-	@Override
-	public void afterTextChanged(Editable s) {}
-
-	@Override
-	public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-	@Override
-	public void onTextChanged(CharSequence s, int start, int before, int count) {
-		int textlength = sText.getText().length();
-		if (textlength >= 3) {
-			ArrayList<LoanView> loanSort = new ArrayList<LoanView>();
-			String text = sText.getText().toString().toUpperCase();
-			if (adapter.getItems() != null) {
-				for (LoanView lv : adapter.getItems()) {
-					if (lv.getTitle().toUpperCase().contains(text) || lv.getName().toUpperCase().contains(text)) {
-						loanSort.add(lv);
-					}
-				}
-			}
-			listView.setAdapter(new LoanViewAdapter(this, loanSort));
-		} else {
-			listView.setAdapter(adapter);
-		}
 	}
 }

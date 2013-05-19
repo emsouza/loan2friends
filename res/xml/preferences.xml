@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-	<PreferenceCategory android:title="@string/pref_group_date_time">
-
-		<ListPreference android:title="@string/pref_date_title"
-			android:summary="@string/pref_date_desc" android:key="date_format_pref"
-			android:defaultValue="MM/dd/yyyy" android:entries="@array/date_format_text"
-			android:entryValues="@array/date_format_text" />
-
-		<ListPreference android:title="@string/pref_time_title"
-			android:summary="@string/pref_time_desc" android:key="time_format_pref"
-			android:defaultValue="HH:mm" android:entries="@array/time_format_text"
-			android:entryValues="@array/time_format_value" />
-
-	</PreferenceCategory>
-	
-	<PreferenceCategory android:title="@string/pref_group_data">
-
-		<Preference android:key="import_data" android:title="@string/pref_import_data"
-			android:summary="@string/pref_import_desc" />
-		
-		<Preference android:key="export_data" android:title="@string/pref_export_data"
-			android:summary="@string/pref_export_desc" />
-
-	</PreferenceCategory>
-	
-	<PreferenceCategory android:title="@string/pref_group_contact">
-
-		<Preference android:key="feature_pref" android:title="@string/feature_request"
-			android:summary="@string/pref_feature_desc" />
-
-	</PreferenceCategory>
-
-	<PreferenceCategory android:title="@string/pref_group_information">
-
-		<Preference android:key="changelog_pref" android:title="@string/title_changelog"
-			android:summary="@string/pref_changelog_desc" />
-
-	</PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_group_date_time" >
+        <ListPreference
+            android:defaultValue="MM/dd/yyyy"
+            android:entries="@array/date_format_text"
+            android:entryValues="@array/date_format_text"
+            android:key="date_format_pref"
+            android:summary="@string/pref_date_desc"
+            android:title="@string/pref_date_title" />
+        <ListPreference
+            android:defaultValue="HH:mm"
+            android:entries="@array/time_format_text"
+            android:entryValues="@array/time_format_value"
+            android:key="time_format_pref"
+            android:summary="@string/pref_time_desc"
+            android:title="@string/pref_time_title" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_group_data" >
+        <Preference
+            android:key="import_data"
+            android:summary="@string/pref_import_desc"
+            android:title="@string/pref_import_data" />
+        <Preference
+            android:key="export_data"
+            android:summary="@string/pref_export_desc"
+            android:title="@string/pref_export_data" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_group_contact" >
+        <Preference
+            android:key="feature_pref"
+            android:summary="@string/pref_feature_desc"
+            android:title="@string/feature_request" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_group_information" >
+        <Preference
+            android:key="changelog_pref"
+            android:summary="@string/pref_changelog_desc"
+            android:title="@string/title_changelog" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

@@ -1,98 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <fragment
+        android:id="@+id/head"
+        android:layout_height="@dimen/actionbar_height"
         android:layout_width="fill_parent"
-        android:layout_height="46dp"
-        android:background="@drawable/title_gradient"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dip"
-            android:text="@string/app_name"
-            android:textColor="@color/white"
-            android:textSize="22dip"
-            android:textStyle="bold" />
-    </LinearLayout>
+        android:name="br.com.eduardo.loan.fragment.TitleFragment" />
 
     <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent" >
 
         <LinearLayout
-            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
             android:orientation="vertical"
             android:scrollbars="vertical" >
 
             <ImageView
-                android:id="@+id/ac_item_add_type_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:contentDescription="@string/cd_item"
+                android:id="@+id/ac_item_add_type_image"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
                 android:src="@drawable/ic_type_default" />
 
             <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:text="@string/ac_item_add_title" />
 
             <EditText
+                android:hint="@string/ac_item_add_title"
                 android:id="@+id/ac_item_add_title"
-                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/ac_item_add_title" />
+                android:layout_width="fill_parent" />
 
             <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:text="@string/ac_item_add_type" />
 
             <Spinner
                 android:id="@+id/ac_item_add_type"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent" />
 
             <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:text="@string/ac_item_add_description" />
 
             <EditText
-                android:id="@+id/ac_item_add_description"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
                 android:gravity="top"
                 android:hint="@string/ac_item_add_description"
+                android:id="@+id/ac_item_add_description"
                 android:inputType="textMultiLine"
+                android:layout_height="fill_parent"
+                android:layout_width="fill_parent"
                 android:minLines="4" />
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent" >
 
                 <Button
                     android:id="@+id/ac_item_add_save"
-                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_width="fill_parent"
                     android:text="@string/button_save" />
 
                 <Button
                     android:id="@+id/ac_item_add_cancel"
-                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_width="fill_parent"
                     android:text="@string/button_cancel" />
             </LinearLayout>
         </LinearLayout>
