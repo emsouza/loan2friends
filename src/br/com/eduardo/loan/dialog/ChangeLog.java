@@ -1,13 +1,3 @@
-/**
- * Copyright (C) 2011, Karsten Priegnitz
- *
- * Permission to use, copy, modify, and distribute this software for any
- * purpose with or without fee is hereby granted, provided that the above
- * copyright notice and this permission notice appear in all copies.
- *
- * @author: Karsten Priegnitz
- * see: http://code.google.com/p/android-change-log/
- */
 package br.com.eduardo.loan.dialog;
 
 import java.io.BufferedReader;
@@ -26,10 +16,17 @@ import android.util.Log;
 import android.webkit.WebView;
 import br.com.eduardo.loan.R;
 
+/**
+ * @author Eduardo Matos de Souza - SIC/NDS <br>
+ *         Dígitro - 21/05/2013 <br>
+ *         <a href="mailto:eduardo.souza@digitro.com.br">eduardo.souza@digitro.com.br</a>
+ */
 public class ChangeLog {
 
 	private final Context context;
+
 	private String oldVersion, thisVersion;
+
 	private SharedPreferences sp;
 
 	// this is the key for storing the version name in SharedPreferences
@@ -49,7 +46,7 @@ public class ChangeLog {
 			PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
 			this.thisVersion = packageInfo.versionName;
 		} catch (NameNotFoundException e) {
-			Log.e(ChangeLog.class.getName(), "Erro ao buscar n�mero de vers�o", e);
+			Log.e(ChangeLog.class.getName(), "Erro ao buscar número de versão", e);
 		}
 
 		SharedPreferences.Editor editor = sp.edit();
@@ -89,7 +86,7 @@ public class ChangeLog {
 	private AlertDialog getDialog(boolean full) {
 
 		WebView wv = new WebView(this.context);
-		wv.setBackgroundColor(0); // transparent
+		wv.setBackgroundColor(0);
 		wv.loadData(this.getLog(full), "text/html", "ISO-8859-1");
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
@@ -145,10 +142,11 @@ public class ChangeLog {
 					String version = line.substring(1).trim();
 					// stop output?
 					if (!full) {
-						if (this.oldVersion.equals(version))
+						if (this.oldVersion.equals(version)) {
 							advanceToEOVS = true;
-						else if (version.equals(EOVS))
+						} else if (version.equals(EOVS)) {
 							advanceToEOVS = false;
+						}
 					}
 				} else if (!advanceToEOVS) {
 					if (line.startsWith("%")) {

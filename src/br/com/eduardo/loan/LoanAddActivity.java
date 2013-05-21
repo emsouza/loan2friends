@@ -1,4 +1,4 @@
-package br.com.eduardo.loan.loan;
+package br.com.eduardo.loan;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;

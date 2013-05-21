@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
 import br.com.eduardo.loan.R;
 
 /**
@@ -18,13 +17,7 @@ public class MenuStrings {
 		List<CharSequence> list = new ArrayList<CharSequence>();
 		list.add(context.getString(R.string.option_mark_returned));
 		list.add(context.getString(R.string.option_delete));
-
-		if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
-			// THIS PHONE HAS SMS FUNCTIONALITY
-			list.add(context.getString(R.string.option_sms));
-		}
 		list.add(context.getString(R.string.option_cancel));
-
 		return list.toArray(new CharSequence[list.size()]);
 	}
 

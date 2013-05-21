@@ -114,12 +114,12 @@ public final class MainActivity_
             openItem();
             return true;
         }
-        if (itemId_ == br.com.eduardo.loan.R.id.loanAdd) {
-            openAddLoan();
-            return true;
-        }
         if (itemId_ == br.com.eduardo.loan.R.id.filter) {
             openFilter();
+            return true;
+        }
+        if (itemId_ == br.com.eduardo.loan.R.id.loanAdd) {
+            openAddLoan();
             return true;
         }
         if (itemId_ == br.com.eduardo.loan.R.id.settings) {

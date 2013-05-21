@@ -1,6 +1,7 @@
 package br.com.eduardo.loan;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import android.app.AlertDialog;
@@ -16,12 +17,13 @@ import br.com.eduardo.loan.adapter.LoanViewAdapter;
 import br.com.eduardo.loan.db.LoanDAO;
 import br.com.eduardo.loan.dialog.ChangeLog;
 import br.com.eduardo.loan.dialog.FilterDialog;
+import br.com.eduardo.loan.entity.Loan;
 import br.com.eduardo.loan.entity.LoanView;
 import br.com.eduardo.loan.friend.FriendActivity_;
 import br.com.eduardo.loan.item.ItemActivity_;
-import br.com.eduardo.loan.loan.LoanAddActivity_;
 import br.com.eduardo.loan.settings.ConfigActivity;
 import br.com.eduardo.loan.text.MenuStrings;
+import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.type.Status;
 import br.com.emsouza.widget.bar.ActionBar;
 
@@ -87,7 +89,7 @@ public class MainActivity extends FragmentActivity {
 			builder.setItems(items, new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int item) {
-					// processLentMenu(item, loanView);
+					processLentMenu(item, loanView);
 				}
 			});
 		} else if (loanView.getStatus() == Status.RETURNED.id()) {
@@ -95,7 +97,7 @@ public class MainActivity extends FragmentActivity {
 			builder.setItems(items, new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int item) {
-					// processReturnedMenu(item, loanView);
+					processReturnedMenu(item, loanView);
 				}
 			});
 		} else if (loanView.getStatus() == Status.ARCHIVED.id()) {
@@ -103,7 +105,7 @@ public class MainActivity extends FragmentActivity {
 			builder.setItems(items, new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int item) {
-					// processArchivedMenu(item, loanView);
+					processArchivedMenu(item, loanView);
 				}
 			});
 		}
@@ -150,111 +152,71 @@ public class MainActivity extends FragmentActivity {
 		startActivity(settingsActivity);
 	}
 
-	// protected void processLentMenu(int key, LoanView item) {
-	// switch (key) {
-	// case 0:
-	// markReturned(item.getId());
-	// break;
-	// case 1:
-	// askForDelete(item);
-	// break;
-	// case 2:
-	// if (this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
-	// smsSend(item);
-	// }
-	// break;
-	// default:
-	// break;
-	// }
-	// }
-	//
-	// protected void processReturnedMenu(int key, LoanView item) {
-	// switch (key) {
-	// case 0:
-	// markArchived(item.getId());
-	// break;
-	// case 1:
-	// askForDelete(item);
-	// break;
-	// default:
-	// break;
-	// }
-	// }
-	//
-	// protected void processArchivedMenu(int key, LoanView item) {
-	// switch (key) {
-	// case 0:
-	// askForDelete(item);
-	// break;
-	// default:
-	// break;
-	// }
-	// }
-	//
-	// protected void markReturned(Integer id) {
-	// LoanDBManager db = new LoanDBManager(this);
-	// Loan loan = db.find(id);
-	// loan.setStatus(Status.RETURNED.id());
-	// loan.setReturnDate(DateFormatUtil.formatToDB(new Date()));
-	// db.update(loan);
-	// db.close();
-	// onResume();
-	// }
-	//
-	// protected void markArchived(Integer id) {
-	// LoanDBManager db = new LoanDBManager(this);
-	// Loan loan = db.find(id);
-	// loan.setStatus(Status.ARCHIVED.id());
-	// db.update(loan);
-	// db.close();
-	// onResume();
-	// }
-	//
-	// protected void smsSend(LoanView item) {
-	// LoanDBManager dbLoan = new LoanDBManager(this);
-	// FriendDBManager dbFriend = new FriendDBManager(this);
-	// Loan loan = dbLoan.find(item.getId());
-	// Friend friend = dbFriend.find(loan.getIdFriend());
-	// dbLoan.close();
-	// dbFriend.close();
-	//
-	// try {
-	// SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-	// String format = prefs.getString(ConfigPreferences.DATE_FORMAT, "MM/dd/yyyy");
-	// format += " ";
-	// format += prefs.getString(ConfigPreferences.TIME_FORMAT, "HH:mm");
-	//
-	// SimpleDateFormat GUI_FORMAT = new SimpleDateFormat(format);
-	//
-	// String text = this.getString(R.string.sms_return) + "\n\n";
-	// text = text + this.getString(R.string.item_title) + " " + item.getTitle() + "\n";
-	// text = text + this.getString(R.string.date_loan) + " " +
-	// GUI_FORMAT.format(DateFormatUtil.formatToDate(item.getLentDate())) + "\n";
-	//
-	// SMSUtil.sendSMS(this, friend.getPhone(), text);
-	//
-	// } catch (Exception e) {
-	// Log.e(MainActivity.class.getName(), "Erro ao enviar SMS");
-	// }
-	//
-	// }
-	//
-	// protected void askForDelete(final LoanView item) {
-	// AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	// builder.setMessage(getString(R.string.delete)).setCancelable(false)
-	// .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
-	// @Override
-	// public void onClick(DialogInterface dialog, int id) {
-	// delete(item);
-	// }
-	// }).setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
-	// @Override
-	// public void onClick(DialogInterface dialog, int id) {
-	// dialog.cancel();
-	// }
-	// });
-	// builder.create().show();
-	// }
+	protected void processLentMenu(int key, LoanView item) {
+		switch (key) {
+			case 0:
+				markReturned(item.getId());
+				break;
+			case 1:
+				askForDelete(item);
+				break;
+			default:
+				break;
+		}
+	}
+
+	protected void processReturnedMenu(int key, LoanView item) {
+		switch (key) {
+			case 0:
+				markArchived(item.getId());
+				break;
+			case 1:
+				askForDelete(item);
+				break;
+			default:
+				break;
+		}
+	}
+
+	protected void processArchivedMenu(int key, LoanView item) {
+		switch (key) {
+			case 0:
+				askForDelete(item);
+				break;
+			default:
+				break;
+		}
+	}
+
+	protected void markReturned(Integer id) {
+		Loan loan = loanDAO.find(id);
+		loan.setStatus(Status.RETURNED.id());
+		loan.setReturnDate(DateFormatUtil.formatToDB(new Date()));
+		loanDAO.update(loan);
+		onResume();
+	}
+
+	protected void markArchived(Integer id) {
+		loanDAO.archive(id);
+		onResume();
+	}
+
+	protected void askForDelete(final LoanView item) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage(getString(R.string.delete)).setCancelable(false)
+				.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int id) {
+						delete(item);
+					}
+				}).setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int id) {
+						dialog.cancel();
+					}
+				});
+		builder.create().show();
+	}
 
 	protected void delete(LoanView item) {
 		loanDAO.delete(item.getId());

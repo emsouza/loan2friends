@@ -1,13 +1,7 @@
 package br.com.eduardo.loan.item;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
+import android.support.v4.app.FragmentActivity;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -17,75 +11,50 @@ import br.com.eduardo.loan.entity.Item;
 import br.com.eduardo.loan.util.type.ItemTypeImage;
 import br.com.eduardo.loan.util.validator.ItemValidator;
 
+import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.Bean;
+import com.googlecode.androidannotations.annotations.Click;
+import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.Extra;
+import com.googlecode.androidannotations.annotations.ItemSelect;
+import com.googlecode.androidannotations.annotations.ViewById;
+
 /**
  * @author Eduardo Matos de Souza<br>
  *         30/04/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com </a>
  */
-public class ItemEditActivity extends Activity {
+@EActivity(R.layout.ac_item_add_edit)
+public class ItemEditActivity extends FragmentActivity {
 
 	protected ArrayAdapter<String> typeAdapter;
 
+	@ViewById(R.id.ac_item_add_type_image)
 	protected ImageView imageType;
 
+	@ViewById(R.id.ac_item_add_title)
 	protected EditText title;
 
+	@ViewById(R.id.ac_item_add_description)
 	protected EditText description;
 
+	@ViewById(R.id.ac_item_add_type)
 	protected Spinner type;
 
-	protected Item item;
+	@Extra
+	protected Integer id;
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.ac_item_add_edit);
+	@Bean
+	protected ItemDAO itemDAO;
 
-		imageType = (ImageView) this.findViewById(R.id.ac_item_add_type_image);
-		title = (EditText) this.findViewById(R.id.ac_item_add_title);
-		description = (EditText) this.findViewById(R.id.ac_item_add_description);
-		type = (Spinner) this.findViewById(R.id.ac_item_add_type);
-
-		type.setOnItemSelectedListener(new OnItemSelectedListener() {
-			@Override
-			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				imageType.setImageResource(ItemTypeImage.typeACImage(arg2));
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {}
-		});
-
-		Button save = (Button) findViewById(R.id.ac_item_add_save);
-		save.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				update();
-			}
-		});
-
-		Button cancel = (Button) findViewById(R.id.ac_item_add_cancel);
-		cancel.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				finish();
-			}
-		});
-
+	@AfterViews
+	void afterView() {
 		typeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
 		typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		populateCombo();
 		type.setAdapter(typeAdapter);
 
-		Bundle bun = getIntent().getExtras();
-		if (null == bun) {
-			return;
-		}
-
-		Integer id = bun.getInt("id");
-		ItemDAO db = new ItemDAO(this);
-		item = db.find(id);
-		db.close();
+		Item item = itemDAO.find(id);
 
 		title.setText(item.getTitle());
 		description.setText(item.getDescription());
@@ -103,17 +72,29 @@ public class ItemEditActivity extends Activity {
 		typeAdapter.add(getString(R.string.type_money));
 	}
 
-	protected void update() {
+	@ItemSelect(R.id.ac_item_add_type)
+	void itemSelect(boolean selected, int position) {
+		if (selected) {
+			imageType.setImageResource(ItemTypeImage.typeACImage(position));
+		}
+	}
+
+	@Click(R.id.ac_item_add_save)
+	void saveItem() {
+		Item item = itemDAO.find(id);
 		item.setTitle(title.getText().toString());
 		item.setDescription(description.getText().toString());
-		item.setType(new Long(type.getSelectedItemId()).intValue());
+		item.setType(Long.valueOf(type.getSelectedItemId()).intValue());
 
 		if (ItemValidator.validaItem(this, item)) {
-			ItemDAO db = new ItemDAO(this);
-			db.update(item);
-			db.close();
-
+			itemDAO.update(item);
 			finish();
 		}
+	}
+
+	@Override
+	@Click(R.id.ac_item_add_cancel)
+	public void finish() {
+		super.finish();
 	}
 }

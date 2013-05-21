@@ -5,9 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.action.HomeAction;
@@ -20,6 +17,7 @@ import br.com.emsouza.widget.bar.ActionBar;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.Bean;
 import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.ItemLongClick;
 import com.googlecode.androidannotations.annotations.OptionsItem;
 import com.googlecode.androidannotations.annotations.OptionsMenu;
 import com.googlecode.androidannotations.annotations.ViewById;
@@ -31,7 +29,7 @@ import com.googlecode.androidannotations.annotations.ViewById;
  */
 @EActivity(R.layout.ac_item_list)
 @OptionsMenu(R.menu.items_menu)
-public class ItemActivity extends FragmentActivity implements OnItemLongClickListener {
+public class ItemActivity extends FragmentActivity {
 
 	@ViewById(R.id.actionBar)
 	protected ActionBar actionBar;
@@ -42,6 +40,9 @@ public class ItemActivity extends FragmentActivity implements OnItemLongClickLis
 	@Bean
 	protected ItemDAO itemDAO;
 
+	@Bean
+	protected LoanDAO loanDAO;
+
 	protected ItemAdapter adapter;
 
 	@AfterViews
@@ -49,8 +50,6 @@ public class ItemActivity extends FragmentActivity implements OnItemLongClickLis
 		actionBar.setHomeAction(new HomeAction(this));
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		listView.setEmptyView(this.findViewById(R.id.item_list_empty));
-		listView.setOnItemLongClickListener(this);
-		listView.setAdapter(new ItemAdapter(ItemActivity.this, itemDAO.findAll()));
 	}
 
 	@OptionsItem(R.id.menu_ac_item_add)
@@ -59,27 +58,20 @@ public class ItemActivity extends FragmentActivity implements OnItemLongClickLis
 		this.startActivity(prefIntent);
 	}
 
-	@Override
-	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, final int arg2, long arg3) {
+	@ItemLongClick(R.id.ac_item_list_view)
+	void itemLongClick(final int position) {
 		final CharSequence[] items = { getString(R.string.option_detail), getString(R.string.option_edit), getString(R.string.option_delete),
-
-		getString(R.string.option_cancel) };
-
+				getString(R.string.option_cancel) };
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
 		builder.setItems(items, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int item) {
-				Item f = (Item) listView.getAdapter().getItem(arg2);
+				Item f = (Item) listView.getAdapter().getItem(position);
 				processMenu(item, f);
 			}
 		});
-
 		AlertDialog alert = builder.create();
-
 		alert.show();
-
-		return true;
 	}
 
 	protected void processMenu(int key, Item item) {
@@ -99,7 +91,7 @@ public class ItemActivity extends FragmentActivity implements OnItemLongClickLis
 	}
 
 	protected void detail(Item item) {
-		Intent intent = new Intent(this, ItemDetailActivity.class);
+		Intent intent = new Intent(this, ItemDetailActivity_.class);
 		Bundle bun = new Bundle();
 		bun.putInt("id", item.getId());
 		intent.putExtras(bun);
@@ -107,7 +99,7 @@ public class ItemActivity extends FragmentActivity implements OnItemLongClickLis
 	}
 
 	protected void edit(Item item) {
-		Intent intent = new Intent(this, ItemEditActivity.class);
+		Intent intent = new Intent(this, ItemEditActivity_.class);
 		Bundle bun = new Bundle();
 		bun.putInt("id", item.getId());
 		intent.putExtras(bun);
@@ -132,13 +124,14 @@ public class ItemActivity extends FragmentActivity implements OnItemLongClickLis
 	}
 
 	protected void delete(Item item) {
-		LoanDAO loanDB = new LoanDAO(this);
-		loanDB.deleteItem(item.getId());
-
-		ItemDAO db = new ItemDAO(this);
-		db.delete(item.getId());
-		db.close();
-
+		loanDAO.deleteItem(item.getId());
+		itemDAO.delete(item.getId());
 		onResume();
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		listView.setAdapter(new ItemAdapter(ItemActivity.this, itemDAO.findAll()));
 	}
 }

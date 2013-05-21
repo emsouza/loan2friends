@@ -8,7 +8,7 @@
         android:id="@+id/head"
         android:layout_height="@dimen/actionbar_height"
         android:layout_width="fill_parent"
-        android:name="br.com.eduardo.loan.fragment.TitleFragment" />
+        android:name="br.com.eduardo.loan.fragment.TitleFragment_" />
 
     <ImageView
         android:contentDescription="@string/cd_item"

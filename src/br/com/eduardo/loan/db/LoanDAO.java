@@ -6,7 +6,6 @@ import java.util.List;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 import br.com.eduardo.loan.entity.Loan;
 import br.com.eduardo.loan.entity.LoanView;
 import br.com.eduardo.loan.util.type.Status;
@@ -50,11 +49,7 @@ public class LoanDAO extends AbstractDAO {
 		value.put(DATE_LENT_COLUMN, item.getLentDate());
 		value.put(DATE_RETURN_COLUMN, item.getReturnDate());
 
-		try {
-			getWritableDatabase().insert(TABLE_NAME, null, value);
-		} catch (Exception e) {
-			Log.e(getClass().getName(), "Erro ao inserir um empréstimo.", e);
-		}
+		getWritableDatabase().insert(TABLE_NAME, null, value);
 	}
 
 	public void update(Loan item) {
@@ -67,41 +62,30 @@ public class LoanDAO extends AbstractDAO {
 		value.put(DATE_LENT_COLUMN, item.getLentDate());
 		value.put(DATE_RETURN_COLUMN, item.getReturnDate());
 
-		try {
-			getWritableDatabase().update(TABLE_NAME, value, where, null);
-		} catch (Exception e) {
-			Log.e(getClass().getName(), "Erro ao atualizar um registro de empréstimo.", e);
-		}
+		getWritableDatabase().update(TABLE_NAME, value, where, null);
+	}
+
+	public void archive(Integer id) {
+		ContentValues value = new ContentValues();
+		value.put(STATUS_COLUMN, Status.RETURNED.id());
+		getWritableDatabase().update(TABLE_NAME, value, ID_COLUMN + " = " + id, new String[] { String.valueOf(id) });
 	}
 
 	public void delete(Integer id) {
 		String where = ID_COLUMN + " = " + id;
-
-		try {
-			getWritableDatabase().delete(TABLE_NAME, where, null);
-		} catch (Exception e) {
-			Log.e(getClass().getName(), "Erro ao deletar um registro de empréstimo.", e);
-		}
+		getWritableDatabase().delete(TABLE_NAME, where, null);
 	}
 
 	public void deleteItem(Integer id) {
 		String where = ID_ITEM + " = " + id;
 
-		try {
-			getWritableDatabase().delete(TABLE_NAME, where, null);
-		} catch (Exception e) {
-			Log.e(getClass().getName(), "Erro ao deletar em préstimo pelo item.", e);
-		}
+		getWritableDatabase().delete(TABLE_NAME, where, null);
 	}
 
 	public void deleteFriend(Integer id) {
 		String where = ID_FRIEND + " = " + id;
 
-		try {
-			getWritableDatabase().delete(TABLE_NAME, where, null);
-		} catch (Exception e) {
-			Log.e(getClass().getName(), "Erro ao deletar um empréstimo pelo amigo.", e);
-		}
+		getWritableDatabase().delete(TABLE_NAME, where, null);
 	}
 
 	public Integer countItem(Integer id) {
