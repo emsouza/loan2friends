@@ -40,8 +40,8 @@ public final class MainActivity_
     }
 
     private void afterSetContentView_() {
-        listView = ((ListView) findViewById(br.com.eduardo.loan.R.id.ac_main_list));
         actionBar = ((ActionBar) findViewById(br.com.eduardo.loan.R.id.actionBar));
+        listView = ((ListView) findViewById(br.com.eduardo.loan.R.id.ac_main_list));
         {
             AdapterView<?> view = ((AdapterView<?> ) findViewById(br.com.eduardo.loan.R.id.ac_main_list));
             if (view!= null) {
@@ -110,6 +110,10 @@ public final class MainActivity_
             openFriend();
             return true;
         }
+        if (itemId_ == br.com.eduardo.loan.R.id.settings) {
+            openSettings();
+            return true;
+        }
         if (itemId_ == br.com.eduardo.loan.R.id.itemsOpen) {
             openItem();
             return true;
@@ -120,10 +124,6 @@ public final class MainActivity_
         }
         if (itemId_ == br.com.eduardo.loan.R.id.loanAdd) {
             openAddLoan();
-            return true;
-        }
-        if (itemId_ == br.com.eduardo.loan.R.id.settings) {
-            openSettings();
             return true;
         }
         return false;

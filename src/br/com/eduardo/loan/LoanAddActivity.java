@@ -14,7 +14,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
-import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.action.HomeAction;
 import br.com.eduardo.loan.db.LoanDAO;
 import br.com.eduardo.loan.dialog.FriendSearchDialog;
