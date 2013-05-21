@@ -7,32 +7,38 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import br.com.eduardo.loan.R;
+import br.com.eduardo.loan.action.HomeAction;
 import br.com.eduardo.loan.adapter.FriendAdapter;
-import br.com.eduardo.loan.db.manager.FriendDBManager;
-import br.com.eduardo.loan.db.manager.LoanDBManager;
+import br.com.eduardo.loan.db.FriendDAO;
+import br.com.eduardo.loan.db.LoanDAO;
 import br.com.eduardo.loan.entity.Friend;
 import br.com.eduardo.loan.util.contact.ContactImporter;
 import br.com.emsouza.widget.bar.ActionBar;
+
+import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.ItemLongClick;
+import com.googlecode.androidannotations.annotations.OptionsItem;
+import com.googlecode.androidannotations.annotations.OptionsMenu;
+import com.googlecode.androidannotations.annotations.ViewById;
 
 /**
  * @author Eduardo Matos de Souza<br>
  *         07/05/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
  */
-public class FriendActivity extends FragmentActivity implements OnItemLongClickListener {
+@EActivity(R.layout.ac_friend_list)
+@OptionsMenu(R.menu.friend_menu)
+public class FriendActivity extends FragmentActivity {
 
-	protected ActionBar actionBar;
+	@ViewById(R.id.actionBar)
+	ActionBar actionBar;
 
-	protected ListView listView;
+	@ViewById(R.id.ac_friend_list_view)
+	ListView listView;
 
 	protected ImageButton iButton;
 
@@ -40,50 +46,21 @@ public class FriendActivity extends FragmentActivity implements OnItemLongClickL
 
 	protected ProgressDialog dialog;
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.ac_friend_list);
-
-		actionBar = (ActionBar) findViewById(R.id.actionBar);
-		// actionBar.setHomeAction(new HomeAction(this));
+	@AfterViews
+	void afterInject() {
+		actionBar.setHomeAction(new HomeAction(this));
 		actionBar.setDisplayHomeAsUpEnabled(true);
-
-		listView = (ListView) this.findViewById(R.id.ac_friend_list_view);
 		listView.setEmptyView(this.findViewById(R.id.friend_list_empty));
-
-		listView.setOnItemLongClickListener(this);
-
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.friend_menu, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onMenuItemSelected(int featureId, MenuItem item) {
-		switch (item.getItemId()) {
-			case R.id.menu_ac_friend_add:
-				openAddFriend();
-				return true;
-			case R.id.menu_ac_friend_add_all:
-				importAll();
-				return true;
-			default:
-				return super.onMenuItemSelected(featureId, item);
-		}
-	}
-
-	private void openAddFriend() {
-		Intent prefIntent = new Intent(this, FriendAddActivity.class);
+	@OptionsItem(R.id.menu_ac_friend_add)
+	void openAddFriend() {
+		Intent prefIntent = new Intent(this, FriendAddActivity_.class);
 		this.startActivity(prefIntent);
 	}
 
-	private void importAll() {
+	@OptionsItem(R.id.menu_ac_friend_add_all)
+	void importAll() {
 		dialog = new ProgressDialog(this) {
 			@Override
 			public void onBackPressed() {
@@ -98,31 +75,25 @@ public class FriendActivity extends FragmentActivity implements OnItemLongClickL
 	}
 
 	protected void populate() {
-		FriendDBManager db = new FriendDBManager(FriendActivity.this);
+		FriendDAO db = new FriendDAO(FriendActivity.this);
 		adapter = new FriendAdapter(FriendActivity.this, db.findAll());
 		listView.setAdapter(adapter);
 		db.close();
 	}
 
-	@Override
-	public boolean onItemLongClick(AdapterView<?> arg0, View arg1, final int arg2, long arg3) {
+	@ItemLongClick(R.id.ac_friend_list_view)
+	void listItemLongClicked(final int position) {
 		final CharSequence[] items = { getString(R.string.option_edit), getString(R.string.option_delete), getString(R.string.option_cancel) };
-
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
 		builder.setItems(items, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int item) {
-				Friend f = (Friend) listView.getAdapter().getItem(arg2);
+				Friend f = (Friend) listView.getAdapter().getItem(position);
 				processMenu(item, f);
 			}
 		});
-
 		AlertDialog alert = builder.create();
-
 		alert.show();
-
-		return true;
 	}
 
 	protected void processMenu(int key, Friend item) {
@@ -139,7 +110,7 @@ public class FriendActivity extends FragmentActivity implements OnItemLongClickL
 	}
 
 	private void edit(Friend item) {
-		Intent intent = new Intent(this, FriendEditActivity.class);
+		Intent intent = new Intent(this, FriendEditActivity_.class);
 		Bundle bun = new Bundle();
 		bun.putInt("id", item.getId());
 		intent.putExtras(bun);
@@ -164,8 +135,8 @@ public class FriendActivity extends FragmentActivity implements OnItemLongClickL
 	}
 
 	protected void delete(Friend item) {
-		LoanDBManager dbLoan = new LoanDBManager(this);
-		FriendDBManager dbFriend = new FriendDBManager(this);
+		LoanDAO dbLoan = new LoanDAO(this);
+		FriendDAO dbFriend = new FriendDAO(this);
 		dbLoan.deleteFriend(item.getId());
 		dbFriend.delete(item.getId());
 		dbLoan.close();

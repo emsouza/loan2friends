@@ -5,11 +5,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DBManager extends SQLiteOpenHelper {
+/**
+ * @author Eduardo Matos de Souza - SIC/NDS <br>
+ *         Dígitro - 20/05/2013 <br>
+ *         <a href="mailto:eduardo.souza@digitro.com.br">eduardo.souza@digitro.com.br</a>
+ */
+public abstract class AbstractDAO extends SQLiteOpenHelper {
 
 	private static final String DB_FILE_NAME = "loan_friends.db";
 
-	public DBManager(Context context) {
+	public AbstractDAO(Context context) {
 		super(context, DB_FILE_NAME, null, 6);
 	}
 
@@ -26,7 +31,7 @@ public class DBManager extends SQLiteOpenHelper {
 			db.execSQL(createHistory);
 			db.execSQL(createLoanView);
 		} catch (Exception e) {
-			Log.e(DBManager.class.getName(), "Erro ao criar banco de dados.", e);
+			Log.e(AbstractDAO.class.getName(), "Erro ao criar banco de dados.", e);
 		}
 	}
 
@@ -47,7 +52,7 @@ public class DBManager extends SQLiteOpenHelper {
 			db.execSQL(i);
 			db.execSQL(createLoanView);
 		} catch (Exception e) {
-			Log.e(DBManager.class.getName(), "Erro ao atualizar base de dados.", e);
+			Log.e(AbstractDAO.class.getName(), "Erro ao atualizar base de dados.", e);
 		}
 	}
 }

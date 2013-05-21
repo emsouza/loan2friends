@@ -13,9 +13,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.db.manager.FriendDBManager;
-import br.com.eduardo.loan.db.manager.ItemDBManager;
-import br.com.eduardo.loan.db.manager.LoanDBManager;
+import br.com.eduardo.loan.db.FriendDAO;
+import br.com.eduardo.loan.db.ItemDAO;
+import br.com.eduardo.loan.db.LoanDAO;
 import br.com.eduardo.loan.entity.Friend;
 import br.com.eduardo.loan.entity.Item;
 import br.com.eduardo.loan.entity.Loan;
@@ -67,15 +67,15 @@ public class LoanEditActivity extends FragmentActivity {
 
 		Integer id = bun.getInt("id");
 
-		LoanDBManager dbLoan = new LoanDBManager(this);
+		LoanDAO dbLoan = new LoanDAO(this);
 		loan = dbLoan.find(id);
 		dbLoan.close();
 
-		ItemDBManager dbItem = new ItemDBManager(this);
+		ItemDAO dbItem = new ItemDAO(this);
 		item = dbItem.find(loan.getIdItem());
 		dbItem.close();
 
-		FriendDBManager dbFriend = new FriendDBManager(this);
+		FriendDAO dbFriend = new FriendDAO(this);
 		friend = dbFriend.find(loan.getIdFriend());
 		dbFriend.close();
 
@@ -116,7 +116,7 @@ public class LoanEditActivity extends FragmentActivity {
 	protected void update() {
 		Integer statusNumber = new Long(status.getSelectedItemId()).intValue();
 		loan.setStatus(statusNumber);
-		LoanDBManager db = new LoanDBManager(this);
+		LoanDAO db = new LoanDAO(this);
 		db.update(loan);
 		db.close();
 	}

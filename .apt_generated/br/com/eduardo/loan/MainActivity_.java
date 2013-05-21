@@ -10,11 +10,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
-import br.com.eduardo.loan.R.id;
 import br.com.eduardo.loan.R.layout;
+import br.com.eduardo.loan.db.LoanDAO_;
 import br.com.emsouza.widget.bar.ActionBar;
 import com.googlecode.androidannotations.api.SdkVersionHelper;
 
@@ -31,11 +36,29 @@ public final class MainActivity_
     }
 
     private void init_(Bundle savedInstanceState) {
+        loanDAO = LoanDAO_.getInstance_(this);
     }
 
     private void afterSetContentView_() {
-        actionBar = ((ActionBar) findViewById(id.actionBar));
-        listView = ((ListView) findViewById(id.ac_main_list));
+        listView = ((ListView) findViewById(br.com.eduardo.loan.R.id.ac_main_list));
+        actionBar = ((ActionBar) findViewById(br.com.eduardo.loan.R.id.actionBar));
+        {
+            AdapterView<?> view = ((AdapterView<?> ) findViewById(br.com.eduardo.loan.R.id.ac_main_list));
+            if (view!= null) {
+                view.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                        listItemLongClicked(position);
+                        return true;
+                    }
+
+                }
+                );
+            }
+        }
+        ((LoanDAO_) loanDAO).afterSetContentView_();
         afterView();
     }
 
@@ -67,6 +90,43 @@ public final class MainActivity_
 
     public static MainActivity_.IntentBuilder_ intent(Context context) {
         return new MainActivity_.IntentBuilder_(context);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(br.com.eduardo.loan.R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean handled = super.onOptionsItemSelected(item);
+        if (handled) {
+            return true;
+        }
+        int itemId_ = item.getItemId();
+        if (itemId_ == br.com.eduardo.loan.R.id.friendsOpen) {
+            openFriend();
+            return true;
+        }
+        if (itemId_ == br.com.eduardo.loan.R.id.itemsOpen) {
+            openItem();
+            return true;
+        }
+        if (itemId_ == br.com.eduardo.loan.R.id.loanAdd) {
+            openAddLoan();
+            return true;
+        }
+        if (itemId_ == br.com.eduardo.loan.R.id.filter) {
+            openFilter();
+            return true;
+        }
+        if (itemId_ == br.com.eduardo.loan.R.id.settings) {
+            openSettings();
+            return true;
+        }
+        return false;
     }
 
     public static class IntentBuilder_ {

@@ -1,4 +1,4 @@
-package br.com.eduardo.loan.db.manager;
+package br.com.eduardo.loan.db;
 
 import java.util.ArrayList;
 
@@ -6,16 +6,19 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
-import br.com.eduardo.loan.db.DBManager;
 import br.com.eduardo.loan.entity.Item;
 import br.com.eduardo.loan.util.type.Status;
+
+import com.googlecode.androidannotations.annotations.EBean;
+import com.googlecode.androidannotations.api.Scope;
 
 /**
  * @author Eduardo Matos de Souza<br>
  *         EMS - 17/09/2011 <br>
  *         <a href="mailto:eduardo.souza@emsouza.com.br">eduardo.souza@emsouza.com.br</a>
  */
-public class ItemDBManager extends DBManager {
+@EBean(scope = Scope.Singleton)
+public class ItemDAO extends AbstractDAO {
 
 	private static final String TABLE_NAME = "ITEM";
 
@@ -27,7 +30,7 @@ public class ItemDBManager extends DBManager {
 
 	private static final String TYPE_COLUMN = "TP_ITEM";
 
-	public ItemDBManager(Context context) {
+	public ItemDAO(Context context) {
 		super(context);
 	}
 

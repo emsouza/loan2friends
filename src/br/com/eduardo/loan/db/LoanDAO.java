@@ -1,4 +1,4 @@
-package br.com.eduardo.loan.db.manager;
+package br.com.eduardo.loan.db;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,16 +7,20 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
-import br.com.eduardo.loan.db.DBManager;
 import br.com.eduardo.loan.entity.Loan;
 import br.com.eduardo.loan.entity.LoanView;
+import br.com.eduardo.loan.util.type.Status;
+
+import com.googlecode.androidannotations.annotations.EBean;
+import com.googlecode.androidannotations.api.Scope;
 
 /**
  * @author Eduardo Matos de Souza<br>
  *         07/05/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com </a>
  */
-public class LoanDBManager extends DBManager {
+@EBean(scope = Scope.Singleton)
+public class LoanDAO extends AbstractDAO {
 
 	private static final String TABLE_NAME = "LOAN_HISTORY";
 
@@ -34,7 +38,7 @@ public class LoanDBManager extends DBManager {
 
 	private static final String STATUS_COLUMN = "FG_STATUS";
 
-	public LoanDBManager(Context context) {
+	public LoanDAO(Context context) {
 		super(context);
 	}
 
@@ -164,19 +168,14 @@ public class LoanDBManager extends DBManager {
 
 	public ArrayList<LoanView> findAll(List<String> status) {
 		String orderBY = "DT_LENT DESC";
-		String where = STATUS_COLUMN + " IN (:ID)";
 
-		String ids = "";
-		for (String id : status) {
-			if (ids.length() >= 1) {
-				ids = ids + ",";
-			}
-			ids = ids + id;
-		}
-		where = where.replace(":ID", ids);
+		status = resetParams(status);
+
+		String where = STATUS_COLUMN + " IN (" + makePlaceHolders(status.size()) + ")";
 
 		ArrayList<LoanView> list = new ArrayList<LoanView>();
-		Cursor cursor = getReadableDatabase().query(TABLE_VIEW, null, where, null, null, null, orderBY);
+		Cursor cursor = getReadableDatabase().query(TABLE_VIEW, null, where, resetParams(status).toArray(new String[status.size()]), null, null,
+				orderBY);
 		if (cursor != null) {
 			while (cursor.moveToNext()) {
 				LoanView item = new LoanView();
@@ -192,5 +191,22 @@ public class LoanDBManager extends DBManager {
 			cursor.close();
 		}
 		return list;
+	}
+
+	List<String> resetParams(List<String> status) {
+		if (status.size() <= 0) {
+			status.add(String.valueOf(Status.LENDED.id()));
+			status.add(String.valueOf(Status.RETURNED.id()));
+		}
+		return status;
+	}
+
+	String makePlaceHolders(int len) {
+		StringBuilder sb = new StringBuilder(len * 2 - 1);
+		sb.append("?");
+		for (int i = 1; i < len; i++) {
+			sb.append(",?");
+		}
+		return sb.toString();
 	}
 }

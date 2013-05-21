@@ -1,50 +1,49 @@
 package br.com.eduardo.loan.item;
 
-import android.app.Activity;
-import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.db.manager.ItemDBManager;
+import br.com.eduardo.loan.db.ItemDAO;
 import br.com.eduardo.loan.entity.Item;
 import br.com.eduardo.loan.util.type.ItemTypeImage;
 import br.com.eduardo.loan.util.type.Status;
 import br.com.eduardo.loan.util.validator.ItemValidator;
+
+import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.Click;
+import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.ViewById;
 
 /**
  * @author Eduardo Matos de Souza<br>
  *         30/04/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
  */
-public class ItemAddActivity extends Activity {
+@EActivity(R.layout.ac_item_add_edit)
+public class ItemAddActivity extends FragmentActivity {
 
 	protected ArrayAdapter<String> typeAdapter;
 
+	@ViewById(R.id.ac_item_add_type_image)
 	protected ImageView imageType;
 
+	@ViewById(R.id.ac_item_add_title)
 	protected EditText title;
 
+	@ViewById(R.id.ac_item_add_description)
 	protected EditText description;
 
+	@ViewById(R.id.ac_item_add_type)
 	protected Spinner type;
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.ac_item_add_edit);
-
-		imageType = (ImageView) this.findViewById(R.id.ac_item_add_type_image);
-		title = (EditText) this.findViewById(R.id.ac_item_add_title);
-		description = (EditText) this.findViewById(R.id.ac_item_add_description);
-		type = (Spinner) this.findViewById(R.id.ac_item_add_type);
-
+	@AfterViews
+	void afterView() {
 		type.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
@@ -53,22 +52,6 @@ public class ItemAddActivity extends Activity {
 
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {}
-		});
-
-		Button save = (Button) findViewById(R.id.ac_item_add_save);
-		save.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				saveItem();
-			}
-		});
-
-		Button cancel = (Button) findViewById(R.id.ac_item_add_cancel);
-		cancel.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				finish();
-			}
 		});
 
 		typeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
@@ -87,20 +70,25 @@ public class ItemAddActivity extends Activity {
 		typeAdapter.add(getString(R.string.type_money));
 	}
 
-	protected void saveItem() {
+	@Click(R.id.ac_item_add_save)
+	void saveItem() {
 		Item item = new Item();
 		item.setTitle(title.getText().toString());
 		item.setDescription(description.getText().toString());
 		item.setStatus(Status.AVAILABLE.id());
-		item.setType(new Long(type.getSelectedItemId()).intValue());
-		// item.setFile(path != null ? path : null);
-
+		item.setType(Long.valueOf(type.getSelectedItemId()).intValue());
 		if (ItemValidator.validaItem(this, item)) {
-			ItemDBManager db = new ItemDBManager(this);
+			ItemDAO db = new ItemDAO(this);
 			db.insert(item);
 			db.close();
 
 			finish();
 		}
+	}
+
+	@Override
+	@Click(R.id.ac_item_add_cancel)
+	public void finish() {
+		super.finish();
 	}
 }

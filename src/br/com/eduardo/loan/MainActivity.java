@@ -3,17 +3,34 @@ package br.com.eduardo.loan;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import br.com.eduardo.loan.action.HomeAction;
+import br.com.eduardo.loan.action.HomeOptionsAction;
 import br.com.eduardo.loan.adapter.LoanViewAdapter;
+import br.com.eduardo.loan.db.LoanDAO;
 import br.com.eduardo.loan.dialog.ChangeLog;
+import br.com.eduardo.loan.dialog.FilterDialog;
+import br.com.eduardo.loan.entity.LoanView;
+import br.com.eduardo.loan.friend.FriendActivity_;
+import br.com.eduardo.loan.item.ItemActivity_;
+import br.com.eduardo.loan.loan.LoanAddActivity_;
+import br.com.eduardo.loan.settings.ConfigActivity;
+import br.com.eduardo.loan.text.MenuStrings;
+import br.com.eduardo.loan.util.type.Status;
 import br.com.emsouza.widget.bar.ActionBar;
 
 import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.Bean;
 import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.ItemLongClick;
+import com.googlecode.androidannotations.annotations.OptionsItem;
+import com.googlecode.androidannotations.annotations.OptionsMenu;
 import com.googlecode.androidannotations.annotations.ViewById;
 
 /**
@@ -22,9 +39,8 @@ import com.googlecode.androidannotations.annotations.ViewById;
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com </a>
  */
 @EActivity(R.layout.ac_main)
+@OptionsMenu(R.menu.main_menu)
 public class MainActivity extends FragmentActivity {
-
-	static final int DIALOG_CHANGELOG_ID = 0;
 
 	@ViewById(R.id.actionBar)
 	ActionBar actionBar;
@@ -32,7 +48,8 @@ public class MainActivity extends FragmentActivity {
 	@ViewById(R.id.ac_main_list)
 	protected ListView listView;
 
-	protected HomeAction homeAction;
+	@Bean
+	protected LoanDAO loanDAO;
 
 	protected ImageButton iButton;
 
@@ -42,192 +59,97 @@ public class MainActivity extends FragmentActivity {
 
 	protected List<String> status = new ArrayList<String>();
 
-	// setContentView(R.layout.ac_loan_list);
-	//
-	// actionBar.setHomeAction(new HomeOptionsAction(this));
-	//
-	// status.add(String.valueOf(Status.LENDED.id()));
-	// status.add(String.valueOf(Status.RETURNED.id()));
-	//
-	// listView = (ListView) this.findViewById(R.id.ac_loan_list_view);
-	// listView.setEmptyView(this.findViewById(R.id.loan_list_empty));
-	//
-
-	//
-	// listView.setOnItemLongClickListener(new OnItemLongClickListener() {
-	// @Override
-	// public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-	// final LoanView loanView = (LoanView) listView.getAdapter().getItem(arg2);
-	// CharSequence[] items = null;
-	// AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-	//
-	// if (loanView.getStatus() == Status.LENDED.id()) {
-	// items = MenuStrings.getLentMenuStrings(MainActivity.this);
-	// builder.setItems(items, new DialogInterface.OnClickListener() {
-	// @Override
-	// public void onClick(DialogInterface dialog, int item) {
-	// processLentMenu(item, loanView);
-	// }
-	// });
-	// } else if (loanView.getStatus() == Status.RETURNED.id()) {
-	// items = MenuStrings.getReturnedMenuStrings(MainActivity.this);
-	// builder.setItems(items, new DialogInterface.OnClickListener() {
-	// @Override
-	// public void onClick(DialogInterface dialog, int item) {
-	// processReturnedMenu(item, loanView);
-	// }
-	// });
-	// } else if (loanView.getStatus() == Status.ARCHIVED.id()) {
-	// items = MenuStrings.getArchivedMenuStrings(MainActivity.this);
-	// builder.setItems(items, new DialogInterface.OnClickListener() {
-	// @Override
-	// public void onClick(DialogInterface dialog, int item) {
-	// processArchivedMenu(item, loanView);
-	// }
-	// });
-	// }
-	// AlertDialog alert = builder.create();
-	// alert.show();
-	//
-	// return true;
-	// }
-	// });
-	// }
-
 	@AfterViews
 	void afterView() {
 		ChangeLog cl = new ChangeLog(this);
 		if (cl.firstRun()) {
 			cl.getLogDialog().show();
 		}
-
-		actionBar.setHomeAction(new HomeAction(this));
-		// populate();
+		actionBar.setHomeAction(new HomeOptionsAction(this));
+		listView.setEmptyView(this.findViewById(R.id.loan_list_empty));
 	}
 
-	// @Override
-	// public void onCreate(Bundle savedInstanceState) {
-	// super.onCreate(savedInstanceState);
-	// setContentView(R.layout.ac_loan_list);
-	//
-	// actionBar.setHomeAction(new HomeOptionsAction(this));
-	//
-	// status.add(String.valueOf(Status.LENDED.id()));
-	// status.add(String.valueOf(Status.RETURNED.id()));
-	//
-	// listView = (ListView) this.findViewById(R.id.ac_loan_list_view);
-	// listView.setEmptyView(this.findViewById(R.id.loan_list_empty));
-	//
-	// ChangeLog cl = new ChangeLog(this);
-	// if (cl.firstRun()) {
-	// cl.getLogDialog().show();
-	// }
-	//
-	// listView.setOnItemLongClickListener(new OnItemLongClickListener() {
-	// @Override
-	// public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-	// final LoanView loanView = (LoanView) listView.getAdapter().getItem(arg2);
-	// CharSequence[] items = null;
-	// AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-	//
-	// if (loanView.getStatus() == Status.LENDED.id()) {
-	// items = MenuStrings.getLentMenuStrings(MainActivity.this);
-	// builder.setItems(items, new DialogInterface.OnClickListener() {
-	// @Override
-	// public void onClick(DialogInterface dialog, int item) {
-	// processLentMenu(item, loanView);
-	// }
-	// });
-	// } else if (loanView.getStatus() == Status.RETURNED.id()) {
-	// items = MenuStrings.getReturnedMenuStrings(MainActivity.this);
-	// builder.setItems(items, new DialogInterface.OnClickListener() {
-	// @Override
-	// public void onClick(DialogInterface dialog, int item) {
-	// processReturnedMenu(item, loanView);
-	// }
-	// });
-	// } else if (loanView.getStatus() == Status.ARCHIVED.id()) {
-	// items = MenuStrings.getArchivedMenuStrings(MainActivity.this);
-	// builder.setItems(items, new DialogInterface.OnClickListener() {
-	// @Override
-	// public void onClick(DialogInterface dialog, int item) {
-	// processArchivedMenu(item, loanView);
-	// }
-	// });
-	// }
-	// AlertDialog alert = builder.create();
-	// alert.show();
-	//
-	// return true;
-	// }
-	// });
-	// }
+	@Override
+	protected void onResume() {
+		super.onResume();
+		listView.setAdapter(new LoanViewAdapter(MainActivity.this, loanDAO.findAll(status)));
+	}
 
-	// @Override
-	// public boolean onCreateOptionsMenu(Menu menu) {
-	// super.onCreateOptionsMenu(menu);
-	// MenuInflater inflater = getMenuInflater();
-	// inflater.inflate(R.menu.main_menu, menu);
-	// return true;
-	// }
-	//
-	// @Override
-	// public boolean onMenuItemSelected(int featureId, MenuItem item) {
-	// switch (item.getItemId()) {
-	// case R.id.menu_main_add:
-	// openAddLoan();
-	// return true;
-	// case R.id.menu_main_filter:
-	// openFilter();
-	// return true;
-	// case R.id.menu_main_friends:
-	// openFriend();
-	// return true;
-	// case R.id.menu_main_items:
-	// openItem();
-	// return true;
-	// case R.id.menu_main_settings:
-	// openSettings();
-	// return true;
-	// default:
-	// return super.onMenuItemSelected(featureId, item);
-	// }
-	// }
-	//
-	// protected void openAddLoan() {
-	// Intent prefIntent = new Intent(this, LoanAddActivity.class);
-	// this.startActivity(prefIntent);
-	// }
-	//
-	// protected void openFilter() {
-	// final FilterDialog filterDialog = new FilterDialog(this, status);
-	// filterDialog.setOnDismissListener(new OnDismissListener() {
-	// @Override
-	// public void onDismiss(DialogInterface dialog) {
-	// if (filterDialog.isOperationComplete()) {
-	// status = filterDialog.updateStatus();
-	// onResume();
-	// }
-	// }
-	// });
-	// filterDialog.show();
-	// }
-	//
-	// protected void openFriend() {
-	// Intent prefIntent = new Intent(this, FriendActivity.class);
-	// this.startActivity(prefIntent);
-	// }
-	//
-	// protected void openItem() {
-	// Intent prefIntent = new Intent(this, ItemActivity.class);
-	// this.startActivity(prefIntent);
-	// }
-	//
-	// protected void openSettings() {
-	// Intent settingsActivity = new Intent(getBaseContext(), ConfigActivity.class);
-	// startActivity(settingsActivity);
-	// }
-	//
+	@ItemLongClick(R.id.ac_main_list)
+	void listItemLongClicked(final int position) {
+		final LoanView loanView = (LoanView) listView.getAdapter().getItem(position);
+		CharSequence[] items = null;
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+		if (loanView.getStatus() == Status.LENDED.id()) {
+			items = MenuStrings.getLentMenuStrings(MainActivity.this);
+			builder.setItems(items, new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int item) {
+					// processLentMenu(item, loanView);
+				}
+			});
+		} else if (loanView.getStatus() == Status.RETURNED.id()) {
+			items = MenuStrings.getReturnedMenuStrings(MainActivity.this);
+			builder.setItems(items, new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int item) {
+					// processReturnedMenu(item, loanView);
+				}
+			});
+		} else if (loanView.getStatus() == Status.ARCHIVED.id()) {
+			items = MenuStrings.getArchivedMenuStrings(MainActivity.this);
+			builder.setItems(items, new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int item) {
+					// processArchivedMenu(item, loanView);
+				}
+			});
+		}
+		AlertDialog alert = builder.create();
+		alert.show();
+	}
+
+	@OptionsItem(R.id.loanAdd)
+	void openAddLoan() {
+		Intent prefIntent = new Intent(this, LoanAddActivity_.class);
+		this.startActivity(prefIntent);
+	}
+
+	@OptionsItem(R.id.filter)
+	void openFilter() {
+		final FilterDialog filterDialog = new FilterDialog(this, status);
+		filterDialog.setOnDismissListener(new OnDismissListener() {
+			@Override
+			public void onDismiss(DialogInterface dialog) {
+				if (filterDialog.isOperationComplete()) {
+					status = filterDialog.updateStatus();
+					onResume();
+				}
+			}
+		});
+		filterDialog.show();
+	}
+
+	@OptionsItem(R.id.friendsOpen)
+	void openFriend() {
+		Intent prefIntent = new Intent(this, FriendActivity_.class);
+		this.startActivity(prefIntent);
+	}
+
+	@OptionsItem(R.id.itemsOpen)
+	void openItem() {
+		Intent prefIntent = new Intent(this, ItemActivity_.class);
+		this.startActivity(prefIntent);
+	}
+
+	@OptionsItem(R.id.settings)
+	void openSettings() {
+		Intent settingsActivity = new Intent(getBaseContext(), ConfigActivity.class);
+		startActivity(settingsActivity);
+	}
+
 	// protected void processLentMenu(int key, LoanView item) {
 	// switch (key) {
 	// case 0:
@@ -333,18 +255,9 @@ public class MainActivity extends FragmentActivity {
 	// });
 	// builder.create().show();
 	// }
-	//
-	// protected void delete(LoanView item) {
-	// LoanDBManager db = new LoanDBManager(this);
-	// db.delete(item.getId());
-	// db.close();
-	// onResume();
-	// }
-	//
-	// protected void populate() {
-	// LoanDBManager db = new LoanDBManager(MainActivity.this);
-	// adapter = new LoanViewAdapter(MainActivity.this, db.findAll(status));
-	// db.close();
-	// listView.setAdapter(adapter);
-	// }
+
+	protected void delete(LoanView item) {
+		loanDAO.delete(item.getId());
+		onResume();
+	}
 }

@@ -6,7 +6,6 @@ import java.util.GregorianCalendar;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,9 +15,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.ac.loan.dialog.FriendSearchDialog;
-import br.com.eduardo.loan.ac.loan.dialog.ItemSearchDialog;
-import br.com.eduardo.loan.db.manager.LoanDBManager;
+import br.com.eduardo.loan.action.HomeAction;
+import br.com.eduardo.loan.db.LoanDAO;
+import br.com.eduardo.loan.dialog.FriendSearchDialog;
+import br.com.eduardo.loan.dialog.ItemSearchDialog;
 import br.com.eduardo.loan.entity.Friend;
 import br.com.eduardo.loan.entity.Item;
 import br.com.eduardo.loan.entity.Loan;
@@ -27,13 +27,19 @@ import br.com.eduardo.loan.util.type.Status;
 import br.com.eduardo.loan.util.validator.LoanValidator;
 import br.com.emsouza.widget.bar.ActionBar;
 
+import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.ViewById;
+
 /**
  * @author Eduardo Matos de Souza<br>
  *         30/04/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com </a>
  */
+@EActivity(R.layout.ac_loan_add)
 public class LoanAddActivity extends FragmentActivity {
 
+	@ViewById(R.id.actionBar)
 	protected ActionBar actionBar;
 
 	static final int DIALOG_FRIEND_ID = 0;
@@ -52,13 +58,9 @@ public class LoanAddActivity extends FragmentActivity {
 
 	protected TimePicker time;
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.ac_loan_add);
-
-		actionBar = (ActionBar) findViewById(R.id.actionBar);
-		// actionBar.setHomeAction(new HomeAction(this));
+	@AfterViews
+	void afterView() {
+		actionBar.setHomeAction(new HomeAction(this));
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
 		itemName = (EditText) this.findViewById(R.id.ac_loan_item_name);
@@ -165,7 +167,7 @@ public class LoanAddActivity extends FragmentActivity {
 		loan.setLentDate(DateFormatUtil.formatToDB(cal.getTime()));
 
 		if (LoanValidator.validaLoan(this, loan)) {
-			LoanDBManager db = new LoanDBManager(this);
+			LoanDAO db = new LoanDAO(this);
 			db.insert(loan);
 			db.close();
 

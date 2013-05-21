@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.db.manager.ItemDBManager;
+import br.com.eduardo.loan.db.ItemDAO;
 import br.com.eduardo.loan.entity.Item;
 import br.com.eduardo.loan.util.type.ItemTypeImage;
 import br.com.eduardo.loan.util.validator.ItemValidator;
@@ -83,7 +83,7 @@ public class ItemEditActivity extends Activity {
 		}
 
 		Integer id = bun.getInt("id");
-		ItemDBManager db = new ItemDBManager(this);
+		ItemDAO db = new ItemDAO(this);
 		item = db.find(id);
 		db.close();
 
@@ -109,7 +109,7 @@ public class ItemEditActivity extends Activity {
 		item.setType(new Long(type.getSelectedItemId()).intValue());
 
 		if (ItemValidator.validaItem(this, item)) {
-			ItemDBManager db = new ItemDBManager(this);
+			ItemDAO db = new ItemDAO(this);
 			db.update(item);
 			db.close();
 

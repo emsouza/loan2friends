@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<br.com.emsouza.widget.ActionBar xmlns:android="http://schemas.android.com/apk/res/android"
+<br.com.emsouza.widget.bar.ActionBar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/br.com.eduardo.loan"
     android:id="@+id/actionBar"
     style="@style/ActionBar"

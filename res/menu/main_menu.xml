@@ -3,27 +3,27 @@
 
     <item
         android:icon="@drawable/ic_menu_add"
-        android:id="@+id/menu_main_add"
+        android:id="@+id/loanAdd"
         android:title="@string/menu_main_add">
     </item>
     <item
         android:icon="@drawable/ic_menu_filter"
-        android:id="@+id/menu_main_filter"
+        android:id="@+id/filter"
         android:title="@string/menu_main_filter">
     </item>
     <item
         android:icon="@drawable/ic_menu_friends"
-        android:id="@+id/menu_main_friends"
+        android:id="@+id/friendsOpen"
         android:title="@string/menu_main_friends">
     </item>
     <item
         android:icon="@drawable/ic_menu_items"
-        android:id="@+id/menu_main_items"
+        android:id="@+id/itemsOpen"
         android:title="@string/menu_main_items">
     </item>
     <item
         android:icon="@drawable/ic_menu_config"
-        android:id="@+id/menu_main_settings"
+        android:id="@+id/settings"
         android:title="@string/menu_main_settings">
     </item>
 

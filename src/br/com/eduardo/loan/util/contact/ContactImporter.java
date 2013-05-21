@@ -3,7 +3,7 @@ package br.com.eduardo.loan.util.contact;
 import java.util.List;
 
 import android.content.Context;
-import br.com.eduardo.loan.db.manager.FriendDBManager;
+import br.com.eduardo.loan.db.FriendDAO;
 import br.com.eduardo.loan.entity.Contact;
 import br.com.eduardo.loan.entity.Friend;
 import br.com.eduardo.loan.util.ContactFinder;
@@ -22,7 +22,7 @@ public class ContactImporter {
 	 */
 	public static void importContact(Context context) {
 		List<Contact> list = ContactFinder.getContacts(context);
-		FriendDBManager db = new FriendDBManager(context);
+		FriendDAO db = new FriendDAO(context);
 		for (Contact c : list) {
 			Friend f = db.findByNumber(c.getNumber());
 			if (f == null) {

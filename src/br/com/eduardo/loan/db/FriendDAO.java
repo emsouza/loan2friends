@@ -1,4 +1,4 @@
-package br.com.eduardo.loan.db.manager;
+package br.com.eduardo.loan.db;
 
 import java.util.ArrayList;
 
@@ -6,15 +6,18 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
-import br.com.eduardo.loan.db.DBManager;
 import br.com.eduardo.loan.entity.Friend;
+
+import com.googlecode.androidannotations.annotations.EBean;
+import com.googlecode.androidannotations.api.Scope;
 
 /**
  * @author Eduardo Matos de Souza<br>
  *         30/04/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com </a>
  */
-public class FriendDBManager extends DBManager {
+@EBean(scope = Scope.Singleton)
+public class FriendDAO extends AbstractDAO {
 
 	private static final String TABLE_NAME = "FRIEND";
 
@@ -26,7 +29,7 @@ public class FriendDBManager extends DBManager {
 
 	public static final String CONTACT_ID = "CONTACT_ID";
 
-	public FriendDBManager(Context context) {
+	public FriendDAO(Context context) {
 		super(context);
 	}
 

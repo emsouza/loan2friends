@@ -1,67 +1,41 @@
 package br.com.eduardo.loan.action;
 
-//public class HomeOptionsAction implements Action {
-//
-//	protected final Context ctx;
-//
-//	protected final QuickAction quickAction;
-//
-//	public HomeOptionsAction(final Context ctx) {
-//		this.ctx = ctx;
-//		this.quickAction = new QuickAction(this.ctx, QuickAction.VERTICAL);
-//
-//		Resources res = ctx.getResources();
-//
-//		ActionItem loan = new ActionItem(1, res.getString(R.string.menu_main_add), res.getDrawable(R.drawable.ic_menu_add));
-//		ActionItem filter = new ActionItem(2, res.getString(R.string.menu_main_filter), res.getDrawable(R.drawable.ic_menu_filter));
-//		ActionItem friends = new ActionItem(3, res.getString(R.string.menu_main_friends), res.getDrawable(R.drawable.ic_menu_friends));
-//		ActionItem items = new ActionItem(4, res.getString(R.string.menu_main_items), res.getDrawable(R.drawable.ic_menu_items));
-//		ActionItem settings = new ActionItem(5, res.getString(R.string.menu_main_settings), res.getDrawable(R.drawable.ic_menu_config));
-//
-//		quickAction.addActionItem(loan);
-//		quickAction.addActionItem(filter);
-//		quickAction.addActionItem(friends);
-//		quickAction.addActionItem(items);
-//		quickAction.addActionItem(settings);
-//
-//		quickAction.setOnActionItemClickListener(new QuickAction.OnActionItemClickListener() {
-//			@Override
-//			public void onItemClick(QuickAction source, int pos, int actionId) {
-//				switch (actionId) {
-//					case 1:
-//						startActivity(ctx, LoanAddActivity.class);
-//						break;
-//					case 2:
-//
-//						break;
-//					case 3:
-//						startActivity(ctx, FriendActivity.class);
-//						break;
-//					case 4:
-//						startActivity(ctx, ItemActivity.class);
-//						break;
-//					case 5:
-//						startActivity(ctx, ConfigActivity.class);
-//						break;
-//					default:
-//						break;
-//				}
-//			}
-//		});
-//	}
-//
-//	private void startActivity(Context ctx, Class<?> clazz) {
-//		Intent activity = new Intent(ctx.getApplicationContext(), clazz);
-//		ctx.startActivity(activity);
-//	}
-//
-//	@Override
-//	public int getDrawable() {
-//		return R.drawable.ic_action;
-//	}
-//
-//	@Override
-//	public void performAction(View view) {
-//		quickAction.show(view);
-//	}
-// }
+import android.app.Activity;
+import android.view.View;
+import br.com.eduardo.loan.R;
+import br.com.emsouza.widget.bar.action.CustomAction;
+import br.com.emsouza.widget.slidingmenu.SlidingMenu;
+
+/**
+ * @author Eduardo Matos de Souza - SIC/NDS <br>
+ *         Dígitro - 20/05/2013 <br>
+ *         <a href="mailto:eduardo.souza@digitro.com.br">eduardo.souza@digitro.com.br</a>
+ */
+public class HomeOptionsAction extends CustomAction {
+
+	SlidingMenu menu;
+
+	public HomeOptionsAction(Activity activity) {
+		menu = new SlidingMenu(activity, SlidingMenu.SLIDING_CONTENT);
+		menu.setMode(SlidingMenu.LEFT);
+		menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+		menu.setShadowWidthRes(R.dimen.shadow_width);
+		menu.setShadowDrawable(R.drawable.shadow);
+		menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+		menu.setFadeDegree(0.35f);
+		menu.setBackgroundColor(activity.getResources().getColor(R.color.background_window));
+		menu.setMenu(R.layout.ac_menu);
+
+		// menu.
+	}
+
+	@Override
+	public int getDrawable() {
+		return R.drawable.ic_action;
+	}
+
+	@Override
+	public void performAction(View view) {
+		menu.showMenu(true);
+	}
+}

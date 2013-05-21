@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageView;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.db.manager.ItemDBManager;
+import br.com.eduardo.loan.db.ItemDAO;
 import br.com.eduardo.loan.entity.Item;
 import br.com.eduardo.loan.util.type.ItemTypeImage;
 
@@ -33,7 +33,7 @@ public class ItemDetailActivity extends Activity {
 		}
 
 		Integer id = bun.getInt("id");
-		ItemDBManager dbItem = new ItemDBManager(this);
+		ItemDAO dbItem = new ItemDAO(this);
 		item = dbItem.find(id);
 		dbItem.close();
 
