@@ -37,7 +37,7 @@ import com.googlecode.androidannotations.annotations.ViewById;
 
 /**
  * @author Eduardo Matos de Souza <br>
- *         EMS - 10/08/2011 <br>
+ *         10/08/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com </a>
  */
 @EActivity(R.layout.ac_main)

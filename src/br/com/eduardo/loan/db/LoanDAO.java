@@ -137,11 +137,10 @@ public class LoanDAO extends AbstractDAO {
 				LoanView item = new LoanView();
 				item.setId(cursor.getInt(0));
 				item.setName(cursor.getString(1));
-				item.setTitle(cursor.getString(2));
-				item.setStatus(cursor.getInt(3));
-				item.setLentDate(cursor.getString(4));
-				item.setType(cursor.getInt(5));
-				item.setReturnDate(cursor.getString(6));
+				item.setStatus(cursor.getInt(2));
+				item.setLentDate(cursor.getString(3));
+				item.setFriendId(cursor.getInt(4));
+				item.setReturnDate(cursor.getString(5));
 				cursor.close();
 				return item;
 			}
@@ -165,11 +164,10 @@ public class LoanDAO extends AbstractDAO {
 				LoanView item = new LoanView();
 				item.setId(cursor.getInt(0));
 				item.setName(cursor.getString(1));
-				item.setTitle(cursor.getString(2));
-				item.setStatus(cursor.getInt(3));
-				item.setLentDate(cursor.getString(4));
-				item.setType(cursor.getInt(5));
-				item.setReturnDate(cursor.getString(6));
+				item.setStatus(cursor.getInt(2));
+				item.setLentDate(cursor.getString(3));
+				item.setFriendId(cursor.getInt(4));
+				item.setReturnDate(cursor.getString(5));
 				list.add(item);
 			}
 			cursor.close();

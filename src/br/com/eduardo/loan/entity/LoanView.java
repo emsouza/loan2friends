@@ -11,13 +11,11 @@ public class LoanView {
 
 	private String name;
 
-	private String title;
-
 	private Integer status;
 
 	private String lentDate;
 
-	private Integer type;
+	private Integer friendId;
 
 	private String returnDate;
 
@@ -27,22 +25,6 @@ public class LoanView {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public Integer getStatus() {
@@ -69,11 +51,19 @@ public class LoanView {
 		this.returnDate = returnDate;
 	}
 
-	public Integer getType() {
-		return type;
+	public Integer getFriendId() {
+		return friendId;
 	}
 
-	public void setType(Integer type) {
-		this.type = type;
+	public void setFriendId(Integer friendId) {
+		this.friendId = friendId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

@@ -55,9 +55,9 @@
         <activity
             android:name=".item.ItemDetailActivity_" />
         <activity
-            android:name=".loan.LoanAddActivity_" />
+            android:name="LoanAddActivity_" />
         <activity
-            android:name=".loan.LoanEditActivity_" />
+            android:name="LoanEditActivity_" />
         <activity
             android:name=".settings.ConfigActivity_" />
         <activity
