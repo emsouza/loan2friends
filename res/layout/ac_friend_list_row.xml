@@ -28,7 +28,7 @@
             android:textColor="@color/orange"
             android:textStyle="bold" />
 
-        <br.com.eduardo.loan.group.TextViewGroup_
+        <br.com.eduardo.loan.ui.view.TextViewGroup_
             android:id="@+id/friendNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

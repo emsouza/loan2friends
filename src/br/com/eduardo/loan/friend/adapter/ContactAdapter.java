@@ -1,4 +1,4 @@
-package br.com.eduardo.loan.adapter;
+package br.com.eduardo.loan.friend.adapter;
 
 import java.util.ArrayList;
 

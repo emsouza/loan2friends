@@ -1,4 +1,4 @@
-package br.com.eduardo.loan.fragment;
+package br.com.eduardo.loan.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

@@ -106,6 +106,10 @@ public final class MainActivity_
             return true;
         }
         int itemId_ = item.getItemId();
+        if (itemId_ == br.com.eduardo.loan.R.id.settings) {
+            openSettings();
+            return true;
+        }
         if (itemId_ == br.com.eduardo.loan.R.id.friendsOpen) {
             openFriend();
             return true;
@@ -114,16 +118,12 @@ public final class MainActivity_
             openItem();
             return true;
         }
-        if (itemId_ == br.com.eduardo.loan.R.id.settings) {
-            openSettings();
+        if (itemId_ == br.com.eduardo.loan.R.id.filter) {
+            openFilter();
             return true;
         }
         if (itemId_ == br.com.eduardo.loan.R.id.loanAdd) {
             openAddLoan();
-            return true;
-        }
-        if (itemId_ == br.com.eduardo.loan.R.id.filter) {
-            openFilter();
             return true;
         }
         return false;

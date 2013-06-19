@@ -21,8 +21,8 @@ import br.com.eduardo.loan.item.ItemActivity_;
 import br.com.eduardo.loan.model.LoanDAO;
 import br.com.eduardo.loan.model.entity.Loan;
 import br.com.eduardo.loan.model.entity.LoanView;
-import br.com.eduardo.loan.text.MenuStrings;
 import br.com.eduardo.loan.util.DateFormatUtil;
+import br.com.eduardo.loan.util.text.MenuStrings;
 import br.com.eduardo.loan.util.type.Status;
 import br.com.emsouza.widget.bar.ActionBar;
 

@@ -1,4 +1,4 @@
-package br.com.eduardo.loan.group;
+package br.com.eduardo.loan.ui.view;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -1,4 +1,4 @@
-package br.com.eduardo.loan.dialog;
+package br.com.eduardo.loan.item.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -7,43 +7,43 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.friend.adapter.FriendDialogAdapter;
-import br.com.eduardo.loan.model.FriendDAO;
-import br.com.eduardo.loan.model.entity.Friend;
+import br.com.eduardo.loan.item.adapter.ItemDialogAdapter;
+import br.com.eduardo.loan.model.ItemDAO;
+import br.com.eduardo.loan.model.entity.Item;
 
 /**
  * @author Eduardo Matos de Souza<br>
  *         03/06/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
  */
-public class FriendSearchDialog extends Dialog implements OnItemClickListener {
+public class ItemSearchDialog extends Dialog implements OnItemClickListener {
 
-	protected Friend friend;
+	protected Item item;
 
-	public FriendSearchDialog(Context context) {
+	public ItemSearchDialog(Context context) {
 		super(context);
-		setTitle(R.string.title_dialog_friend);
+		setTitle(R.string.title_dialog_item);
 	}
 
 	public void populate() {
-		FriendDAO db = new FriendDAO(getContext());
-		FriendDialogAdapter adapter = new FriendDialogAdapter(getContext(), R.layout.dg_friend_list, db.findAll());
+		ItemDAO db = new ItemDAO(getContext());
+		ItemDialogAdapter adapter = new ItemDialogAdapter(getContext(), R.layout.dg_item_list, db.findAllAvailable());
 		db.close();
 
 		ListView listView = new ListView(getContext());
 		listView.setAdapter(adapter);
+		listView.setDrawSelectorOnTop(false);
 		listView.setOnItemClickListener(this);
 		setContentView(listView);
-
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		friend = ((Friend) arg0.getItemAtPosition(arg2));
+		item = ((Item) arg0.getItemAtPosition(arg2));
 		dismiss();
 	}
 
-	public Friend getItemSelected() {
-		return friend;
+	public Item getItemSelected() {
+		return item;
 	}
 }

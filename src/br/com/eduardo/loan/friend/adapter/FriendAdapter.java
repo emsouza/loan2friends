@@ -11,8 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.group.TextViewGroup;
 import br.com.eduardo.loan.model.entity.Friend;
+import br.com.eduardo.loan.ui.view.TextViewGroup;
 import br.com.eduardo.loan.util.ContactFinder;
 
 /**

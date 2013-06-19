@@ -1,4 +1,4 @@
-package br.com.eduardo.loan.text;
+package br.com.eduardo.loan.util.text;
 
 import java.util.ArrayList;
 import java.util.List;
