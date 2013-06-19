@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.entity.Friend;
+import br.com.eduardo.loan.group.TextViewGroup;
 import br.com.eduardo.loan.util.ContactFinder;
 
 /**
@@ -37,15 +38,12 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
 		}
 		Friend o = items.get(position);
 		if (o != null) {
-			ImageView img = (ImageView) v.findViewById(R.id.icon);
-			TextView tt = (TextView) v.findViewById(R.id.ac_friend_list_name);
-			TextView bt = (TextView) v.findViewById(R.id.ac_friend_list_number);
-			if (tt != null) {
-				tt.setText(getContext().getString(R.string.friend_name) + " " + o.getName());
-			}
-			if (bt != null) {
-				bt.setText(getContext().getString(R.string.phone_number) + " " + (o.getPhone() != null ? o.getPhone() : ""));
-			}
+			ImageView img = (ImageView) v.findViewById(R.id.friendPhoto);
+			TextView tt = (TextView) v.findViewById(R.id.friendName);
+			TextViewGroup bt = (TextViewGroup) v.findViewById(R.id.friendNumber);
+			tt.setText(o.getName());
+			bt.setValues(getContext().getString(R.string.phone_number), (o.getPhone() != null ? o.getPhone() : ""));
+
 			Bitmap b = ContactFinder.getPhotos(getContext(), o.getContactId());
 			if (b != null) {
 				img.setImageBitmap(b);

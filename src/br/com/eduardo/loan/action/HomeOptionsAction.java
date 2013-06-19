@@ -23,7 +23,7 @@ public class HomeOptionsAction extends CustomAction {
 		menu.setShadowDrawable(R.drawable.shadow);
 		menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
 		menu.setFadeDegree(0.35f);
-		menu.setBackgroundColor(activity.getResources().getColor(R.color.background_window));
+		menu.setBackgroundColor(activity.getResources().getColor(R.color.gray));
 		menu.setMenu(R.layout.ac_menu);
 
 		// menu.

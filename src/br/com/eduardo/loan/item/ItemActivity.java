@@ -27,7 +27,7 @@ import com.googlecode.androidannotations.annotations.ViewById;
  *         07/05/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
  */
-@EActivity(R.layout.ac_item_list)
+@EActivity(R.layout.ac_item)
 @OptionsMenu(R.menu.items_menu)
 public class ItemActivity extends FragmentActivity {
 

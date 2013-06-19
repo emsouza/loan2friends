@@ -30,7 +30,7 @@ import com.googlecode.androidannotations.annotations.ViewById;
  *         07/05/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
  */
-@EActivity(R.layout.ac_friend_list)
+@EActivity(R.layout.ac_friend)
 @OptionsMenu(R.menu.friend_menu)
 public class FriendActivity extends FragmentActivity {
 

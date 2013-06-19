@@ -9,12 +9,16 @@
             android:id="@+id/grName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="2dp" />
+            android:paddingRight="2dp"
+            android:textColor="@color/navy"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/grText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/navy"
+            android:textSize="12sp" />
     </LinearLayout>
 
 </merge>

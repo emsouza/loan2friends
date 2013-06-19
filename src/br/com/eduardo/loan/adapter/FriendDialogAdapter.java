@@ -42,7 +42,7 @@ public class FriendDialogAdapter extends ArrayAdapter<Friend> {
 		}
 		Friend o = items.get(position);
 		if (o != null) {
-			ImageView iv = (ImageView) v.findViewById(R.id.icon);
+			ImageView iv = (ImageView) v.findViewById(R.id.friendPhoto);
 			TextView tt = (TextView) v.findViewById(R.id.dialog_friend_name);
 			if (tt != null) {
 				tt.setText(o.getName());

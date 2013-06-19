@@ -7,7 +7,7 @@
     android:padding="5dip" >
 
     <ImageView
-        android:id="@+id/icon"
+        android:id="@+id/friendPhoto"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginRight="6dip"

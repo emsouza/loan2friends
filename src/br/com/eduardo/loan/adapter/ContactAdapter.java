@@ -37,7 +37,7 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
 		}
 		Contact o = items.get(position);
 		if (o != null) {
-			ImageView img = (ImageView) v.findViewById(R.id.icon);
+			ImageView img = (ImageView) v.findViewById(R.id.friendPhoto);
 			TextView tt = (TextView) v.findViewById(R.id.dialog_contact_name);
 			TextView bt = (TextView) v.findViewById(R.id.dialog_contact_number);
 			if (tt != null) {

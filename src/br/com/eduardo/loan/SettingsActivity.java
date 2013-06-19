@@ -1,4 +1,4 @@
-package br.com.eduardo.loan.settings;
+package br.com.eduardo.loan;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +23,7 @@ import br.com.eduardo.loan.util.FileUtil;
  *         09/06/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com </a>
  */
-public class ConfigActivity extends PreferenceActivity {
+public class SettingsActivity extends PreferenceActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class ConfigActivity extends PreferenceActivity {
 
 			@Override
 			public boolean onPreferenceClick(Preference preference) {
-				ChangeLog cl = new ChangeLog(ConfigActivity.this);
+				ChangeLog cl = new ChangeLog(SettingsActivity.this);
 				cl.getFullLogDialog().show();
 				return true;
 			}
@@ -47,7 +47,7 @@ public class ConfigActivity extends PreferenceActivity {
 		feature.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 			@Override
 			public boolean onPreferenceClick(Preference preference) {
-				EmailDialog emailDialog = new EmailDialog(ConfigActivity.this);
+				EmailDialog emailDialog = new EmailDialog(SettingsActivity.this);
 				emailDialog.show();
 				return true;
 			}
@@ -89,7 +89,7 @@ public class ConfigActivity extends PreferenceActivity {
 	}
 
 	protected class ExportDatabaseTask extends AsyncTask<Void, Void, Boolean> {
-		private final ProgressDialog dialog = new ProgressDialog(ConfigActivity.this);
+		private final ProgressDialog dialog = new ProgressDialog(SettingsActivity.this);
 
 		// can use UI thread here
 		@Override
@@ -115,7 +115,7 @@ public class ConfigActivity extends PreferenceActivity {
 				FileUtil.copyFile(dbFile, file);
 				return true;
 			} catch (IOException e) {
-				Log.e(ConfigActivity.class.getName(), e.getMessage(), e);
+				Log.e(SettingsActivity.class.getName(), e.getMessage(), e);
 				return false;
 			}
 		}
@@ -127,15 +127,15 @@ public class ConfigActivity extends PreferenceActivity {
 				dialog.dismiss();
 			}
 			if (success) {
-				Toast.makeText(ConfigActivity.this, getApplicationContext().getText(R.string.export_ok), Toast.LENGTH_SHORT).show();
+				Toast.makeText(SettingsActivity.this, getApplicationContext().getText(R.string.export_ok), Toast.LENGTH_SHORT).show();
 			} else {
-				Toast.makeText(ConfigActivity.this, getApplicationContext().getText(R.string.export_fail), Toast.LENGTH_SHORT).show();
+				Toast.makeText(SettingsActivity.this, getApplicationContext().getText(R.string.export_fail), Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
 
 	protected class ImportDatabaseTask extends AsyncTask<Void, Void, String> {
-		private final ProgressDialog dialog = new ProgressDialog(ConfigActivity.this);
+		private final ProgressDialog dialog = new ProgressDialog(SettingsActivity.this);
 
 		@Override
 		protected void onPreExecute() {
@@ -165,7 +165,7 @@ public class ConfigActivity extends PreferenceActivity {
 				FileUtil.copyFile(dbBackupFile, dbFile);
 				return null;
 			} catch (IOException e) {
-				Log.e(ConfigActivity.class.getName(), e.getMessage(), e);
+				Log.e(SettingsActivity.class.getName(), e.getMessage(), e);
 				return e.getMessage();
 			}
 		}
@@ -176,9 +176,9 @@ public class ConfigActivity extends PreferenceActivity {
 				dialog.dismiss();
 			}
 			if (errMsg == null) {
-				Toast.makeText(ConfigActivity.this, getApplicationContext().getText(R.string.import_ok), Toast.LENGTH_SHORT).show();
+				Toast.makeText(SettingsActivity.this, getApplicationContext().getText(R.string.import_ok), Toast.LENGTH_SHORT).show();
 			} else {
-				Toast.makeText(ConfigActivity.this, getApplicationContext().getText(R.string.import_fail), Toast.LENGTH_SHORT).show();
+				Toast.makeText(SettingsActivity.this, getApplicationContext().getText(R.string.import_fail), Toast.LENGTH_SHORT).show();
 			}
 		}
 	}

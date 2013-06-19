@@ -21,7 +21,6 @@ import br.com.eduardo.loan.entity.Loan;
 import br.com.eduardo.loan.entity.LoanView;
 import br.com.eduardo.loan.friend.FriendActivity_;
 import br.com.eduardo.loan.item.ItemActivity_;
-import br.com.eduardo.loan.settings.ConfigActivity;
 import br.com.eduardo.loan.text.MenuStrings;
 import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.type.Status;
@@ -45,7 +44,7 @@ import com.googlecode.androidannotations.annotations.ViewById;
 public class MainActivity extends FragmentActivity {
 
 	@ViewById(R.id.actionBar)
-	ActionBar actionBar;
+	protected ActionBar actionBar;
 
 	@ViewById(R.id.ac_main_list)
 	protected ListView listView;
@@ -148,7 +147,7 @@ public class MainActivity extends FragmentActivity {
 
 	@OptionsItem(R.id.settings)
 	void openSettings() {
-		Intent settingsActivity = new Intent(getBaseContext(), ConfigActivity.class);
+		Intent settingsActivity = new Intent(getBaseContext(), SettingsActivity.class);
 		startActivity(settingsActivity);
 	}
 
