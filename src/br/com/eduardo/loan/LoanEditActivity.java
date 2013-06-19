@@ -13,12 +13,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.db.FriendDAO;
-import br.com.eduardo.loan.db.ItemDAO;
-import br.com.eduardo.loan.db.LoanDAO;
-import br.com.eduardo.loan.entity.Friend;
-import br.com.eduardo.loan.entity.Item;
-import br.com.eduardo.loan.entity.Loan;
+import br.com.eduardo.loan.model.FriendDAO;
+import br.com.eduardo.loan.model.ItemDAO;
+import br.com.eduardo.loan.model.LoanDAO;
+import br.com.eduardo.loan.model.entity.Friend;
+import br.com.eduardo.loan.model.entity.Item;
+import br.com.eduardo.loan.model.entity.Loan;
 import br.com.eduardo.loan.util.DateFormatUtil;
 
 /**

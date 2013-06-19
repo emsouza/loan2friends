@@ -1,21 +1,21 @@
-package br.com.eduardo.loan.entity;
+package br.com.eduardo.loan.model.entity;
 
 /**
  * @author Eduardo Matos de Souza<br>
  *         07/05/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
  */
-public class Loan {
+public class LoanView {
 
 	private Integer id;
 
-	private Integer idFriend;
-
-	private Integer idItem;
+	private String name;
 
 	private Integer status;
 
 	private String lentDate;
+
+	private Integer friendId;
 
 	private String returnDate;
 
@@ -25,22 +25,6 @@ public class Loan {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getIdFriend() {
-		return idFriend;
-	}
-
-	public void setIdFriend(Integer idFriend) {
-		this.idFriend = idFriend;
-	}
-
-	public Integer getIdItem() {
-		return idItem;
-	}
-
-	public void setIdItem(Integer idItem) {
-		this.idItem = idItem;
 	}
 
 	public Integer getStatus() {
@@ -65,5 +49,21 @@ public class Loan {
 
 	public void setReturnDate(String returnDate) {
 		this.returnDate = returnDate;
+	}
+
+	public Integer getFriendId() {
+		return friendId;
+	}
+
+	public void setFriendId(Integer friendId) {
+		this.friendId = friendId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

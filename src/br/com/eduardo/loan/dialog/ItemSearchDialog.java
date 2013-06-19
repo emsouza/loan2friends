@@ -7,9 +7,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.adapter.ItemDialogAdapter;
-import br.com.eduardo.loan.db.ItemDAO;
-import br.com.eduardo.loan.entity.Item;
+import br.com.eduardo.loan.item.adapter.ItemDialogAdapter;
+import br.com.eduardo.loan.model.ItemDAO;
+import br.com.eduardo.loan.model.entity.Item;
 
 /**
  * @author Eduardo Matos de Souza<br>

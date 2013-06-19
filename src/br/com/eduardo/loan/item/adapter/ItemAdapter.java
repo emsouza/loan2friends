@@ -1,4 +1,4 @@
-package br.com.eduardo.loan.adapter;
+package br.com.eduardo.loan.item.adapter;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.entity.Item;
+import br.com.eduardo.loan.model.entity.Item;
 import br.com.eduardo.loan.util.type.ItemTypeImage;
 import br.com.eduardo.loan.util.type.Status;
 

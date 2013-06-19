@@ -3,7 +3,7 @@ package br.com.eduardo.loan.util.validator;
 import android.content.Context;
 import android.widget.Toast;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.entity.Item;
+import br.com.eduardo.loan.model.entity.Item;
 
 /**
  * @author Eduardo Matos de Souza<br>

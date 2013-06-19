@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import br.com.eduardo.loan.entity.Contact;
+import br.com.eduardo.loan.model.entity.Contact;
 
 /**
  * @author Eduardo Matos de Souza<br>

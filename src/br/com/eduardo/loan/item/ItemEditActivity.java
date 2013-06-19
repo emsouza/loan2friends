@@ -6,8 +6,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.db.ItemDAO;
-import br.com.eduardo.loan.entity.Item;
+import br.com.eduardo.loan.model.ItemDAO;
+import br.com.eduardo.loan.model.entity.Item;
 import br.com.eduardo.loan.util.type.ItemTypeImage;
 import br.com.eduardo.loan.util.validator.ItemValidator;
 

@@ -8,10 +8,10 @@ import android.support.v4.app.FragmentActivity;
 import android.widget.ListView;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.action.HomeAction;
-import br.com.eduardo.loan.adapter.ItemAdapter;
-import br.com.eduardo.loan.db.ItemDAO;
-import br.com.eduardo.loan.db.LoanDAO;
-import br.com.eduardo.loan.entity.Item;
+import br.com.eduardo.loan.item.adapter.ItemAdapter;
+import br.com.eduardo.loan.model.ItemDAO;
+import br.com.eduardo.loan.model.LoanDAO;
+import br.com.eduardo.loan.model.entity.Item;
 import br.com.emsouza.widget.bar.ActionBar;
 
 import com.googlecode.androidannotations.annotations.AfterViews;

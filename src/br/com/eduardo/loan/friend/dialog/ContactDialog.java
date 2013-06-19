@@ -10,7 +10,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.adapter.ContactAdapter;
-import br.com.eduardo.loan.entity.Contact;
+import br.com.eduardo.loan.model.entity.Contact;
 import br.com.eduardo.loan.util.ContactFinder;
 
 /**

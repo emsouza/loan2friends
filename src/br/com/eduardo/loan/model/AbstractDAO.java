@@ -1,4 +1,4 @@
-package br.com.eduardo.loan.db;
+package br.com.eduardo.loan.model;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

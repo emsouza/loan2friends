@@ -1,4 +1,4 @@
-package br.com.eduardo.loan.db;
+package br.com.eduardo.loan.model;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
-import br.com.eduardo.loan.entity.Item;
+import br.com.eduardo.loan.model.entity.Item;
 import br.com.eduardo.loan.util.type.Status;
 
 import com.googlecode.androidannotations.annotations.EBean;

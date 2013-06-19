@@ -5,10 +5,10 @@ import android.content.DialogInterface.OnDismissListener;
 import android.support.v4.app.FragmentActivity;
 import android.widget.EditText;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.db.FriendDAO;
-import br.com.eduardo.loan.entity.Contact;
-import br.com.eduardo.loan.entity.Friend;
 import br.com.eduardo.loan.friend.dialog.ContactDialog;
+import br.com.eduardo.loan.model.FriendDAO;
+import br.com.eduardo.loan.model.entity.Contact;
+import br.com.eduardo.loan.model.entity.Friend;
 import br.com.eduardo.loan.util.validator.FriendValidator;
 
 import com.googlecode.androidannotations.annotations.Bean;

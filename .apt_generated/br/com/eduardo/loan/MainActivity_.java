@@ -19,7 +19,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import br.com.eduardo.loan.R.layout;
-import br.com.eduardo.loan.db.LoanDAO_;
+import br.com.eduardo.loan.model.LoanDAO_;
 import br.com.emsouza.widget.bar.ActionBar;
 import com.googlecode.androidannotations.api.SdkVersionHelper;
 
@@ -106,20 +106,20 @@ public final class MainActivity_
             return true;
         }
         int itemId_ = item.getItemId();
-        if (itemId_ == br.com.eduardo.loan.R.id.itemsOpen) {
-            openItem();
-            return true;
-        }
         if (itemId_ == br.com.eduardo.loan.R.id.friendsOpen) {
             openFriend();
             return true;
         }
-        if (itemId_ == br.com.eduardo.loan.R.id.loanAdd) {
-            openAddLoan();
+        if (itemId_ == br.com.eduardo.loan.R.id.itemsOpen) {
+            openItem();
             return true;
         }
         if (itemId_ == br.com.eduardo.loan.R.id.settings) {
             openSettings();
+            return true;
+        }
+        if (itemId_ == br.com.eduardo.loan.R.id.loanAdd) {
+            openAddLoan();
             return true;
         }
         if (itemId_ == br.com.eduardo.loan.R.id.filter) {

@@ -11,10 +11,10 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.action.HomeAction;
-import br.com.eduardo.loan.adapter.FriendAdapter;
-import br.com.eduardo.loan.db.FriendDAO;
-import br.com.eduardo.loan.db.LoanDAO;
-import br.com.eduardo.loan.entity.Friend;
+import br.com.eduardo.loan.friend.adapter.FriendAdapter;
+import br.com.eduardo.loan.model.FriendDAO;
+import br.com.eduardo.loan.model.LoanDAO;
+import br.com.eduardo.loan.model.entity.Friend;
 import br.com.eduardo.loan.util.contact.ContactImporter;
 import br.com.emsouza.widget.bar.ActionBar;
 

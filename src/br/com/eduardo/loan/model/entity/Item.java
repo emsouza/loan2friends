@@ -1,4 +1,4 @@
-package br.com.eduardo.loan.entity;
+package br.com.eduardo.loan.model.entity;
 
 /**
  * @author Eduardo Matos de Souza<br>

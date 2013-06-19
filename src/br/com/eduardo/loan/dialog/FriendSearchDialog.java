@@ -7,9 +7,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.adapter.FriendDialogAdapter;
-import br.com.eduardo.loan.db.FriendDAO;
-import br.com.eduardo.loan.entity.Friend;
+import br.com.eduardo.loan.friend.adapter.FriendDialogAdapter;
+import br.com.eduardo.loan.model.FriendDAO;
+import br.com.eduardo.loan.model.entity.Friend;
 
 /**
  * @author Eduardo Matos de Souza<br>

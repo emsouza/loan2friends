@@ -4,8 +4,8 @@ import android.support.v4.app.FragmentActivity;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.widget.EditText;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.db.FriendDAO;
-import br.com.eduardo.loan.entity.Friend;
+import br.com.eduardo.loan.model.FriendDAO;
+import br.com.eduardo.loan.model.entity.Friend;
 import br.com.eduardo.loan.util.validator.FriendValidator;
 
 import com.googlecode.androidannotations.annotations.AfterViews;

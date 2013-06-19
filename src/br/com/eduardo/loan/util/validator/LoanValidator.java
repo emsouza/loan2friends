@@ -5,7 +5,7 @@ import java.util.Date;
 import android.content.Context;
 import android.widget.Toast;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.entity.Loan;
+import br.com.eduardo.loan.model.entity.Loan;
 import br.com.eduardo.loan.util.CompareDate;
 import br.com.eduardo.loan.util.DateFormatUtil;
 
