@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.model.entity.Friend;
+import br.com.eduardo.loan.model.entity.FriendDTO;
 import br.com.eduardo.loan.ui.view.TextViewGroup;
 import br.com.eduardo.loan.util.ContactFinder;
 
@@ -20,11 +20,11 @@ import br.com.eduardo.loan.util.ContactFinder;
  *         06/05/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
  */
-public class FriendAdapter extends ArrayAdapter<Friend> {
+public class FriendAdapter extends ArrayAdapter<FriendDTO> {
 
-	private ArrayList<Friend> items;
+	private ArrayList<FriendDTO> items;
 
-	public FriendAdapter(Context context, ArrayList<Friend> items) {
+	public FriendAdapter(Context context, ArrayList<FriendDTO> items) {
 		super(context, R.layout.ac_friend_list_row, items);
 		this.items = items;
 	}
@@ -36,7 +36,7 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
 			LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			v = vi.inflate(R.layout.ac_friend_list_row, null);
 		}
-		Friend o = items.get(position);
+		FriendDTO o = items.get(position);
 		if (o != null) {
 			ImageView img = (ImageView) v.findViewById(R.id.friendPhoto);
 			TextView tt = (TextView) v.findViewById(R.id.friendName);
@@ -54,7 +54,7 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
 		return v;
 	}
 
-	public ArrayList<Friend> getItems() {
+	public ArrayList<FriendDTO> getItems() {
 		return items;
 	}
 }

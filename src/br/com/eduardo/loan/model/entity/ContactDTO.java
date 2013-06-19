@@ -5,7 +5,7 @@ package br.com.eduardo.loan.model.entity;
  *         06/05/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com </a>
  */
-public class Contact {
+public class ContactDTO {
 
 	private long contactId;
 

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.model.entity.Item;
+import br.com.eduardo.loan.model.entity.ItemDTO;
 import br.com.eduardo.loan.util.type.ItemTypeImage;
 
 /**
@@ -17,11 +17,11 @@ import br.com.eduardo.loan.util.type.ItemTypeImage;
  *         03/06/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com </a>
  */
-public class ItemDialogAdapter extends ArrayAdapter<Item> {
+public class ItemDialogAdapter extends ArrayAdapter<ItemDTO> {
 
-	private ArrayList<Item> items;
+	private ArrayList<ItemDTO> items;
 
-	public ItemDialogAdapter(Context context, int textViewResourceId, ArrayList<Item> items) {
+	public ItemDialogAdapter(Context context, int textViewResourceId, ArrayList<ItemDTO> items) {
 		super(context, textViewResourceId, items);
 		this.items = items;
 	}
@@ -39,7 +39,7 @@ public class ItemDialogAdapter extends ArrayAdapter<Item> {
 			v = vi.inflate(R.layout.dg_item_list, null);
 		}
 
-		Item o = items.get(position);
+		ItemDTO o = items.get(position);
 		if (o != null) {
 			TextView tt = (TextView) v.findViewById(R.id.dialog_item_name);
 			tt.setText(o.getTitle());

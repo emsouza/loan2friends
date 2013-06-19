@@ -6,8 +6,8 @@ import java.util.List;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import br.com.eduardo.loan.model.entity.Loan;
-import br.com.eduardo.loan.model.entity.LoanView;
+import br.com.eduardo.loan.model.entity.LoanDTO;
+import br.com.eduardo.loan.model.entity.LoanViewDTO;
 import br.com.eduardo.loan.util.type.Status;
 
 import com.googlecode.androidannotations.annotations.EBean;
@@ -41,7 +41,7 @@ public class LoanDAO extends AbstractDAO {
 		super(context);
 	}
 
-	public void insert(Loan item) {
+	public void insert(LoanDTO item) {
 		ContentValues value = new ContentValues();
 		value.put(ID_FRIEND, Integer.valueOf(item.getIdFriend()));
 		value.put(ID_ITEM, Integer.valueOf(item.getIdItem()));
@@ -52,7 +52,7 @@ public class LoanDAO extends AbstractDAO {
 		getWritableDatabase().insert(TABLE_NAME, null, value);
 	}
 
-	public void update(Loan item) {
+	public void update(LoanDTO item) {
 		String where = ID_COLUMN + " = " + item.getId();
 
 		ContentValues value = new ContentValues();
@@ -110,8 +110,8 @@ public class LoanDAO extends AbstractDAO {
 		return 0;
 	}
 
-	public Loan find(Integer id) {
-		Loan item = new Loan();
+	public LoanDTO find(Integer id) {
+		LoanDTO item = new LoanDTO();
 		String where = ID_COLUMN + " = " + id;
 		Cursor cursor = getReadableDatabase().query(true, TABLE_NAME, null, where, null, null, null, null, null);
 		if (cursor != null) {
@@ -128,13 +128,13 @@ public class LoanDAO extends AbstractDAO {
 		return null;
 	}
 
-	public LoanView findView(Integer id) {
+	public LoanViewDTO findView(Integer id) {
 		String orderBY = "DT_LENT DESC";
 		String where = ID_COLUMN + " = " + id;
 		Cursor cursor = getReadableDatabase().query(TABLE_VIEW, null, where, null, null, null, orderBY);
 		if (cursor != null) {
 			while (cursor.moveToNext()) {
-				LoanView item = new LoanView();
+				LoanViewDTO item = new LoanViewDTO();
 				item.setId(cursor.getInt(0));
 				item.setName(cursor.getString(1));
 				item.setStatus(cursor.getInt(2));
@@ -149,19 +149,19 @@ public class LoanDAO extends AbstractDAO {
 		return null;
 	}
 
-	public ArrayList<LoanView> findAll(List<String> status) {
+	public ArrayList<LoanViewDTO> findAll(List<String> status) {
 		String orderBY = "DT_LENT DESC";
 
 		status = resetParams(status);
 
 		String where = STATUS_COLUMN + " IN (" + makePlaceHolders(status.size()) + ")";
 
-		ArrayList<LoanView> list = new ArrayList<LoanView>();
+		ArrayList<LoanViewDTO> list = new ArrayList<LoanViewDTO>();
 		Cursor cursor = getReadableDatabase().query(TABLE_VIEW, null, where, resetParams(status).toArray(new String[status.size()]), null, null,
 				orderBY);
 		if (cursor != null) {
 			while (cursor.moveToNext()) {
-				LoanView item = new LoanView();
+				LoanViewDTO item = new LoanViewDTO();
 				item.setId(cursor.getInt(0));
 				item.setName(cursor.getString(1));
 				item.setStatus(cursor.getInt(2));

@@ -5,7 +5,7 @@ package br.com.eduardo.loan.model.entity;
  *         07/05/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
  */
-public class Friend {
+public class FriendDTO {
 
 	private Integer id;
 

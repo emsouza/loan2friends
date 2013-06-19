@@ -18,9 +18,9 @@ import br.com.eduardo.loan.action.HomeAction;
 import br.com.eduardo.loan.friend.dialog.FriendSearchDialog;
 import br.com.eduardo.loan.item.dialog.ItemSearchDialog;
 import br.com.eduardo.loan.model.LoanDAO;
-import br.com.eduardo.loan.model.entity.Friend;
-import br.com.eduardo.loan.model.entity.Item;
-import br.com.eduardo.loan.model.entity.Loan;
+import br.com.eduardo.loan.model.entity.FriendDTO;
+import br.com.eduardo.loan.model.entity.ItemDTO;
+import br.com.eduardo.loan.model.entity.LoanDTO;
 import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.type.Status;
 import br.com.eduardo.loan.util.validator.LoanValidator;
@@ -45,9 +45,9 @@ public class LoanAddActivity extends FragmentActivity {
 
 	static final int DIALOG_ITEM_ID = 1;
 
-	protected Item item;
+	protected ItemDTO item;
 
-	protected Friend friend;
+	protected FriendDTO friend;
 
 	protected EditText itemName;
 
@@ -151,7 +151,7 @@ public class LoanAddActivity extends FragmentActivity {
 	}
 
 	protected void saveLoan() {
-		Loan loan = new Loan();
+		LoanDTO loan = new LoanDTO();
 		loan.setIdFriend(friend != null ? friend.getId() : null);
 		loan.setIdItem(item != null ? item.getId() : null);
 		loan.setStatus(Status.LENDED.id());

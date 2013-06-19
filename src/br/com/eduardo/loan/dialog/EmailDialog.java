@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.model.entity.Item;
+import br.com.eduardo.loan.model.entity.ItemDTO;
 import br.com.eduardo.loan.util.mail.EmailUtil;
 import br.com.eduardo.loan.util.validator.MailValidator;
 
@@ -17,7 +17,7 @@ import br.com.eduardo.loan.util.validator.MailValidator;
  */
 public class EmailDialog extends Dialog {
 
-	protected Item item;
+	protected ItemDTO item;
 
 	protected EditText title;
 

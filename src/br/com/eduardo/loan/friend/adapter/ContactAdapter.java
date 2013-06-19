@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.model.entity.Contact;
+import br.com.eduardo.loan.model.entity.ContactDTO;
 import br.com.eduardo.loan.util.ContactFinder;
 
 /**
@@ -19,11 +19,11 @@ import br.com.eduardo.loan.util.ContactFinder;
  *         06/05/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
  */
-public class ContactAdapter extends ArrayAdapter<Contact> {
+public class ContactAdapter extends ArrayAdapter<ContactDTO> {
 
-	private ArrayList<Contact> items;
+	private ArrayList<ContactDTO> items;
 
-	public ContactAdapter(Context context, int textViewResourceId, ArrayList<Contact> items) {
+	public ContactAdapter(Context context, int textViewResourceId, ArrayList<ContactDTO> items) {
 		super(context, textViewResourceId, items);
 		this.items = items;
 	}
@@ -35,7 +35,7 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
 			LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			v = vi.inflate(R.layout.dg_contact_list, null);
 		}
-		Contact o = items.get(position);
+		ContactDTO o = items.get(position);
 		if (o != null) {
 			ImageView img = (ImageView) v.findViewById(R.id.friendPhoto);
 			TextView tt = (TextView) v.findViewById(R.id.dialog_contact_name);

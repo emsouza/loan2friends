@@ -6,7 +6,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
-import br.com.eduardo.loan.model.entity.Friend;
+import br.com.eduardo.loan.model.entity.FriendDTO;
 
 import com.googlecode.androidannotations.annotations.EBean;
 import com.googlecode.androidannotations.api.Scope;
@@ -33,7 +33,7 @@ public class FriendDAO extends AbstractDAO {
 		super(context);
 	}
 
-	public void insert(Friend item) {
+	public void insert(FriendDTO item) {
 		ContentValues value = new ContentValues();
 		value.put(NAME_COLUMN, item.getName());
 		value.put(PHONE_COLUMN, item.getPhone());
@@ -46,7 +46,7 @@ public class FriendDAO extends AbstractDAO {
 		}
 	}
 
-	public void update(Friend item) {
+	public void update(FriendDTO item) {
 		String where = ID_COLUMN + " = " + item.getId();
 
 		ContentValues value = new ContentValues();
@@ -69,8 +69,8 @@ public class FriendDAO extends AbstractDAO {
 		}
 	}
 
-	public Friend find(Integer id) {
-		Friend item = new Friend();
+	public FriendDTO find(Integer id) {
+		FriendDTO item = new FriendDTO();
 		String where = ID_COLUMN + " = " + id;
 		Cursor cursor = getReadableDatabase().query(true, TABLE_NAME, null, where, null, null, null, null, null);
 		if (cursor != null) {
@@ -85,13 +85,13 @@ public class FriendDAO extends AbstractDAO {
 		return null;
 	}
 
-	public Friend findByNumber(String number) {
-		Friend item = null;
+	public FriendDTO findByNumber(String number) {
+		FriendDTO item = null;
 		String where = PHONE_COLUMN + " = '" + number + "'";
 		Cursor cursor = getReadableDatabase().query(true, TABLE_NAME, null, where, null, null, null, null, null);
 		if (cursor != null) {
 			if (cursor.moveToFirst()) {
-				item = new Friend();
+				item = new FriendDTO();
 				item.setId(cursor.getInt(0));
 				item.setName(cursor.getString(1));
 				item.setPhone(cursor.getString(2));
@@ -104,12 +104,12 @@ public class FriendDAO extends AbstractDAO {
 		return null;
 	}
 
-	public ArrayList<Friend> findAll() {
-		ArrayList<Friend> list = new ArrayList<Friend>();
+	public ArrayList<FriendDTO> findAll() {
+		ArrayList<FriendDTO> list = new ArrayList<FriendDTO>();
 		Cursor cursor = getReadableDatabase().query(TABLE_NAME, null, null, null, null, null, null);
 		if (cursor != null) {
 			while (cursor.moveToNext()) {
-				Friend item = new Friend();
+				FriendDTO item = new FriendDTO();
 				item.setId(cursor.getInt(0));
 				item.setName(cursor.getString(1));
 				item.setPhone(cursor.getString(2));

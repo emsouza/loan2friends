@@ -5,7 +5,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.model.ItemDAO;
-import br.com.eduardo.loan.model.entity.Item;
+import br.com.eduardo.loan.model.entity.ItemDTO;
 import br.com.eduardo.loan.util.type.ItemTypeImage;
 
 import com.googlecode.androidannotations.annotations.AfterViews;
@@ -39,7 +39,7 @@ public class ItemDetailActivity extends FragmentActivity {
 
 	@AfterViews
 	void afterView() {
-		Item item = itemDAO.find(id);
+		ItemDTO item = itemDAO.find(id);
 		title.setText(item.getTitle());
 		if (item.getDescription() != null && item.getDescription().length() > 0) {
 			description.setText(item.getDescription());

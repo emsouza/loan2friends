@@ -9,8 +9,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import br.com.eduardo.loan.action.HomeOptionsAction;
 import br.com.eduardo.loan.adapter.LoanViewAdapter;
@@ -19,8 +17,8 @@ import br.com.eduardo.loan.dialog.FilterDialog;
 import br.com.eduardo.loan.friend.FriendActivity_;
 import br.com.eduardo.loan.item.ItemActivity_;
 import br.com.eduardo.loan.model.LoanDAO;
-import br.com.eduardo.loan.model.entity.Loan;
-import br.com.eduardo.loan.model.entity.LoanView;
+import br.com.eduardo.loan.model.entity.LoanDTO;
+import br.com.eduardo.loan.model.entity.LoanViewDTO;
 import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.text.MenuStrings;
 import br.com.eduardo.loan.util.type.Status;
@@ -52,10 +50,6 @@ public class MainActivity extends FragmentActivity {
 	@Bean
 	protected LoanDAO loanDAO;
 
-	protected ImageButton iButton;
-
-	protected EditText sText;
-
 	protected LoanViewAdapter adapter;
 
 	protected List<String> status = new ArrayList<String>();
@@ -78,7 +72,7 @@ public class MainActivity extends FragmentActivity {
 
 	@ItemLongClick(R.id.ac_main_list)
 	void listItemLongClicked(final int position) {
-		final LoanView loanView = (LoanView) listView.getAdapter().getItem(position);
+		final LoanViewDTO loanView = (LoanViewDTO) listView.getAdapter().getItem(position);
 		CharSequence[] items = null;
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -151,7 +145,7 @@ public class MainActivity extends FragmentActivity {
 		startActivity(settingsActivity);
 	}
 
-	protected void processLentMenu(int key, LoanView item) {
+	protected void processLentMenu(int key, LoanViewDTO item) {
 		switch (key) {
 			case 0:
 				markReturned(item.getId());
@@ -164,7 +158,7 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
-	protected void processReturnedMenu(int key, LoanView item) {
+	protected void processReturnedMenu(int key, LoanViewDTO item) {
 		switch (key) {
 			case 0:
 				markArchived(item.getId());
@@ -177,7 +171,7 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
-	protected void processArchivedMenu(int key, LoanView item) {
+	protected void processArchivedMenu(int key, LoanViewDTO item) {
 		switch (key) {
 			case 0:
 				askForDelete(item);
@@ -188,7 +182,7 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	protected void markReturned(Integer id) {
-		Loan loan = loanDAO.find(id);
+		LoanDTO loan = loanDAO.find(id);
 		loan.setStatus(Status.RETURNED.id());
 		loan.setReturnDate(DateFormatUtil.formatToDB(new Date()));
 		loanDAO.update(loan);
@@ -200,7 +194,7 @@ public class MainActivity extends FragmentActivity {
 		onResume();
 	}
 
-	protected void askForDelete(final LoanView item) {
+	protected void askForDelete(final LoanViewDTO item) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(getString(R.string.delete)).setCancelable(false)
 				.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
@@ -217,7 +211,7 @@ public class MainActivity extends FragmentActivity {
 		builder.create().show();
 	}
 
-	protected void delete(LoanView item) {
+	protected void delete(LoanViewDTO item) {
 		loanDAO.delete(item.getId());
 		onResume();
 	}

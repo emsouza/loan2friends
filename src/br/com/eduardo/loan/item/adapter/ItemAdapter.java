@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.model.entity.Item;
+import br.com.eduardo.loan.model.entity.ItemDTO;
 import br.com.eduardo.loan.util.type.ItemTypeImage;
 import br.com.eduardo.loan.util.type.Status;
 
@@ -19,11 +19,11 @@ import br.com.eduardo.loan.util.type.Status;
  *         06/05/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com </a>
  */
-public class ItemAdapter extends ArrayAdapter<Item> {
+public class ItemAdapter extends ArrayAdapter<ItemDTO> {
 
-	private ArrayList<Item> items;
+	private ArrayList<ItemDTO> items;
 
-	public ItemAdapter(Context context, ArrayList<Item> items) {
+	public ItemAdapter(Context context, ArrayList<ItemDTO> items) {
 		super(context, R.layout.ac_item_list_row, items);
 		this.items = items;
 	}
@@ -35,7 +35,7 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 			LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			v = vi.inflate(R.layout.ac_item_list_row, null);
 		}
-		Item o = items.get(position);
+		ItemDTO o = items.get(position);
 		if (o != null) {
 			TextView tt = (TextView) v.findViewById(R.id.ac_item_list_title);
 			TextView bt = (TextView) v.findViewById(R.id.ac_item_list_status);
@@ -59,7 +59,7 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 		return v;
 	}
 
-	public ArrayList<Item> getItems() {
+	public ArrayList<ItemDTO> getItems() {
 		return items;
 	}
 }

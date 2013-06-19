@@ -9,7 +9,7 @@ import android.widget.ListView;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.friend.adapter.FriendDialogAdapter;
 import br.com.eduardo.loan.model.FriendDAO;
-import br.com.eduardo.loan.model.entity.Friend;
+import br.com.eduardo.loan.model.entity.FriendDTO;
 
 /**
  * @author Eduardo Matos de Souza<br>
@@ -18,7 +18,7 @@ import br.com.eduardo.loan.model.entity.Friend;
  */
 public class FriendSearchDialog extends Dialog implements OnItemClickListener {
 
-	protected Friend friend;
+	protected FriendDTO friend;
 
 	public FriendSearchDialog(Context context) {
 		super(context);
@@ -39,11 +39,11 @@ public class FriendSearchDialog extends Dialog implements OnItemClickListener {
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		friend = ((Friend) arg0.getItemAtPosition(arg2));
+		friend = ((FriendDTO) arg0.getItemAtPosition(arg2));
 		dismiss();
 	}
 
-	public Friend getItemSelected() {
+	public FriendDTO getItemSelected() {
 		return friend;
 	}
 }

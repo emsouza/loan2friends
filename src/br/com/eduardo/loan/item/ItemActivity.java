@@ -11,7 +11,7 @@ import br.com.eduardo.loan.action.HomeAction;
 import br.com.eduardo.loan.item.adapter.ItemAdapter;
 import br.com.eduardo.loan.model.ItemDAO;
 import br.com.eduardo.loan.model.LoanDAO;
-import br.com.eduardo.loan.model.entity.Item;
+import br.com.eduardo.loan.model.entity.ItemDTO;
 import br.com.emsouza.widget.bar.ActionBar;
 
 import com.googlecode.androidannotations.annotations.AfterViews;
@@ -66,7 +66,7 @@ public class ItemActivity extends FragmentActivity {
 		builder.setItems(items, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int item) {
-				Item f = (Item) listView.getAdapter().getItem(position);
+				ItemDTO f = (ItemDTO) listView.getAdapter().getItem(position);
 				processMenu(item, f);
 			}
 		});
@@ -74,7 +74,7 @@ public class ItemActivity extends FragmentActivity {
 		alert.show();
 	}
 
-	protected void processMenu(int key, Item item) {
+	protected void processMenu(int key, ItemDTO item) {
 		switch (key) {
 			case 0:
 				detail(item);
@@ -90,7 +90,7 @@ public class ItemActivity extends FragmentActivity {
 		}
 	}
 
-	protected void detail(Item item) {
+	protected void detail(ItemDTO item) {
 		Intent intent = new Intent(this, ItemDetailActivity_.class);
 		Bundle bun = new Bundle();
 		bun.putInt("id", item.getId());
@@ -98,7 +98,7 @@ public class ItemActivity extends FragmentActivity {
 		this.startActivity(intent);
 	}
 
-	protected void edit(Item item) {
+	protected void edit(ItemDTO item) {
 		Intent intent = new Intent(this, ItemEditActivity_.class);
 		Bundle bun = new Bundle();
 		bun.putInt("id", item.getId());
@@ -106,7 +106,7 @@ public class ItemActivity extends FragmentActivity {
 		this.startActivity(intent);
 	}
 
-	protected void askForDelete(final Item item) {
+	protected void askForDelete(final ItemDTO item) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(getString(R.string.delete)).setCancelable(false)
 				.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
@@ -123,7 +123,7 @@ public class ItemActivity extends FragmentActivity {
 		builder.create().show();
 	}
 
-	protected void delete(Item item) {
+	protected void delete(ItemDTO item) {
 		loanDAO.deleteItem(item.getId());
 		itemDAO.delete(item.getId());
 		onResume();

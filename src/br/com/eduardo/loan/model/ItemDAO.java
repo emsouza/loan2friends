@@ -6,7 +6,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
-import br.com.eduardo.loan.model.entity.Item;
+import br.com.eduardo.loan.model.entity.ItemDTO;
 import br.com.eduardo.loan.util.type.Status;
 
 import com.googlecode.androidannotations.annotations.EBean;
@@ -34,7 +34,7 @@ public class ItemDAO extends AbstractDAO {
 		super(context);
 	}
 
-	public void insert(Item item) {
+	public void insert(ItemDTO item) {
 		ContentValues value = new ContentValues();
 		value.put(TITLE_COLUMN, item.getTitle());
 		value.put(DESC_COLUMN, item.getDescription());
@@ -47,7 +47,7 @@ public class ItemDAO extends AbstractDAO {
 		}
 	}
 
-	public void update(Item item) {
+	public void update(ItemDTO item) {
 		String where = ID_COLUMN + " = " + item.getId();
 		ContentValues value = new ContentValues();
 		value.put(TITLE_COLUMN, item.getTitle());
@@ -71,8 +71,8 @@ public class ItemDAO extends AbstractDAO {
 		}
 	}
 
-	public Item find(Integer id) {
-		Item item = new Item();
+	public ItemDTO find(Integer id) {
+		ItemDTO item = new ItemDTO();
 		String where = ID_COLUMN + " = " + id;
 		Cursor cursor = getReadableDatabase().query(true, TABLE_NAME, null, where, null, null, null, null, null);
 		if (cursor != null) {
@@ -87,12 +87,12 @@ public class ItemDAO extends AbstractDAO {
 		return null;
 	}
 
-	private ArrayList<Item> findAllItens() {
-		ArrayList<Item> list = new ArrayList<Item>();
+	private ArrayList<ItemDTO> findAllItens() {
+		ArrayList<ItemDTO> list = new ArrayList<ItemDTO>();
 		Cursor cursor = getReadableDatabase().query(TABLE_NAME, null, null, null, null, null, null);
 		if (cursor != null) {
 			while (cursor.moveToNext()) {
-				Item item = new Item();
+				ItemDTO item = new ItemDTO();
 				item.setId(cursor.getInt(0));
 				item.setTitle(cursor.getString(1));
 				item.setDescription(cursor.getString(2));
@@ -104,9 +104,9 @@ public class ItemDAO extends AbstractDAO {
 		return list;
 	}
 
-	public ArrayList<Item> findAll() {
-		ArrayList<Item> list = findAllItens();
-		for (Item i : list) {
+	public ArrayList<ItemDTO> findAll() {
+		ArrayList<ItemDTO> list = findAllItens();
+		for (ItemDTO i : list) {
 			Cursor cursor = getReadableDatabase().query("LOAN_HISTORY", new String[] { "FG_STATUS" }, "ID_ITEM = " + i.getId(), null, null, null,
 					"DT_LENT DESC", "1");
 			if (cursor != null && cursor.moveToFirst()) {
@@ -125,9 +125,9 @@ public class ItemDAO extends AbstractDAO {
 		return list;
 	}
 
-	public ArrayList<Item> findAllAvailable() {
-		ArrayList<Item> list = new ArrayList<Item>();
-		for (Item i : findAllItens()) {
+	public ArrayList<ItemDTO> findAllAvailable() {
+		ArrayList<ItemDTO> list = new ArrayList<ItemDTO>();
+		for (ItemDTO i : findAllItens()) {
 			Cursor cursor = getReadableDatabase().query("LOAN_HISTORY", new String[] { "FG_STATUS" }, "ID_ITEM = " + i.getId(), null, null, null,
 					"DT_LENT DESC", "1");
 			if (cursor != null && cursor.moveToFirst()) {

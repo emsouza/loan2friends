@@ -9,7 +9,7 @@ import android.widget.ListView;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.item.adapter.ItemDialogAdapter;
 import br.com.eduardo.loan.model.ItemDAO;
-import br.com.eduardo.loan.model.entity.Item;
+import br.com.eduardo.loan.model.entity.ItemDTO;
 
 /**
  * @author Eduardo Matos de Souza<br>
@@ -18,7 +18,7 @@ import br.com.eduardo.loan.model.entity.Item;
  */
 public class ItemSearchDialog extends Dialog implements OnItemClickListener {
 
-	protected Item item;
+	protected ItemDTO item;
 
 	public ItemSearchDialog(Context context) {
 		super(context);
@@ -39,11 +39,11 @@ public class ItemSearchDialog extends Dialog implements OnItemClickListener {
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		item = ((Item) arg0.getItemAtPosition(arg2));
+		item = ((ItemDTO) arg0.getItemAtPosition(arg2));
 		dismiss();
 	}
 
-	public Item getItemSelected() {
+	public ItemDTO getItemSelected() {
 		return item;
 	}
 }

@@ -4,8 +4,8 @@ import java.util.List;
 
 import android.content.Context;
 import br.com.eduardo.loan.model.FriendDAO;
-import br.com.eduardo.loan.model.entity.Contact;
-import br.com.eduardo.loan.model.entity.Friend;
+import br.com.eduardo.loan.model.entity.ContactDTO;
+import br.com.eduardo.loan.model.entity.FriendDTO;
 import br.com.eduardo.loan.util.ContactFinder;
 
 /**
@@ -21,12 +21,12 @@ public class ContactImporter {
 	 * @param context Contexto de Execução
 	 */
 	public static void importContact(Context context) {
-		List<Contact> list = ContactFinder.getContacts(context);
+		List<ContactDTO> list = ContactFinder.getContacts(context);
 		FriendDAO db = new FriendDAO(context);
-		for (Contact c : list) {
-			Friend f = db.findByNumber(c.getNumber());
+		for (ContactDTO c : list) {
+			FriendDTO f = db.findByNumber(c.getNumber());
 			if (f == null) {
-				Friend friend = new Friend();
+				FriendDTO friend = new FriendDTO();
 				friend.setName(c.getName());
 				friend.setPhone(c.getNumber());
 				friend.setContactId(c.getContactId());
