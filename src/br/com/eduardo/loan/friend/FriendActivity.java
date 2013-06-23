@@ -11,10 +11,10 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.action.HomeAction;
-import br.com.eduardo.loan.adapter.FriendAdapter;
-import br.com.eduardo.loan.db.FriendDAO;
-import br.com.eduardo.loan.db.LoanDAO;
-import br.com.eduardo.loan.entity.Friend;
+import br.com.eduardo.loan.friend.adapter.FriendAdapter;
+import br.com.eduardo.loan.model.FriendDAO;
+import br.com.eduardo.loan.model.LoanDAO;
+import br.com.eduardo.loan.model.entity.FriendDTO;
 import br.com.eduardo.loan.util.contact.ContactImporter;
 import br.com.emsouza.widget.bar.ActionBar;
 
@@ -30,7 +30,7 @@ import com.googlecode.androidannotations.annotations.ViewById;
  *         07/05/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
  */
-@EActivity(R.layout.ac_friend_list)
+@EActivity(R.layout.ac_friend)
 @OptionsMenu(R.menu.friend_menu)
 public class FriendActivity extends FragmentActivity {
 
@@ -88,7 +88,7 @@ public class FriendActivity extends FragmentActivity {
 		builder.setItems(items, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int item) {
-				Friend f = (Friend) listView.getAdapter().getItem(position);
+				FriendDTO f = (FriendDTO) listView.getAdapter().getItem(position);
 				processMenu(item, f);
 			}
 		});
@@ -96,7 +96,7 @@ public class FriendActivity extends FragmentActivity {
 		alert.show();
 	}
 
-	protected void processMenu(int key, Friend item) {
+	protected void processMenu(int key, FriendDTO item) {
 		switch (key) {
 			case 0:
 				edit(item);
@@ -109,7 +109,7 @@ public class FriendActivity extends FragmentActivity {
 		}
 	}
 
-	private void edit(Friend item) {
+	private void edit(FriendDTO item) {
 		Intent intent = new Intent(this, FriendEditActivity_.class);
 		Bundle bun = new Bundle();
 		bun.putInt("id", item.getId());
@@ -117,7 +117,7 @@ public class FriendActivity extends FragmentActivity {
 		this.startActivity(intent);
 	}
 
-	private void askForDelete(final Friend item) {
+	private void askForDelete(final FriendDTO item) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(getString(R.string.delete)).setCancelable(false)
 				.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
@@ -134,7 +134,7 @@ public class FriendActivity extends FragmentActivity {
 		builder.create().show();
 	}
 
-	protected void delete(Friend item) {
+	protected void delete(FriendDTO item) {
 		LoanDAO dbLoan = new LoanDAO(this);
 		FriendDAO dbFriend = new FriendDAO(this);
 		dbLoan.deleteFriend(item.getId());

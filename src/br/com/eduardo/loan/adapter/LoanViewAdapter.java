@@ -17,8 +17,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.entity.LoanView;
-import br.com.eduardo.loan.group.TextViewGroup;
+import br.com.eduardo.loan.model.entity.LoanViewDTO;
+import br.com.eduardo.loan.ui.view.TextViewGroup;
 import br.com.eduardo.loan.util.ConfigPreferences;
 import br.com.eduardo.loan.util.ContactFinder;
 import br.com.eduardo.loan.util.DateFormatUtil;
@@ -29,13 +29,13 @@ import br.com.eduardo.loan.util.type.StatusImage;
  *         06/05/2011 <br>
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com </a>
  */
-public class LoanViewAdapter extends ArrayAdapter<LoanView> {
+public class LoanViewAdapter extends ArrayAdapter<LoanViewDTO> {
 
 	private SimpleDateFormat GUI_FORMAT;
 
-	private ArrayList<LoanView> items;
+	private ArrayList<LoanViewDTO> items;
 
-	public LoanViewAdapter(Context context, ArrayList<LoanView> items) {
+	public LoanViewAdapter(Context context, ArrayList<LoanViewDTO> items) {
 		super(context, R.layout.ac_loan_list_row, items);
 		this.items = items;
 
@@ -59,7 +59,7 @@ public class LoanViewAdapter extends ArrayAdapter<LoanView> {
 			LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			v = vi.inflate(R.layout.ac_loan_list_row, null);
 		}
-		LoanView o = items.get(position);
+		LoanViewDTO o = items.get(position);
 		if (o != null) {
 			TextView title = (TextView) v.findViewById(R.id.loanTitle);
 			TextViewGroup lentDate = (TextViewGroup) v.findViewById(R.id.lentDate);
@@ -83,7 +83,7 @@ public class LoanViewAdapter extends ArrayAdapter<LoanView> {
 		return v;
 	}
 
-	public ArrayList<LoanView> getItems() {
+	public ArrayList<LoanViewDTO> getItems() {
 		return items;
 	}
 }

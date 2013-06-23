@@ -5,7 +5,7 @@ import java.util.Date;
 import android.content.Context;
 import android.widget.Toast;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.entity.Loan;
+import br.com.eduardo.loan.model.entity.LoanDTO;
 import br.com.eduardo.loan.util.CompareDate;
 import br.com.eduardo.loan.util.DateFormatUtil;
 
@@ -16,7 +16,7 @@ import br.com.eduardo.loan.util.DateFormatUtil;
  */
 public class LoanValidator {
 
-	public static boolean validaLoan(Context context, Loan loan) {
+	public static boolean validaLoan(Context context, LoanDTO loan) {
 		if (loan.getIdItem() == null || loan.getIdItem() <= 0) {
 			Toast toast = Toast.makeText(context, R.string.iditem_error, Toast.LENGTH_SHORT);
 			toast.show();

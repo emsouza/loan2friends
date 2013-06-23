@@ -5,10 +5,10 @@ import android.content.DialogInterface.OnDismissListener;
 import android.support.v4.app.FragmentActivity;
 import android.widget.EditText;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.db.FriendDAO;
-import br.com.eduardo.loan.entity.Contact;
-import br.com.eduardo.loan.entity.Friend;
 import br.com.eduardo.loan.friend.dialog.ContactDialog;
+import br.com.eduardo.loan.model.FriendDAO;
+import br.com.eduardo.loan.model.entity.ContactDTO;
+import br.com.eduardo.loan.model.entity.FriendDTO;
 import br.com.eduardo.loan.util.validator.FriendValidator;
 
 import com.googlecode.androidannotations.annotations.Bean;
@@ -50,7 +50,7 @@ public class FriendAddActivity extends FragmentActivity {
 		dialog.show();
 	}
 
-	protected void setData(Contact item) {
+	protected void setData(ContactDTO item) {
 		if (item != null) {
 			name.setText(item.getName());
 			number.setText(item.getNumber() != null ? item.getNumber() : "");
@@ -60,7 +60,7 @@ public class FriendAddActivity extends FragmentActivity {
 
 	@Click(R.id.ac_friend_add_save)
 	void saveFriend() {
-		Friend friend = new Friend();
+		FriendDTO friend = new FriendDTO();
 		friend.setName(name.getText().toString());
 		friend.setPhone(number.getText().toString());
 		if (contactId != null) {

@@ -7,32 +7,33 @@
 
     <ImageView
         android:id="@+id/friendIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="@drawable/photo_bg"
         android:contentDescription="@string/cd_item"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_type_grid_cd" />
 
     <LinearLayout
         android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_height="50dp"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:paddingLeft="5dip" >
 
         <TextView
             android:id="@+id/loanTitle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:ellipsize="end"
             android:singleLine="true"
-            android:textColor="@color/gray_dark"
+            android:textColor="@color/orange"
             android:textStyle="bold" />
 
-        <br.com.eduardo.loan.group.TextViewGroup_
+        <br.com.eduardo.loan.ui.view.TextViewGroup_
             android:id="@+id/lentDate"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            android:layout_width="wrap_content"
+            android:layout_height="25dp" />
     </LinearLayout>
 
     <LinearLayout

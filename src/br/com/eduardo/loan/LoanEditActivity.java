@@ -13,12 +13,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.db.FriendDAO;
-import br.com.eduardo.loan.db.ItemDAO;
-import br.com.eduardo.loan.db.LoanDAO;
-import br.com.eduardo.loan.entity.Friend;
-import br.com.eduardo.loan.entity.Item;
-import br.com.eduardo.loan.entity.Loan;
+import br.com.eduardo.loan.model.FriendDAO;
+import br.com.eduardo.loan.model.ItemDAO;
+import br.com.eduardo.loan.model.LoanDAO;
+import br.com.eduardo.loan.model.entity.FriendDTO;
+import br.com.eduardo.loan.model.entity.ItemDTO;
+import br.com.eduardo.loan.model.entity.LoanDTO;
 import br.com.eduardo.loan.util.DateFormatUtil;
 
 /**
@@ -28,11 +28,11 @@ import br.com.eduardo.loan.util.DateFormatUtil;
  */
 public class LoanEditActivity extends FragmentActivity {
 
-	private Loan loan;
+	private LoanDTO loan;
 
-	private Item item;
+	private ItemDTO item;
 
-	private Friend friend;
+	private FriendDTO friend;
 
 	protected Spinner status;
 

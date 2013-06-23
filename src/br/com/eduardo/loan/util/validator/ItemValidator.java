@@ -3,7 +3,7 @@ package br.com.eduardo.loan.util.validator;
 import android.content.Context;
 import android.widget.Toast;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.entity.Item;
+import br.com.eduardo.loan.model.entity.ItemDTO;
 
 /**
  * @author Eduardo Matos de Souza<br>
@@ -12,7 +12,7 @@ import br.com.eduardo.loan.entity.Item;
  */
 public class ItemValidator {
 
-	public static boolean validaItem(Context context, Item item) {
+	public static boolean validaItem(Context context, ItemDTO item) {
 		if (item.getTitle() != null && item.getTitle().length() > 0) {
 			return true;
 		} else {

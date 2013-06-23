@@ -9,8 +9,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.adapter.ContactAdapter;
-import br.com.eduardo.loan.entity.Contact;
+import br.com.eduardo.loan.friend.adapter.ContactAdapter;
+import br.com.eduardo.loan.model.entity.ContactDTO;
 import br.com.eduardo.loan.util.ContactFinder;
 
 /**
@@ -20,7 +20,7 @@ import br.com.eduardo.loan.util.ContactFinder;
  */
 public class ContactDialog extends Dialog implements OnItemClickListener {
 
-	protected Contact itemSelected;
+	protected ContactDTO itemSelected;
 
 	protected ListView listView;
 
@@ -34,7 +34,7 @@ public class ContactDialog extends Dialog implements OnItemClickListener {
 
 	public void populate() {
 		try {
-			ArrayList<Contact> list = ContactFinder.getContacts(getContext());
+			ArrayList<ContactDTO> list = ContactFinder.getContacts(getContext());
 			ContactAdapter adapter = new ContactAdapter(getContext(), R.layout.dg_contact_list, list);
 			listView.setAdapter(adapter);
 			setContentView(listView);
@@ -45,11 +45,11 @@ public class ContactDialog extends Dialog implements OnItemClickListener {
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		itemSelected = (Contact) arg0.getItemAtPosition(arg2);
+		itemSelected = (ContactDTO) arg0.getItemAtPosition(arg2);
 		dismiss();
 	}
 
-	public Contact getItemSelected() {
+	public ContactDTO getItemSelected() {
 		return itemSelected;
 	}
 }

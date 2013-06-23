@@ -3,7 +3,7 @@ package br.com.eduardo.loan.util.validator;
 import android.content.Context;
 import android.widget.Toast;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.entity.Friend;
+import br.com.eduardo.loan.model.entity.FriendDTO;
 
 /**
  * @author Eduardo Matos de Souza<br>
@@ -12,7 +12,7 @@ import br.com.eduardo.loan.entity.Friend;
  */
 public class FriendValidator {
 
-	public static boolean validaFriend(Context context, Friend friend) {
+	public static boolean validaFriend(Context context, FriendDTO friend) {
 		if (friend.getName() != null && friend.getName().length() > 0) {
 			return true;
 		} else {

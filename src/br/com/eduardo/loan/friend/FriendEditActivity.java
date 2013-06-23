@@ -4,8 +4,8 @@ import android.support.v4.app.FragmentActivity;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.widget.EditText;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.db.FriendDAO;
-import br.com.eduardo.loan.entity.Friend;
+import br.com.eduardo.loan.model.FriendDAO;
+import br.com.eduardo.loan.model.entity.FriendDTO;
 import br.com.eduardo.loan.util.validator.FriendValidator;
 
 import com.googlecode.androidannotations.annotations.AfterViews;
@@ -39,14 +39,14 @@ public class FriendEditActivity extends FragmentActivity {
 	void afterView() {
 		number.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
-		Friend friend = friendDAO.find(id);
+		FriendDTO friend = friendDAO.find(id);
 		name.setText(friend.getName());
 		number.setText(friend.getPhone());
 	}
 
 	@Click(R.id.ac_friend_edit_save)
 	void saveFriend() {
-		Friend friend = new Friend();
+		FriendDTO friend = new FriendDTO();
 		friend.setId(id);
 		friend.setName(((EditText) this.findViewById(R.id.ac_friend_edit_name)).getText().toString());
 		friend.setPhone(((EditText) this.findViewById(R.id.ac_friend_edit_number)).getText().toString());

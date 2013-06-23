@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import br.com.eduardo.loan.R;
-import br.com.eduardo.loan.db.ItemDAO;
-import br.com.eduardo.loan.entity.Item;
+import br.com.eduardo.loan.model.ItemDAO;
+import br.com.eduardo.loan.model.entity.ItemDTO;
 import br.com.eduardo.loan.util.type.ItemTypeImage;
 import br.com.eduardo.loan.util.type.Status;
 import br.com.eduardo.loan.util.validator.ItemValidator;
@@ -72,7 +72,7 @@ public class ItemAddActivity extends FragmentActivity {
 
 	@Click(R.id.ac_item_add_save)
 	void saveItem() {
-		Item item = new Item();
+		ItemDTO item = new ItemDTO();
 		item.setTitle(title.getText().toString());
 		item.setDescription(description.getText().toString());
 		item.setStatus(Status.AVAILABLE.id());

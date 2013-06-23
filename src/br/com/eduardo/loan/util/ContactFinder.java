@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import br.com.eduardo.loan.entity.Contact;
+import br.com.eduardo.loan.model.entity.ContactDTO;
 
 /**
  * @author Eduardo Matos de Souza<br>
@@ -20,8 +20,8 @@ public class ContactFinder {
 	 * @param context Contexto em que a classe foi invocada.
 	 * @return Lista de <ContactItem> com as informações��es dos contatos.
 	 */
-	public static ArrayList<Contact> getContacts(Context context) {
-		ArrayList<Contact> list = new ArrayList<Contact>();
+	public static ArrayList<ContactDTO> getContacts(Context context) {
+		ArrayList<ContactDTO> list = new ArrayList<ContactDTO>();
 
 		Cursor cursor = null;
 
@@ -33,7 +33,7 @@ public class ContactFinder {
 
 		if (cursor != null && cursor.getCount() > 0) {
 			while (cursor.moveToNext()) {
-				Contact item = new Contact();
+				ContactDTO item = new ContactDTO();
 				item.setContactId(cursor.getLong(0));
 				item.setName(cursor.getString(1));
 				item.setNumber(cursor.getString(2));
