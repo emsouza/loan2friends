@@ -68,7 +68,7 @@ public class LoanDAO extends AbstractDAO {
 	public void archive(Integer id) {
 		ContentValues value = new ContentValues();
 		value.put(STATUS_COLUMN, Status.RETURNED.id());
-		getWritableDatabase().update(TABLE_NAME, value, ID_COLUMN + " = " + id, new String[] { String.valueOf(id) });
+		getWritableDatabase().update(TABLE_NAME, value, ID_COLUMN + " = ?", new String[] { String.valueOf(id) });
 	}
 
 	public void delete(Integer id) {
