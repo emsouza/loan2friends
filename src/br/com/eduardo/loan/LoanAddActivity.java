@@ -1,7 +1,8 @@
 package br.com.eduardo.loan;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.Locale;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -10,23 +11,21 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TimePicker;
 import br.com.eduardo.loan.action.HomeAction;
 import br.com.eduardo.loan.friend.dialog.FriendSearchDialog;
 import br.com.eduardo.loan.item.dialog.ItemSearchDialog;
-import br.com.eduardo.loan.model.LoanDAO;
 import br.com.eduardo.loan.model.entity.FriendDTO;
 import br.com.eduardo.loan.model.entity.ItemDTO;
 import br.com.eduardo.loan.model.entity.LoanDTO;
-import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.type.Status;
-import br.com.eduardo.loan.util.validator.LoanValidator;
 import br.com.emsouza.widget.bar.ActionBar;
+import br.com.emsouza.widget.dateslider.DateSlider;
+import br.com.emsouza.widget.dateslider.DefaultDateSlider;
 
 import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.ViewById;
 
@@ -38,38 +37,32 @@ import com.googlecode.androidannotations.annotations.ViewById;
 @EActivity(R.layout.ac_loan_add)
 public class LoanAddActivity extends FragmentActivity {
 
-	@ViewById(R.id.actionBar)
-	protected ActionBar actionBar;
-
 	static final int DIALOG_FRIEND_ID = 0;
 
 	static final int DIALOG_ITEM_ID = 1;
 
+	@ViewById(R.id.actionBar)
+	protected ActionBar actionBar;
+
+	@ViewById(R.id.itemNameText)
+	protected EditText itemName;
+
+	@ViewById(R.id.friendNameText)
+	protected EditText friendName;
+
+	@ViewById(R.id.dateText)
+	protected EditText date;
+
 	protected ItemDTO item;
 
 	protected FriendDTO friend;
-
-	protected EditText itemName;
-
-	protected EditText friendName;
-
-	protected DatePicker date;
-
-	protected TimePicker time;
 
 	@AfterViews
 	void afterView() {
 		actionBar.setHomeAction(new HomeAction(this));
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
-		itemName = (EditText) this.findViewById(R.id.ac_loan_item_name);
-		friendName = (EditText) this.findViewById(R.id.ac_loan_frient_name);
-		date = (DatePicker) this.findViewById(R.id.ac_loan_add_date);
-		time = (TimePicker) this.findViewById(R.id.ac_loan_add_time);
-
-		time.setIs24HourView(true);
-
-		ImageButton searchFriend = (ImageButton) findViewById(R.id.ac_loan_friend_search);
+		ImageButton searchFriend = (ImageButton) findViewById(R.id.friendSearch);
 		searchFriend.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -84,7 +77,7 @@ public class LoanAddActivity extends FragmentActivity {
 			}
 		});
 
-		ImageButton searchItem = (ImageButton) findViewById(R.id.ac_loan_item_search);
+		ImageButton searchItem = (ImageButton) findViewById(R.id.itemSearch);
 		searchItem.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -99,7 +92,7 @@ public class LoanAddActivity extends FragmentActivity {
 			}
 		});
 
-		Button save = (Button) findViewById(R.id.ac_loan_add_save);
+		Button save = (Button) findViewById(R.id.saveLoan);
 		save.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -107,13 +100,27 @@ public class LoanAddActivity extends FragmentActivity {
 			}
 		});
 
-		Button cancel = (Button) findViewById(R.id.ac_loan_add_cancel);
+		Button cancel = (Button) findViewById(R.id.cancelLoan);
 		cancel.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				finish();
 			}
 		});
+	}
+
+	@Click(R.id.dateText)
+	protected void dateClick() {
+		DateSlider.OnDateSetListener dateListener = new DateSlider.OnDateSetListener() {
+			@Override
+			public void onDateSet(DateSlider view, Calendar selectedDate) {
+				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+				date.setText(format.format(selectedDate.getTime()));
+			}
+		};
+
+		DefaultDateSlider slider = new DefaultDateSlider(this, getString(R.string.date_loan), dateListener, Calendar.getInstance());
+		slider.show();
 	}
 
 	@Override
@@ -156,21 +163,21 @@ public class LoanAddActivity extends FragmentActivity {
 		loan.setIdItem(item != null ? item.getId() : null);
 		loan.setStatus(Status.LENDED.id());
 
-		Calendar cal = new GregorianCalendar();
-		cal.set(Calendar.DAY_OF_MONTH, date.getDayOfMonth());
-		cal.set(Calendar.MONTH, date.getMonth());
-		cal.set(Calendar.YEAR, date.getYear());
-		cal.set(Calendar.HOUR_OF_DAY, time.getCurrentHour());
-		cal.set(Calendar.MINUTE, time.getCurrentMinute());
-
-		loan.setLentDate(DateFormatUtil.formatToDB(cal.getTime()));
-
-		if (LoanValidator.validaLoan(this, loan)) {
-			LoanDAO db = new LoanDAO(this);
-			db.insert(loan);
-			db.close();
-
-			finish();
-		}
+		// Calendar cal = new GregorianCalendar();
+		// cal.set(Calendar.DAY_OF_MONTH, date.getDayOfMonth());
+		// cal.set(Calendar.MONTH, date.getMonth());
+		// cal.set(Calendar.YEAR, date.getYear());
+		// cal.set(Calendar.HOUR_OF_DAY, time.getCurrentHour());
+		// cal.set(Calendar.MINUTE, time.getCurrentMinute());
+		//
+		// loan.setLentDate(DateFormatUtil.formatToDB(cal.getTime()));
+		//
+		// if (LoanValidator.validaLoan(this, loan)) {
+		// LoanDAO db = new LoanDAO(this);
+		// db.insert(loan);
+		// db.close();
+		//
+		// finish();
+		// }
 	}
 }

@@ -12,7 +12,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
-import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.model.FriendDAO;
 import br.com.eduardo.loan.model.ItemDAO;
 import br.com.eduardo.loan.model.LoanDAO;
@@ -51,8 +50,8 @@ public class LoanEditActivity extends FragmentActivity {
 		statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		status = (Spinner) this.findViewById(R.id.ac_loan_status);
-		date = (DatePicker) this.findViewById(R.id.ac_loan_add_date);
-		time = (TimePicker) this.findViewById(R.id.ac_loan_add_time);
+		date = (DatePicker) this.findViewById(R.id.dateText);
+		// time = (TimePicker) this.findViewById(R.id.ac_loan_add_time);
 
 		statusAdapter.add(getString(R.string.status_available));
 		statusAdapter.add(getString(R.string.status_lent));
@@ -79,8 +78,8 @@ public class LoanEditActivity extends FragmentActivity {
 		friend = dbFriend.find(loan.getIdFriend());
 		dbFriend.close();
 
-		EditText friendName = (EditText) this.findViewById(R.id.ac_loan_frient_name);
-		EditText itemName = (EditText) this.findViewById(R.id.ac_loan_item_name);
+		EditText friendName = (EditText) this.findViewById(R.id.friendNameText);
+		EditText itemName = (EditText) this.findViewById(R.id.itemNameText);
 
 		friendName.setText(friend.getName());
 		itemName.setText(item.getTitle());

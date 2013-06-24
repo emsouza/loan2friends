@@ -30,8 +30,8 @@
 	<string name="phone_number">Phone Number:</string> <!-- Status -->
 
 	<!-- Texto de Labels -->
-	<string name="ac_loan_friend_name">Friend</string>
-	<string name="ac_loan_item_name">Item</string>
+	<string name="friendNameLabel">Friend</string>
+	<string name="itemNameLabel">Item</string>
 	<string name="ac_loan_status">Status</string>
 	<string name="ac_friend_add_name">Name</string>
 	<string name="ac_friend_add_number">Phone Number</string>

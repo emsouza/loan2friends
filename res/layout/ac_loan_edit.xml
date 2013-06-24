@@ -25,28 +25,28 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="@string/ac_loan_item_name" />
+                android:text="@string/itemNameLabel" />
 
             <EditText
                 android:cursorVisible="false"
                 android:editable="false"
                 android:focusable="false"
-                android:hint="@string/ac_loan_item_name"
-                android:id="@+id/ac_loan_item_name"
+                android:hint="@string/itemNameLabel"
+                android:id="@+id/itemNameText"
                 android:layout_height="wrap_content"
                 android:layout_width="fill_parent" />
 
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="@string/ac_loan_friend_name" />
+                android:text="@string/friendNameLabel" />
 
             <EditText
                 android:cursorVisible="false"
                 android:editable="false"
                 android:focusable="false"
-                android:hint="@string/ac_loan_friend_name"
-                android:id="@+id/ac_loan_frient_name"
+                android:hint="@string/friendNameLabel"
+                android:id="@+id/friendNameText"
                 android:layout_height="wrap_content"
                 android:layout_width="fill_parent" />
 

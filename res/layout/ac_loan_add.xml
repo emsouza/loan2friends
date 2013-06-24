@@ -24,25 +24,26 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ac_loan_item_name" />
+                android:text="@string/itemNameLabel" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" >
 
                 <EditText
-                    android:id="@+id/ac_loan_item_name"
+                    android:id="@+id/itemNameText"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:background="@drawable/textview_skin"
                     android:cursorVisible="false"
-                    android:editable="false"
+                    android:ellipsize="end"
                     android:focusable="false"
-                    android:hint="@string/select_item" />
+                    android:hint="@string/select_item"
+                    android:inputType="none"
+                    android:singleLine="true" />
 
                 <ImageButton
-                    android:id="@+id/ac_loan_item_search"
+                    android:id="@+id/itemSearch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/cd_search"
@@ -52,24 +53,26 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ac_loan_friend_name" />
+                android:text="@string/friendNameLabel" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" >
 
                 <EditText
-                    android:id="@+id/ac_loan_frient_name"
+                    android:id="@+id/friendNameText"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:cursorVisible="false"
-                    android:editable="false"
+                    android:ellipsize="end"
                     android:focusable="false"
-                    android:hint="@string/select_friend" />
+                    android:hint="@string/select_friend"
+                    android:inputType="none"
+                    android:singleLine="true" />
 
                 <ImageButton
-                    android:id="@+id/ac_loan_friend_search"
+                    android:id="@+id/friendSearch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/cd_search"
@@ -81,15 +84,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/date_loan" />
 
-            <DatePicker
-                android:id="@+id/ac_loan_add_date"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-
-            <TimePicker
-                android:id="@+id/ac_loan_add_time"
+            <EditText
+                android:id="@+id/dateText"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:focusable="false"
+                android:hint="@string/select_friend"
+                android:inputType="date"
                 android:paddingTop="5dp" />
 
             <LinearLayout
@@ -98,14 +99,14 @@
                 android:paddingTop="5dp" >
 
                 <Button
-                    android:id="@+id/ac_loan_add_save"
+                    android:id="@+id/saveLoan"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/button_save" />
 
                 <Button
-                    android:id="@+id/ac_loan_add_cancel"
+                    android:id="@+id/cancelLoan"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
