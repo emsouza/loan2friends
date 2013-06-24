@@ -8,3 +8,5 @@ target
 /gen
 
 .apt_generated
+/.apt_generated
+/.apt_generated/*
