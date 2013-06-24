@@ -1,12 +1,4 @@
-/bin/*
-/bin
-
-.settings
-target
-.classpath
-.project
-/gen
-
 .apt_generated
-/.apt_generated
-/.apt_generated/*
+/bin
+/gen
+/generated
