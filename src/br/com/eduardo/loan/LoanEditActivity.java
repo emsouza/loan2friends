@@ -94,7 +94,7 @@ public class LoanEditActivity extends FragmentActivity {
 		time.setCurrentHour(cal.get(Calendar.HOUR_OF_DAY));
 		time.setCurrentMinute(cal.get(Calendar.MINUTE));
 
-		Button save = (Button) findViewById(R.id.ac_loan_edit_save);
+		Button save = (Button) findViewById(R.id.buttonSave);
 		save.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -103,7 +103,7 @@ public class LoanEditActivity extends FragmentActivity {
 			}
 		});
 
-		Button cancel = (Button) findViewById(R.id.ac_loan_edit_cancel);
+		Button cancel = (Button) findViewById(R.id.buttonCancel);
 		cancel.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

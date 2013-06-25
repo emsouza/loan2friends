@@ -70,7 +70,7 @@ public class ItemAddActivity extends FragmentActivity {
 		typeAdapter.add(getString(R.string.type_money));
 	}
 
-	@Click(R.id.ac_item_add_save)
+	@Click(R.id.buttonSave)
 	void saveItem() {
 		ItemDTO item = new ItemDTO();
 		item.setTitle(title.getText().toString());
@@ -87,7 +87,7 @@ public class ItemAddActivity extends FragmentActivity {
 	}
 
 	@Override
-	@Click(R.id.ac_item_add_cancel)
+	@Click(R.id.buttonCancel)
 	public void finish() {
 		super.finish();
 	}

@@ -1,56 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/LinearLayout01"
-    android:layout_height="fill_parent"
     android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical" >
 
     <fragment
         android:id="@+id/head"
-        android:layout_height="@dimen/actionbar_height"
+        android:name="br.com.eduardo.loan.ui.fragment.TitleFragment"
         android:layout_width="fill_parent"
-        android:name="br.com.eduardo.loan.ui.fragment.TitleFragment" />
+        android:layout_height="@dimen/actionbar_height" />
 
     <TextView
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/ac_friend_add_name" />
 
     <EditText
-        android:hint="@string/ac_friend_add_name"
         android:id="@+id/ac_friend_edit_name"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_width="fill_parent" />
+        android:hint="@string/ac_friend_add_name" />
 
     <TextView
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/ac_friend_add_number" />
 
     <EditText
-        android:hint="@string/ac_friend_add_number"
         android:id="@+id/ac_friend_edit_number"
-        android:inputType="phone"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_width="fill_parent" />
+        android:hint="@string/ac_friend_add_number"
+        android:inputType="phone" />
 
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent" >
-
-        <Button
-            android:id="@+id/ac_friend_edit_save"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="fill_parent"
-            android:text="@string/button_save" />
-
-        <Button
-            android:id="@+id/ac_friend_edit_cancel"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_width="fill_parent"
-            android:text="@string/button_cancel" />
-    </LinearLayout>
+    <fragment
+        android:id="@+id/action"
+        android:name="br.com.eduardo.loan.ui.fragment.SaveCancelFragment_"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

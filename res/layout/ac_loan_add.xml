@@ -26,58 +26,34 @@
                 android:layout_height="wrap_content"
                 android:text="@string/itemNameLabel" />
 
-            <LinearLayout
+            <EditText
+                android:id="@+id/itemNameText"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <EditText
-                    android:id="@+id/itemNameText"
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:cursorVisible="false"
-                    android:ellipsize="end"
-                    android:focusable="false"
-                    android:hint="@string/select_item"
-                    android:inputType="none"
-                    android:singleLine="true" />
-
-                <ImageButton
-                    android:id="@+id/itemSearch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/cd_search"
-                    android:src="@drawable/ic_button_search" />
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:drawableRight="@drawable/ic_button_search"
+                android:ellipsize="end"
+                android:focusable="false"
+                android:hint="@string/select_item"
+                android:inputType="none"
+                android:singleLine="true" />
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/friendNameLabel" />
 
-            <LinearLayout
+            <EditText
+                android:id="@+id/friendNameText"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <EditText
-                    android:id="@+id/friendNameText"
-                    android:layout_width="0dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:cursorVisible="false"
-                    android:ellipsize="end"
-                    android:focusable="false"
-                    android:hint="@string/select_friend"
-                    android:inputType="none"
-                    android:singleLine="true" />
-
-                <ImageButton
-                    android:id="@+id/friendSearch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/cd_search"
-                    android:src="@drawable/ic_button_search" />
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:drawableRight="@drawable/ic_button_search"
+                android:ellipsize="end"
+                android:focusable="false"
+                android:hint="@string/select_friend"
+                android:inputType="none"
+                android:singleLine="true" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -88,30 +64,17 @@
                 android:id="@+id/dateText"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_button_search"
                 android:focusable="false"
                 android:hint="@string/select_friend"
                 android:inputType="date"
                 android:paddingTop="5dp" />
 
-            <LinearLayout
+            <fragment
+                android:id="@+id/action"
+                android:name="br.com.eduardo.loan.ui.fragment.SaveCancelFragment_"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp" >
-
-                <Button
-                    android:id="@+id/saveLoan"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/button_save" />
-
-                <Button
-                    android:id="@+id/cancelLoan"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/button_cancel" />
-            </LinearLayout>
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
 

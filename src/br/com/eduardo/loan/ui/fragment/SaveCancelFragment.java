@@ -15,10 +15,10 @@ import com.googlecode.androidannotations.annotations.EFragment;
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
  */
 @EFragment
-public class TitleFragment extends Fragment {
+public class SaveCancelFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fg_title, container, false);
+		return inflater.inflate(R.layout.fg_save_cancel, container, false);
 	}
 }

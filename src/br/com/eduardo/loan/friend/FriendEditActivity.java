@@ -44,7 +44,7 @@ public class FriendEditActivity extends FragmentActivity {
 		number.setText(friend.getPhone());
 	}
 
-	@Click(R.id.ac_friend_edit_save)
+	@Click(R.id.buttonSave)
 	void saveFriend() {
 		FriendDTO friend = new FriendDTO();
 		friend.setId(id);
@@ -58,7 +58,7 @@ public class FriendEditActivity extends FragmentActivity {
 	}
 
 	@Override
-	@Click(R.id.ac_friend_edit_cancel)
+	@Click(R.id.buttonCancel)
 	public void finish() {
 		super.finish();
 	}

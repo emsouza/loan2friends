@@ -8,11 +8,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import br.com.eduardo.loan.action.HomeAction;
 import br.com.eduardo.loan.friend.dialog.FriendSearchDialog;
 import br.com.eduardo.loan.item.dialog.ItemSearchDialog;
@@ -61,52 +57,26 @@ public class LoanAddActivity extends FragmentActivity {
 	void afterView() {
 		actionBar.setHomeAction(new HomeAction(this));
 		actionBar.setDisplayHomeAsUpEnabled(true);
+	}
 
-		ImageButton searchFriend = (ImageButton) findViewById(R.id.friendSearch);
-		searchFriend.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				showDialog(DIALOG_FRIEND_ID);
-			}
-		});
+	@Click(R.id.friendNameText)
+	protected void findFriend() {
+		showDialog(DIALOG_FRIEND_ID);
+	}
 
-		friendName.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				showDialog(DIALOG_FRIEND_ID);
-			}
-		});
+	@Click(R.id.itemNameText)
+	protected void findItem() {
+		showDialog(DIALOG_FRIEND_ID);
+	}
 
-		ImageButton searchItem = (ImageButton) findViewById(R.id.itemSearch);
-		searchItem.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				showDialog(DIALOG_ITEM_ID);
-			}
-		});
+	@Click(R.id.buttonSave)
+	protected void save() {
+		saveLoan();
+	}
 
-		itemName.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				showDialog(DIALOG_ITEM_ID);
-			}
-		});
-
-		Button save = (Button) findViewById(R.id.saveLoan);
-		save.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				saveLoan();
-			}
-		});
-
-		Button cancel = (Button) findViewById(R.id.cancelLoan);
-		cancel.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				finish();
-			}
-		});
+	@Click(R.id.buttonCancel)
+	protected void cancel() {
+		finish();
 	}
 
 	@Click(R.id.dateText)

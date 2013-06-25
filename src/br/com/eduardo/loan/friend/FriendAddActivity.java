@@ -58,7 +58,7 @@ public class FriendAddActivity extends FragmentActivity {
 		}
 	}
 
-	@Click(R.id.ac_friend_add_save)
+	@Click(R.id.buttonSave)
 	void saveFriend() {
 		FriendDTO friend = new FriendDTO();
 		friend.setName(name.getText().toString());
@@ -74,7 +74,7 @@ public class FriendAddActivity extends FragmentActivity {
 	}
 
 	@Override
-	@Click(R.id.ac_friend_add_cancel)
+	@Click(R.id.buttonCancel)
 	public void finish() {
 		super.finish();
 	}

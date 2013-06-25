@@ -79,7 +79,7 @@ public class ItemEditActivity extends FragmentActivity {
 		}
 	}
 
-	@Click(R.id.ac_item_add_save)
+	@Click(R.id.buttonSave)
 	void saveItem() {
 		ItemDTO item = itemDAO.find(id);
 		item.setTitle(title.getText().toString());
@@ -93,7 +93,7 @@ public class ItemEditActivity extends FragmentActivity {
 	}
 
 	@Override
-	@Click(R.id.ac_item_add_cancel)
+	@Click(R.id.buttonCancel)
 	public void finish() {
 		super.finish();
 	}
