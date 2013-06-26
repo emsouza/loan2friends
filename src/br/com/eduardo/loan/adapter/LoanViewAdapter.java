@@ -49,7 +49,6 @@ public class LoanViewAdapter extends ArrayAdapter<LoanViewDTO> {
 		} catch (Exception e) {
 			Log.e(LoanViewAdapter.class.getName(), "Erro ao buscar o formato de data");
 		}
-
 	}
 
 	@Override

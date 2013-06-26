@@ -1,26 +1,27 @@
 package br.com.eduardo.loan;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.support.v4.app.FragmentActivity;
 import android.widget.EditText;
 import br.com.eduardo.loan.action.HomeAction;
 import br.com.eduardo.loan.friend.dialog.FriendSearchDialog;
-import br.com.eduardo.loan.item.dialog.ItemSearchDialog;
+import br.com.eduardo.loan.model.LoanDAO;
 import br.com.eduardo.loan.model.entity.FriendDTO;
 import br.com.eduardo.loan.model.entity.ItemDTO;
 import br.com.eduardo.loan.model.entity.LoanDTO;
+import br.com.eduardo.loan.ui.view.DateView;
+import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.type.Status;
+import br.com.eduardo.loan.util.validator.LoanValidator;
 import br.com.emsouza.widget.bar.ActionBar;
 import br.com.emsouza.widget.dateslider.DateSlider;
 import br.com.emsouza.widget.dateslider.DefaultDateSlider;
 
 import com.googlecode.androidannotations.annotations.AfterViews;
+import com.googlecode.androidannotations.annotations.Bean;
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.ViewById;
@@ -41,13 +42,19 @@ public class LoanAddActivity extends FragmentActivity {
 	protected ActionBar actionBar;
 
 	@ViewById(R.id.itemNameText)
-	protected EditText itemName;
+	protected EditText itemText;
 
 	@ViewById(R.id.friendNameText)
-	protected EditText friendName;
+	protected EditText friendText;
 
 	@ViewById(R.id.dateText)
-	protected EditText date;
+	protected DateView dateText;
+
+	@Bean
+	protected DateFormatUtil dateTimeFormat;
+
+	@Bean
+	protected LoanDAO loanDAO;
 
 	protected ItemDTO item;
 
@@ -57,26 +64,40 @@ public class LoanAddActivity extends FragmentActivity {
 	void afterView() {
 		actionBar.setHomeAction(new HomeAction(this));
 		actionBar.setDisplayHomeAsUpEnabled(true);
+
+		dateText.setDate(Calendar.getInstance());
 	}
 
 	@Click(R.id.friendNameText)
 	protected void findFriend() {
-		showDialog(DIALOG_FRIEND_ID);
+		final FriendSearchDialog dialog = new FriendSearchDialog(this);
+		dialog.populate();
+		dialog.setOnDismissListener(new OnDismissListener() {
+			@Override
+			public void onDismiss(DialogInterface di) {
+				friend = dialog.getItemSelected();
+				if (friend != null) {
+					friendText.setText(friend.getName());
+				}
+			}
+		});
+		dialog.show();
 	}
 
 	@Click(R.id.itemNameText)
 	protected void findItem() {
-		showDialog(DIALOG_FRIEND_ID);
-	}
-
-	@Click(R.id.buttonSave)
-	protected void save() {
-		saveLoan();
-	}
-
-	@Click(R.id.buttonCancel)
-	protected void cancel() {
-		finish();
+		final FriendSearchDialog dialog = new FriendSearchDialog(this);
+		dialog.populate();
+		dialog.setOnDismissListener(new OnDismissListener() {
+			@Override
+			public void onDismiss(DialogInterface di) {
+				friend = dialog.getItemSelected();
+				if (friend != null) {
+					friendText.setText(friend.getName());
+				}
+			}
+		});
+		dialog.show();
 	}
 
 	@Click(R.id.dateText)
@@ -84,70 +105,30 @@ public class LoanAddActivity extends FragmentActivity {
 		DateSlider.OnDateSetListener dateListener = new DateSlider.OnDateSetListener() {
 			@Override
 			public void onDateSet(DateSlider view, Calendar selectedDate) {
-				SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-				date.setText(format.format(selectedDate.getTime()));
+				dateText.setDate(selectedDate);
 			}
 		};
-
 		DefaultDateSlider slider = new DefaultDateSlider(this, getString(R.string.date_loan), dateListener, Calendar.getInstance());
 		slider.show();
 	}
 
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		switch (id) {
-			case DIALOG_FRIEND_ID:
-				final FriendSearchDialog dialogFriend = new FriendSearchDialog(this);
-				dialogFriend.populate();
-				dialogFriend.setOnDismissListener(new OnDismissListener() {
-					@Override
-					public void onDismiss(DialogInterface arg0) {
-						friend = dialogFriend.getItemSelected();
-						if (friend != null) {
-							friendName.setText(friend.getName());
-						}
-					}
-				});
-				return dialogFriend;
-			case DIALOG_ITEM_ID:
-				final ItemSearchDialog dialogItem = new ItemSearchDialog(this);
-				dialogItem.populate();
-				dialogItem.setOnDismissListener(new OnDismissListener() {
-					@Override
-					public void onDismiss(DialogInterface arg0) {
-						item = dialogItem.getItemSelected();
-						if (item != null) {
-							itemName.setText(item.getTitle());
-						}
-					}
-				});
-				return dialogItem;
-			default:
-				return super.onCreateDialog(id);
-		}
-	}
-
-	protected void saveLoan() {
+	@Click(R.id.buttonSave)
+	protected void save() {
 		LoanDTO loan = new LoanDTO();
 		loan.setIdFriend(friend != null ? friend.getId() : null);
 		loan.setIdItem(item != null ? item.getId() : null);
 		loan.setStatus(Status.LENDED.id());
+		loan.setLentDate(dateTimeFormat.formatToDB(dateText.getDate().getTime()));
 
-		// Calendar cal = new GregorianCalendar();
-		// cal.set(Calendar.DAY_OF_MONTH, date.getDayOfMonth());
-		// cal.set(Calendar.MONTH, date.getMonth());
-		// cal.set(Calendar.YEAR, date.getYear());
-		// cal.set(Calendar.HOUR_OF_DAY, time.getCurrentHour());
-		// cal.set(Calendar.MINUTE, time.getCurrentMinute());
-		//
-		// loan.setLentDate(DateFormatUtil.formatToDB(cal.getTime()));
-		//
-		// if (LoanValidator.validaLoan(this, loan)) {
-		// LoanDAO db = new LoanDAO(this);
-		// db.insert(loan);
-		// db.close();
-		//
-		// finish();
-		// }
+		if (LoanValidator.validaLoan(this, loan)) {
+			loanDAO.insert(loan);
+			loanDAO.close();
+			finish();
+		}
+	}
+
+	@Click(R.id.buttonCancel)
+	protected void cancel() {
+		finish();
 	}
 }

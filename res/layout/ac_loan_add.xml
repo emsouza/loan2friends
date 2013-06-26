@@ -60,8 +60,23 @@
                 android:layout_height="wrap_content"
                 android:text="@string/date_loan" />
 
-            <EditText
+            <br.com.eduardo.loan.ui.view.DateView_
                 android:id="@+id/dateText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_button_search"
+                android:focusable="false"
+                android:hint="@string/select_friend"
+                android:inputType="date"
+                android:paddingTop="5dp" />
+            
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Alarm" />
+
+            <br.com.eduardo.loan.ui.view.DateView_
+                android:id="@+id/dateAlarmText"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/ic_button_search"
