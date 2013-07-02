@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import android.util.Log;
 import br.com.eduardo.loan.pref.LoanPref_;
 
 import com.googlecode.androidannotations.annotations.AfterInject;
@@ -33,16 +32,15 @@ public class DateFormatUtil {
 		DATE_TIME_FORMAT = new SimpleDateFormat(prefs.dateFormat().get() + " " + prefs.timeFormat().get(), Locale.getDefault());
 	}
 
-	public static Date formatToDate(String date) {
+	public Date formatToDate(String date) {
 		try {
 			return DB_FORMAT.parse(date);
 		} catch (Exception e) {
-			Log.e(DateFormatUtil.class.getName(), "Erro ao formatar data.");
 			return new Date();
 		}
 	}
 
-	public static String formatToDB(Date date) {
+	public String formatToDB(Date date) {
 		return DB_FORMAT.format(date);
 	}
 

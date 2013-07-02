@@ -9,8 +9,10 @@ import br.com.eduardo.loan.friend.dialog.ContactDialog;
 import br.com.eduardo.loan.model.FriendDAO;
 import br.com.eduardo.loan.model.entity.ContactDTO;
 import br.com.eduardo.loan.model.entity.FriendDTO;
+import br.com.eduardo.loan.ui.view.EditTextLookup;
 import br.com.eduardo.loan.util.validator.FriendValidator;
 
+import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.Bean;
 import com.googlecode.androidannotations.annotations.Click;
 import com.googlecode.androidannotations.annotations.EActivity;
@@ -24,8 +26,8 @@ import com.googlecode.androidannotations.annotations.ViewById;
 @EActivity(R.layout.ac_friend_add)
 public class FriendAddActivity extends FragmentActivity {
 
-	@ViewById(R.id.ac_friend_add_name)
-	protected EditText name;
+	@ViewById(R.id.contact_lookup)
+	protected EditTextLookup name;
 
 	@ViewById(R.id.ac_friend_add_number)
 	protected EditText number;
@@ -35,9 +37,12 @@ public class FriendAddActivity extends FragmentActivity {
 
 	protected Long contactId = null;
 
-	protected static final int DIALOG_CONTACTS_ID = 0;
+	@AfterViews
+	protected void afterView() {
+		name.setIcon(R.drawable.ic_button_search);
+	}
 
-	@Click(R.id.ac_friend_add_search)
+	@Click(R.id.contact_lookup)
 	void search() {
 		final ContactDialog dialog = new ContactDialog(this);
 		dialog.populate();
@@ -61,7 +66,7 @@ public class FriendAddActivity extends FragmentActivity {
 	@Click(R.id.buttonSave)
 	void saveFriend() {
 		FriendDTO friend = new FriendDTO();
-		friend.setName(name.getText().toString());
+		// friend.setName(name.getText().toString());
 		friend.setPhone(number.getText().toString());
 		if (contactId != null) {
 			friend.setContactId(contactId);

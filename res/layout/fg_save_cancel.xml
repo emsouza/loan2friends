@@ -6,7 +6,7 @@
 
     <Button
         android:id="@+id/buttonSave"
-        style="@style/actionButton"
+        style="@style/actionButtonStyle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -15,7 +15,7 @@
 
     <Button
         android:id="@+id/buttonCancel"
-        style="@style/actionButton"
+        style="@style/actionButtonStyle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"

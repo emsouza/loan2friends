@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.action.HomeAction;
@@ -35,12 +34,10 @@ import com.googlecode.androidannotations.annotations.ViewById;
 public class FriendActivity extends FragmentActivity {
 
 	@ViewById(R.id.actionBar)
-	ActionBar actionBar;
+	protected ActionBar actionBar;
 
 	@ViewById(R.id.ac_friend_list_view)
-	ListView listView;
-
-	protected ImageButton iButton;
+	protected ListView listView;
 
 	protected FriendAdapter adapter;
 

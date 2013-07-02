@@ -19,6 +19,7 @@ import br.com.eduardo.loan.item.ItemActivity_;
 import br.com.eduardo.loan.model.LoanDAO;
 import br.com.eduardo.loan.model.entity.LoanDTO;
 import br.com.eduardo.loan.model.entity.LoanViewDTO;
+import br.com.eduardo.loan.settings.SettingsActivity;
 import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.text.MenuStrings;
 import br.com.eduardo.loan.util.type.Status;
@@ -48,9 +49,10 @@ public class MainActivity extends FragmentActivity {
 	protected ListView listView;
 
 	@Bean
-	protected LoanDAO loanDAO;
+	protected DateFormatUtil dateTimeFormat;
 
-	protected LoanViewAdapter adapter;
+	@Bean
+	protected LoanDAO loanDAO;
 
 	protected List<String> status = new ArrayList<String>();
 
@@ -67,7 +69,7 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		listView.setAdapter(new LoanViewAdapter(MainActivity.this, loanDAO.findAll(status)));
+		listView.setAdapter(new LoanViewAdapter(MainActivity.this, dateTimeFormat, loanDAO.findAll(status)));
 	}
 
 	@ItemLongClick(R.id.ac_main_list)
@@ -184,7 +186,7 @@ public class MainActivity extends FragmentActivity {
 	protected void markReturned(Integer id) {
 		LoanDTO loan = loanDAO.find(id);
 		loan.setStatus(Status.RETURNED.id());
-		loan.setReturnDate(DateFormatUtil.formatToDB(new Date()));
+		loan.setReturnDate(dateTimeFormat.formatToDB(new Date()));
 		loanDAO.update(loan);
 		onResume();
 	}

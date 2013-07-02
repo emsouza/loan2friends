@@ -1,4 +1,4 @@
-package br.com.eduardo.loan;
+package br.com.eduardo.loan.settings;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,58 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/LinearLayout01"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@color/gray"
     android:orientation="vertical" >
 
     <fragment
         android:id="@+id/head"
-        android:name="br.com.eduardo.loan.ui.fragment.TitleFragment"
+        android:name="br.com.eduardo.loan.ui.fragment.TitleFragment_"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/actionbar_height" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ac_friend_add_name" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout1"
+    <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:padding="5dp" >
 
-        <EditText
-            android:id="@+id/ac_friend_add_name"
-            android:layout_width="0dip"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:hint="@string/ac_friend_add_name" />
+            android:orientation="vertical"
+            android:scrollbars="vertical" >
 
-        <ImageButton
-            android:id="@+id/ac_friend_add_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/cd_add"
-            android:src="@drawable/ic_button_search" />
-    </LinearLayout>
+            <TextView
+                style="@style/labelStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ac_friend_add_name" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ac_friend_add_number" />
+            <br.com.eduardo.loan.ui.view.EditTextLookup_
+                android:id="@+id/contact_lookup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/ac_friend_add_number"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/ac_friend_add_number"
-        android:inputType="phone" />
+            <TextView
+                style="@style/labelStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ac_friend_add_number" />
 
-    <fragment
-        android:id="@+id/action"
-        android:name="br.com.eduardo.loan.ui.fragment.SaveCancelFragment_"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/ac_friend_add_number"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/ac_friend_add_number"
+                android:inputType="phone" />
+
+            <fragment
+                android:id="@+id/action"
+                android:name="br.com.eduardo.loan.ui.fragment.SaveCancelFragment_"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

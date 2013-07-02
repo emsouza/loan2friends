@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.widget.EditText;
 import br.com.eduardo.loan.action.HomeAction;
 import br.com.eduardo.loan.friend.dialog.FriendSearchDialog;
+import br.com.eduardo.loan.item.dialog.ItemSearchDialog;
 import br.com.eduardo.loan.model.LoanDAO;
 import br.com.eduardo.loan.model.entity.FriendDTO;
 import br.com.eduardo.loan.model.entity.ItemDTO;
@@ -34,10 +35,6 @@ import com.googlecode.androidannotations.annotations.ViewById;
 @EActivity(R.layout.ac_loan_add)
 public class LoanAddActivity extends FragmentActivity {
 
-	static final int DIALOG_FRIEND_ID = 0;
-
-	static final int DIALOG_ITEM_ID = 1;
-
 	@ViewById(R.id.actionBar)
 	protected ActionBar actionBar;
 
@@ -51,10 +48,13 @@ public class LoanAddActivity extends FragmentActivity {
 	protected DateView dateText;
 
 	@Bean
+	protected LoanDAO loanDAO;
+
+	@Bean
 	protected DateFormatUtil dateTimeFormat;
 
 	@Bean
-	protected LoanDAO loanDAO;
+	protected LoanValidator validator;
 
 	protected ItemDTO item;
 
@@ -64,7 +64,6 @@ public class LoanAddActivity extends FragmentActivity {
 	void afterView() {
 		actionBar.setHomeAction(new HomeAction(this));
 		actionBar.setDisplayHomeAsUpEnabled(true);
-
 		dateText.setDate(Calendar.getInstance());
 	}
 
@@ -86,14 +85,14 @@ public class LoanAddActivity extends FragmentActivity {
 
 	@Click(R.id.itemNameText)
 	protected void findItem() {
-		final FriendSearchDialog dialog = new FriendSearchDialog(this);
+		final ItemSearchDialog dialog = new ItemSearchDialog(this);
 		dialog.populate();
 		dialog.setOnDismissListener(new OnDismissListener() {
 			@Override
 			public void onDismiss(DialogInterface di) {
-				friend = dialog.getItemSelected();
-				if (friend != null) {
-					friendText.setText(friend.getName());
+				item = dialog.getItemSelected();
+				if (item != null) {
+					itemText.setText(item.getTitle());
 				}
 			}
 		});
@@ -120,7 +119,7 @@ public class LoanAddActivity extends FragmentActivity {
 		loan.setStatus(Status.LENDED.id());
 		loan.setLentDate(dateTimeFormat.formatToDB(dateText.getDate().getTime()));
 
-		if (LoanValidator.validaLoan(this, loan)) {
+		if (validator.validaLoan(this, loan)) {
 			loanDAO.insert(loan);
 			loanDAO.close();
 			finish();

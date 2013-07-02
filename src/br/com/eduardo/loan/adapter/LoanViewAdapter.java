@@ -1,15 +1,10 @@
 package br.com.eduardo.loan.adapter;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +14,6 @@ import android.widget.TextView;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.model.entity.LoanViewDTO;
 import br.com.eduardo.loan.ui.view.TextViewGroup;
-import br.com.eduardo.loan.util.ConfigPreferences;
 import br.com.eduardo.loan.util.ContactFinder;
 import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.type.StatusImage;
@@ -31,24 +25,14 @@ import br.com.eduardo.loan.util.type.StatusImage;
  */
 public class LoanViewAdapter extends ArrayAdapter<LoanViewDTO> {
 
-	private SimpleDateFormat GUI_FORMAT;
-
 	private ArrayList<LoanViewDTO> items;
 
-	public LoanViewAdapter(Context context, ArrayList<LoanViewDTO> items) {
+	private DateFormatUtil dateformat;
+
+	public LoanViewAdapter(Context context, DateFormatUtil dateformat, ArrayList<LoanViewDTO> items) {
 		super(context, R.layout.ac_loan_list_row, items);
+		this.dateformat = dateformat;
 		this.items = items;
-
-		try {
-			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-			String format = prefs.getString(ConfigPreferences.DATE_FORMAT, "MM/dd/yyyy");
-			format += " ";
-			format += prefs.getString(ConfigPreferences.TIME_FORMAT, "HH:mm");
-
-			GUI_FORMAT = new SimpleDateFormat(format, Locale.getDefault());
-		} catch (Exception e) {
-			Log.e(LoanViewAdapter.class.getName(), "Erro ao buscar o formato de data");
-		}
 	}
 
 	@Override
@@ -67,8 +51,8 @@ public class LoanViewAdapter extends ArrayAdapter<LoanViewDTO> {
 
 			title.setText(o.getName());
 
-			Date loanDate = DateFormatUtil.formatToDate(o.getLentDate());
-			lentDate.setValues(getContext().getString(R.string.date_loan), GUI_FORMAT.format(loanDate));
+			Date loanDate = dateformat.formatToDate(o.getLentDate());
+			lentDate.setValues(getContext().getString(R.string.date_loan), dateformat.formatDateTimeToScreen(loanDate));
 
 			status.setImageResource(StatusImage.statusImage(o.getStatus()));
 

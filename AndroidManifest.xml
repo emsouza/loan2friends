@@ -59,7 +59,7 @@
         <activity
             android:name="LoanEditActivity_" />
         <activity
-            android:name="SettingsActivity_" />
+            android:name=".settings.SettingsActivity" />
         <activity
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:name="com.google.ads.AdActivity" />
