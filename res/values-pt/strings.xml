@@ -42,14 +42,15 @@
 	<string name="sms_return">Por favor devolva meu item:</string>
 
 	<!-- Menus do Sistema -->
+	<string name="menu_main_home">Início</string> <!-- Opção para ir a Inicial -->
 	<string name="menu_main_friends">Amigos</string> <!-- Opção para ir a Tela de Amigos -->
-	<string name="menu_main_items">Meus Itens</string> <!-- Opção para ir a Tela de Itens -->
+	<string name="menu_main_items">Itens</string> <!-- Opção para ir a Tela de Itens -->
 	<string name="menu_main_filter">Filtro</string> <!-- Filtro da Tela Inicial -->
 	<string name="menu_main_settings">Configurações</string> <!-- Opção para ir a Tela de Preferências -->
-	<string name="menu_main_add">Adicionar Empréstimo</string> <!-- Opção para adicionar um Empréstimo -->
-	<string name="menu_items_add">Adicionar Item</string> <!-- Opção para adicionar um Item -->
-	<string name="menu_friend_add">Adicionar Amigo</string> <!-- Opção para adicionar um Amigo -->
-	<string name="menu_friend_import_all">Importar Todos os Contatos</string> <!-- Opção para importar todos os contatos -->
+	<string name="menu_main_add">Novo Empréstimo</string> <!-- Opção para adicionar um Empréstimo -->
+	<string name="menu_items_add">Novo Item</string> <!-- Opção para adicionar um Item -->
+	<string name="menu_friend_add">Novo Amigo</string> <!-- Opção para adicionar um Amigo -->
+	<string name="menu_friend_import_all">Importar todos os Contatos</string> <!-- Opção para importar todos os contatos -->
 
 	<!-- Menu de Opcoes -->
 	<string name="option_detail">Detalhe</string> <!-- Opção de Detalhe -->

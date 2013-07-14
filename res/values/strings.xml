@@ -42,13 +42,14 @@
 	<string name="sms_return">Please return my item:</string>
 
 	<!-- Menus do Sistema -->
+	<string name="menu_main_home">Home</string> <!-- Opção para ir a Inicial -->
 	<string name="menu_main_friends">Friends</string> <!-- Opção para ir a Tela de Amigos -->
-	<string name="menu_main_items">My Items</string> <!-- Opção para ir a Tela de Itens -->
+	<string name="menu_main_items">Items</string> <!-- Opção para ir a Tela de Itens -->
 	<string name="menu_main_filter">Filter</string> <!-- Filtro da Tela Inicial -->
 	<string name="menu_main_settings">Settings</string> <!-- Opção para ir a Tela de Preferências -->
-	<string name="menu_main_add">Add Loan</string> <!-- Opção para adicionar um Empréstimo -->
-	<string name="menu_items_add">Add Item</string> <!-- Opção para adicionar um Item -->
-	<string name="menu_friend_add">Add Friend</string> <!-- Opção para adicionar um Amigo -->
+	<string name="menu_main_add">New Loan</string> <!-- Opção para adicionar um Empréstimo -->
+	<string name="menu_items_add">New Item</string> <!-- Opção para adicionar um Item -->
+	<string name="menu_friend_add">New Friend</string> <!-- Opção para adicionar um Amigo -->
 	<string name="menu_friend_import_all">Import All Contacts</string> <!-- Opção para adicionar um Amigo -->
 
 	<!-- Menu de Opcoes -->

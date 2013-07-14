@@ -2,12 +2,51 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" android:padding="5dip">
+    android:orientation="vertical"
+    android:padding="5dip" >
 
-    <Button
-        android:id="@+id/home"
+    <TextView
+        android:id="@+id/menuHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_button_search" />
+        android:drawableLeft="@drawable/ic_bar_home"
+        android:drawablePadding="5dp"
+        android:text="@string/menu_main_home"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/addLoan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_menu_add"
+        android:text="@string/menu_main_add"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/menuFriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_menu_friends"
+        android:drawablePadding="5dp"
+        android:text="@string/menu_main_friends"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/menuItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_menu_items"
+        android:drawablePadding="5dp"
+        android:text="@string/menu_main_items"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/menuSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_menu_config"
+        android:drawablePadding="5dp"
+        android:text="@string/menu_main_settings"
+        android:textSize="35sp" />
 
 </LinearLayout>
