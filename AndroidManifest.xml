@@ -5,7 +5,6 @@
     package="br.com.eduardo.loan" >
 
     <uses-sdk
-        android:maxSdkVersion="15"
         android:minSdkVersion="5"
         android:targetSdkVersion="7" />
 
