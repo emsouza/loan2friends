@@ -21,27 +21,27 @@ import com.googlecode.androidannotations.api.Scope;
 @EBean(scope = Scope.Singleton)
 public class LoanValidator {
 
-	@Bean
-	protected DateFormatUtil dateTimeFormat;
+    @Bean
+    protected DateFormatUtil dateTimeFormat;
 
-	public boolean validaLoan(Context context, LoanDTO loan) {
-		if (loan.getIdItem() == null || loan.getIdItem() <= 0) {
-			Toast toast = Toast.makeText(context, R.string.iditem_error, Toast.LENGTH_SHORT);
-			toast.show();
-			return false;
-		} else if (loan.getIdFriend() == null || loan.getIdFriend() <= 0) {
-			Toast toast = Toast.makeText(context, R.string.idfriend_error, Toast.LENGTH_SHORT);
-			toast.show();
-			return false;
-		} else {
-			Date data = dateTimeFormat.formatToDate(loan.getLentDate());
-			if (!CompareDate.compareDate(data)) {
-				Toast toast = Toast.makeText(context, R.string.date_time_error, Toast.LENGTH_SHORT);
-				toast.show();
-				return false;
-			} else {
-				return true;
-			}
-		}
-	}
+    public boolean validaLoan(Context context, LoanDTO loan) {
+        if (loan.getIdItem() == null || loan.getIdItem() <= 0) {
+            Toast toast = Toast.makeText(context, R.string.iditem_error, Toast.LENGTH_SHORT);
+            toast.show();
+            return false;
+        } else if (loan.getIdFriend() == null || loan.getIdFriend() <= 0) {
+            Toast toast = Toast.makeText(context, R.string.idfriend_error, Toast.LENGTH_SHORT);
+            toast.show();
+            return false;
+        } else {
+            Date data = dateTimeFormat.formatToDate(loan.getLentDate());
+            if (!CompareDate.compareDate(data)) {
+                Toast toast = Toast.makeText(context, R.string.date_time_error, Toast.LENGTH_SHORT);
+                toast.show();
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
 }

@@ -27,74 +27,74 @@ import com.googlecode.androidannotations.annotations.ViewById;
 @EActivity(R.layout.ac_item_add_edit)
 public class ItemEditActivity extends FragmentActivity {
 
-	protected ArrayAdapter<String> typeAdapter;
+    protected ArrayAdapter<String> typeAdapter;
 
-	@ViewById(R.id.ac_item_add_type_image)
-	protected ImageView imageType;
+    @ViewById(R.id.ac_item_add_type_image)
+    protected ImageView imageType;
 
-	@ViewById(R.id.ac_item_add_title)
-	protected EditText title;
+    @ViewById(R.id.ac_item_add_title)
+    protected EditText title;
 
-	@ViewById(R.id.ac_item_add_description)
-	protected EditText description;
+    @ViewById(R.id.ac_item_add_description)
+    protected EditText description;
 
-	@ViewById(R.id.ac_item_add_type)
-	protected Spinner type;
+    @ViewById(R.id.ac_item_add_type)
+    protected Spinner type;
 
-	@Extra
-	protected Integer id;
+    @Extra
+    protected Integer id;
 
-	@Bean
-	protected ItemDAO itemDAO;
+    @Bean
+    protected ItemDAO itemDAO;
 
-	@AfterViews
-	void afterView() {
-		typeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
-		typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		populateCombo();
-		type.setAdapter(typeAdapter);
+    @AfterViews
+    void afterView() {
+        typeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
+        typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        populateCombo();
+        type.setAdapter(typeAdapter);
 
-		ItemDTO item = itemDAO.find(id);
+        ItemDTO item = itemDAO.find(id);
 
-		title.setText(item.getTitle());
-		description.setText(item.getDescription());
-		type.setSelection(item.getType());
-		imageType.setImageResource(ItemTypeImage.typeACImage(item.getType()));
-	}
+        title.setText(item.getTitle());
+        description.setText(item.getDescription());
+        type.setSelection(item.getType());
+        imageType.setImageResource(ItemTypeImage.typeACImage(item.getType()));
+    }
 
-	private void populateCombo() {
-		typeAdapter.add(getString(R.string.type_default));
-		typeAdapter.add(getString(R.string.type_cd));
-		typeAdapter.add(getString(R.string.type_dvd));
-		typeAdapter.add(getString(R.string.type_bluray));
-		typeAdapter.add(getString(R.string.type_book));
-		typeAdapter.add(getString(R.string.type_game));
-		typeAdapter.add(getString(R.string.type_money));
-	}
+    private void populateCombo() {
+        typeAdapter.add(getString(R.string.type_default));
+        typeAdapter.add(getString(R.string.type_cd));
+        typeAdapter.add(getString(R.string.type_dvd));
+        typeAdapter.add(getString(R.string.type_bluray));
+        typeAdapter.add(getString(R.string.type_book));
+        typeAdapter.add(getString(R.string.type_game));
+        typeAdapter.add(getString(R.string.type_money));
+    }
 
-	@ItemSelect(R.id.ac_item_add_type)
-	void itemSelect(boolean selected, int position) {
-		if (selected) {
-			imageType.setImageResource(ItemTypeImage.typeACImage(position));
-		}
-	}
+    @ItemSelect(R.id.ac_item_add_type)
+    void itemSelect(boolean selected, int position) {
+        if (selected) {
+            imageType.setImageResource(ItemTypeImage.typeACImage(position));
+        }
+    }
 
-	@Click(R.id.buttonSave)
-	void saveItem() {
-		ItemDTO item = itemDAO.find(id);
-		item.setTitle(title.getText().toString());
-		item.setDescription(description.getText().toString());
-		item.setType(Long.valueOf(type.getSelectedItemId()).intValue());
+    @Click(R.id.buttonSave)
+    void saveItem() {
+        ItemDTO item = itemDAO.find(id);
+        item.setTitle(title.getText().toString());
+        item.setDescription(description.getText().toString());
+        item.setType(Long.valueOf(type.getSelectedItemId()).intValue());
 
-		if (ItemValidator.validaItem(this, item)) {
-			itemDAO.update(item);
-			finish();
-		}
-	}
+        if (ItemValidator.validaItem(this, item)) {
+            itemDAO.update(item);
+            finish();
+        }
+    }
 
-	@Override
-	@Click(R.id.buttonCancel)
-	public void finish() {
-		super.finish();
-	}
+    @Override
+    @Click(R.id.buttonCancel)
+    public void finish() {
+        super.finish();
+    }
 }

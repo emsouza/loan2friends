@@ -13,12 +13,12 @@ import br.com.emsouza.widget.bar.action.IntentAction;
  */
 public class ShareAction extends IntentAction {
 
-	public ShareAction(Context ctx) {
-		super(ctx, new Intent(ctx, MainActivity.class));
-	}
+    public ShareAction(Context ctx) {
+        super(ctx, new Intent(ctx, MainActivity.class));
+    }
 
-	@Override
-	public int getDrawable() {
-		return R.drawable.ic_title_home_default;
-	}
+    @Override
+    public int getDrawable() {
+        return R.drawable.ic_title_home_default;
+    }
 }

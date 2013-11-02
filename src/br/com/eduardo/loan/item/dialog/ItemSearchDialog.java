@@ -18,32 +18,32 @@ import br.com.eduardo.loan.model.entity.ItemDTO;
  */
 public class ItemSearchDialog extends Dialog implements OnItemClickListener {
 
-	protected ItemDTO item;
+    protected ItemDTO item;
 
-	public ItemSearchDialog(Context context) {
-		super(context);
-		setTitle(R.string.title_dialog_item);
-	}
+    public ItemSearchDialog(Context context) {
+        super(context);
+        setTitle(R.string.title_dialog_item);
+    }
 
-	public void populate() {
-		ItemDAO db = new ItemDAO(getContext());
-		ItemDialogAdapter adapter = new ItemDialogAdapter(getContext(), R.layout.dg_item_list, db.findAllAvailable());
-		db.close();
+    public void populate() {
+        ItemDAO db = new ItemDAO(getContext());
+        ItemDialogAdapter adapter = new ItemDialogAdapter(getContext(), R.layout.dg_item_list, db.findAllAvailable());
+        db.close();
 
-		ListView listView = new ListView(getContext());
-		listView.setAdapter(adapter);
-		listView.setDrawSelectorOnTop(false);
-		listView.setOnItemClickListener(this);
-		setContentView(listView);
-	}
+        ListView listView = new ListView(getContext());
+        listView.setAdapter(adapter);
+        listView.setDrawSelectorOnTop(false);
+        listView.setOnItemClickListener(this);
+        setContentView(listView);
+    }
 
-	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		item = ((ItemDTO) arg0.getItemAtPosition(arg2));
-		dismiss();
-	}
+    @Override
+    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+        item = ((ItemDTO) arg0.getItemAtPosition(arg2));
+        dismiss();
+    }
 
-	public ItemDTO getItemSelected() {
-		return item;
-	}
+    public ItemDTO getItemSelected() {
+        return item;
+    }
 }

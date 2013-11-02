@@ -11,9 +11,9 @@ import com.googlecode.androidannotations.annotations.sharedpreferences.SharedPre
 @SharedPref
 public interface LoanPref {
 
-	@DefaultString("MM/dd/yyyy")
-	String dateFormat();
+    @DefaultString("MM/dd/yyyy")
+    String dateFormat();
 
-	@DefaultString("HH:mm")
-	String timeFormat();
+    @DefaultString("HH:mm")
+    String timeFormat();
 }

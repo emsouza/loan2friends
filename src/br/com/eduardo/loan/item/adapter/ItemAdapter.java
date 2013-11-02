@@ -21,45 +21,45 @@ import br.com.eduardo.loan.util.type.Status;
  */
 public class ItemAdapter extends ArrayAdapter<ItemDTO> {
 
-	private ArrayList<ItemDTO> items;
+    private ArrayList<ItemDTO> items;
 
-	public ItemAdapter(Context context, ArrayList<ItemDTO> items) {
-		super(context, R.layout.ac_item_list_row, items);
-		this.items = items;
-	}
+    public ItemAdapter(Context context, ArrayList<ItemDTO> items) {
+        super(context, R.layout.ac_item_list_row, items);
+        this.items = items;
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		View v = convertView;
-		if (v == null) {
-			LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = vi.inflate(R.layout.ac_item_list_row, null);
-		}
-		ItemDTO o = items.get(position);
-		if (o != null) {
-			TextView tt = (TextView) v.findViewById(R.id.ac_item_list_title);
-			TextView bt = (TextView) v.findViewById(R.id.ac_item_list_status);
-			ImageView iv = (ImageView) v.findViewById(R.id.ac_item_list_image_type);
-			if (tt != null) {
-				tt.setText(getContext().getString(R.string.item_title) + " " + o.getTitle());
-			}
-			if (bt != null) {
-				String status = "";
-				if (o.getStatus() == Status.AVAILABLE.id()) {
-					status = getContext().getString(R.string.status_available);
-				} else if (o.getStatus() == Status.LENDED.id()) {
-					status = getContext().getString(R.string.status_lent);
-				}
-				bt.setText(getContext().getString(R.string.status) + " " + status);
-			}
-			if (iv != null) {
-				iv.setImageResource(ItemTypeImage.typeGridImage(o.getType()));
-			}
-		}
-		return v;
-	}
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View v = convertView;
+        if (v == null) {
+            LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            v = vi.inflate(R.layout.ac_item_list_row, null);
+        }
+        ItemDTO o = items.get(position);
+        if (o != null) {
+            TextView tt = (TextView) v.findViewById(R.id.ac_item_list_title);
+            TextView bt = (TextView) v.findViewById(R.id.ac_item_list_status);
+            ImageView iv = (ImageView) v.findViewById(R.id.ac_item_list_image_type);
+            if (tt != null) {
+                tt.setText(getContext().getString(R.string.item_title) + " " + o.getTitle());
+            }
+            if (bt != null) {
+                String status = "";
+                if (o.getStatus() == Status.AVAILABLE.id()) {
+                    status = getContext().getString(R.string.status_available);
+                } else if (o.getStatus() == Status.LENDED.id()) {
+                    status = getContext().getString(R.string.status_lent);
+                }
+                bt.setText(getContext().getString(R.string.status) + " " + status);
+            }
+            if (iv != null) {
+                iv.setImageResource(ItemTypeImage.typeGridImage(o.getType()));
+            }
+        }
+        return v;
+    }
 
-	public ArrayList<ItemDTO> getItems() {
-		return items;
-	}
+    public ArrayList<ItemDTO> getItems() {
+        return items;
+    }
 }

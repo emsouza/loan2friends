@@ -13,12 +13,12 @@ import br.com.emsouza.widget.bar.action.IntentAction;
  */
 public class HomeAction extends IntentAction {
 
-	public HomeAction(Context ctx) {
-		super(ctx, new Intent(ctx, MainActivity_.class));
-	}
+    public HomeAction(Context ctx) {
+        super(ctx, new Intent(ctx, MainActivity_.class));
+    }
 
-	@Override
-	public int getDrawable() {
-		return R.drawable.ic_title_home_default;
-	}
+    @Override
+    public int getDrawable() {
+        return R.drawable.ic_title_home_default;
+    }
 }

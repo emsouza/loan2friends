@@ -11,19 +11,19 @@ import br.com.eduardo.loan.R;
  */
 public class MailValidator {
 
-	public static boolean validaMessage(Context context, String title, String message) {
-		if (title != null && title.length() > 0) {
-			if (message != null && message.length() > 0) {
-				return true;
-			} else {
-				Toast toast = Toast.makeText(context, R.string.message_error, Toast.LENGTH_SHORT);
-				toast.show();
-				return false;
-			}
-		} else {
-			Toast toast = Toast.makeText(context, R.string.title_error, Toast.LENGTH_SHORT);
-			toast.show();
-			return false;
-		}
-	}
+    public static boolean validaMessage(Context context, String title, String message) {
+        if (title != null && title.length() > 0) {
+            if (message != null && message.length() > 0) {
+                return true;
+            } else {
+                Toast toast = Toast.makeText(context, R.string.message_error, Toast.LENGTH_SHORT);
+                toast.show();
+                return false;
+            }
+        } else {
+            Toast toast = Toast.makeText(context, R.string.title_error, Toast.LENGTH_SHORT);
+            toast.show();
+            return false;
+        }
+    }
 }

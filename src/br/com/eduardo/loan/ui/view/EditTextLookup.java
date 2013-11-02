@@ -18,25 +18,33 @@ import com.googlecode.androidannotations.annotations.ViewById;
 @EViewGroup(R.layout.gr_textlookup)
 public class EditTextLookup extends LinearLayout {
 
-	@ViewById
-	protected TextView grlookupName;
+    @ViewById
+    protected TextView grlookupName;
 
-	@ViewById
-	protected ImageButton grlookupButton;
+    @ViewById
+    protected ImageButton grlookupButton;
 
-	public EditTextLookup(Context context, AttributeSet attrs) {
-		super(context, attrs);
-	}
+    public EditTextLookup(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
 
-	public void setIcon(int icon) {
-		grlookupButton.setImageResource(icon);
-	}
+    public void setIcon(int icon) {
+        grlookupButton.setImageResource(icon);
+    }
 
-	public void addAction(OnClickListener listener) {
-		grlookupButton.setOnClickListener(listener);
-	}
+    public void setHint(int resid) {
+        grlookupName.setHint(resid);
+    }
 
-	public void setText(String text) {
-		grlookupName.setText(text);
-	}
+    public void addAction(OnClickListener listener) {
+        grlookupButton.setOnClickListener(listener);
+    }
+
+    public void setText(String text) {
+        grlookupName.setText(text);
+    }
+
+    public String getText() {
+        return grlookupName.getText().toString();
+    }
 }

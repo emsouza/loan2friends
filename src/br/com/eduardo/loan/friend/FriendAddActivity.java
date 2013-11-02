@@ -26,61 +26,62 @@ import com.googlecode.androidannotations.annotations.ViewById;
 @EActivity(R.layout.ac_friend_add)
 public class FriendAddActivity extends FragmentActivity {
 
-	@ViewById(R.id.contact_lookup)
-	protected EditTextLookup name;
+    @ViewById(R.id.contact_lookup)
+    protected EditTextLookup name;
 
-	@ViewById(R.id.ac_friend_add_number)
-	protected EditText number;
+    @ViewById(R.id.ac_friend_add_number)
+    protected EditText number;
 
-	@Bean
-	protected FriendDAO friendDAO;
+    @Bean
+    protected FriendDAO friendDAO;
 
-	protected Long contactId = null;
+    protected Long contactId = null;
 
-	@AfterViews
-	protected void afterView() {
-		name.setIcon(R.drawable.ic_button_search);
-	}
+    @AfterViews
+    protected void afterView() {
+        name.setIcon(R.drawable.ic_button_search);
+        name.setHint(R.string.friend_name);
+    }
 
-	@Click(R.id.contact_lookup)
-	void search() {
-		final ContactDialog dialog = new ContactDialog(this);
-		dialog.populate();
-		dialog.setOnDismissListener(new OnDismissListener() {
-			@Override
-			public void onDismiss(DialogInterface arg0) {
-				setData(dialog.getItemSelected());
-			}
-		});
-		dialog.show();
-	}
+    @Click(R.id.contact_lookup)
+    void search() {
+        final ContactDialog dialog = new ContactDialog(this);
+        dialog.populate();
+        dialog.setOnDismissListener(new OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface arg0) {
+                setData(dialog.getItemSelected());
+            }
+        });
+        dialog.show();
+    }
 
-	protected void setData(ContactDTO item) {
-		if (item != null) {
-			name.setText(item.getName());
-			number.setText(item.getNumber() != null ? item.getNumber() : "");
-			contactId = item.getContactId();
-		}
-	}
+    protected void setData(ContactDTO item) {
+        if (item != null) {
+            name.setText(item.getName());
+            number.setText(item.getNumber() != null ? item.getNumber() : "");
+            contactId = item.getContactId();
+        }
+    }
 
-	@Click(R.id.buttonSave)
-	void saveFriend() {
-		FriendDTO friend = new FriendDTO();
-		// friend.setName(name.getText().toString());
-		friend.setPhone(number.getText().toString());
-		if (contactId != null) {
-			friend.setContactId(contactId);
-		}
+    @Click(R.id.buttonSave)
+    void saveFriend() {
+        FriendDTO friend = new FriendDTO();
+        friend.setName(name.getText());
+        friend.setPhone(number.getText().toString());
+        if (contactId != null) {
+            friend.setContactId(contactId);
+        }
 
-		if (FriendValidator.validaFriend(this, friend)) {
-			friendDAO.insert(friend);
-			finish();
-		}
-	}
+        if (FriendValidator.validaFriend(this, friend)) {
+            friendDAO.insert(friend);
+            finish();
+        }
+    }
 
-	@Override
-	@Click(R.id.buttonCancel)
-	public void finish() {
-		super.finish();
-	}
+    @Override
+    @Click(R.id.buttonCancel)
+    public void finish() {
+        super.finish();
+    }
 }

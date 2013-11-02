@@ -17,8 +17,8 @@ import com.googlecode.androidannotations.annotations.EFragment;
 @EFragment
 public class TitleFragment extends Fragment {
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fg_title, container, false);
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fg_title, container, false);
+    }
 }

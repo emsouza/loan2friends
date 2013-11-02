@@ -33,141 +33,141 @@ import com.googlecode.androidannotations.annotations.ViewById;
 @OptionsMenu(R.menu.friend_menu)
 public class FriendActivity extends FragmentActivity {
 
-	@ViewById(R.id.actionBar)
-	protected ActionBar actionBar;
+    @ViewById(R.id.actionBar)
+    protected ActionBar actionBar;
 
-	@ViewById(R.id.ac_friend_list_view)
-	protected ListView listView;
+    @ViewById(R.id.ac_friend_list_view)
+    protected ListView listView;
 
-	protected FriendAdapter adapter;
+    protected FriendAdapter adapter;
 
-	protected ProgressDialog dialog;
+    protected ProgressDialog dialog;
 
-	@AfterViews
-	void afterInject() {
-		actionBar.setHomeAction(new HomeAction(this));
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		listView.setEmptyView(this.findViewById(R.id.friend_list_empty));
-	}
+    @AfterViews
+    void afterInject() {
+        actionBar.setHomeAction(new HomeAction(this));
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        listView.setEmptyView(this.findViewById(R.id.friend_list_empty));
+    }
 
-	@OptionsItem(R.id.menu_ac_friend_add)
-	void openAddFriend() {
-		Intent prefIntent = new Intent(this, FriendAddActivity_.class);
-		this.startActivity(prefIntent);
-	}
+    @OptionsItem(R.id.menu_ac_friend_add)
+    void openAddFriend() {
+        Intent prefIntent = new Intent(this, FriendAddActivity_.class);
+        this.startActivity(prefIntent);
+    }
 
-	@OptionsItem(R.id.menu_ac_friend_add_all)
-	void importAll() {
-		dialog = new ProgressDialog(this) {
-			@Override
-			public void onBackPressed() {
-				// Não faz nada
-			}
-		};
-		dialog.setMessage(getText(R.string.wait));
-		dialog.setIndeterminate(true);
-		dialog.show();
+    @OptionsItem(R.id.menu_ac_friend_add_all)
+    void importAll() {
+        dialog = new ProgressDialog(this) {
+            @Override
+            public void onBackPressed() {
+                // Não faz nada
+            }
+        };
+        dialog.setMessage(getText(R.string.wait));
+        dialog.setIndeterminate(true);
+        dialog.show();
 
-		new ImportAll().execute();
-	}
+        new ImportAll().execute();
+    }
 
-	protected void populate() {
-		FriendDAO db = new FriendDAO(FriendActivity.this);
-		adapter = new FriendAdapter(FriendActivity.this, db.findAll());
-		listView.setAdapter(adapter);
-		db.close();
-	}
+    protected void populate() {
+        FriendDAO db = new FriendDAO(FriendActivity.this);
+        adapter = new FriendAdapter(FriendActivity.this, db.findAll());
+        listView.setAdapter(adapter);
+        db.close();
+    }
 
-	@ItemLongClick(R.id.ac_friend_list_view)
-	void listItemLongClicked(final int position) {
-		final CharSequence[] items = { getString(R.string.option_edit), getString(R.string.option_delete), getString(R.string.option_cancel) };
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setItems(items, new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int item) {
-				FriendDTO f = (FriendDTO) listView.getAdapter().getItem(position);
-				processMenu(item, f);
-			}
-		});
-		AlertDialog alert = builder.create();
-		alert.show();
-	}
+    @ItemLongClick(R.id.ac_friend_list_view)
+    void listItemLongClicked(final int position) {
+        final CharSequence[] items = { getString(R.string.option_edit), getString(R.string.option_delete), getString(R.string.option_cancel) };
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                FriendDTO f = (FriendDTO) listView.getAdapter().getItem(position);
+                processMenu(item, f);
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 
-	protected void processMenu(int key, FriendDTO item) {
-		switch (key) {
-			case 0:
-				edit(item);
-				break;
-			case 1:
-				askForDelete(item);
-				break;
-			default:
-				break;
-		}
-	}
+    protected void processMenu(int key, FriendDTO item) {
+        switch (key) {
+            case 0:
+                edit(item);
+                break;
+            case 1:
+                askForDelete(item);
+                break;
+            default:
+                break;
+        }
+    }
 
-	private void edit(FriendDTO item) {
-		Intent intent = new Intent(this, FriendEditActivity_.class);
-		Bundle bun = new Bundle();
-		bun.putInt("id", item.getId());
-		intent.putExtras(bun);
-		this.startActivity(intent);
-	}
+    private void edit(FriendDTO item) {
+        Intent intent = new Intent(this, FriendEditActivity_.class);
+        Bundle bun = new Bundle();
+        bun.putInt("id", item.getId());
+        intent.putExtras(bun);
+        this.startActivity(intent);
+    }
 
-	private void askForDelete(final FriendDTO item) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage(getString(R.string.delete)).setCancelable(false)
-				.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int id) {
-						delete(item);
-					}
-				}).setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int id) {
-						dialog.cancel();
-					}
-				});
-		builder.create().show();
-	}
+    private void askForDelete(final FriendDTO item) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.delete)).setCancelable(false)
+                .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        delete(item);
+                    }
+                }).setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        builder.create().show();
+    }
 
-	protected void delete(FriendDTO item) {
-		LoanDAO dbLoan = new LoanDAO(this);
-		FriendDAO dbFriend = new FriendDAO(this);
-		dbLoan.deleteFriend(item.getId());
-		dbFriend.delete(item.getId());
-		dbLoan.close();
-		dbFriend.close();
-		onResume();
-	}
+    protected void delete(FriendDTO item) {
+        LoanDAO dbLoan = new LoanDAO(this);
+        FriendDAO dbFriend = new FriendDAO(this);
+        dbLoan.deleteFriend(item.getId());
+        dbFriend.delete(item.getId());
+        dbLoan.close();
+        dbFriend.close();
+        onResume();
+    }
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		populate();
-	}
+    @Override
+    protected void onResume() {
+        super.onResume();
+        populate();
+    }
 
-	/**
-	 * Utilizado para importar todos os Contatos da Agenda sem travar a Tela principal.
-	 * 
-	 * @author Eduardo Matos de Souza <br>
-	 *         23/12/2011 <br>
-	 *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
-	 */
-	protected class ImportAll extends AsyncTask<Void, Void, Void> {
+    /**
+     * Utilizado para importar todos os Contatos da Agenda sem travar a Tela principal.
+     * 
+     * @author Eduardo Matos de Souza <br>
+     *         23/12/2011 <br>
+     *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
+     */
+    protected class ImportAll extends AsyncTask<Void, Void, Void> {
 
-		@Override
-		protected Void doInBackground(Void... params) {
-			ContactImporter.importContact(FriendActivity.this);
-			return null;
-		}
+        @Override
+        protected Void doInBackground(Void... params) {
+            ContactImporter.importContact(FriendActivity.this);
+            return null;
+        }
 
-		@Override
-		protected void onPostExecute(Void result) {
-			super.onPostExecute(result);
-			FriendActivity.this.populate();
-			dialog.dismiss();
-			dialog = null;
-		}
-	}
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            FriendActivity.this.populate();
+            dialog.dismiss();
+            dialog = null;
+        }
+    }
 }

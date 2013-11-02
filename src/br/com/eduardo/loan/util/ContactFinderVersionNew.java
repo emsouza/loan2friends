@@ -18,18 +18,18 @@ import android.provider.ContactsContract.CommonDataKinds.Phone;
  */
 public class ContactFinderVersionNew {
 
-	public static Cursor getCursor(Context context) {
-		Cursor cursor = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-				new String[] { Phone.CONTACT_ID, Phone.DISPLAY_NAME, Phone.NUMBER }, null, null, Phone.DISPLAY_NAME + " ASC");
-		return cursor;
-	}
+    public static Cursor getCursor(Context context) {
+        Cursor cursor = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                new String[] { Phone.CONTACT_ID, Phone.DISPLAY_NAME, Phone.NUMBER }, null, null, Phone.DISPLAY_NAME + " ASC");
+        return cursor;
+    }
 
-	public static Bitmap getPhoto(Context context, long contactId) {
-		Uri uri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, contactId);
-		InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(context.getContentResolver(), uri);
-		if (input == null) {
-			return null;
-		}
-		return BitmapFactory.decodeStream(input);
-	}
+    public static Bitmap getPhoto(Context context, long contactId) {
+        Uri uri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, contactId);
+        InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(context.getContentResolver(), uri);
+        if (input == null) {
+            return null;
+        }
+        return BitmapFactory.decodeStream(input);
+    }
 }

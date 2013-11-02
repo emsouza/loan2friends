@@ -18,67 +18,67 @@ import br.com.eduardo.loan.util.type.Status;
  */
 public class FilterDialog extends Dialog {
 
-	protected CheckBox lentBox, returnBox, archiveBox;
+    protected CheckBox lentBox, returnBox, archiveBox;
 
-	protected Button updateButton, cancelButton;
+    protected Button updateButton, cancelButton;
 
-	protected boolean operationComplete;
+    protected boolean operationComplete;
 
-	public FilterDialog(Context context, List<String> status) {
-		super(context);
-		setContentView(R.layout.dg_filter);
-		setTitle(R.string.title_filter);
-		getWindow().setLayout(android.view.ViewGroup.LayoutParams.FILL_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+    public FilterDialog(Context context, List<String> status) {
+        super(context);
+        setContentView(R.layout.dg_filter);
+        setTitle(R.string.title_filter);
+        getWindow().setLayout(android.view.ViewGroup.LayoutParams.FILL_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 
-		lentBox = (CheckBox) this.findViewById(R.id.flg_lent);
-		returnBox = (CheckBox) this.findViewById(R.id.flg_return);
-		archiveBox = (CheckBox) this.findViewById(R.id.flg_archive);
-		updateButton = (Button) this.findViewById(R.id.dg_filter_update);
-		cancelButton = (Button) this.findViewById(R.id.dg_filter_cancel);
+        lentBox = (CheckBox) this.findViewById(R.id.flg_lent);
+        returnBox = (CheckBox) this.findViewById(R.id.flg_return);
+        archiveBox = (CheckBox) this.findViewById(R.id.flg_archive);
+        updateButton = (Button) this.findViewById(R.id.dg_filter_update);
+        cancelButton = (Button) this.findViewById(R.id.dg_filter_cancel);
 
-		for (String s : status) {
-			int idStatus = Integer.valueOf(s);
-			if (idStatus == Status.LENDED.id()) {
-				lentBox.setChecked(true);
-			} else if (idStatus == Status.RETURNED.id()) {
-				returnBox.setChecked(true);
-			} else if (idStatus == Status.ARCHIVED.id()) {
-				archiveBox.setChecked(true);
-			}
-		}
+        for (String s : status) {
+            int idStatus = Integer.valueOf(s);
+            if (idStatus == Status.LENDED.id()) {
+                lentBox.setChecked(true);
+            } else if (idStatus == Status.RETURNED.id()) {
+                returnBox.setChecked(true);
+            } else if (idStatus == Status.ARCHIVED.id()) {
+                archiveBox.setChecked(true);
+            }
+        }
 
-		updateButton.setOnClickListener(new android.view.View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				operationComplete = true;
-				dismiss();
-			}
-		});
+        updateButton.setOnClickListener(new android.view.View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                operationComplete = true;
+                dismiss();
+            }
+        });
 
-		cancelButton.setOnClickListener(new android.view.View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				dismiss();
-			}
-		});
-	}
+        cancelButton.setOnClickListener(new android.view.View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+    }
 
-	public List<String> updateStatus() {
-		List<String> status = new ArrayList<String>();
+    public List<String> updateStatus() {
+        List<String> status = new ArrayList<String>();
 
-		if (lentBox.isChecked()) {
-			status.add(String.valueOf(Status.LENDED.id()));
-		}
-		if (returnBox.isChecked()) {
-			status.add(String.valueOf(Status.RETURNED.id()));
-		}
-		if (archiveBox.isChecked()) {
-			status.add(String.valueOf(Status.ARCHIVED.id()));
-		}
-		return status;
-	}
+        if (lentBox.isChecked()) {
+            status.add(String.valueOf(Status.LENDED.id()));
+        }
+        if (returnBox.isChecked()) {
+            status.add(String.valueOf(Status.RETURNED.id()));
+        }
+        if (archiveBox.isChecked()) {
+            status.add(String.valueOf(Status.ARCHIVED.id()));
+        }
+        return status;
+    }
 
-	public boolean isOperationComplete() {
-		return operationComplete;
-	}
+    public boolean isOperationComplete() {
+        return operationComplete;
+    }
 }

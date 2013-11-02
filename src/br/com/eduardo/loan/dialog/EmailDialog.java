@@ -17,45 +17,45 @@ import br.com.eduardo.loan.util.validator.MailValidator;
  */
 public class EmailDialog extends Dialog {
 
-	protected ItemDTO item;
+    protected ItemDTO item;
 
-	protected EditText title;
+    protected EditText title;
 
-	protected EditText message;
+    protected EditText message;
 
-	public EmailDialog(Context context) {
-		super(context);
-		setTitle(R.string.feature_request);
-		setContentView(R.layout.dg_email);
-		getWindow().setLayout(android.view.ViewGroup.LayoutParams.FILL_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+    public EmailDialog(Context context) {
+        super(context);
+        setTitle(R.string.feature_request);
+        setContentView(R.layout.dg_email);
+        getWindow().setLayout(android.view.ViewGroup.LayoutParams.FILL_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 
-		title = (EditText) this.findViewById(R.id.dg_mail_title);
-		message = (EditText) this.findViewById(R.id.dg_mail_description);
+        title = (EditText) this.findViewById(R.id.dg_mail_title);
+        message = (EditText) this.findViewById(R.id.dg_mail_description);
 
-		Button send = (Button) findViewById(R.id.dg_mail_send);
-		send.setOnClickListener(new android.view.View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				sendMail();
-			}
-		});
+        Button send = (Button) findViewById(R.id.dg_mail_send);
+        send.setOnClickListener(new android.view.View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendMail();
+            }
+        });
 
-		Button cancel = (Button) findViewById(R.id.dg_mail_cancel);
-		cancel.setOnClickListener(new android.view.View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				dismiss();
-			}
-		});
-	}
+        Button cancel = (Button) findViewById(R.id.dg_mail_cancel);
+        cancel.setOnClickListener(new android.view.View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
+    }
 
-	protected void sendMail() {
-		final String sTitle = getContext().getString(R.string.feature_request) + " - " + title.getText().toString();
-		final String sMessage = message.getText().toString();
+    protected void sendMail() {
+        final String sTitle = getContext().getString(R.string.feature_request) + " - " + title.getText().toString();
+        final String sMessage = message.getText().toString();
 
-		if (MailValidator.validaMessage(getContext(), sTitle, sMessage)) {
-			EmailUtil.sendMail(getContext(), sTitle, sMessage);
-			dismiss();
-		}
-	}
+        if (MailValidator.validaMessage(getContext(), sTitle, sMessage)) {
+            EmailUtil.sendMail(getContext(), sTitle, sMessage);
+            dismiss();
+        }
+    }
 }

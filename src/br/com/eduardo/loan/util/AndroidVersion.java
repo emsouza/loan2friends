@@ -9,7 +9,7 @@ import android.os.Build;
  */
 public class AndroidVersion {
 
-	public static String getVersion() {
-		return Build.VERSION.SDK;
-	}
+    public static String getVersion() {
+        return Build.VERSION.SDK;
+    }
 }

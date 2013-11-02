@@ -25,48 +25,48 @@ import br.com.eduardo.loan.util.type.StatusImage;
  */
 public class LoanViewAdapter extends ArrayAdapter<LoanViewDTO> {
 
-	private ArrayList<LoanViewDTO> items;
+    private ArrayList<LoanViewDTO> items;
 
-	private DateFormatUtil dateformat;
+    private DateFormatUtil dateformat;
 
-	public LoanViewAdapter(Context context, DateFormatUtil dateformat, ArrayList<LoanViewDTO> items) {
-		super(context, R.layout.ac_loan_list_row, items);
-		this.dateformat = dateformat;
-		this.items = items;
-	}
+    public LoanViewAdapter(Context context, DateFormatUtil dateformat, ArrayList<LoanViewDTO> items) {
+        super(context, R.layout.ac_loan_list_row, items);
+        this.dateformat = dateformat;
+        this.items = items;
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		View v = convertView;
-		if (v == null) {
-			LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = vi.inflate(R.layout.ac_loan_list_row, null);
-		}
-		LoanViewDTO o = items.get(position);
-		if (o != null) {
-			TextView title = (TextView) v.findViewById(R.id.loanTitle);
-			TextViewGroup lentDate = (TextViewGroup) v.findViewById(R.id.lentDate);
-			ImageView contactPhoto = (ImageView) v.findViewById(R.id.friendIcon);
-			ImageView status = (ImageView) v.findViewById(R.id.statusIcon);
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View v = convertView;
+        if (v == null) {
+            LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            v = vi.inflate(R.layout.ac_loan_list_row, null);
+        }
+        LoanViewDTO o = items.get(position);
+        if (o != null) {
+            TextView title = (TextView) v.findViewById(R.id.loanTitle);
+            TextViewGroup lentDate = (TextViewGroup) v.findViewById(R.id.lentDate);
+            ImageView contactPhoto = (ImageView) v.findViewById(R.id.friendIcon);
+            ImageView status = (ImageView) v.findViewById(R.id.statusIcon);
 
-			title.setText(o.getName());
+            title.setText(o.getName());
 
-			Date loanDate = dateformat.formatToDate(o.getLentDate());
-			lentDate.setValues(getContext().getString(R.string.date_loan), dateformat.formatDateTimeToScreen(loanDate));
+            Date loanDate = dateformat.formatToDate(o.getLentDate());
+            lentDate.setValues(getContext().getString(R.string.date_loan), dateformat.formatDateTimeToScreen(loanDate));
 
-			status.setImageResource(StatusImage.statusImage(o.getStatus()));
+            status.setImageResource(StatusImage.statusImage(o.getStatus()));
 
-			Bitmap b = ContactFinder.getPhotos(getContext(), o.getFriendId());
-			if (b != null) {
-				contactPhoto.setImageBitmap(b);
-			} else {
-				contactPhoto.setImageResource(R.drawable.ic_friend);
-			}
-		}
-		return v;
-	}
+            Bitmap b = ContactFinder.getPhotos(getContext(), o.getFriendId());
+            if (b != null) {
+                contactPhoto.setImageBitmap(b);
+            } else {
+                contactPhoto.setImageResource(R.drawable.ic_friend);
+            }
+        }
+        return v;
+    }
 
-	public ArrayList<LoanViewDTO> getItems() {
-		return items;
-	}
+    public ArrayList<LoanViewDTO> getItems() {
+        return items;
+    }
 }

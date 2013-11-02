@@ -7,63 +7,63 @@ package br.com.eduardo.loan.model.entity;
  */
 public class LoanViewDTO {
 
-	private Integer id;
+    private Integer id;
 
-	private String name;
+    private String name;
 
-	private Integer status;
+    private Integer status;
 
-	private String lentDate;
+    private String lentDate;
 
-	private Integer friendId;
+    private Integer friendId;
 
-	private String returnDate;
+    private String returnDate;
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Integer getStatus() {
-		return status;
-	}
+    public Integer getStatus() {
+        return status;
+    }
 
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
-	public String getLentDate() {
-		return lentDate;
-	}
+    public String getLentDate() {
+        return lentDate;
+    }
 
-	public void setLentDate(String lentDate) {
-		this.lentDate = lentDate;
-	}
+    public void setLentDate(String lentDate) {
+        this.lentDate = lentDate;
+    }
 
-	public String getReturnDate() {
-		return returnDate;
-	}
+    public String getReturnDate() {
+        return returnDate;
+    }
 
-	public void setReturnDate(String returnDate) {
-		this.returnDate = returnDate;
-	}
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
+    }
 
-	public Integer getFriendId() {
-		return friendId;
-	}
+    public Integer getFriendId() {
+        return friendId;
+    }
 
-	public void setFriendId(Integer friendId) {
-		this.friendId = friendId;
-	}
+    public void setFriendId(Integer friendId) {
+        this.friendId = friendId;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 }

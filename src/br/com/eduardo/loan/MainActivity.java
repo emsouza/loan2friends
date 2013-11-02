@@ -42,179 +42,179 @@ import com.googlecode.androidannotations.annotations.ViewById;
 @OptionsMenu(R.menu.main_menu)
 public class MainActivity extends FragmentActivity {
 
-	@ViewById(R.id.actionBar)
-	protected ActionBar actionBar;
+    @ViewById(R.id.actionBar)
+    protected ActionBar actionBar;
 
-	@ViewById(R.id.ac_main_list)
-	protected ListView listView;
+    @ViewById(R.id.ac_main_list)
+    protected ListView listView;
 
-	@Bean
-	protected DateFormatUtil dateTimeFormat;
+    @Bean
+    protected DateFormatUtil dateTimeFormat;
 
-	@Bean
-	protected LoanDAO loanDAO;
+    @Bean
+    protected LoanDAO loanDAO;
 
-	protected List<String> status = new ArrayList<String>();
+    protected List<String> status = new ArrayList<String>();
 
-	@AfterViews
-	void afterView() {
-		ChangeLog cl = new ChangeLog(this);
-		if (cl.firstRun()) {
-			cl.getLogDialog().show();
-		}
-		actionBar.setHomeAction(new HomeOptionsAction(this));
-		listView.setEmptyView(this.findViewById(R.id.loan_list_empty));
-	}
+    @AfterViews
+    void afterView() {
+        ChangeLog cl = new ChangeLog(this);
+        if (cl.firstRun()) {
+            cl.getLogDialog().show();
+        }
+        actionBar.setHomeAction(new HomeOptionsAction(this));
+        listView.setEmptyView(this.findViewById(R.id.loan_list_empty));
+    }
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		listView.setAdapter(new LoanViewAdapter(MainActivity.this, dateTimeFormat, loanDAO.findAll(status)));
-	}
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listView.setAdapter(new LoanViewAdapter(MainActivity.this, dateTimeFormat, loanDAO.findAll(status)));
+    }
 
-	@ItemLongClick(R.id.ac_main_list)
-	void listItemLongClicked(final int position) {
-		final LoanViewDTO loanView = (LoanViewDTO) listView.getAdapter().getItem(position);
-		CharSequence[] items = null;
+    @ItemLongClick(R.id.ac_main_list)
+    void listItemLongClicked(final int position) {
+        final LoanViewDTO loanView = (LoanViewDTO) listView.getAdapter().getItem(position);
+        CharSequence[] items = null;
 
-		AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
-		if (loanView.getStatus() == Status.LENDED.id()) {
-			items = MenuStrings.getLentMenuStrings(MainActivity.this);
-			builder.setItems(items, new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int item) {
-					processLentMenu(item, loanView);
-				}
-			});
-		} else if (loanView.getStatus() == Status.RETURNED.id()) {
-			items = MenuStrings.getReturnedMenuStrings(MainActivity.this);
-			builder.setItems(items, new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int item) {
-					processReturnedMenu(item, loanView);
-				}
-			});
-		} else if (loanView.getStatus() == Status.ARCHIVED.id()) {
-			items = MenuStrings.getArchivedMenuStrings(MainActivity.this);
-			builder.setItems(items, new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int item) {
-					processArchivedMenu(item, loanView);
-				}
-			});
-		}
-		AlertDialog alert = builder.create();
-		alert.show();
-	}
+        if (loanView.getStatus() == Status.LENDED.id()) {
+            items = MenuStrings.getLentMenuStrings(MainActivity.this);
+            builder.setItems(items, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int item) {
+                    processLentMenu(item, loanView);
+                }
+            });
+        } else if (loanView.getStatus() == Status.RETURNED.id()) {
+            items = MenuStrings.getReturnedMenuStrings(MainActivity.this);
+            builder.setItems(items, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int item) {
+                    processReturnedMenu(item, loanView);
+                }
+            });
+        } else if (loanView.getStatus() == Status.ARCHIVED.id()) {
+            items = MenuStrings.getArchivedMenuStrings(MainActivity.this);
+            builder.setItems(items, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int item) {
+                    processArchivedMenu(item, loanView);
+                }
+            });
+        }
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 
-	@OptionsItem(R.id.loanAdd)
-	void openAddLoan() {
-		Intent prefIntent = new Intent(this, LoanAddActivity_.class);
-		this.startActivity(prefIntent);
-	}
+    @OptionsItem(R.id.loanAdd)
+    void openAddLoan() {
+        Intent prefIntent = new Intent(this, LoanAddActivity_.class);
+        this.startActivity(prefIntent);
+    }
 
-	@OptionsItem(R.id.filter)
-	void openFilter() {
-		final FilterDialog filterDialog = new FilterDialog(this, status);
-		filterDialog.setOnDismissListener(new OnDismissListener() {
-			@Override
-			public void onDismiss(DialogInterface dialog) {
-				if (filterDialog.isOperationComplete()) {
-					status = filterDialog.updateStatus();
-					onResume();
-				}
-			}
-		});
-		filterDialog.show();
-	}
+    @OptionsItem(R.id.filter)
+    void openFilter() {
+        final FilterDialog filterDialog = new FilterDialog(this, status);
+        filterDialog.setOnDismissListener(new OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                if (filterDialog.isOperationComplete()) {
+                    status = filterDialog.updateStatus();
+                    onResume();
+                }
+            }
+        });
+        filterDialog.show();
+    }
 
-	@OptionsItem(R.id.friendsOpen)
-	void openFriend() {
-		Intent prefIntent = new Intent(this, FriendActivity_.class);
-		this.startActivity(prefIntent);
-	}
+    @OptionsItem(R.id.friendsOpen)
+    void openFriend() {
+        Intent prefIntent = new Intent(this, FriendActivity_.class);
+        this.startActivity(prefIntent);
+    }
 
-	@OptionsItem(R.id.itemsOpen)
-	void openItem() {
-		Intent prefIntent = new Intent(this, ItemActivity_.class);
-		this.startActivity(prefIntent);
-	}
+    @OptionsItem(R.id.itemsOpen)
+    void openItem() {
+        Intent prefIntent = new Intent(this, ItemActivity_.class);
+        this.startActivity(prefIntent);
+    }
 
-	@OptionsItem(R.id.settings)
-	void openSettings() {
-		Intent settingsActivity = new Intent(getBaseContext(), SettingsActivity.class);
-		startActivity(settingsActivity);
-	}
+    @OptionsItem(R.id.settings)
+    void openSettings() {
+        Intent settingsActivity = new Intent(getBaseContext(), SettingsActivity.class);
+        startActivity(settingsActivity);
+    }
 
-	protected void processLentMenu(int key, LoanViewDTO item) {
-		switch (key) {
-			case 0:
-				markReturned(item.getId());
-				break;
-			case 1:
-				askForDelete(item);
-				break;
-			default:
-				break;
-		}
-	}
+    protected void processLentMenu(int key, LoanViewDTO item) {
+        switch (key) {
+            case 0:
+                markReturned(item.getId());
+                break;
+            case 1:
+                askForDelete(item);
+                break;
+            default:
+                break;
+        }
+    }
 
-	protected void processReturnedMenu(int key, LoanViewDTO item) {
-		switch (key) {
-			case 0:
-				markArchived(item.getId());
-				break;
-			case 1:
-				askForDelete(item);
-				break;
-			default:
-				break;
-		}
-	}
+    protected void processReturnedMenu(int key, LoanViewDTO item) {
+        switch (key) {
+            case 0:
+                markArchived(item.getId());
+                break;
+            case 1:
+                askForDelete(item);
+                break;
+            default:
+                break;
+        }
+    }
 
-	protected void processArchivedMenu(int key, LoanViewDTO item) {
-		switch (key) {
-			case 0:
-				askForDelete(item);
-				break;
-			default:
-				break;
-		}
-	}
+    protected void processArchivedMenu(int key, LoanViewDTO item) {
+        switch (key) {
+            case 0:
+                askForDelete(item);
+                break;
+            default:
+                break;
+        }
+    }
 
-	protected void markReturned(Integer id) {
-		LoanDTO loan = loanDAO.find(id);
-		loan.setStatus(Status.RETURNED.id());
-		loan.setReturnDate(dateTimeFormat.formatToDB(new Date()));
-		loanDAO.update(loan);
-		onResume();
-	}
+    protected void markReturned(Integer id) {
+        LoanDTO loan = loanDAO.find(id);
+        loan.setStatus(Status.RETURNED.id());
+        loan.setReturnDate(dateTimeFormat.formatToDB(new Date()));
+        loanDAO.update(loan);
+        onResume();
+    }
 
-	protected void markArchived(Integer id) {
-		loanDAO.archive(id);
-		onResume();
-	}
+    protected void markArchived(Integer id) {
+        loanDAO.archive(id);
+        onResume();
+    }
 
-	protected void askForDelete(final LoanViewDTO item) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage(getString(R.string.delete)).setCancelable(false)
-				.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int id) {
-						delete(item);
-					}
-				}).setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int id) {
-						dialog.cancel();
-					}
-				});
-		builder.create().show();
-	}
+    protected void askForDelete(final LoanViewDTO item) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.delete)).setCancelable(false)
+                .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        delete(item);
+                    }
+                }).setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        builder.create().show();
+    }
 
-	protected void delete(LoanViewDTO item) {
-		loanDAO.delete(item.getId());
-		onResume();
-	}
+    protected void delete(LoanViewDTO item) {
+        loanDAO.delete(item.getId());
+        onResume();
+    }
 }

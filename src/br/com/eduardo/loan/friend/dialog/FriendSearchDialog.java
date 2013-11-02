@@ -18,32 +18,32 @@ import br.com.eduardo.loan.model.entity.FriendDTO;
  */
 public class FriendSearchDialog extends Dialog implements OnItemClickListener {
 
-	protected FriendDTO friend;
+    protected FriendDTO friend;
 
-	public FriendSearchDialog(Context context) {
-		super(context);
-		setTitle(R.string.title_dialog_friend);
-	}
+    public FriendSearchDialog(Context context) {
+        super(context);
+        setTitle(R.string.title_dialog_friend);
+    }
 
-	public void populate() {
-		FriendDAO db = new FriendDAO(getContext());
-		FriendDialogAdapter adapter = new FriendDialogAdapter(getContext(), R.layout.dg_friend_list, db.findAll());
-		db.close();
+    public void populate() {
+        FriendDAO db = new FriendDAO(getContext());
+        FriendDialogAdapter adapter = new FriendDialogAdapter(getContext(), R.layout.dg_friend_list, db.findAll());
+        db.close();
 
-		ListView listView = new ListView(getContext());
-		listView.setAdapter(adapter);
-		listView.setOnItemClickListener(this);
-		setContentView(listView);
+        ListView listView = new ListView(getContext());
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
+        setContentView(listView);
 
-	}
+    }
 
-	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		friend = ((FriendDTO) arg0.getItemAtPosition(arg2));
-		dismiss();
-	}
+    @Override
+    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+        friend = ((FriendDTO) arg0.getItemAtPosition(arg2));
+        dismiss();
+    }
 
-	public FriendDTO getItemSelected() {
-		return friend;
-	}
+    public FriendDTO getItemSelected() {
+        return friend;
+    }
 }

@@ -17,8 +17,8 @@ import com.googlecode.androidannotations.annotations.EFragment;
 @EFragment
 public class AdsFragment extends Fragment {
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fg_ads, container, false);
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fg_ads, container, false);
+    }
 }

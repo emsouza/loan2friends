@@ -22,30 +22,30 @@ import com.googlecode.androidannotations.annotations.ViewById;
 @EActivity(R.layout.ac_item_detail)
 public class ItemDetailActivity extends FragmentActivity {
 
-	@ViewById(R.id.ac_item_detail_title)
-	protected EditText title;
+    @ViewById(R.id.ac_item_detail_title)
+    protected EditText title;
 
-	@ViewById(R.id.ac_item_detail_description)
-	protected EditText description;
+    @ViewById(R.id.ac_item_detail_description)
+    protected EditText description;
 
-	@ViewById(R.id.ac_item_detail_image)
-	protected ImageView imageType;
+    @ViewById(R.id.ac_item_detail_image)
+    protected ImageView imageType;
 
-	@Bean
-	protected ItemDAO itemDAO;
+    @Bean
+    protected ItemDAO itemDAO;
 
-	@Extra
-	protected Integer id;
+    @Extra
+    protected Integer id;
 
-	@AfterViews
-	void afterView() {
-		ItemDTO item = itemDAO.find(id);
-		title.setText(item.getTitle());
-		if (item.getDescription() != null && item.getDescription().length() > 0) {
-			description.setText(item.getDescription());
-		} else {
-			description.setText("...");
-		}
-		imageType.setImageResource(ItemTypeImage.typeACImage(item.getType()));
-	}
+    @AfterViews
+    void afterView() {
+        ItemDTO item = itemDAO.find(id);
+        title.setText(item.getTitle());
+        if (item.getDescription() != null && item.getDescription().length() > 0) {
+            description.setText(item.getDescription());
+        } else {
+            description.setText("...");
+        }
+        imageType.setImageResource(ItemTypeImage.typeACImage(item.getType()));
+    }
 }

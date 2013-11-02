@@ -18,21 +18,21 @@ import com.googlecode.androidannotations.annotations.EView;
 @EView
 public class DateView extends EditText {
 
-	@Bean
-	protected DateFormatUtil dateTimeFormat;
+    @Bean
+    protected DateFormatUtil dateTimeFormat;
 
-	protected Calendar cal;
+    protected Calendar cal;
 
-	public DateView(Context context, AttributeSet attrs) {
-		super(context, attrs);
-	}
+    public DateView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
 
-	public void setDate(Calendar cal) {
-		this.cal = cal;
-		setText(dateTimeFormat.formatDateToScreen(cal.getTime()));
-	}
+    public void setDate(Calendar cal) {
+        this.cal = cal;
+        setText(dateTimeFormat.formatDateToScreen(cal.getTime()));
+    }
 
-	public Calendar getDate() {
-		return cal;
-	}
+    public Calendar getDate() {
+        return cal;
+    }
 }

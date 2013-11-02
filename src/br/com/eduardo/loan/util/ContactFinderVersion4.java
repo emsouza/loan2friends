@@ -16,16 +16,16 @@ import br.com.eduardo.loan.R;
 @SuppressWarnings({ "deprecation", "static-access" })
 public class ContactFinderVersion4 {
 
-	public static Cursor getCursor(Context context) {
-		String[] projection = new String[] { People.NAME, People.NUMBER };
-		Uri contacts = People.CONTENT_URI;
-		Cursor cursor = context.getContentResolver().query(contacts, projection, null, null, People.NAME + " ASC");
-		return cursor;
-	}
+    public static Cursor getCursor(Context context) {
+        String[] projection = new String[] { People.NAME, People.NUMBER };
+        Uri contacts = People.CONTENT_URI;
+        Cursor cursor = context.getContentResolver().query(contacts, projection, null, null, People.NAME + " ASC");
+        return cursor;
+    }
 
-	public static Bitmap getPhoto(Context context, long contactId) {
-		Uri uri = ContentUris.withAppendedId(People.CONTENT_URI, contactId);
-		Bitmap bitmap = People.loadContactPhoto(context, uri, R.drawable.ic_friend, null);
-		return bitmap;
-	}
+    public static Bitmap getPhoto(Context context, long contactId) {
+        Uri uri = ContentUris.withAppendedId(People.CONTENT_URI, contactId);
+        Bitmap bitmap = People.loadContactPhoto(context, uri, R.drawable.ic_friend, null);
+        return bitmap;
+    }
 }

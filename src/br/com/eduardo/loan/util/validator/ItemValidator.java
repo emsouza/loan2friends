@@ -12,13 +12,13 @@ import br.com.eduardo.loan.model.entity.ItemDTO;
  */
 public class ItemValidator {
 
-	public static boolean validaItem(Context context, ItemDTO item) {
-		if (item.getTitle() != null && item.getTitle().length() > 0) {
-			return true;
-		} else {
-			Toast toast = Toast.makeText(context, R.string.item_name_error, Toast.LENGTH_SHORT);
-			toast.show();
-			return false;
-		}
-	}
+    public static boolean validaItem(Context context, ItemDTO item) {
+        if (item.getTitle() != null && item.getTitle().length() > 0) {
+            return true;
+        } else {
+            Toast toast = Toast.makeText(context, R.string.item_name_error, Toast.LENGTH_SHORT);
+            toast.show();
+            return false;
+        }
+    }
 }

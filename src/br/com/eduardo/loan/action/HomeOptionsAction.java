@@ -18,66 +18,66 @@ import br.com.emsouza.widget.slidingmenu.SlidingMenu;
  */
 public class HomeOptionsAction extends CustomAction {
 
-	protected Activity activity;
+    protected Activity activity;
 
-	protected SlidingMenu menu;
+    protected SlidingMenu menu;
 
-	public HomeOptionsAction(Activity activity) {
-		this.activity = activity;
-		menu = new SlidingMenu(activity, SlidingMenu.SLIDING_CONTENT);
-		menu.setMode(SlidingMenu.LEFT);
-		menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-		menu.setShadowWidthRes(R.dimen.shadow_width);
-		menu.setShadowDrawable(R.drawable.shadow);
-		menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-		menu.setFadeDegree(0.35f);
-		menu.setBackgroundColor(activity.getResources().getColor(R.color.gray));
-		menu.setMenu(R.layout.ac_menu);
+    public HomeOptionsAction(Activity activity) {
+        this.activity = activity;
+        menu = new SlidingMenu(activity, SlidingMenu.SLIDING_CONTENT);
+        menu.setMode(SlidingMenu.LEFT);
+        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        menu.setShadowWidthRes(R.dimen.shadow_width);
+        menu.setShadowDrawable(R.drawable.shadow);
+        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+        menu.setFadeDegree(0.35f);
+        menu.setBackgroundColor(activity.getResources().getColor(R.color.gray));
+        menu.setMenu(R.layout.ac_menu);
 
-		menu.findViewById(R.id.menuHome).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				home();
-			}
-		});
+        menu.findViewById(R.id.menuHome).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                home();
+            }
+        });
 
-		menu.findViewById(R.id.menuFriend).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				friend();
-			}
-		});
+        menu.findViewById(R.id.menuFriend).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                friend();
+            }
+        });
 
-		menu.findViewById(R.id.menuItem).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				item();
-			}
-		});
-	}
+        menu.findViewById(R.id.menuItem).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                item();
+            }
+        });
+    }
 
-	@Override
-	public int getDrawable() {
-		return R.drawable.ic_action;
-	}
+    @Override
+    public int getDrawable() {
+        return R.drawable.ic_action;
+    }
 
-	@Override
-	public void performAction(View view) {
-		menu.showMenu(true);
-	}
+    @Override
+    public void performAction(View view) {
+        menu.showMenu(true);
+    }
 
-	protected void home() {
-		Intent intent = new Intent(activity, MainActivity_.class);
-		activity.startActivity(intent);
-	}
+    protected void home() {
+        Intent intent = new Intent(activity, MainActivity_.class);
+        activity.startActivity(intent);
+    }
 
-	protected void friend() {
-		Intent intent = new Intent(activity, FriendActivity_.class);
-		activity.startActivity(intent);
-	}
+    protected void friend() {
+        Intent intent = new Intent(activity, FriendActivity_.class);
+        activity.startActivity(intent);
+    }
 
-	protected void item() {
-		Intent intent = new Intent(activity, ItemActivity_.class);
-		activity.startActivity(intent);
-	}
+    protected void item() {
+        Intent intent = new Intent(activity, ItemActivity_.class);
+        activity.startActivity(intent);
+    }
 }

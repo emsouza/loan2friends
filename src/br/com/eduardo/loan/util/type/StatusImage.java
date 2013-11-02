@@ -9,16 +9,16 @@ import br.com.eduardo.loan.R;
  */
 public class StatusImage {
 
-	public static int statusImage(Integer status) {
-		switch (status) {
-			case 1:
-				return R.drawable.ic_status_lent;
-			case 2:
-				return R.drawable.ic_status_return;
-			case 3:
-				return R.drawable.ic_status_archive;
-			default:
-				return R.drawable.ic_icon;
-		}
-	}
+    public static int statusImage(Integer status) {
+        switch (status) {
+            case 1:
+                return R.drawable.ic_status_lent;
+            case 2:
+                return R.drawable.ic_status_return;
+            case 3:
+                return R.drawable.ic_status_archive;
+            default:
+                return R.drawable.ic_icon;
+        }
+    }
 }

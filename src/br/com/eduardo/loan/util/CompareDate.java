@@ -8,17 +8,17 @@ import java.util.Date;
  */
 public class CompareDate {
 
-	public static boolean compareDate(Date date) {
+    public static boolean compareDate(Date date) {
 
-		Calendar loanDate = Calendar.getInstance();
-		loanDate.setTime(date);
+        Calendar loanDate = Calendar.getInstance();
+        loanDate.setTime(date);
 
-		Calendar now = Calendar.getInstance();
+        Calendar now = Calendar.getInstance();
 
-		if (loanDate.after(now))
-			return false;
-		else {
-			return true;
-		}
-	}
+        if (loanDate.after(now))
+            return false;
+        else {
+            return true;
+        }
+    }
 }

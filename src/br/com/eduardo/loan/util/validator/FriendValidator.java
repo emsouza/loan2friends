@@ -12,13 +12,13 @@ import br.com.eduardo.loan.model.entity.FriendDTO;
  */
 public class FriendValidator {
 
-	public static boolean validaFriend(Context context, FriendDTO friend) {
-		if (friend.getName() != null && friend.getName().length() > 0) {
-			return true;
-		} else {
-			Toast toast = Toast.makeText(context, R.string.friend_name_error, Toast.LENGTH_SHORT);
-			toast.show();
-			return false;
-		}
-	}
+    public static boolean validaFriend(Context context, FriendDTO friend) {
+        if (friend.getName() != null && friend.getName().length() > 0) {
+            return true;
+        } else {
+            Toast toast = Toast.makeText(context, R.string.friend_name_error, Toast.LENGTH_SHORT);
+            toast.show();
+            return false;
+        }
+    }
 }

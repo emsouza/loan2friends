@@ -20,36 +20,36 @@ import br.com.eduardo.loan.util.ContactFinder;
  */
 public class ContactDialog extends Dialog implements OnItemClickListener {
 
-	protected ContactDTO itemSelected;
+    protected ContactDTO itemSelected;
 
-	protected ListView listView;
+    protected ListView listView;
 
-	public ContactDialog(Context context) {
-		super(context);
-		setTitle(R.string.title_dialog_contact);
-		listView = new ListView(getContext());
-		listView.setDrawSelectorOnTop(true);
-		listView.setOnItemClickListener(this);
-	}
+    public ContactDialog(Context context) {
+        super(context);
+        setTitle(R.string.title_dialog_contact);
+        listView = new ListView(getContext());
+        listView.setDrawSelectorOnTop(true);
+        listView.setOnItemClickListener(this);
+    }
 
-	public void populate() {
-		try {
-			ArrayList<ContactDTO> list = ContactFinder.getContacts(getContext());
-			ContactAdapter adapter = new ContactAdapter(getContext(), R.layout.dg_contact_list, list);
-			listView.setAdapter(adapter);
-			setContentView(listView);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    public void populate() {
+        try {
+            ArrayList<ContactDTO> list = ContactFinder.getContacts(getContext());
+            ContactAdapter adapter = new ContactAdapter(getContext(), R.layout.dg_contact_list, list);
+            listView.setAdapter(adapter);
+            setContentView(listView);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		itemSelected = (ContactDTO) arg0.getItemAtPosition(arg2);
-		dismiss();
-	}
+    @Override
+    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+        itemSelected = (ContactDTO) arg0.getItemAtPosition(arg2);
+        dismiss();
+    }
 
-	public ContactDTO getItemSelected() {
-		return itemSelected;
-	}
+    public ContactDTO getItemSelected() {
+        return itemSelected;
+    }
 }

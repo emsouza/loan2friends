@@ -25,161 +25,161 @@ import br.com.eduardo.loan.util.FileUtil;
  */
 public class SettingsActivity extends PreferenceActivity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.preferences);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        addPreferencesFromResource(R.xml.preferences);
 
-		Preference changelog = findPreference("changelog_pref");
+        Preference changelog = findPreference("changelog_pref");
 
-		changelog.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+        changelog.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 
-			@Override
-			public boolean onPreferenceClick(Preference preference) {
-				ChangeLog cl = new ChangeLog(SettingsActivity.this);
-				cl.getFullLogDialog().show();
-				return true;
-			}
-		});
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                ChangeLog cl = new ChangeLog(SettingsActivity.this);
+                cl.getFullLogDialog().show();
+                return true;
+            }
+        });
 
-		Preference feature = findPreference("feature_pref");
+        Preference feature = findPreference("feature_pref");
 
-		feature.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			@Override
-			public boolean onPreferenceClick(Preference preference) {
-				EmailDialog emailDialog = new EmailDialog(SettingsActivity.this);
-				emailDialog.show();
-				return true;
-			}
-		});
+        feature.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                EmailDialog emailDialog = new EmailDialog(SettingsActivity.this);
+                emailDialog.show();
+                return true;
+            }
+        });
 
-		Preference import_data = findPreference("import_data");
+        Preference import_data = findPreference("import_data");
 
-		import_data.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			@Override
-			public boolean onPreferenceClick(Preference preference) {
-				if (isExternalStorageAvail()) {
-					new ImportDatabaseTask().execute();
-				} else {
-					Toast.makeText(getApplicationContext(), getApplicationContext().getText(R.string.import_export_error), Toast.LENGTH_SHORT).show();
-				}
-				SystemClock.sleep(500);
-				return true;
-			}
-		});
+        import_data.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                if (isExternalStorageAvail()) {
+                    new ImportDatabaseTask().execute();
+                } else {
+                    Toast.makeText(getApplicationContext(), getApplicationContext().getText(R.string.import_export_error), Toast.LENGTH_SHORT).show();
+                }
+                SystemClock.sleep(500);
+                return true;
+            }
+        });
 
-		Preference export_data = findPreference("export_data");
+        Preference export_data = findPreference("export_data");
 
-		export_data.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			@Override
-			public boolean onPreferenceClick(Preference preference) {
-				if (isExternalStorageAvail()) {
-					new ExportDatabaseTask().execute();
-				} else {
-					Toast.makeText(getApplicationContext(), getApplicationContext().getText(R.string.import_export_error), Toast.LENGTH_SHORT).show();
-				}
-				SystemClock.sleep(500);
-				return true;
-			}
-		});
-	}
+        export_data.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                if (isExternalStorageAvail()) {
+                    new ExportDatabaseTask().execute();
+                } else {
+                    Toast.makeText(getApplicationContext(), getApplicationContext().getText(R.string.import_export_error), Toast.LENGTH_SHORT).show();
+                }
+                SystemClock.sleep(500);
+                return true;
+            }
+        });
+    }
 
-	protected boolean isExternalStorageAvail() {
-		return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
-	}
+    protected boolean isExternalStorageAvail() {
+        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+    }
 
-	protected class ExportDatabaseTask extends AsyncTask<Void, Void, Boolean> {
-		private final ProgressDialog dialog = new ProgressDialog(SettingsActivity.this);
+    protected class ExportDatabaseTask extends AsyncTask<Void, Void, Boolean> {
+        private final ProgressDialog dialog = new ProgressDialog(SettingsActivity.this);
 
-		// can use UI thread here
-		@Override
-		protected void onPreExecute() {
-			dialog.setMessage(getApplicationContext().getText(R.string.exporting));
-			dialog.show();
-		}
+        // can use UI thread here
+        @Override
+        protected void onPreExecute() {
+            dialog.setMessage(getApplicationContext().getText(R.string.exporting));
+            dialog.show();
+        }
 
-		// automatically done on worker thread (separate from UI thread)
-		@Override
-		protected Boolean doInBackground(final Void... args) {
+        // automatically done on worker thread (separate from UI thread)
+        @Override
+        protected Boolean doInBackground(final Void... args) {
 
-			File dbFile = new File(Environment.getDataDirectory() + "/data/br.com.eduardo.loan/databases/loan_friends.db");
+            File dbFile = new File(Environment.getDataDirectory() + "/data/br.com.eduardo.loan/databases/loan_friends.db");
 
-			File exportDir = new File(Environment.getExternalStorageDirectory(), "LOAN_TO_FRIENDS");
-			if (!exportDir.exists()) {
-				exportDir.mkdirs();
-			}
-			File file = new File(exportDir, "loan_to_friends.backup");
+            File exportDir = new File(Environment.getExternalStorageDirectory(), "LOAN_TO_FRIENDS");
+            if (!exportDir.exists()) {
+                exportDir.mkdirs();
+            }
+            File file = new File(exportDir, "loan_to_friends.backup");
 
-			try {
-				file.createNewFile();
-				FileUtil.copyFile(dbFile, file);
-				return true;
-			} catch (IOException e) {
-				Log.e(SettingsActivity.class.getName(), e.getMessage(), e);
-				return false;
-			}
-		}
+            try {
+                file.createNewFile();
+                FileUtil.copyFile(dbFile, file);
+                return true;
+            } catch (IOException e) {
+                Log.e(SettingsActivity.class.getName(), e.getMessage(), e);
+                return false;
+            }
+        }
 
-		// can use UI thread here
-		@Override
-		protected void onPostExecute(final Boolean success) {
-			if (dialog.isShowing()) {
-				dialog.dismiss();
-			}
-			if (success) {
-				Toast.makeText(SettingsActivity.this, getApplicationContext().getText(R.string.export_ok), Toast.LENGTH_SHORT).show();
-			} else {
-				Toast.makeText(SettingsActivity.this, getApplicationContext().getText(R.string.export_fail), Toast.LENGTH_SHORT).show();
-			}
-		}
-	}
+        // can use UI thread here
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+            if (success) {
+                Toast.makeText(SettingsActivity.this, getApplicationContext().getText(R.string.export_ok), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(SettingsActivity.this, getApplicationContext().getText(R.string.export_fail), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 
-	protected class ImportDatabaseTask extends AsyncTask<Void, Void, String> {
-		private final ProgressDialog dialog = new ProgressDialog(SettingsActivity.this);
+    protected class ImportDatabaseTask extends AsyncTask<Void, Void, String> {
+        private final ProgressDialog dialog = new ProgressDialog(SettingsActivity.this);
 
-		@Override
-		protected void onPreExecute() {
-			dialog.setMessage(getApplicationContext().getText(R.string.importing));
-			dialog.show();
-		}
+        @Override
+        protected void onPreExecute() {
+            dialog.setMessage(getApplicationContext().getText(R.string.importing));
+            dialog.show();
+        }
 
-		// could pass the params used here in AsyncTask<String, Void, String> -
-		// but not being re-used
-		@Override
-		protected String doInBackground(final Void... args) {
+        // could pass the params used here in AsyncTask<String, Void, String> -
+        // but not being re-used
+        @Override
+        protected String doInBackground(final Void... args) {
 
-			File dbBackupFile = new File(Environment.getExternalStorageDirectory() + "/LOAN_TO_FRIENDS/loan_to_friends.backup");
-			if (!dbBackupFile.exists()) {
-				return getApplicationContext().getText(R.string.import_fail).toString();
-			} else if (!dbBackupFile.canRead()) {
-				return getApplicationContext().getText(R.string.import_fail).toString();
-			}
+            File dbBackupFile = new File(Environment.getExternalStorageDirectory() + "/LOAN_TO_FRIENDS/loan_to_friends.backup");
+            if (!dbBackupFile.exists()) {
+                return getApplicationContext().getText(R.string.import_fail).toString();
+            } else if (!dbBackupFile.canRead()) {
+                return getApplicationContext().getText(R.string.import_fail).toString();
+            }
 
-			File dbFile = new File(Environment.getDataDirectory() + "/data/br.com.eduardo.loan/databases/loan_friends.db");
-			if (dbFile.exists()) {
-				dbFile.delete();
-			}
+            File dbFile = new File(Environment.getDataDirectory() + "/data/br.com.eduardo.loan/databases/loan_friends.db");
+            if (dbFile.exists()) {
+                dbFile.delete();
+            }
 
-			try {
-				dbFile.createNewFile();
-				FileUtil.copyFile(dbBackupFile, dbFile);
-				return null;
-			} catch (IOException e) {
-				Log.e(SettingsActivity.class.getName(), e.getMessage(), e);
-				return e.getMessage();
-			}
-		}
+            try {
+                dbFile.createNewFile();
+                FileUtil.copyFile(dbBackupFile, dbFile);
+                return null;
+            } catch (IOException e) {
+                Log.e(SettingsActivity.class.getName(), e.getMessage(), e);
+                return e.getMessage();
+            }
+        }
 
-		@Override
-		protected void onPostExecute(final String errMsg) {
-			if (dialog.isShowing()) {
-				dialog.dismiss();
-			}
-			if (errMsg == null) {
-				Toast.makeText(SettingsActivity.this, getApplicationContext().getText(R.string.import_ok), Toast.LENGTH_SHORT).show();
-			} else {
-				Toast.makeText(SettingsActivity.this, getApplicationContext().getText(R.string.import_fail), Toast.LENGTH_SHORT).show();
-			}
-		}
-	}
+        @Override
+        protected void onPostExecute(final String errMsg) {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+            if (errMsg == null) {
+                Toast.makeText(SettingsActivity.this, getApplicationContext().getText(R.string.import_ok), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(SettingsActivity.this, getApplicationContext().getText(R.string.import_fail), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 }

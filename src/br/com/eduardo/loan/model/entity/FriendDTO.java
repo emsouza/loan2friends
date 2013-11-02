@@ -7,43 +7,43 @@ package br.com.eduardo.loan.model.entity;
  */
 public class FriendDTO {
 
-	private Integer id;
+    private Integer id;
 
-	private String name;
+    private String name;
 
-	private String phone;
+    private String phone;
 
-	private long contactId;
+    private long contactId;
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public long getContactId() {
-		return contactId;
-	}
+    public long getContactId() {
+        return contactId;
+    }
 
-	public void setContactId(long contactId) {
-		this.contactId = contactId;
-	}
+    public void setContactId(long contactId) {
+        this.contactId = contactId;
+    }
 }

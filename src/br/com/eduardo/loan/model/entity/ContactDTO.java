@@ -7,33 +7,33 @@ package br.com.eduardo.loan.model.entity;
  */
 public class ContactDTO {
 
-	private long contactId;
+    private long contactId;
 
-	private String name;
+    private String name;
 
-	private String number;
+    private String number;
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getNumber() {
-		return number;
-	}
+    public String getNumber() {
+        return number;
+    }
 
-	public void setNumber(String number) {
-		this.number = number;
-	}
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
-	public long getContactId() {
-		return contactId;
-	}
+    public long getContactId() {
+        return contactId;
+    }
 
-	public void setContactId(long contactId) {
-		this.contactId = contactId;
-	}
+    public void setContactId(long contactId) {
+        this.contactId = contactId;
+    }
 }

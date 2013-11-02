@@ -14,43 +14,43 @@ import br.com.eduardo.loan.model.entity.ContactDTO;
  */
 public class ContactFinder {
 
-	/**
-	 * Busca os contatos do telefone e converte para uma lista.
-	 * 
-	 * @param context Contexto em que a classe foi invocada.
-	 * @return Lista de <ContactItem> com as informações��es dos contatos.
-	 */
-	public static ArrayList<ContactDTO> getContacts(Context context) {
-		ArrayList<ContactDTO> list = new ArrayList<ContactDTO>();
+    /**
+     * Busca os contatos do telefone e converte para uma lista.
+     * 
+     * @param context Contexto em que a classe foi invocada.
+     * @return Lista de <ContactItem> com as informações��es dos contatos.
+     */
+    public static ArrayList<ContactDTO> getContacts(Context context) {
+        ArrayList<ContactDTO> list = new ArrayList<ContactDTO>();
 
-		Cursor cursor = null;
+        Cursor cursor = null;
 
-		if (AndroidVersion.getVersion().equalsIgnoreCase("4")) {
-			cursor = ContactFinderVersion4.getCursor(context);
-		} else {
-			cursor = ContactFinderVersionNew.getCursor(context);
-		}
+        if (AndroidVersion.getVersion().equalsIgnoreCase("4")) {
+            cursor = ContactFinderVersion4.getCursor(context);
+        } else {
+            cursor = ContactFinderVersionNew.getCursor(context);
+        }
 
-		if (cursor != null && cursor.getCount() > 0) {
-			while (cursor.moveToNext()) {
-				ContactDTO item = new ContactDTO();
-				item.setContactId(cursor.getLong(0));
-				item.setName(cursor.getString(1));
-				item.setNumber(cursor.getString(2));
-				list.add(item);
-			}
-			cursor.close();
-		}
-		return list;
-	}
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                ContactDTO item = new ContactDTO();
+                item.setContactId(cursor.getLong(0));
+                item.setName(cursor.getString(1));
+                item.setNumber(cursor.getString(2));
+                list.add(item);
+            }
+            cursor.close();
+        }
+        return list;
+    }
 
-	/**
-	 * Busca as fotos dos contatos.
-	 * 
-	 * @param context Contexto em que a classe foi invocada.
-	 * @return Lista de <ContactItem> com as informações��es dos contatos.
-	 */
-	public static Bitmap getPhotos(Context context, long contactId) {
-		return ContactFinderVersionNew.getPhoto(context, contactId);
-	}
+    /**
+     * Busca as fotos dos contatos.
+     * 
+     * @param context Contexto em que a classe foi invocada.
+     * @return Lista de <ContactItem> com as informações��es dos contatos.
+     */
+    public static Bitmap getPhotos(Context context, long contactId) {
+        return ContactFinderVersionNew.getPhoto(context, contactId);
+    }
 }

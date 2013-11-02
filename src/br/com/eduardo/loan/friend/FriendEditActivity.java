@@ -23,43 +23,43 @@ import com.googlecode.androidannotations.annotations.ViewById;
 @EActivity(R.layout.ac_friend_edit)
 public class FriendEditActivity extends FragmentActivity {
 
-	@ViewById(R.id.ac_friend_edit_name)
-	protected EditText name;
+    @ViewById(R.id.ac_friend_edit_name)
+    protected EditText name;
 
-	@ViewById(R.id.ac_friend_edit_number)
-	protected EditText number;
+    @ViewById(R.id.ac_friend_edit_number)
+    protected EditText number;
 
-	@Bean
-	protected FriendDAO friendDAO;
+    @Bean
+    protected FriendDAO friendDAO;
 
-	@Extra
-	protected Integer id;
+    @Extra
+    protected Integer id;
 
-	@AfterViews
-	void afterView() {
-		number.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
+    @AfterViews
+    void afterView() {
+        number.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
-		FriendDTO friend = friendDAO.find(id);
-		name.setText(friend.getName());
-		number.setText(friend.getPhone());
-	}
+        FriendDTO friend = friendDAO.find(id);
+        name.setText(friend.getName());
+        number.setText(friend.getPhone());
+    }
 
-	@Click(R.id.buttonSave)
-	void saveFriend() {
-		FriendDTO friend = new FriendDTO();
-		friend.setId(id);
-		friend.setName(((EditText) this.findViewById(R.id.ac_friend_edit_name)).getText().toString());
-		friend.setPhone(((EditText) this.findViewById(R.id.ac_friend_edit_number)).getText().toString());
+    @Click(R.id.buttonSave)
+    void saveFriend() {
+        FriendDTO friend = new FriendDTO();
+        friend.setId(id);
+        friend.setName(((EditText) this.findViewById(R.id.ac_friend_edit_name)).getText().toString());
+        friend.setPhone(((EditText) this.findViewById(R.id.ac_friend_edit_number)).getText().toString());
 
-		if (FriendValidator.validaFriend(this, friend)) {
-			friendDAO.update(friend);
-			finish();
-		}
-	}
+        if (FriendValidator.validaFriend(this, friend)) {
+            friendDAO.update(friend);
+            finish();
+        }
+    }
 
-	@Override
-	@Click(R.id.buttonCancel)
-	public void finish() {
-		super.finish();
-	}
+    @Override
+    @Click(R.id.buttonCancel)
+    public void finish() {
+        super.finish();
+    }
 }

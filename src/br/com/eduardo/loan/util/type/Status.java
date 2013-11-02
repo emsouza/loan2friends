@@ -7,18 +7,18 @@ package br.com.eduardo.loan.util.type;
  */
 public enum Status {
 
-	AVAILABLE(0),
-	LENDED(1),
-	RETURNED(2),
-	ARCHIVED(3);
+    AVAILABLE(0),
+    LENDED(1),
+    RETURNED(2),
+    ARCHIVED(3);
 
-	private Integer id;
+    private Integer id;
 
-	private Status(Integer id) {
-		this.id = id;
-	}
+    private Status(Integer id) {
+        this.id = id;
+    }
 
-	public int id() {
-		return id;
-	}
+    public int id() {
+        return id;
+    }
 }

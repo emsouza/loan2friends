@@ -19,32 +19,32 @@ import br.com.eduardo.loan.util.type.ItemTypeImage;
  */
 public class ItemDialogAdapter extends ArrayAdapter<ItemDTO> {
 
-	private ArrayList<ItemDTO> items;
+    private ArrayList<ItemDTO> items;
 
-	public ItemDialogAdapter(Context context, int textViewResourceId, ArrayList<ItemDTO> items) {
-		super(context, textViewResourceId, items);
-		this.items = items;
-	}
+    public ItemDialogAdapter(Context context, int textViewResourceId, ArrayList<ItemDTO> items) {
+        super(context, textViewResourceId, items);
+        this.items = items;
+    }
 
-	@Override
-	public boolean isEmpty() {
-		return items.isEmpty();
-	}
+    @Override
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		View v = convertView;
-		if (v == null) {
-			LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = vi.inflate(R.layout.dg_item_list, null);
-		}
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View v = convertView;
+        if (v == null) {
+            LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            v = vi.inflate(R.layout.dg_item_list, null);
+        }
 
-		ItemDTO o = items.get(position);
-		if (o != null) {
-			TextView tt = (TextView) v.findViewById(R.id.dialog_item_name);
-			tt.setText(o.getTitle());
-			tt.setCompoundDrawablesWithIntrinsicBounds(ItemTypeImage.typeGridImage(o.getType()), 0, 0, 0);
-		}
-		return v;
-	}
+        ItemDTO o = items.get(position);
+        if (o != null) {
+            TextView tt = (TextView) v.findViewById(R.id.dialog_item_name);
+            tt.setText(o.getTitle());
+            tt.setCompoundDrawablesWithIntrinsicBounds(ItemTypeImage.typeGridImage(o.getType()), 0, 0, 0);
+        }
+        return v;
+    }
 }

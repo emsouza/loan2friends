@@ -17,15 +17,15 @@ import com.googlecode.androidannotations.annotations.ViewById;
 @EViewGroup(R.layout.gr_textview)
 public class TextViewGroup extends LinearLayout {
 
-	@ViewById
-	protected TextView grName, grText;
+    @ViewById
+    protected TextView grName, grText;
 
-	public TextViewGroup(Context context, AttributeSet attrs) {
-		super(context, attrs);
-	}
+    public TextViewGroup(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
 
-	public void setValues(String name, String text) {
-		grName.setText(name);
-		grText.setText(text);
-	}
+    public void setValues(String name, String text) {
+        grName.setText(name);
+        grText.setText(text);
+    }
 }
