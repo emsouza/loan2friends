@@ -9,18 +9,23 @@
         android:id="@+id/menuHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_bar_home"
+        android:drawableLeft="@drawable/ic_menu_home"
         android:drawablePadding="5dp"
+        android:paddingBottom="5dp"
         android:text="@string/menu_main_home"
-        android:textSize="35sp" />
+        android:textColor="@color/red"
+        android:textSize="28sp" />
 
     <TextView
-        android:id="@+id/addLoan"
+        android:id="@+id/menuLoan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_menu_add"
+        android:drawablePadding="5dp"
+        android:paddingBottom="5dp"
         android:text="@string/menu_main_add"
-        android:textSize="35sp" />
+        android:textColor="@color/red"
+        android:textSize="28sp" />
 
     <TextView
         android:id="@+id/menuFriend"
@@ -28,8 +33,10 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_menu_friends"
         android:drawablePadding="5dp"
+        android:paddingBottom="5dp"
         android:text="@string/menu_main_friends"
-        android:textSize="35sp" />
+        android:textColor="@color/red"
+        android:textSize="28sp" />
 
     <TextView
         android:id="@+id/menuItem"
@@ -37,8 +44,10 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_menu_items"
         android:drawablePadding="5dp"
+        android:paddingBottom="5dp"
         android:text="@string/menu_main_items"
-        android:textSize="35sp" />
+        android:textColor="@color/red"
+        android:textSize="28sp" />
 
     <TextView
         android:id="@+id/menuSettings"
@@ -46,7 +55,9 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_menu_config"
         android:drawablePadding="5dp"
+        android:paddingBottom="5dp"
         android:text="@string/menu_main_settings"
-        android:textSize="35sp" />
+        android:textColor="@color/red"
+        android:textSize="28sp" />
 
 </LinearLayout>

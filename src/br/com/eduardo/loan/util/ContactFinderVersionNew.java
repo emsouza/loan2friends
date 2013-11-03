@@ -1,5 +1,6 @@
 package br.com.eduardo.loan.util;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 import android.content.ContentUris;
@@ -26,10 +27,19 @@ public class ContactFinderVersionNew {
 
     public static Bitmap getPhoto(Context context, long contactId) {
         Uri uri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, contactId);
-        InputStream input = ContactsContract.Contacts.openContactPhotoInputStream(context.getContentResolver(), uri);
-        if (input == null) {
-            return null;
+        InputStream input = null;
+        try {
+            input = ContactsContract.Contacts.openContactPhotoInputStream(context.getContentResolver(), uri);
+            if (input == null) {
+                return null;
+            }
+            return BitmapFactory.decodeStream(input);
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {}
+            }
         }
-        return BitmapFactory.decodeStream(input);
     }
 }

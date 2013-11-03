@@ -19,6 +19,6 @@ public class HomeAction extends IntentAction {
 
     @Override
     public int getDrawable() {
-        return R.drawable.ic_title_home_default;
+        return R.drawable.ic_bar_home;
     }
 }

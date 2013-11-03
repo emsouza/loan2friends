@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import br.com.eduardo.loan.LoanAddActivity_;
 import br.com.eduardo.loan.MainActivity_;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.friend.FriendActivity_;
 import br.com.eduardo.loan.item.ItemActivity_;
+import br.com.eduardo.loan.settings.SettingsActivity;
 import br.com.emsouza.widget.bar.action.CustomAction;
 import br.com.emsouza.widget.slidingmenu.SlidingMenu;
 
@@ -54,6 +56,20 @@ public class HomeOptionsAction extends CustomAction {
                 item();
             }
         });
+
+        menu.findViewById(R.id.menuSettings).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                settings();
+            }
+        });
+
+        menu.findViewById(R.id.menuLoan).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                loan();
+            }
+        });
     }
 
     @Override
@@ -78,6 +94,16 @@ public class HomeOptionsAction extends CustomAction {
 
     protected void item() {
         Intent intent = new Intent(activity, ItemActivity_.class);
+        activity.startActivity(intent);
+    }
+
+    protected void settings() {
+        Intent intent = new Intent(activity, SettingsActivity.class);
+        activity.startActivity(intent);
+    }
+
+    protected void loan() {
+        Intent intent = new Intent(activity, LoanAddActivity_.class);
         activity.startActivity(intent);
     }
 }

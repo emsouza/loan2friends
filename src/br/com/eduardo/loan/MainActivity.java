@@ -30,7 +30,6 @@ import com.googlecode.androidannotations.annotations.Bean;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.ItemLongClick;
 import com.googlecode.androidannotations.annotations.OptionsItem;
-import com.googlecode.androidannotations.annotations.OptionsMenu;
 import com.googlecode.androidannotations.annotations.ViewById;
 
 /**
@@ -39,7 +38,6 @@ import com.googlecode.androidannotations.annotations.ViewById;
  *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com </a>
  */
 @EActivity(R.layout.ac_main)
-@OptionsMenu(R.menu.main_menu)
 public class MainActivity extends FragmentActivity {
 
     @ViewById(R.id.actionBar)
