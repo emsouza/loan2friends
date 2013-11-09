@@ -11,10 +11,16 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_menu_home"
         android:drawablePadding="5dp"
-        android:paddingBottom="5dp"
+        android:paddingBottom="1dp"
         android:text="@string/menu_main_home"
         android:textColor="@color/red"
         android:textSize="28sp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:background="@android:color/darker_gray" />
 
     <TextView
         android:id="@+id/menuLoan"
@@ -22,10 +28,16 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_menu_add"
         android:drawablePadding="5dp"
-        android:paddingBottom="5dp"
+        android:paddingBottom="1dp"
         android:text="@string/menu_main_add"
         android:textColor="@color/red"
         android:textSize="28sp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:background="@android:color/darker_gray" />
 
     <TextView
         android:id="@+id/menuFriend"
@@ -33,10 +45,16 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_menu_friends"
         android:drawablePadding="5dp"
-        android:paddingBottom="5dp"
+        android:paddingBottom="1dp"
         android:text="@string/menu_main_friends"
         android:textColor="@color/red"
         android:textSize="28sp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:background="@android:color/darker_gray" />
 
     <TextView
         android:id="@+id/menuItem"
@@ -44,10 +62,16 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_menu_items"
         android:drawablePadding="5dp"
-        android:paddingBottom="5dp"
+        android:paddingBottom="1dp"
         android:text="@string/menu_main_items"
         android:textColor="@color/red"
         android:textSize="28sp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:background="@android:color/darker_gray" />
 
     <TextView
         android:id="@+id/menuSettings"
@@ -55,9 +79,15 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_menu_config"
         android:drawablePadding="5dp"
-        android:paddingBottom="5dp"
+        android:paddingBottom="1dp"
         android:text="@string/menu_main_settings"
         android:textColor="@color/red"
         android:textSize="28sp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:background="@android:color/darker_gray" />
 
 </LinearLayout>

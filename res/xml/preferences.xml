@@ -9,13 +9,6 @@
             android:key="date_format_pref"
             android:summary="@string/pref_date_desc"
             android:title="@string/pref_date_title" />
-        <ListPreference
-            android:defaultValue="HH:mm"
-            android:entries="@array/time_format_text"
-            android:entryValues="@array/time_format_value"
-            android:key="time_format_pref"
-            android:summary="@string/pref_time_desc"
-            android:title="@string/pref_time_title" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_group_data" >
         <Preference

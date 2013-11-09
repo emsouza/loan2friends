@@ -52,7 +52,7 @@ public class LoanViewAdapter extends ArrayAdapter<LoanViewDTO> {
             title.setText(o.getName());
 
             Date loanDate = dateformat.formatToDate(o.getLentDate());
-            lentDate.setValues(getContext().getString(R.string.date_loan), dateformat.formatDateTimeToScreen(loanDate));
+            lentDate.setValues(getContext().getString(R.string.date_loan), dateformat.formatDateToScreen(loanDate));
 
             status.setImageResource(StatusImage.statusImage(o.getStatus()));
 
