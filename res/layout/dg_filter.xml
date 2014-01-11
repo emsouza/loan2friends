@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/gray"
     android:orientation="vertical" >
 
     <CheckBox
@@ -31,23 +32,27 @@
         android:layout_height="wrap_content"
         android:paddingTop="5dp" >
 
-        <Button
-            android:id="@+id/dg_filter_update"
-            style="@style/actionButtonStyle"
-            android:layout_width="fill_parent"
+        <br.com.eduardo.loan.ui.button.BootstrapButton
+            android:id="@+id/buttonUpdate"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/button_green"
-            android:text="@string/button_update" />
+            android:text="@string/button_update"
+            android:textSize="18sp"
+            bootstrapbutton:bb_roundedCorners="true"
+            bootstrapbutton:bb_type="success" />
 
-        <Button
-            android:id="@+id/dg_filter_cancel"
-            style="@style/actionButtonStyle"
-            android:layout_width="fill_parent"
+        <br.com.eduardo.loan.ui.button.BootstrapButton
+            android:id="@+id/buttonCancel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_weight="1"
-            android:background="@drawable/button_red"
-            android:text="@string/button_cancel" />
+            android:text="@string/button_cancel"
+            android:textSize="18sp"
+            bootstrapbutton:bb_roundedCorners="true"
+            bootstrapbutton:bb_type="info" />
     </LinearLayout>
 
 </LinearLayout>

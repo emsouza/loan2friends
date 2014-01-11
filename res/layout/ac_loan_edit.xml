@@ -1,88 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/LinearLayout01"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:padding="5dp" >
 
-    <fragment
-        android:id="@+id/head"
-        android:name="br.com.eduardo.loan.ui.fragment.TitleFragment"
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="@dimen/actionbar_height" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:scrollbars="vertical" >
 
-    <ScrollView
-        android:id="@+id/scrollView1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        <TextView
+            style="@style/labelStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_item" />
 
-        <LinearLayout
+        <br.com.eduardo.loan.ui.text.BootstrapEditText
+            android:id="@+id/itemName"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_marginRight="2dip"
+            android:cursorVisible="false"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:inputType="none"
+            android:singleLine="true"
+            android:textSize="18sp"
+            bootstrapbutton:be_roundedCorners="true" />
+
+        <TextView
+            style="@style/labelStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_friend" />
+
+        <br.com.eduardo.loan.ui.text.BootstrapEditText
+            android:id="@+id/friendName"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_marginRight="2dip"
+            android:cursorVisible="false"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:inputType="none"
+            android:singleLine="true"
+            android:textSize="18sp"
+            bootstrapbutton:be_roundedCorners="true" />
+
+        <TextView
+            style="@style/labelStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_status" />
+
+        <Spinner
+            android:id="@+id/loanStatus"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/labelStyle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:scrollbars="vertical" >
+            android:text="@string/label_date_loan" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/itemNameLabel" />
+        <br.com.eduardo.loan.ui.view.EditTextLookup_
+            android:id="@+id/dateText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
-            <EditText
-                android:id="@+id/itemNameText"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:cursorVisible="false"
-                android:editable="false"
-                android:focusable="false"
-                android:hint="@string/itemNameLabel" />
+        <fragment
+            android:id="@+id/action"
+            android:name="br.com.eduardo.loan.ui.fragment.SaveCancelFragment_"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/friendNameLabel" />
-
-            <EditText
-                android:id="@+id/friendNameText"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:cursorVisible="false"
-                android:editable="false"
-                android:focusable="false"
-                android:hint="@string/friendNameLabel" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ac_loan_status" >
-            </TextView>
-
-            <Spinner
-                android:id="@+id/ac_loan_status"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/date_loan" />
-
-            <DatePicker
-                android:id="@+id/ac_loan_date"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-
-            <TimePicker
-                android:id="@+id/ac_loan_time"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp" />
-
-            <fragment
-                android:id="@+id/action"
-                android:name="br.com.eduardo.loan.ui.fragment.SaveCancelFragment_"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </ScrollView>
-
-</LinearLayout>
+</ScrollView>

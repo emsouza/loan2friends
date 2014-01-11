@@ -6,29 +6,29 @@
             android:defaultValue="MM/dd/yyyy"
             android:entries="@array/date_format_text"
             android:entryValues="@array/date_format_text"
-            android:key="date_format_pref"
+            android:key="dateFormat"
             android:summary="@string/pref_date_desc"
             android:title="@string/pref_date_title" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_group_data" >
         <Preference
-            android:key="import_data"
+            android:key="importData"
             android:summary="@string/pref_import_desc"
             android:title="@string/pref_import_data" />
         <Preference
-            android:key="export_data"
+            android:key="exportData"
             android:summary="@string/pref_export_desc"
             android:title="@string/pref_export_data" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_group_contact" >
         <Preference
-            android:key="feature_pref"
+            android:key="featurePref"
             android:summary="@string/pref_feature_desc"
-            android:title="@string/feature_request" />
+            android:title="@string/title_feature" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_group_information" >
         <Preference
-            android:key="changelog_pref"
+            android:key="changelogPref"
             android:summary="@string/pref_changelog_desc"
             android:title="@string/title_changelog" />
     </PreferenceCategory>
