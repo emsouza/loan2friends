@@ -22,9 +22,9 @@
             android:id="@+id/emptyList"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:drawableTop="@drawable/list_empty"
             android:gravity="center"
-            android:text="@string/msg_no_data" />
+            android:text="@string/msg_no_data"
+            android:textColor="@color/gray" />
     </LinearLayout>
 
     <fragment

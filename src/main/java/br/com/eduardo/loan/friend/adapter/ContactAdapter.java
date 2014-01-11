@@ -50,7 +50,7 @@ public class ContactAdapter extends ArrayAdapter<ContactDTO> {
             if (b != null) {
                 img.setImageBitmap(b);
             } else {
-                img.setImageResource(R.drawable.ic_friend);
+                img.setImageResource(R.drawable.grid_friend);
             }
         }
         return v;

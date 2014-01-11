@@ -12,7 +12,9 @@ import br.com.eduardo.loan.R;
 /**
  * @author Eduardo Matos de Souza <br>
  *         19/05/2013 <br>
- *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com</a>
+ *         <a
+ *         href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com
+ *         </a>
  */
 @EFragment
 public class AdsFragment extends Fragment {

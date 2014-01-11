@@ -14,12 +14,13 @@
 
         <ImageView
             android:id="@+id/itemImage"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:contentDescription="@null"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
+            android:scaleType="centerInside"
             android:src="@drawable/type_default" />
 
         <TextView

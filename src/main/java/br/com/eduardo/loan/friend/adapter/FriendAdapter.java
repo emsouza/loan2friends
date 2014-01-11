@@ -54,7 +54,7 @@ public class FriendAdapter extends ArrayAdapter<FriendDTO> {
             if (b != null) {
                 img.setImageBitmap(b);
             } else {
-                img.setImageResource(R.drawable.ic_friend);
+                img.setImageResource(R.drawable.grid_friend);
             }
         }
         return v;

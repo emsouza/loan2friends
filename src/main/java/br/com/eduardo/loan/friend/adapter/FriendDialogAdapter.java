@@ -52,7 +52,7 @@ public class FriendDialogAdapter extends ArrayAdapter<FriendDTO> {
                 if (b != null) {
                     iv.setImageBitmap(b);
                 } else {
-                    iv.setImageResource(R.drawable.ic_friend);
+                    iv.setImageResource(R.drawable.grid_friend);
                 }
             }
         }

@@ -62,7 +62,7 @@ public class LoanViewAdapter extends ArrayAdapter<LoanViewDTO> {
             if (b != null) {
                 contactPhoto.setImageBitmap(b);
             } else {
-                contactPhoto.setImageResource(R.drawable.ic_friend);
+                contactPhoto.setImageResource(R.drawable.grid_friend);
             }
         }
         return v;

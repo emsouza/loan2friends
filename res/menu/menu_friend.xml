@@ -3,12 +3,15 @@
 
     <item
         android:id="@+id/menu_friend_add"
+        android:icon="@drawable/menu_add"
         android:orderInCategory="100"
-        android:showAsAction="never"
+        android:showAsAction="ifRoom"
         android:title="@string/menu_friend_add"/>
     <item
         android:id="@+id/menu_friend_add_all"
         android:orderInCategory="100"
         android:showAsAction="never"
+        android:icon="@drawable/menu_import"
         android:title="@string/menu_friend_add_all"/>
+
 </menu>
