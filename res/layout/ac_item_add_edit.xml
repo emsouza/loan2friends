@@ -66,9 +66,8 @@
             android:textSize="18sp"
             bootstrapbutton:be_roundedCorners="true" />
 
-        <fragment
+        <br.com.eduardo.loan.ui.view.SaveCancelView_
             android:id="@+id/action"
-            android:name="br.com.eduardo.loan.ui.fragment.SaveCancelFragment_"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

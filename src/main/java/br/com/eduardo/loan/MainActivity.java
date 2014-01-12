@@ -1,8 +1,6 @@
 package br.com.eduardo.loan;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -21,16 +19,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import br.com.eduardo.loan.adapter.LoanViewAdapter;
 import br.com.eduardo.loan.dialog.ChangeLog;
-import br.com.eduardo.loan.dialog.FilterDialog;
+import br.com.eduardo.loan.dialog.FilterView_;
 import br.com.eduardo.loan.friend.FriendActivity_;
 import br.com.eduardo.loan.item.ItemActivity_;
 import br.com.eduardo.loan.model.LoanDAO;
 import br.com.eduardo.loan.model.entity.LoanDTO;
 import br.com.eduardo.loan.model.entity.LoanViewDTO;
 import br.com.eduardo.loan.settings.SettingsActivity;
+import br.com.eduardo.loan.ui.dialog.CustomDialog;
 import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.text.MenuStrings;
 import br.com.eduardo.loan.util.type.Status;
+import br.com.eduardo.loan.util.type.StatusParam;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 
@@ -57,8 +57,6 @@ public class MainActivity extends SherlockFragmentActivity {
     @Bean
     LoanDAO loanDAO;
 
-    protected List<String> status = new ArrayList<String>();
-
     @AfterViews
     void afterView() {
         ChangeLog cl = new ChangeLog(this);
@@ -71,7 +69,11 @@ public class MainActivity extends SherlockFragmentActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        listView.setAdapter(new LoanViewAdapter(MainActivity.this, dateTimeFormat, loanDAO.findAll(status)));
+        populate();
+    }
+
+    private void populate() {
+        listView.setAdapter(new LoanViewAdapter(MainActivity.this, dateTimeFormat, loanDAO.findAll(StatusParam.INSTANCE.getStatus())));        
     }
 
     @ItemLongClick(R.id.mainList)
@@ -118,17 +120,14 @@ public class MainActivity extends SherlockFragmentActivity {
 
     @OptionsItem(R.id.menu_filter)
     void openFilter() {
-        final FilterDialog filterDialog = new FilterDialog(this, status);
-        filterDialog.setOnDismissListener(new OnDismissListener() {
+        CustomDialog dialog = new CustomDialog(new FilterView_(this), R.string.title_filter);
+        dialog.setOnDismissListener(new OnDismissListener() {
             @Override
-            public void onDismiss(DialogInterface dialog) {
-                if (filterDialog.isOperationComplete()) {
-                    status = filterDialog.updateStatus();
-                    onResume();
-                }
+            public void onDismiss(DialogInterface dg) {
+                    populate();
             }
         });
-        filterDialog.show();
+        dialog.show();
     }
 
     @OptionsItem(R.id.menu_friends)

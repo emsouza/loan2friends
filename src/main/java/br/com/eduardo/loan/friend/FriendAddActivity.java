@@ -33,66 +33,66 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 @EActivity(R.layout.ac_friend_add)
 public class FriendAddActivity extends SherlockFragmentActivity {
 
-	@ViewById(R.id.contact_lookup)
-	protected EditTextLookup name;
+    @ViewById(R.id.contact_lookup)
+    protected EditTextLookup name;
 
-	@ViewById(R.id.ac_friend_add_number)
-	protected EditText number;
+    @ViewById(R.id.ac_friend_add_number)
+    protected EditText number;
 
-	@Bean
-	protected FriendDAO friendDAO;
+    @Bean
+    protected FriendDAO friendDAO;
 
-	protected Long contactId = null;
+    protected Long contactId = null;
 
-	@AfterViews
-	protected void afterView() {
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
+    @AfterViews
+    protected void afterView() {
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
-		name.setHint(R.string.label_name);
-	}
+        name.setHint(R.string.label_name);
+    }
 
-	@Click(R.id.grlookupButton)
-	void search() {
-		if (ContactFinder.getContacts(this).size() > 0) {
-			final ContactDialog dialog = new ContactDialog(this);
-			dialog.populate();
-			dialog.setOnDismissListener(new OnDismissListener() {
-				@Override
-				public void onDismiss(DialogInterface arg0) {
-					setData(dialog.getItemSelected());
-				}
-			});
-			dialog.show();
-		} else {
-			Toast.makeText(this, "Não há contatos", Toast.LENGTH_SHORT).show();
-		}
-	}
+    @Click(R.id.grlookupButton)
+    void search() {
+        if (ContactFinder.getContacts(this).size() > 0) {
+            final ContactDialog dialog = new ContactDialog(this);
+            dialog.populate();
+            dialog.setOnDismissListener(new OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface arg0) {
+                    setData(dialog.getItemSelected());
+                }
+            });
+            dialog.show();
+        } else {
+            Toast.makeText(this, getString(R.string.msg_no_contacs), Toast.LENGTH_SHORT).show();
+        }
+    }
 
-	protected void setData(ContactDTO item) {
-		if (item != null) {
-			name.setText(item.getName());
-			number.setText(item.getNumber() != null ? item.getNumber() : "");
-			contactId = item.getContactId();
-		}
-	}
+    protected void setData(ContactDTO item) {
+        if (item != null) {
+            name.setText(item.getName());
+            number.setText(item.getNumber() != null ? item.getNumber() : "");
+            contactId = item.getContactId();
+        }
+    }
 
-	@Click(R.id.buttonSave)
-	void saveFriend() {
-		FriendDTO friend = new FriendDTO();
-		friend.setName(name.getText());
-		friend.setPhone(number.getText().toString());
-		if (contactId != null) {
-			friend.setContactId(contactId);
-		}
+    @Click(R.id.buttonSave)
+    void saveFriend() {
+        FriendDTO friend = new FriendDTO();
+        friend.setName(name.getText());
+        friend.setPhone(number.getText().toString());
+        if (contactId != null) {
+            friend.setContactId(contactId);
+        }
 
-		if (FriendValidator.validaFriend(this, friend)) {
-			friendDAO.insert(friend);
-			finish();
-		}
-	}
-	
-	@Click(R.id.buttonCancel)
+        if (FriendValidator.validaFriend(this, friend)) {
+            friendDAO.insert(friend);
+            finish();
+        }
+    }
+
+    @Click(R.id.buttonCancel)
     @OptionsItem(android.R.id.home)
     void backHome() {
         finish();

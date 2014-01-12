@@ -108,7 +108,6 @@
 						<emulator>
 							<avd>Android4</avd>
 							<wait>20000</wait>
-							<options>-no-skin</options>
 						</emulator>
 						<deleteConflictingFiles>true</deleteConflictingFiles>
 						<undeployBeforeDeploy>false</undeployBeforeDeploy>
@@ -123,6 +122,13 @@
 						<source>1.6</source>
 						<target>1.6</target>
 					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.codehaus.plexus</groupId>
+							<artifactId>plexus-compiler-eclipse</artifactId>
+							<version>1.8.2</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>

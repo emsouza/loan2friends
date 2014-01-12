@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp" >
+
+        <TextView
+            android:id="@+id/statusColor"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:background="@color/red" />
+
+        <TextView
+            android:id="@+id/statusName"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:layout_toLeftOf="@+id/statusRadio"
+            android:layout_toRightOf="@+id/statusColor"
+            android:gravity="center_vertical" />
+
+        <RadioButton
+            android:id="@+id/statusRadio"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical" />
+    </RelativeLayout>
+
+</merge>

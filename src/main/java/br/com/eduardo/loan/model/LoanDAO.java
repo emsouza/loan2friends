@@ -1,6 +1,7 @@
 package br.com.eduardo.loan.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.androidannotations.annotations.EBean;
@@ -16,7 +17,9 @@ import br.com.eduardo.loan.util.type.Status;
 /**
  * @author Eduardo Matos de Souza<br>
  *         07/05/2011 <br>
- *         <a href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com </a>
+ *         <a
+ *         href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com
+ *         </a>
  */
 @EBean(scope = Scope.Singleton)
 public class LoanDAO extends AbstractDAO {
@@ -149,16 +152,15 @@ public class LoanDAO extends AbstractDAO {
         return null;
     }
 
-    public ArrayList<LoanViewDTO> findAll(List<String> status) {
+    public ArrayList<LoanViewDTO> findAll(HashSet<Integer> statusIds) {
         String orderBY = "DT_LENT DESC, FG_STATUS ASC";
-
-        status = resetParams(status);
+        
+        List<String> status = convertStatusList(statusIds);
 
         String where = STATUS_COLUMN + " IN (" + makePlaceHolders(status.size()) + ")";
 
         ArrayList<LoanViewDTO> list = new ArrayList<LoanViewDTO>();
-        Cursor cursor = getReadableDatabase().query(TABLE_VIEW, null, where, resetParams(status).toArray(new String[status.size()]), null, null,
-                orderBY);
+        Cursor cursor = getReadableDatabase().query(TABLE_VIEW, null, where, status.toArray(new String[status.size()]), null, null, orderBY);
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 LoanViewDTO item = new LoanViewDTO();
@@ -175,10 +177,10 @@ public class LoanDAO extends AbstractDAO {
         return list;
     }
 
-    List<String> resetParams(List<String> status) {
-        if (status.size() <= 0) {
-            status.add(String.valueOf(Status.LENDED));
-            status.add(String.valueOf(Status.RETURNED));
+    List<String> convertStatusList(HashSet<Integer> statusId) {
+        List<String> status = new ArrayList<String>();
+        for (Integer id : statusId) {
+            status.add(String.valueOf(id));
         }
         return status;
     }
