@@ -29,8 +29,8 @@ public class EmailDialog extends Dialog {
         setContentView(R.layout.dg_email);
         getWindow().setLayout(android.view.ViewGroup.LayoutParams.MATCH_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        title = (EditText) this.findViewById(R.id.dg_mail_title);
-        message = (EditText) this.findViewById(R.id.dg_mail_description);
+        title = (EditText) this.findViewById(R.id.mailTitle);
+        message = (EditText) this.findViewById(R.id.mailDescription);
 
         Button send = (Button) findViewById(R.id.dg_mail_send);
         send.setOnClickListener(new android.view.View.OnClickListener() {

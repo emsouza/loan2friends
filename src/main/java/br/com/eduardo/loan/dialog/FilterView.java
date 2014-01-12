@@ -21,7 +21,7 @@ import br.com.eduardo.loan.util.type.StatusParam;
  *         href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com
  *         </a>
  */
-@EViewGroup(R.layout.dg_filter_new)
+@EViewGroup(R.layout.dg_filter)
 public class FilterView extends LinearLayout implements Inflateable {
 
     @ViewById(R.id.lent)

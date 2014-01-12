@@ -32,7 +32,7 @@ import br.com.eduardo.loan.util.text.MenuStrings;
 import br.com.eduardo.loan.util.type.Status;
 import br.com.eduardo.loan.util.type.StatusParam;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.app.SherlockActivity;
 
 /**
  * @author Eduardo Matos de Souza <br>
@@ -43,7 +43,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
  */
 @EActivity(R.layout.ac_main)
 @OptionsMenu(R.menu.menu_main)
-public class MainActivity extends SherlockFragmentActivity {
+public class MainActivity extends SherlockActivity {
 
     @ViewById(R.id.mainList)
     ListView listView;

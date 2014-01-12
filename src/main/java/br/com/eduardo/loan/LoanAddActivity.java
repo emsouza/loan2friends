@@ -13,7 +13,6 @@ import org.androidannotations.annotations.ViewById;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
 import android.widget.DatePicker;
 import br.com.eduardo.loan.friend.dialog.FriendSearchDialog;
 import br.com.eduardo.loan.item.dialog.ItemSearchDialog;
@@ -26,6 +25,8 @@ import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.type.Status;
 import br.com.eduardo.loan.util.validator.LoanValidator;
 
+import com.actionbarsherlock.app.SherlockActivity;
+
 /**
  * @author Eduardo Matos de Souza<br>
  *         30/04/2011 <br>
@@ -34,7 +35,7 @@ import br.com.eduardo.loan.util.validator.LoanValidator;
  *         </a>
  */
 @EActivity(R.layout.ac_loan_add)
-public class LoanAddActivity extends FragmentActivity {
+public class LoanAddActivity extends SherlockActivity {
 
     @ViewById(R.id.itemLookup)
     EditTextLookup itemLookup;

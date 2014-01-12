@@ -3,7 +3,6 @@ package br.com.eduardo.loan.settings;
 import java.io.File;
 import java.io.IOException;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,12 +12,14 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
 import android.util.Log;
-import android.view.MenuItem;
 import android.widget.Toast;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.dialog.ChangeLog;
 import br.com.eduardo.loan.dialog.EmailDialog;
 import br.com.eduardo.loan.util.FileUtil;
+
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
 
 /**
  * @author Eduardo Matos de Souza <br>
@@ -27,7 +28,7 @@ import br.com.eduardo.loan.util.FileUtil;
  *         href="mailto:eduardomatosouza@gmail.com">eduardomatosouza@gmail.com
  *         </a>
  */
-public class SettingsActivity extends Activity {
+public class SettingsActivity extends SherlockActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

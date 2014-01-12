@@ -12,7 +12,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.widget.ListView;
 import android.widget.TextView;
 import br.com.eduardo.loan.R;
@@ -20,6 +19,8 @@ import br.com.eduardo.loan.item.adapter.ItemAdapter;
 import br.com.eduardo.loan.model.ItemDAO;
 import br.com.eduardo.loan.model.LoanDAO;
 import br.com.eduardo.loan.model.entity.ItemDTO;
+
+import com.actionbarsherlock.app.SherlockActivity;
 
 /**
  * @author Eduardo Matos de Souza<br>
@@ -30,7 +31,7 @@ import br.com.eduardo.loan.model.entity.ItemDTO;
  */
 @EActivity(R.layout.ac_item)
 @OptionsMenu(R.menu.menu_item)
-public class ItemActivity extends FragmentActivity {
+public class ItemActivity extends SherlockActivity {
 
     @ViewById(R.id.itemList)
     ListView listView;

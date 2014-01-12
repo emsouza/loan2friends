@@ -1,58 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
-    xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
     android:orientation="vertical" >
 
-    <CheckBox
-        android:id="@+id/flg_lent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/status_lent"
-        android:textColor="@color/navy" />
+    <br.com.eduardo.loan.ui.view.StatusSelectView_
+        android:id="@+id/lent"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
 
-    <CheckBox
-        android:id="@+id/flg_return"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/status_returned"
-        android:textColor="@color/navy" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="5dp"
+        android:background="@color/gray_dark" />
 
-    <CheckBox
-        android:id="@+id/flg_archive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/status_achived"
-        android:textColor="@color/navy" />
+    <br.com.eduardo.loan.ui.view.StatusSelectView_
+        android:id="@+id/returned"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
 
-    <LinearLayout
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="5dp"
+        android:background="@color/gray_dark" />
+
+    <br.com.eduardo.loan.ui.view.StatusSelectView_
+        android:id="@+id/archived"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
+    <Button
+        android:id="@+id/buttonUpdate"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp" >
-
-        <br.com.eduardo.loan.ui.button.BootstrapButton
-            android:id="@+id/buttonUpdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:text="@string/button_update"
-            android:textSize="18sp"
-            bootstrapbutton:bb_roundedCorners="true"
-            bootstrapbutton:bb_type="success" />
-
-        <br.com.eduardo.loan.ui.button.BootstrapButton
-            android:id="@+id/buttonCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:text="@string/button_cancel"
-            android:textSize="18sp"
-            bootstrapbutton:bb_roundedCorners="true"
-            bootstrapbutton:bb_type="info" />
-    </LinearLayout>
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bbuton_info_rounded"
+        android:text="@string/button_update"
+        android:textColor="@color/white" />
 
 </LinearLayout>

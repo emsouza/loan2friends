@@ -21,7 +21,7 @@ import br.com.eduardo.loan.ui.view.EditTextLookup;
 import br.com.eduardo.loan.util.ContactFinder;
 import br.com.eduardo.loan.util.validator.FriendValidator;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.app.SherlockActivity;
 
 /**
  * @author Eduardo Matos de Souza<br>
@@ -31,7 +31,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
  *         </a>
  */
 @EActivity(R.layout.ac_friend_add)
-public class FriendAddActivity extends SherlockFragmentActivity {
+public class FriendAddActivity extends SherlockActivity {
 
     @ViewById(R.id.contact_lookup)
     protected EditTextLookup name;

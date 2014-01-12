@@ -8,13 +8,14 @@ import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.ViewById;
 
-import android.support.v4.app.FragmentActivity;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.widget.EditText;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.model.FriendDAO;
 import br.com.eduardo.loan.model.entity.FriendDTO;
 import br.com.eduardo.loan.util.validator.FriendValidator;
+
+import com.actionbarsherlock.app.SherlockActivity;
 
 /**
  * @author Eduardo Matos de Souza<br>
@@ -24,7 +25,7 @@ import br.com.eduardo.loan.util.validator.FriendValidator;
  *         </a>
  */
 @EActivity(R.layout.ac_friend_edit)
-public class FriendEditActivity extends FragmentActivity {
+public class FriendEditActivity extends SherlockActivity {
 
     @ViewById(R.id.ac_friend_edit_name)
     EditText name;

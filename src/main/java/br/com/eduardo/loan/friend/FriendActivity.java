@@ -22,7 +22,7 @@ import br.com.eduardo.loan.model.LoanDAO;
 import br.com.eduardo.loan.model.entity.FriendDTO;
 import br.com.eduardo.loan.util.contact.ContactImporter;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.app.SherlockActivity;
 
 /**
  * @author Eduardo Matos de Souza<br>
@@ -33,7 +33,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
  */
 @EActivity(R.layout.ac_friend)
 @OptionsMenu(R.menu.menu_friend)
-public class FriendActivity extends SherlockFragmentActivity {
+public class FriendActivity extends SherlockActivity {
 
     @ViewById(R.id.friendList)
     ListView listView;

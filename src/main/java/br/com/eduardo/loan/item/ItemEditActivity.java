@@ -9,7 +9,6 @@ import org.androidannotations.annotations.ItemSelect;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.ViewById;
 
-import android.support.v4.app.FragmentActivity;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,6 +20,8 @@ import br.com.eduardo.loan.model.entity.ItemDTO;
 import br.com.eduardo.loan.util.type.ItemTypeImage;
 import br.com.eduardo.loan.util.validator.ItemValidator;
 
+import com.actionbarsherlock.app.SherlockActivity;
+
 /**
  * @author Eduardo Matos de Souza<br>
  *         30/04/2011 <br>
@@ -29,7 +30,7 @@ import br.com.eduardo.loan.util.validator.ItemValidator;
  *         </a>
  */
 @EActivity(R.layout.ac_item_add_edit)
-public class ItemEditActivity extends FragmentActivity {
+public class ItemEditActivity extends SherlockActivity {
 
     ArrayAdapter<String> typeAdapter;
 
