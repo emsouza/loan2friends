@@ -35,7 +35,7 @@
     <Button
         android:id="@+id/buttonUpdate"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/component_height"
         android:layout_marginTop="5dp"
         android:background="@drawable/bbuton_info_rounded"
         android:text="@string/button_update"

@@ -49,7 +49,7 @@ public class FriendActivity extends SherlockActivity {
 
     @AfterViews
     void afterInject() {
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listView.setEmptyView(empty);
     }
 

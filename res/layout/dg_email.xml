@@ -21,7 +21,7 @@
         <br.com.eduardo.loan.ui.text.BootstrapEditText
             android:id="@+id/mailTitle"
             android:layout_width="fill_parent"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/component_height"
             android:hint="@string/label_title"
             android:textSize="18sp"
             bootstrapbutton:be_roundedCorners="true" />
@@ -50,7 +50,7 @@
             <Button
                 android:id="@+id/dg_mail_send"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/component_height"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/bbuton_success_rounded"
@@ -60,7 +60,7 @@
             <Button
                 android:id="@+id/dg_mail_cancel"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/component_height"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/bbuton_danger_rounded"

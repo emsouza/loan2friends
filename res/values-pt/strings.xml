@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Textos gerais -->
+    <string name="app_name">Loan To Friends</string>
+
+    <!-- Botões -->
+    <string name="button_save">Salvar</string>
+    <string name="button_cancel">Cancelar</string>
+    <string name="button_send">Enviar</string>
+    <string name="button_update">Atualizar</string>
+    <string name="button_yes">Sim</string>
+    <string name="button_no">Não</string>
+
+    <!-- Mensagens -->
+    <string name="msg_delete">Tem certeza que deseja deletar?</string>
+    <string name="msg_no_data">Nenhum registro encontrado</string>
+    <string name="msg_no_contacs">Nenhum contato para selecionar</string>
+    <string name="msg_friend_not_selected">Amigo não selecionado</string>
+    <string name="msg_item_not_selected">Item não selecionado</string>
+    <string name="msg_friend_name_error">Nome do amigo não preenchido</string>
+    <string name="msg_item_name_error">Nome do item não preenchido</string>
+    <string name="msg_title_error">Título não preenchido</string>
+    <string name="msg_message_not_filled">Mensagem não preenchida</string>
+    <string name="msg_date_time_error">Data inválida</string>
+    <string name="msg_import_export_error">Você não pode realizar a operação sem uma cartão SD</string>
+    <string name="msg_importing">Importando&#8230;</string>
+    <string name="msg_exporting">Exportando&#8230;</string>
+    <string name="msg_import_ok">Importação realizada com sucesso!</string>
+    <string name="msg_export_ok">Exportação realizada com sucesso!</string>
+    <string name="msg_import_fail">Falha na importação</string>
+    <string name="msg_export_fail">Falha na exportação</string>
+
+    <!-- Títulos -->
+    <string name="title_changelog">Registro de Alterações</string>
+    <string name="title_dialog_contact">Contatos</string>
+    <string name="title_dialog_friend">Amigos</string>
+    <string name="title_dialog_item">Itens</string>
+    <string name="title_filter">Filtro de Pesquisa</string>
+    <string name="title_feature">Solicitação de Funcionalidades</string>
+
+    <!-- Hint -->
+    <string name="hint_select_item">Selecione um Item</string>
+    <string name="hint_select_friend">Selecione um Amigo</string>
+
+    <!-- Label -->
+    <string name="label_name">Nome</string>
+    <string name="label_title">Título</string>
+    <string name="label_friend">Amigo</string>
+    <string name="label_item">Item</string>
+    <string name="label_type">Tipo</string>
+    <string name="label_status">Status</string>
+    <string name="label_number">Número do Telefone</string>
+    <string name="label_amount">Quantia</string>
+    <string name="label_description">Descrição</string>
+    <string name="label_date_loan">Data do Empréstimo</string>
+    <string name="label_date_return">Data de Retorno</string>
+    <string name="label_telephone_number">Número: %s</string>
+
+    <!-- Menus de Opções -->
+    <string name="option_edit">Editar</string>
+    <string name="option_delete">Deletar</string>
+    <string name="option_cancel">Cancelar</string>
+    <string name="option_mark_returned">Marcar Devolução</string>
+    <string name="option_mark_archive">Arquivar</string>
+
+    <!-- Menus -->
+    <string name="menu_friends">Amigos</string>
+    <string name="menu_items">Itens</string>
+    <string name="menu_filter">Filtro</string>
+    <string name="menu_settings">Configurações</string>
+    <string name="menu_loan_add">Novo Empréstimo</string>
+    <string name="menu_items_add">Novo Item</string>
+    <string name="menu_friend_add">Novo Amigo</string>
+    <string name="menu_friend_add_all">Importar todos os Contatos</string>
+
+    <!-- Status -->
+    <string name="status_lent">Emprestado</string>
+    <string name="status_returned">Devolvido</string>
+    <string name="status_achived">Arquivado</string>
+
+    <!-- Tipos de Itens -->
+    <string name="type_default">Padrão</string>
+    <string name="type_cd">CD</string>
+    <string name="type_dvd">DVD</string>
+    <string name="type_bluray">Bluray</string>
+    <string name="type_book">Livro</string>
+    <string name="type_game">Jogo</string>
+    <string name="type_money">Dinheiro</string>
+
+    <!-- Preferências -->
+    <string name="pref_group_date_time">Formato da Data</string>
+    <string name="pref_group_information">Informações</string>
+    <string name="pref_group_contact">Contato</string>
+    <string name="pref_date_title">Formato da Data</string>
+    <string name="pref_date_desc">dd/MM/yyyy ou MM/dd/yyyy</string>
+    <string name="pref_changelog_desc">Informações sobre as alterações no Loan To Friends</string>
+    <string name="pref_feature_desc">Utilize esta opção para solicitar novas funcionalidades</string>
+    <string name="pref_group_data">Importar / Exportar Dados</string>
+    <string name="pref_import_data">Importar Dados</string>
+    <string name="pref_import_desc">Use esta opção para importar os dados exportados</string>
+    <string name="pref_export_data">Exportar Dados</string>
+    <string name="pref_export_desc">Use esta opção para exportar os dados do aplicativo</string>
+
+    <!-- Itens das Preferências de Data -->
+    <string-array name="date_format_text">
+        <item>dd/MM/yyyy</item>
+        <item>MM/dd/yyyy</item>
+    </string-array>
+
+</resources>

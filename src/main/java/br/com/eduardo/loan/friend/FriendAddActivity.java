@@ -7,7 +7,6 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.ViewById;
 
-import android.app.ActionBar;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.widget.EditText;
@@ -46,9 +45,7 @@ public class FriendAddActivity extends SherlockActivity {
 
     @AfterViews
     protected void afterView() {
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         name.setHint(R.string.label_name);
     }
 

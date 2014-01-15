@@ -41,7 +41,7 @@ public class FriendEditActivity extends SherlockActivity {
 
     @AfterViews
     void afterView() {
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         number.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 

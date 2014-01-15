@@ -47,7 +47,7 @@ public class ItemActivity extends SherlockActivity {
 
     @AfterViews
     void afterView() {
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listView.setEmptyView(empty);
     }
 

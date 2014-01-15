@@ -61,7 +61,7 @@ public class LoanAddActivity extends SherlockActivity {
 
     @AfterViews
     void afterView() {
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         itemLookup.disableTextComponent();
         itemLookup.setHint(R.string.hint_select_item);
         friendLookup.disableTextComponent();

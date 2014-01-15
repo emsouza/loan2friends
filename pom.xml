@@ -9,7 +9,7 @@
 
 	<properties>
 		<platform.version>4.4.2_r2</platform.version>
-		<android.plugin.version>3.8.2</android.plugin.version>
+		<android.plugin.version>3.6.0</android.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 

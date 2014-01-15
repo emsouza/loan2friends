@@ -18,7 +18,6 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
 import br.com.eduardo.loan.adapter.LoanViewAdapter;
-import br.com.eduardo.loan.dialog.ChangeLog;
 import br.com.eduardo.loan.dialog.FilterView_;
 import br.com.eduardo.loan.friend.FriendActivity_;
 import br.com.eduardo.loan.item.ItemActivity_;
@@ -59,10 +58,6 @@ public class MainActivity extends SherlockActivity {
 
     @AfterViews
     void afterView() {
-        ChangeLog cl = new ChangeLog(this);
-        if (cl.firstRun()) {
-            cl.getLogDialog().show();
-        }
         listView.setEmptyView(empty);
     }
 
@@ -73,7 +68,7 @@ public class MainActivity extends SherlockActivity {
     }
 
     private void populate() {
-        listView.setAdapter(new LoanViewAdapter(MainActivity.this, dateTimeFormat, loanDAO.findAll(StatusParam.INSTANCE.getStatus())));        
+        listView.setAdapter(new LoanViewAdapter(MainActivity.this, dateTimeFormat, loanDAO.findAll(StatusParam.INSTANCE.getStatus())));
     }
 
     @ItemLongClick(R.id.mainList)
@@ -124,7 +119,7 @@ public class MainActivity extends SherlockActivity {
         dialog.setOnDismissListener(new OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dg) {
-                    populate();
+                populate();
             }
         });
         dialog.show();

@@ -54,7 +54,7 @@ public class ItemAddActivity extends SherlockActivity {
 
     @AfterViews
     void afterView() {
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         typeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

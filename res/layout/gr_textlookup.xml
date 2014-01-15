@@ -10,7 +10,7 @@
         <br.com.eduardo.loan.ui.text.BootstrapEditText
             android:id="@+id/grlookupName"
             android:layout_width="0dip"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/component_height"
             android:layout_marginRight="2dip"
             android:layout_weight="1"
             android:ellipsize="end"
@@ -21,7 +21,7 @@
         <br.com.eduardo.loan.ui.button.BootstrapButton
             android:id="@+id/grlookupButton"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_height="@dimen/component_height"
             bootstrapbutton:bb_icon_right="fa-search"
             bootstrapbutton:bb_roundedCorners="true"
             bootstrapbutton:bb_type="info" />

@@ -10,7 +10,7 @@
         <Button
             android:id="@+id/buttonSave"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/component_height"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:background="@drawable/bbuton_success_rounded"
@@ -21,7 +21,7 @@
         <Button
             android:id="@+id/buttonCancel"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/component_height"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:background="@drawable/bbuton_danger_rounded"
