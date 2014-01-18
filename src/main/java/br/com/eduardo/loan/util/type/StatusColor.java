@@ -9,7 +9,7 @@ import br.com.eduardo.loan.R;
  */
 public class StatusColor {
 
-    public static int statusImage(int status) {
+    public static int statusColor(int status) {
         switch (status) {
             case Status.LENDED:
                 return R.color.red;

@@ -13,11 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.model.entity.LoanViewDTO;
-import br.com.eduardo.loan.ui.view.TextViewGroup;
 import br.com.eduardo.loan.util.ContactFinder;
 import br.com.eduardo.loan.util.DateFormatUtil;
 import br.com.eduardo.loan.util.type.ItemFormatter;
-import br.com.eduardo.loan.util.type.Status;
 import br.com.eduardo.loan.util.type.StatusColor;
 
 /**
@@ -49,21 +47,16 @@ public class LoanViewAdapter extends ArrayAdapter<LoanViewDTO> {
         LoanViewDTO o = items.get(position);
         if (o != null) {
             TextView title = (TextView) v.findViewById(R.id.loanTitle);
-            TextViewGroup lentDate = (TextViewGroup) v.findViewById(R.id.lentDate);
+            TextView lentDate = (TextView) v.findViewById(R.id.lentDate);
             ImageView contactPhoto = (ImageView) v.findViewById(R.id.friendIcon);
             TextView status = (TextView) v.findViewById(R.id.loanStatus);
 
             title.setText(ItemFormatter.formatItemName(o.getType(), o.getName()));
 
             Date loanDate = dateformat.formatToDate(o.getLentDate());
+            lentDate.setText(dateformat.formatDateToScreen(loanDate));
 
-            if (o.getStatus() == Status.LENDED) {
-                lentDate.setValues(getContext().getString(R.string.label_date_loan), dateformat.formatDateToScreen(loanDate), true);
-            } else {
-                lentDate.setValues(getContext().getString(R.string.label_date_return), dateformat.formatDateToScreen(loanDate), true);
-            }
-
-            status.setBackgroundResource(StatusColor.statusImage(o.getStatus()));
+            status.setBackgroundResource(StatusColor.statusColor(o.getStatus()));
 
             Bitmap b = ContactFinder.getPhotos(getContext(), o.getFriendId());
             if (b != null) {

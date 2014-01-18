@@ -34,11 +34,14 @@
             android:textSize="28sp"
             android:textStyle="bold" />
 
-        <br.com.eduardo.loan.ui.view.TextViewGroup_
+        <TextView
             android:id="@+id/lentDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical" />
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/gray_dark"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </LinearLayout>
