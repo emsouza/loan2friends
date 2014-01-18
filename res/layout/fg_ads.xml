@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.google.ads.AdView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-    ads:adSize="BANNER"
-    ads:adUnitId="a14dea31e4c2047"
-    ads:loadAdOnCreate="true"
-    android:layout_gravity="center"
-    android:layout_height="wrap_content"
-    android:layout_width="fill_parent" />

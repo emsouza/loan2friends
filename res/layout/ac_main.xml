@@ -1,41 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/gray"
+    android:baselineAligned="true"
     android:orientation="vertical" >
 
-    <fragment
-        android:id="@+id/head"
-        android:name="br.com.eduardo.loan.ui.fragment.TitleFragment_"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/actionbar_height" />
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:divider="@null"
+        android:dividerHeight="5dp" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:padding="3dp" >
-
-        <ListView
-            android:id="@+id/ac_main_list"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:divider="@null" />
-
-        <TextView
-            android:id="@+id/loan_list_empty"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center"
-            android:text="@string/no_data_loan" />
-    </LinearLayout>
-
-    <fragment
-        android:id="@+id/ads"
-        android:name="br.com.eduardo.loan.ui.fragment.AdsFragment_"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/emptyList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/msg_no_data"
+        android:textColor="@color/gray" />
 
 </LinearLayout>

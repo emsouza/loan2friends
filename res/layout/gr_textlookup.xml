@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:fontawesometext="http://schemas.android.com/apk/res-auto" >
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
 
-        <EditText
+        <br.com.eduardo.loan.ui.text.BootstrapEditText
             android:id="@+id/grlookupName"
             android:layout_width="0dip"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/component_height"
+            android:layout_marginRight="2dip"
             android:layout_weight="1"
             android:ellipsize="end"
-            android:paddingRight="2dip"
-            android:singleLine="true" />
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textSize="18sp"
+            bootstrapbutton:be_roundedCorners="true" />
 
-        <ImageButton
+        <br.com.eduardo.loan.ui.button.BootstrapButton
             android:id="@+id/grlookupButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_yellow" />
+            android:layout_height="@dimen/component_height"
+            bootstrapbutton:bb_icon_right="fa-search"
+            bootstrapbutton:bb_roundedCorners="true"
+            bootstrapbutton:bb_type="info" />
     </LinearLayout>
 
 </merge>

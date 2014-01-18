@@ -1,100 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/gray"
-    android:orientation="vertical" >
+    android:padding="5dp" >
 
-    <fragment
-        android:id="@+id/head"
-        android:name="br.com.eduardo.loan.ui.fragment.TitleFragment_"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/actionbar_height" />
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp" >
+        android:orientation="vertical"
+        android:scrollbars="vertical" >
 
-        <LinearLayout
+        <TextView
+            style="@style/labelStyle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:scrollbars="vertical" >
+            android:text="@string/label_item" />
 
-            <TextView
-                style="@style/labelStyle"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/itemNameLabel" />
+        <br.com.eduardo.loan.ui.view.EditTextLookup_
+            android:id="@+id/itemLookup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
-            <EditText
-                android:id="@+id/itemNameText"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:cursorVisible="false"
-                android:drawableRight="@drawable/ic_button_search"
-                android:ellipsize="end"
-                android:focusable="false"
-                android:hint="@string/select_item"
-                android:inputType="none"
-                android:singleLine="true" />
+        <TextView
+            style="@style/labelStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_friend" />
 
-            <TextView
-                style="@style/labelStyle"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/friendNameLabel" />
+        <br.com.eduardo.loan.ui.view.EditTextLookup_
+            android:id="@+id/friendLookup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
-            <EditText
-                android:id="@+id/friendNameText"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:cursorVisible="false"
-                android:drawableRight="@drawable/ic_button_search"
-                android:ellipsize="end"
-                android:focusable="false"
-                android:hint="@string/select_friend"
-                android:inputType="none"
-                android:singleLine="true" />
+        <TextView
+            style="@style/labelStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_date_loan" />
 
-            <TextView
-                style="@style/labelStyle"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/date_loan" />
+        <br.com.eduardo.loan.ui.view.EditTextLookup_
+            android:id="@+id/dateText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
-            <br.com.eduardo.loan.ui.view.DateView_
-                android:id="@+id/dateText"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:drawableRight="@drawable/ic_button_search"
-                android:focusable="false"
-                android:hint="@string/select_friend"
-                android:inputType="date"
-                android:paddingTop="5dp" />
+        <br.com.eduardo.loan.ui.view.SaveCancelView_
+            android:id="@+id/action"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-            <!-- TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Alarm" />
-
-            <br.com.eduardo.loan.ui.view.DateView_
-                android:id="@+id/dateAlarmText"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:drawableRight="@drawable/ic_button_search"
-                android:focusable="false"
-                android:hint="@string/select_friend"
-                android:inputType="date"
-                android:paddingTop="5dp" / -->
-
-            <fragment
-                android:id="@+id/action"
-                android:name="br.com.eduardo.loan.ui.fragment.SaveCancelFragment_"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </ScrollView>
-
-</LinearLayout>
+</ScrollView>

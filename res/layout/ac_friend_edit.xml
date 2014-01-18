@@ -1,43 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/LinearLayout01"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:padding="5dp" >
 
-    <fragment
-        android:id="@+id/head"
-        android:name="br.com.eduardo.loan.ui.fragment.TitleFragment"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/actionbar_height" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ac_friend_add_name" />
-
-    <EditText
-        android:id="@+id/ac_friend_edit_name"
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ac_friend_add_name" />
+        android:orientation="vertical"
+        android:scrollbars="vertical" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ac_friend_add_number" />
+        <TextView
+            style="@style/labelStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_name" />
 
-    <EditText
-        android:id="@+id/ac_friend_edit_number"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/ac_friend_add_number"
-        android:inputType="phone" />
+        <br.com.eduardo.loan.ui.text.BootstrapEditText
+            android:id="@+id/ac_friend_edit_name"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:hint="@string/label_name"
+            android:textSize="18sp"
+            bootstrapbutton:be_roundedCorners="true" />
 
-    <fragment
-        android:id="@+id/action"
-        android:name="br.com.eduardo.loan.ui.fragment.SaveCancelFragment_"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            style="@style/labelStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_number" />
 
-</LinearLayout>
+        <br.com.eduardo.loan.ui.text.BootstrapEditText
+            android:id="@+id/ac_friend_edit_number"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:hint="@string/label_number"
+            android:inputType="phone"
+            android:textSize="18sp"
+            bootstrapbutton:be_roundedCorners="true" />
+
+        <br.com.eduardo.loan.ui.view.SaveCancelView_
+            android:id="@+id/action"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</ScrollView>

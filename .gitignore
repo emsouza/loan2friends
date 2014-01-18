@@ -1,4 +1,10 @@
+# generated files
+bin/
+gen/
+
+# Local configuration file
 .apt_generated
-/bin
-/gen
-/generated
+.project
+.settings
+.classpath
+target

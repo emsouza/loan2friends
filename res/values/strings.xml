@@ -1,153 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<!-- Textos gerais -->
-	<string name="app_name">Loan To Friends</string> <!-- Título do Aplicativo -->
-	<string name="yes">Yes</string> <!-- Sim -->
-	<string name="no">No</string> <!-- Não -->
-	<string name="delete">Are you sure you want to delete?</string> <!-- Pergunta para Remover -->
-	<string name="title_changelog">Change Log</string>
-	<string name="wait">Wait&#8230;</string>
+    <!-- Textos gerais -->
+    <string name="app_name">Loan To Friends</string>
 
-	<!-- Butoes -->
-	<string name="button_save">Save</string> <!-- Botão Salvar -->
-	<string name="button_cancel">Cancel</string> <!-- Botão Cancelar -->
-	<string name="button_send">Send</string>
-	<string name="button_update">Update</string>
+    <!-- Botões -->
+    <string name="button_save">Save</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_send">Send</string>
+    <string name="button_update">Update</string>
+    <string name="button_yes">Yes</string>
+    <string name="button_no">No</string>
 
-	<!-- Funcionalidades -->
-	<string name="feature_request">Feature Request</string> <!-- Título de Requisição de Funcionalidade -->
-	<string name="send_request">Send Request</string> <!-- Título de Enviar Requisição -->
+    <!-- Mensagens -->
+    <string name="msg_delete">Are you sure you want to delete?</string>
+    <string name="msg_no_data">No records found</string>
+    <string name="msg_no_contacs">No contacts to select</string>
+    <string name="msg_friend_not_selected">Friend not selected</string>
+    <string name="msg_item_not_selected">Item not selected</string>
+    <string name="msg_friend_name_error">Friend\'s name not filled</string>
+    <string name="msg_item_name_error">Item %s not filled</string>
+    <string name="msg_title_error">Title not filled</string>
+    <string name="msg_message_not_filled">Message not filled</string>
+    <string name="msg_date_time_error">Invalid date</string>
+    <string name="msg_import_export_error">You can\'t perform the operation without a SDCARD</string>
+    <string name="msg_importing">Importing&#8230;</string>
+    <string name="msg_exporting">Exporting&#8230;</string>
+    <string name="msg_import_ok">Import successful!</string>
+    <string name="msg_export_ok">Export successful!</string>
+    <string name="msg_import_fail">Import failed</string>
+    <string name="msg_export_fail">Export failed</string>
 
-	<!-- Dados da Grid -->
-	<string name="date_loan">Date of Loan</string> <!-- Data de Empréstimo -->
-	<string name="date_return">Return Date</string> <!-- Data de Retorno -->
-	<string name="loan_days">Loan for</string> <!-- Dias Emprestado -->
-	<string name="days">day(s)</string> <!-- Dia / Dias -->
-	<string name="item_title">Title</string> <!-- Título do Item -->
-	<string name="friend_name">Name</string> <!-- Nome do Amigo -->
-	<string name="status">Status</string> <!-- Status -->
-	<string name="phone_number">Phone Number</string> <!-- Status -->
+    <!-- Títulos -->
+    <string name="title_changelog">Change Log</string>
+    <string name="title_dialog_contact">Contacts</string>
+    <string name="title_dialog_friend">Friends</string>
+    <string name="title_dialog_item">Items</string>
+    <string name="title_filter">Search Filter</string>
+    <string name="title_feature">Feature Request</string>
 
-	<!-- Texto de Labels -->
-	<string name="friendNameLabel">Friend</string>
-	<string name="itemNameLabel">Item</string>
-	<string name="ac_loan_status">Status</string>
-	<string name="ac_friend_add_name">Name</string>
-	<string name="ac_friend_add_number">Phone Number</string>
-	<string name="ac_item_add_title">Title</string>
-	<string name="ac_item_add_type">Type</string>
-	<string name="ac_item_add_description">Description</string>
-	<string name="message">Message</string>
-	<string name="sms_return">Please return my item:</string>
+    <!-- Hint -->
+    <string name="hint_select_item">Select an Item</string>
+    <string name="hint_select_friend">Select a Friend</string>
 
-	<!-- Menus do Sistema -->
-	<string name="menu_main_home">Home</string> <!-- Opção para ir a Inicial -->
-	<string name="menu_main_friends">Friends</string> <!-- Opção para ir a Tela de Amigos -->
-	<string name="menu_main_items">Items</string> <!-- Opção para ir a Tela de Itens -->
-	<string name="menu_main_filter">Filter</string> <!-- Filtro da Tela Inicial -->
-	<string name="menu_main_settings">Settings</string> <!-- Opção para ir a Tela de Preferências -->
-	<string name="menu_main_add">New Loan</string> <!-- Opção para adicionar um Empréstimo -->
-	<string name="menu_items_add">New Item</string> <!-- Opção para adicionar um Item -->
-	<string name="menu_friend_add">New Friend</string> <!-- Opção para adicionar um Amigo -->
-	<string name="menu_friend_import_all">Import All Contacts</string> <!-- Opção para adicionar um Amigo -->
+    <!-- Label -->
+    <string name="label_name">Name</string>
+    <string name="label_title">Title</string>
+    <string name="label_friend">Friend</string>
+    <string name="label_item">Item</string>
+    <string name="label_type">Type</string>
+    <string name="label_status">Status</string>
+    <string name="label_number">Phone Number</string>
+    <string name="label_amount">Amount</string>
+    <string name="label_description">Description</string>
+    <string name="label_date_loan">Date of Loan</string>
+    <string name="label_date_return">Return Date</string>
+    <string name="label_telephone_number">Number: %s</string>
 
-	<!-- Menu de Opcoes -->
-	<string name="option_detail">Detail</string> <!-- Opção de Detalhe -->
-	<string name="option_edit">Edit</string> <!-- Opção de Menu Editar -->
-	<string name="option_delete">Delete</string> <!-- Opção de Menu Deletar -->
-	<string name="option_sms">Send SMS</string> <!-- Opção de Menu SMS -->
-	<string name="option_cancel">Cancel</string> <!-- Opção de Menu Cancelar -->
-	<string name="option_mark_returned">Mark Returned</string> <!-- Marcar como Devolvido -->
-	<string name="option_mark_archive">Archive</string> <!-- Arquivar -->
+    <!-- Menus de Opções -->
+    <string name="option_edit">Edit</string>
+    <string name="option_detail">Detail</string>
+    <string name="option_delete">Delete</string>
+    <string name="option_cancel">Cancel</string>
+    <string name="option_mark_returned">Mark Returned</string>
+    <string name="option_mark_archive">Archive</string>
 
-	<!-- Status -->
-	<string name="status_available">Available</string> <!-- Status Disponível -->
-	<string name="status_lent">Lent</string> <!-- Status Emprestado -->
-	<string name="status_returned">Returned</string> <!-- Status Devolvido -->
-	<string name="status_achived">Archived</string> <!-- Status Devolvido -->
+    <!-- Menus -->
+    <string name="menu_friends">Friends</string>
+    <string name="menu_items">Items</string>
+    <string name="menu_filter">Filter</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_loan_add">New Loan</string>
+    <string name="menu_items_add">New Item</string>
+    <string name="menu_friend_add">New Friend</string>
+    <string name="menu_friend_add_all">Import All Contacts</string>
 
-	<!-- Titulos -->
-	<string name="title_dialog_contact">Contacts List</string> <!-- Título da Janela de Contatos -->
-	<string name="title_dialog_friend">Friends List</string> <!-- Título da Janela de Amigos -->
-	<string name="title_dialog_item">Items List</string> <!-- Título da Janela de Itens -->
-	<string name="title_sms">SMS</string> <!-- Título da Janela de SMS -->
-	<string name="title_filter">Filter</string>
+    <!-- Status -->
+    <string name="status_lent">Lent</string>
+    <string name="status_returned">Returned</string>
+    <string name="status_achived">Archived</string>
 
-	<!-- Mensagens de Validação -->
-	<string name="idfriend_error">Friend not selected</string> <!-- Amigo não selecionado -->
-	<string name="iditem_error">Item not selected</string> <!-- Item não selecionado -->
-	<string name="friend_name_error">Friend\'s name not filled</string> <!-- Nome do Amigo não preenchido -->
-	<string name="item_name_error">Item title not filled</string> <!-- Título do Item não preenchido -->
-	<string name="phone_number_error">Phone Number not filled</string> <!-- Mensagem do telefone não preenchida -->
-	<string name="message_error">Message not filled</string> <!-- Mensagem não preenchida -->
-	<string name="title_error">Title not filled</string> <!-- Título não preenchida -->
-	<string name="date_time_error">Invalid date or time</string> <!-- Data ou hora inválida -->
-	<string name="import_export_error">You can\'t perform the operation without a SDCARD</string>
-	<string name="importing">Importing&#8230;</string>
-	<string name="exporting">Exporting&#8230;</string>
-	<string name="import_ok">Import successful!</string>
-	<string name="export_ok">Export successful!</string>
-	<string name="import_fail">Import failed</string>
-	<string name="export_fail">Export failed</string>
-	
-	
-	<!-- Configs -->
-	<string name="pref_group_date_time">Date and Time Format</string> <!-- Agrupador de Data e Hora -->
-	<string name="pref_group_information">Information</string> <!-- Agrupador de Informações -->
-	<string name="pref_group_contact">Contact</string> <!-- Agrupador de Contato -->
-	<string name="pref_date_title">Date Format</string> <!-- Título da Configurações de Data -->
-	<string name="pref_date_desc">dd/MM/yyyy or MM/dd/yyyy</string> <!-- Descrição da Configurações de Data -->
-	<string name="pref_time_title">Time Format</string> <!-- Título da Configurações de Hora -->
-	<string name="pref_time_desc">12-hour or 24-hour</string> <!-- Descrição da Configurações de Hora -->
-	<string name="pref_changelog_desc">Information about Loan To Friends Changes</string> <!-- Descrição da Link de Changelog -->
-	<string name="pref_feature_desc">Use this option to request new features or suggest modifications to existing features</string> <!-- Descrição da Link de Funcionalidades -->
-	<string name="pref_group_data">Import / Export Data</string>
-	<string name="pref_import_data">Import Data</string>
-	<string name="pref_import_desc">Use this option to import the exported data</string> <!-- Descrição da Link de Importação de dados -->
-	<string name="pref_export_data">Export Data</string>
-	<string name="pref_export_desc">Use this option to export the application data</string> <!-- Descrição da Link de Exportação de dados -->
-	
-	<!-- Mensagem Registros Vazios -->
-	<string name="no_data_loan">No loan registered</string>
-	<string name="no_data_item">No items registered</string>
-	<string name="no_data_friend">No friends registered</string>
+    <!-- Tipos de Itens -->
+    <string name="type_default">Default</string>
+    <string name="type_cd">CD</string>
+    <string name="type_dvd">DVD</string>
+    <string name="type_bluray">Bluray</string>
+    <string name="type_book">Book</string>
+    <string name="type_game">Game</string>
+    <string name="type_money">Money</string>
 
-	<!-- Itens das Preferências de Data -->
-	<string-array name="date_format_text">
-		<item>dd/MM/yyyy</item>
-		<item>MM/dd/yyyy</item>
-	</string-array>
+    <!-- Preferências -->
+    <string name="pref_group_date_time">Date Format</string>
+    <string name="pref_group_information">Information</string>
+    <string name="pref_group_contact">Contact</string>
+    <string name="pref_date_title">Date Format</string>
+    <string name="pref_date_desc">dd/MM/yyyy or MM/dd/yyyy</string>
+    <string name="pref_changelog_desc">Information about Loan To Friends Changes</string>
+    <string name="pref_feature_desc">Use this option to request new features or suggest modifications to existing features</string>
+    <string name="pref_group_data">Import / Export Data</string>
+    <string name="pref_import_data">Import Data</string>
+    <string name="pref_import_desc">Use this option to import the exported data</string>
+    <string name="pref_export_data">Export Data</string>
+    <string name="pref_export_desc">Use this option to export the application data</string>
 
-	<!-- Itens das Preferências de Hora -->
-	<string-array name="time_format_text">
-		<item>12-hour</item>
-		<item>24-hour</item>
-	</string-array>
+    <!-- Itens das Preferências de Data -->
+    <string-array name="date_format_text">
+        <item>dd/MM/yyyy</item>
+        <item>MM/dd/yyyy</item>
+    </string-array>
 
-	<!-- Itens dos Valores de Hora -->
-	<string-array name="time_format_value">
-		<item>hh:mm a</item>
-		<item>HH:mm</item>
-	</string-array>
-
-	<!-- Tipos de Itens -->
-	<string name="type_default">Default</string> <!-- Tipo Default -->
-	<string name="type_cd">CD</string> <!-- Tipo CD -->
-	<string name="type_dvd">DVD</string> <!-- Tipo DVD -->
-	<string name="type_bluray">Bluray</string> <!-- Tipo Bluray -->
-	<string name="type_book">Book</string> <!-- Tipo Livro -->
-	<string name="type_game">Game</string> <!-- Tipo Jogos -->
-	<string name="type_money">Money</string> <!-- Tipo Dinheiro -->
-
-	<!-- Mensagens nos componentes -->
-	<string name="select_item">Select Item</string> <!-- Seleção de Item -->
-	<string name="select_friend">Select Friend</string> <!-- Seleção de Amigo -->	
-	
-	<!-- Acessibilidade -->
-	<string name="cd_contact_photo">Contact Photo</string>
-	<string name="cd_search">Search</string>
-	<string name="cd_add">Add</string>
-	<string name="cd_item">Item</string>
-	<string name="cd_status">Status</string>
 </resources>

@@ -1,0 +1,15 @@
+<resources>
+    
+    <dimen name="component_height">45dp</dimen>
+    <dimen name="component_filter">40dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+	<dimen name="bbuton_rounded_corner_radius">5dp</dimen>
+
+	<dimen name="bthumbnail_rounded_corner_radius">3dp</dimen>
+
+    <dimen name="padding_micro">4dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">12dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+</resources>

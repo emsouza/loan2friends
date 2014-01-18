@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<changelog>
+	<release version="3.0.0" versioncode="22">
+		<change><![CDATA[Nova inferface gr&#225;fica]]></change>
+		<change><![CDATA[Formata&#231;&#227;o da moeda]]></change>
+		<change><![CDATA[Remo&#231;&#227;o das propagandas]]></change>
+	</release>
+	<release version="2.5.2" versioncode="21">
+		<change><![CDATA[Corre&#231;&#227;o de bugs]]></change>
+	</release>
+	<release version="2.5.1" versioncode="20">
+		<change><![CDATA[Corre&#231;&#227;o de bugs]]></change>
+	</release>
+	<release version="2.5.0" versioncode="19">
+		<change><![CDATA[Op&#231;&#227;o de filtro de empr&#233;stimos]]></change>
+		<change><![CDATA[Corre&#231;&#227;o de bugs]]></change>
+	</release>
+	<release version="2.4.1" versioncode="18">
+		<change><![CDATA[Corre&#231;&#227;o de bugs]]></change>
+	</release>
+	<release version="2.4" versioncode="17">
+		<change><![CDATA[Corre&#231;&#227;o de bugs]]></change>
+		<change><![CDATA[Foto dos Contatos (Somente novos contatos)]]></change>
+		<change><![CDATA[Melhoria nos &#237;cones]]></change>
+	</release>
+	<release version="2.3" versioncode="16">
+		<change><![CDATA[Corre&#231;&#227;o de bugs]]></change>
+	</release>
+	<release version="2.2" versioncode="15">
+		<change><![CDATA[Corre&#231;&#227;o de bugs para tablets]]></change>
+	</release>
+	<release version="2.1" versioncode="14">
+		<change><![CDATA[Corre&#231;&#227;o de bugs para tablets]]></change>
+	</release>
+	<release version="2.0" versioncode="13">
+		<change><![CDATA[Suporte a vers&#227;o 3.2 do android]]></change>
+	</release>
+	<release version="1.9" versioncode="12">
+		<change><![CDATA[Corre&#231;&#227;o de bugs para tablets]]></change>
+	</release>
+	<release version="1.8" versioncode="11">
+		<change><![CDATA[Corre&#231;&#227;o de bugs]]></change>
+		<change><![CDATA[Fun&#231;&#227;o para importar e exportar dados]]></change>
+	</release>
+	<release version="1.7" versioncode="10">
+		<change><![CDATA[Corre&#231;&#227;o de bugs]]></change>
+		<change><![CDATA[Fun&#231;&#227;o para excluir um amigo]]></change>
+		<change><![CDATA[Permiss&#227;o para alterar a data de um empr&#233;stimo]]></change>
+		<change><![CDATA[Fun&#231;&#227;o para importar todos os contatos]]></change>
+	</release>
+	<release version="1.6" versioncode="9">
+		<change><![CDATA[Corre&#231;&#227;o de bugs]]></change>
+	</release>
+	<release version="1.5" versioncode="7">
+		<change><![CDATA[Melhoria nas Telas para tablets]]></change>
+		<change><![CDATA[Barra de pesquisa]]></change>
+	</release>
+	<release version="1.4" versioncode="6">
+		<change><![CDATA[Fun&#231;&#227;o para solicita&#231;&#227;o de funcionalidades]]></change>
+		<change><![CDATA[Nova barra de t&#237;tulo]]></change>
+	</release>
+	<release version="1.3" versioncode="4">
+		<change><![CDATA[Melhoria nos &#237;cones]]></change>
+		<change><![CDATA[Melhoria nos logs de erros]]></change>
+		<change><![CDATA[Envio de SMS]]></change>
+	</release>
+	<release version="1.2" versioncode="3">
+		<change><![CDATA[Corre&#231;&#227;o de bugs]]></change>
+		<change><![CDATA[Permiss&#227;o para deletar um item]]></change>
+		<change><![CDATA[Suporte a tipos de objetos (CD, DVD, Bluray, Livro, Jogo, Dinheiro)]]></change>
+	</release>
+	<release version="1.1" versioncode="2">
+		<change><![CDATA[Melhoria na usabilidade das janelas de sele&#231;&#227;o]]></change>
+		<change><![CDATA[M&#243;dulo de Configura&#231;&#245;es]]></change>
+		<change><![CDATA[Suporte a API 1.6]]></change>
+	</release>
+	<release version="1.0" versioncode="1">
+		<change><![CDATA[Primeira vers&#227;o]]></change>
+	</release>
+</changelog>

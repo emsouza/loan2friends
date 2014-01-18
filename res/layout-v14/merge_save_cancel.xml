@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp" >
+
+        <Button
+            android:id="@+id/buttonCancel"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/component_height"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bbuton_danger_rounded"
+            android:text="@string/button_cancel"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/component_height"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bbuton_success_rounded"
+            android:text="@string/button_save"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</merge>

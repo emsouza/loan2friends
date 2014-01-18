@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="Theme.Loan" parent="@style/Theme.Sherlock.Light">
+        <item name="background">@color/background</item>
+    </style>
+	
+</resources>
