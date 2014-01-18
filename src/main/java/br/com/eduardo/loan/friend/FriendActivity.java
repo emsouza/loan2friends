@@ -35,7 +35,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 @OptionsMenu(R.menu.menu_friend)
 public class FriendActivity extends SherlockActivity {
 
-    @ViewById(R.id.friendList)
+    @ViewById(R.id.list)
     ListView listView;
 
     @ViewById(R.id.emptyList)
@@ -71,7 +71,7 @@ public class FriendActivity extends SherlockActivity {
         populate();
     }
 
-    @ItemLongClick(R.id.friendList)
+    @ItemLongClick(R.id.list)
     void listItemLongClicked(final int position) {
         final CharSequence[] items = { getString(R.string.option_edit), getString(R.string.option_delete), getString(R.string.option_cancel) };
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

@@ -15,7 +15,9 @@ import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.model.entity.LoanViewDTO;
 import br.com.eduardo.loan.ui.view.TextViewGroup;
 import br.com.eduardo.loan.util.ContactFinder;
+import br.com.eduardo.loan.util.CurrencySymbol;
 import br.com.eduardo.loan.util.DateFormatUtil;
+import br.com.eduardo.loan.util.type.Status;
 import br.com.eduardo.loan.util.type.StatusColor;
 
 /**
@@ -51,10 +53,19 @@ public class LoanViewAdapter extends ArrayAdapter<LoanViewDTO> {
             ImageView contactPhoto = (ImageView) v.findViewById(R.id.friendIcon);
             TextView status = (TextView) v.findViewById(R.id.loanStatus);
 
-            title.setText(o.getName());
+            if (o.getType() == 6) {
+                title.setText(CurrencySymbol.format(o.getName()));
+            } else {
+                title.setText(o.getName());
+            }
 
             Date loanDate = dateformat.formatToDate(o.getLentDate());
-            lentDate.setValues(getContext().getString(R.string.label_date_loan), dateformat.formatDateToScreen(loanDate), true);
+
+            if (o.getStatus() == Status.LENDED) {
+                lentDate.setValues(getContext().getString(R.string.label_date_loan), dateformat.formatDateToScreen(loanDate), true);
+            } else {
+                lentDate.setValues(getContext().getString(R.string.label_date_return), dateformat.formatDateToScreen(loanDate), true);
+            }
 
             status.setBackgroundResource(StatusColor.statusImage(o.getStatus()));
 

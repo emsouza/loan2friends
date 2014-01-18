@@ -18,6 +18,8 @@ public class LoanViewDTO {
     private Integer friendId;
 
     private String returnDate;
+    
+    private Integer type;
 
     public Integer getId() {
         return id;
@@ -65,5 +67,13 @@ public class LoanViewDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public Integer getType() {
+        return type;
+    }
+    
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

@@ -8,6 +8,7 @@ import org.androidannotations.annotations.ItemSelect;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.ViewById;
 
+import android.text.InputType;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -55,7 +56,6 @@ public class ItemAddActivity extends SherlockActivity {
     @AfterViews
     void afterView() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         typeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         populateCombo();
@@ -79,9 +79,11 @@ public class ItemAddActivity extends SherlockActivity {
             if (((Long) type.getSelectedItemId()).intValue() == 6) {
                 label.setText(getString(R.string.label_amount));
                 title.setHint(getString(R.string.label_amount));
+                title.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_CLASS_NUMBER);
             } else {
-                label.setText(getString(R.string.label_name));
-                title.setHint(getString(R.string.label_name));
+                label.setText(getString(R.string.label_title));
+                title.setHint(getString(R.string.label_title));
+                title.setInputType(InputType.TYPE_CLASS_TEXT);
             }
         }
     }
@@ -89,10 +91,10 @@ public class ItemAddActivity extends SherlockActivity {
     @Click(R.id.buttonSave)
     void saveItem() {
         ItemDTO item = new ItemDTO();
-        item.setTitle(title.getText().toString());
-        item.setDescription(description.getText().toString());
-        item.setStatus(Status.AVAILABLE);
         item.setType(Long.valueOf(type.getSelectedItemId()).intValue());
+        item.setStatus(Status.AVAILABLE);
+        item.setDescription(description.getText().toString());
+        item.setTitle(title.getText().toString());
 
         if (ItemValidator.validaItem(this, item)) {
             itemDAO.insert(item);

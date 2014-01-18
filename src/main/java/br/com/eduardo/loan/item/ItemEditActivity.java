@@ -9,6 +9,7 @@ import org.androidannotations.annotations.ItemSelect;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.ViewById;
 
+import android.text.InputType;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -58,16 +59,14 @@ public class ItemEditActivity extends SherlockActivity {
     @AfterViews
     void afterView() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         typeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         populateCombo();
 
         ItemDTO item = itemDAO.find(id);
-
+        type.setSelection(item.getType());
         title.setText(item.getTitle());
         description.setText(item.getDescription());
-        type.setSelection(item.getType());
         imageType.setImageResource(ItemTypeImage.typeACImage(item.getType()));
     }
 
@@ -89,9 +88,11 @@ public class ItemEditActivity extends SherlockActivity {
             if (((Long) type.getSelectedItemId()).intValue() == 6) {
                 label.setText(getString(R.string.label_amount));
                 title.setHint(getString(R.string.label_amount));
+                title.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_CLASS_NUMBER);
             } else {
                 label.setText(getString(R.string.label_title));
                 title.setHint(getString(R.string.label_title));
+                title.setInputType(InputType.TYPE_CLASS_TEXT);
             }
         }
     }

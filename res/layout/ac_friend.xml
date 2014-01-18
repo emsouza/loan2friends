@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="true"
     android:orientation="vertical" >
 
     <ListView
-        android:id="@+id/friendList"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="8dp"
-        android:layout_weight="1"
         android:divider="@null"
         android:dividerHeight="5dp" />
 
     <TextView
         android:id="@+id/emptyList"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1.0"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:text="@string/msg_no_data" />
+        android:text="@string/msg_no_data"
+        android:textColor="@color/gray" />
 
 </LinearLayout>

@@ -170,6 +170,7 @@ public class LoanDAO extends AbstractDAO {
                 item.setLentDate(cursor.getString(3));
                 item.setFriendId(cursor.getInt(4));
                 item.setReturnDate(cursor.getString(5));
+                item.setType(cursor.getInt(6));
                 list.add(item);
             }
             cursor.close();

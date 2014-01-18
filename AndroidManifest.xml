@@ -42,9 +42,6 @@
         <activity android:name="LoanAddActivity_" />
         <activity android:name="LoanEditActivity_" />
         <activity android:name=".settings.SettingsActivity" />
-        <activity
-            android:name="com.google.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
     </application>
 
 </manifest>

@@ -33,7 +33,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 @OptionsMenu(R.menu.menu_item)
 public class ItemActivity extends SherlockActivity {
 
-    @ViewById(R.id.itemList)
+    @ViewById(R.id.list)
     ListView listView;
 
     @ViewById(R.id.emptyList)
@@ -62,7 +62,7 @@ public class ItemActivity extends SherlockActivity {
         this.startActivity(prefIntent);
     }
 
-    @ItemLongClick(R.id.itemList)
+    @ItemLongClick(R.id.list)
     void itemLongClick(final int position) {
         final CharSequence[] items = { getString(R.string.option_edit), getString(R.string.option_delete),
                 getString(R.string.option_cancel) };

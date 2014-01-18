@@ -44,7 +44,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 @OptionsMenu(R.menu.menu_main)
 public class MainActivity extends SherlockActivity {
 
-    @ViewById(R.id.mainList)
+    @ViewById(R.id.list)
     ListView listView;
 
     @ViewById(R.id.emptyList)
@@ -71,7 +71,7 @@ public class MainActivity extends SherlockActivity {
         listView.setAdapter(new LoanViewAdapter(MainActivity.this, dateTimeFormat, loanDAO.findAll(StatusParam.INSTANCE.getStatus())));
     }
 
-    @ItemLongClick(R.id.mainList)
+    @ItemLongClick(R.id.list)
     void listItemLongClicked(final int position) {
         final LoanViewDTO loanView = (LoanViewDTO) listView.getAdapter().getItem(position);
         CharSequence[] items = null;
