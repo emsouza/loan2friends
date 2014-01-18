@@ -1,6 +1,7 @@
 package br.com.eduardo.loan.util;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -20,7 +21,7 @@ import br.com.eduardo.loan.pref.LoanPrefs_;
 @EBean(scope = Scope.Singleton)
 public class DateFormatUtil {
 
-    private static final SimpleDateFormat DB_FORMAT = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+    private static final SimpleDateFormat DB_FORMAT = new SimpleDateFormat("yyyyMMdd HHmmss", Locale.getDefault());
 
     @Pref
     protected LoanPrefs_ prefs;
@@ -34,7 +35,13 @@ public class DateFormatUtil {
     }
 
     public String formatToDB(Date date) {
-        return DB_FORMAT.format(date);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        Calendar current = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, current.get(Calendar.HOUR_OF_DAY));
+        cal.set(Calendar.MINUTE, current.get(Calendar.MINUTE));
+        cal.set(Calendar.SECOND, current.get(Calendar.SECOND));
+        return DB_FORMAT.format(cal.getTime());
     }
 
     public String formatDateToScreen(Date date) {

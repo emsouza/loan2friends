@@ -15,7 +15,8 @@ import br.com.eduardo.loan.util.type.Status;
 /**
  * @author Eduardo Matos de Souza<br>
  *         EMS - 17/09/2011 <br>
- *         <a href="mailto:eduardo.souza@emsouza.com.br">eduardo.souza@emsouza.com.br</a>
+ *         <a href="mailto:eduardo.souza@emsouza.com.br">eduardo.souza@emsouza.
+ *         com.br</a>
  */
 @EBean(scope = Scope.Singleton)
 public class ItemDAO extends AbstractDAO {

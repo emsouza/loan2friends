@@ -23,7 +23,6 @@ public class MenuStrings {
 
     public static CharSequence[] getReturnedMenuStrings(Context context) {
         List<CharSequence> list = new ArrayList<CharSequence>();
-        list.add(context.getString(R.string.option_edit));
         list.add(context.getString(R.string.option_mark_archive));
         list.add(context.getString(R.string.option_delete));
         list.add(context.getString(R.string.option_cancel));
@@ -32,7 +31,6 @@ public class MenuStrings {
 
     public static CharSequence[] getArchivedMenuStrings(Context context) {
         List<CharSequence> list = new ArrayList<CharSequence>();
-        list.add(context.getString(R.string.option_edit));
         list.add(context.getString(R.string.option_delete));
         list.add(context.getString(R.string.option_cancel));
         return list.toArray(new CharSequence[list.size()]);

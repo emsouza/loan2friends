@@ -40,7 +40,6 @@
         <activity android:name=".item.ItemAddActivity_" />
         <activity android:name=".item.ItemEditActivity_" />
         <activity android:name="LoanAddActivity_" />
-        <activity android:name="LoanEditActivity_" />
         <activity android:name=".settings.SettingsActivity" />
     </application>
 
