@@ -14,6 +14,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
+import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
 import br.com.eduardo.loan.adapter.LoanViewAdapter;
@@ -145,9 +146,12 @@ public class MainActivity extends SherlockActivity {
     protected void processLentMenu(int key, LoanViewDTO item) {
         switch (key) {
         case 0:
-            markReturned(item.getId());
+            detail(item.getId());
             break;
         case 1:
+            markReturned(item.getId());
+            break;
+        case 2:
             askForDelete(item);
             break;
         default:
@@ -158,9 +162,12 @@ public class MainActivity extends SherlockActivity {
     protected void processReturnedMenu(int key, LoanViewDTO item) {
         switch (key) {
         case 0:
-            markArchived(item.getId());
+            detail(item.getId());
             break;
         case 1:
+            markArchived(item.getId());
+            break;
+        case 2:
             askForDelete(item);
             break;
         default:
@@ -171,11 +178,22 @@ public class MainActivity extends SherlockActivity {
     protected void processArchivedMenu(int key, LoanViewDTO item) {
         switch (key) {
         case 0:
+            detail(item.getId());
+            break;
+        case 1:
             askForDelete(item);
             break;
         default:
             break;
         }
+    }
+
+    void detail(Integer id) {
+        Intent intent = new Intent(this, LoanDetailActivity_.class);
+        Bundle bun = new Bundle();
+        bun.putInt("id", id);
+        intent.putExtras(bun);
+        this.startActivity(intent);
     }
 
     protected void markReturned(Integer id) {

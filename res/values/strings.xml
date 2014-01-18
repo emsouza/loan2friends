@@ -59,6 +59,7 @@
 
     <!-- Menus de Opções -->
     <string name="option_edit">Edit</string>
+    <string name="option_detail">Detail</string>
     <string name="option_delete">Delete</string>
     <string name="option_cancel">Cancel</string>
     <string name="option_mark_returned">Mark Returned</string>
