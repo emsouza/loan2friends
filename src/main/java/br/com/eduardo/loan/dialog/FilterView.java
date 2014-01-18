@@ -43,7 +43,7 @@ public class FilterView extends LinearLayout implements Inflateable {
     public void afterView() {
         lent.setStatus(R.string.status_lent, R.color.red);
         returned.setStatus(R.string.status_returned, R.color.green);
-        archived.setStatus(R.string.status_achived, R.color.gray);
+        archived.setStatus(R.string.status_achived, R.color.gray_dark);
 
         for (int id : StatusParam.INSTANCE.getStatus()) {
             if (id == Status.LENDED) {
