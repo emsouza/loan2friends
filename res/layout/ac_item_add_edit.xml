@@ -32,8 +32,9 @@
 
         <Spinner
             android:id="@+id/itemType"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/component_height"
+            android:background="@drawable/selector_slim_spinner" />
 
         <TextView
             android:id="@+id/itemLabel"
@@ -45,7 +46,7 @@
         <br.com.eduardo.loan.ui.text.BootstrapEditText
             android:id="@+id/itemTitle"
             android:layout_width="fill_parent"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/component_height"
             android:hint="@string/label_title"
             android:textSize="18sp"
             bootstrapbutton:be_roundedCorners="true" />

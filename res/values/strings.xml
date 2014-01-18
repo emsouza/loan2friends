@@ -19,7 +19,7 @@
     <string name="msg_friend_not_selected">Friend not selected</string>
     <string name="msg_item_not_selected">Item not selected</string>
     <string name="msg_friend_name_error">Friend\'s name not filled</string>
-    <string name="msg_item_name_error">Item title not filled</string>
+    <string name="msg_item_name_error">Item %s not filled</string>
     <string name="msg_title_error">Title not filled</string>
     <string name="msg_message_not_filled">Message not filled</string>
     <string name="msg_date_time_error">Invalid date</string>
