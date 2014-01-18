@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.model.entity.ItemDTO;
-import br.com.eduardo.loan.util.CurrencySymbol;
+import br.com.eduardo.loan.util.type.ItemFormatter;
 import br.com.eduardo.loan.util.type.ItemTypeImage;
 
 /**
@@ -45,12 +45,7 @@ public class ItemDialogAdapter extends ArrayAdapter<ItemDTO> {
         ItemDTO o = items.get(position);
         if (o != null) {
             TextView tt = (TextView) v.findViewById(R.id.dialog_item_name);
-
-            if (o.getType() == 6) {
-                tt.setText(CurrencySymbol.format(o.getTitle()));
-            } else {
-                tt.setText(o.getTitle());
-            }
+            tt.setText(ItemFormatter.formatItemName(o.getType(), o.getTitle()));
             tt.setCompoundDrawablesWithIntrinsicBounds(ItemTypeImage.typeGridImage(o.getType()), 0, 0, 0);
         }
         return v;

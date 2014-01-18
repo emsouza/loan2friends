@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.model.entity.ItemDTO;
-import br.com.eduardo.loan.util.CurrencySymbol;
+import br.com.eduardo.loan.util.type.ItemFormatter;
 import br.com.eduardo.loan.util.type.ItemTypeImage;
 import br.com.eduardo.loan.util.type.Status;
 
@@ -44,11 +44,7 @@ public class ItemAdapter extends ArrayAdapter<ItemDTO> {
             TextView bt = (TextView) v.findViewById(R.id.itemStatus);
             ImageView iv = (ImageView) v.findViewById(R.id.itemImage);
 
-            if (o.getType() == 6) {
-                tt.setText(CurrencySymbol.format(o.getTitle()));
-            } else {
-                tt.setText(o.getTitle());
-            }
+            tt.setText(ItemFormatter.formatItemName(o.getType(), o.getTitle()));
 
             if (o.getStatus() == Status.LENDED) {
                 bt.setBackgroundResource(R.color.red);

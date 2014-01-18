@@ -14,6 +14,7 @@
             android:layout_marginRight="2dip"
             android:layout_weight="1"
             android:ellipsize="end"
+            android:gravity="center_vertical"
             android:singleLine="true"
             android:textSize="18sp"
             bootstrapbutton:be_roundedCorners="true" />

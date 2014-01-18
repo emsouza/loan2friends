@@ -18,6 +18,7 @@ import android.widget.TextView;
 import br.com.eduardo.loan.R;
 import br.com.eduardo.loan.model.ItemDAO;
 import br.com.eduardo.loan.model.entity.ItemDTO;
+import br.com.eduardo.loan.util.type.ItemFormatter;
 import br.com.eduardo.loan.util.type.ItemTypeImage;
 import br.com.eduardo.loan.util.validator.ItemValidator;
 
@@ -85,7 +86,7 @@ public class ItemEditActivity extends SherlockActivity {
     public void processType(boolean selected, int position) {
         if (selected) {
             imageType.setImageResource(ItemTypeImage.typeACImage(position));
-            if (((Long) type.getSelectedItemId()).intValue() == 6) {
+            if (((Long) type.getSelectedItemId()).intValue() == ItemFormatter.TYPE_MONEY) {
                 label.setText(getString(R.string.label_amount));
                 title.setHint(getString(R.string.label_amount));
                 title.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_CLASS_NUMBER);

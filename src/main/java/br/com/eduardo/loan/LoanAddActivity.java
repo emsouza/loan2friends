@@ -22,6 +22,7 @@ import br.com.eduardo.loan.model.entity.ItemDTO;
 import br.com.eduardo.loan.model.entity.LoanDTO;
 import br.com.eduardo.loan.ui.view.EditTextLookup;
 import br.com.eduardo.loan.util.DateFormatUtil;
+import br.com.eduardo.loan.util.type.ItemFormatter;
 import br.com.eduardo.loan.util.type.Status;
 import br.com.eduardo.loan.util.validator.LoanValidator;
 
@@ -85,7 +86,7 @@ public class LoanAddActivity extends SherlockActivity {
             public void onDismiss(DialogInterface di) {
                 item = dialog.getItemSelected();
                 if (item != null) {
-                    itemLookup.setText(item.getTitle());
+                    itemLookup.setText(ItemFormatter.formatItemName(item.getType(), item.getTitle()));
                 }
             }
         });
@@ -119,14 +120,14 @@ public class LoanAddActivity extends SherlockActivity {
 
         DatePickerDialog.OnDateSetListener dateSet = new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                calendar.set(Calendar.YEAR,year);
-                calendar.set(Calendar.MONTH,monthOfYear);
-                calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, monthOfYear);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 dateText.setText(dateTimeFormat.formatDateToScreen(calendar.getTime()));
             }
         };
 
-        DatePickerDialog dialog = new DatePickerDialog(this, dateSet,year, month, day);
+        DatePickerDialog dialog = new DatePickerDialog(this, dateSet, year, month, day);
         dialog.show();
     }
 
