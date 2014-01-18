@@ -15,7 +15,7 @@
     <!-- Mensagens -->
     <string name="msg_delete">Are you sure you want to delete?</string>
     <string name="msg_no_data">No records found</string>
-    <string name="msg_no_contacs">No Contacts to Select</string>
+    <string name="msg_no_contacs">No contacts to select</string>
     <string name="msg_friend_not_selected">Friend not selected</string>
     <string name="msg_item_not_selected">Item not selected</string>
     <string name="msg_friend_name_error">Friend\'s name not filled</string>

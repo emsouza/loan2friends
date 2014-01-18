@@ -3,12 +3,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp" >
+        android:layout_height="40dp" >
 
         <TextView
             android:id="@+id/statusColor"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:background="@color/red" />
 
@@ -16,10 +16,10 @@
             android:id="@+id/statusName"
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:paddingLeft="10dp"
             android:layout_toLeftOf="@+id/statusRadio"
             android:layout_toRightOf="@+id/statusColor"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp" />
 
         <RadioButton
             android:id="@+id/statusRadio"

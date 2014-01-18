@@ -2,43 +2,49 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:orientation="vertical" >
+    android:background="@color/white" >
 
-    <br.com.eduardo.loan.ui.view.StatusSelectView_
-        android:id="@+id/lent"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:background="@color/gray" />
+        android:orientation="vertical" >
 
-    <br.com.eduardo.loan.ui.view.StatusSelectView_
-        android:id="@+id/returned"
-        android:layout_width="match_parent"
-        android:layout_height="45dp" />
+        <br.com.eduardo.loan.ui.view.StatusSelectView_
+            android:id="@+id/lent"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/component_filter" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="5dp"
-        android:background="@color/gray" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="@color/gray" />
 
-    <br.com.eduardo.loan.ui.view.StatusSelectView_
-        android:id="@+id/archived"
-        android:layout_width="match_parent"
-        android:layout_height="45dp" />
+        <br.com.eduardo.loan.ui.view.StatusSelectView_
+            android:id="@+id/returned"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/component_filter" />
 
-    <Button
-        android:id="@+id/buttonUpdate"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/component_height"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/bbuton_info_rounded"
-        android:text="@string/button_update"
-        android:textColor="@color/white" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="@color/gray" />
+
+        <br.com.eduardo.loan.ui.view.StatusSelectView_
+            android:id="@+id/archived"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/component_filter" />
+
+        <Button
+            android:id="@+id/buttonUpdate"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/component_height"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bbuton_info_rounded"
+            android:text="@string/button_update"
+            android:textColor="@color/white" />
+    </LinearLayout>
 
 </LinearLayout>
