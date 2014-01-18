@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <changelog>
+	<release version="3.0.0" versioncode="22">
+		<change><![CDATA[Nova inferface gr&#225;fica]]></change>
+		<change><![CDATA[Formata&#231;&#227;o da moeda]]></change>
+		<change><![CDATA[Remo&#231;&#227;o das propagandas]]></change>
+	</release>
 	<release version="2.5.2" versioncode="21">
 		<change><![CDATA[Corre&#231;&#227;o de bugs]]></change>
 	</release>

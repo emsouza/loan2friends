@@ -64,8 +64,7 @@ public class ItemActivity extends SherlockActivity {
 
     @ItemLongClick(R.id.list)
     void itemLongClick(final int position) {
-        final CharSequence[] items = { getString(R.string.option_edit), getString(R.string.option_delete),
-                getString(R.string.option_cancel) };
+        final CharSequence[] items = { getString(R.string.option_edit), getString(R.string.option_delete), getString(R.string.option_cancel) };
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
@@ -83,7 +82,7 @@ public class ItemActivity extends SherlockActivity {
         case 0:
             edit(item);
             break;
-        case 2:
+        case 1:
             askForDelete(item);
             break;
         default:
@@ -92,11 +91,11 @@ public class ItemActivity extends SherlockActivity {
     }
 
     protected void edit(ItemDTO item) {
-         Intent intent = new Intent(this, ItemEditActivity_.class);
-         Bundle bun = new Bundle();
-         bun.putInt("id", item.getId());
-         intent.putExtras(bun);
-         this.startActivity(intent);
+        Intent intent = new Intent(this, ItemEditActivity_.class);
+        Bundle bun = new Bundle();
+        bun.putInt("id", item.getId());
+        intent.putExtras(bun);
+        this.startActivity(intent);
     }
 
     protected void askForDelete(final ItemDTO item) {
