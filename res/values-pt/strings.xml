@@ -95,7 +95,7 @@
     <string name="pref_date_title">Formato da Data</string>
     <string name="pref_date_desc">dd/MM/yyyy ou MM/dd/yyyy</string>
     <string name="pref_changelog_desc">Informações sobre as alterações no Loan To Friends</string>
-    <string name="pref_feature_desc">Utilize esta opção para solicitar novas funcionalidades</string>
+    <string name="pref_feature_desc">Use esta opção para solicitar novas funcionalidades ou sugerir modificações nas funcionalidades existentes</string>
     <string name="pref_group_data">Importar / Exportar Dados</string>
     <string name="pref_import_data">Importar Dados</string>
     <string name="pref_import_desc">Use esta opção para importar os dados exportados</string>
