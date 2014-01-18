@@ -7,7 +7,7 @@ import org.androidannotations.annotations.ViewById;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.RadioButton;
+import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import br.com.eduardo.loan.R;
@@ -29,8 +29,8 @@ public class StatusSelectView extends RelativeLayout {
     TextView name;
 
     @ViewById(R.id.statusRadio)
-    RadioButton radio;
-    
+    CheckBox checkBox;
+
     public StatusSelectView(Context context, AttributeSet atts) {
         super(context, atts);
     }
@@ -45,27 +45,22 @@ public class StatusSelectView extends RelativeLayout {
         };
         color.setOnClickListener(onClick);
         name.setOnClickListener(onClick);
-        radio.setOnClickListener(onClick);
-    }
-    
-    void processCheck() {
-        if (radio.isChecked()) {
-            radio.setChecked(false);
-        } else {
-            radio.setChecked(true);
-        }
     }
 
-    public void setStatus(int testId, int colorId){
+    void processCheck() {
+        checkBox.setChecked(!checkBox.isChecked());
+    }
+
+    public void setStatus(int testId, int colorId) {
         color.setBackgroundResource(colorId);
         name.setText(testId);
     }
 
     public void setChecked(boolean checked) {
-        radio.setChecked(checked);
+        checkBox.setChecked(checked);
     }
 
     public boolean isChecked() {
-        return radio.isChecked();
+        return checkBox.isChecked();
     }
 }
